@@ -7,7 +7,7 @@ Mind Peace 是一款温和的 Android 使用提醒应用。它**不会锁住整�
 
 Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock the whole phone. When you launch an app you chose to watch, it covers it with a confirmation: do you really want to open it? After you confirm, you pick how long. When time is up, you go home.
 
-作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · [GitHub](https://github.com/stillthatlars/mind-peace) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
+作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · [GitHub](https://github.com/Chenlaoshiii/mind-peace) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
 
 ---
 
@@ -100,7 +100,7 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 关于
 
-作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822)。源码在 [GitHub](https://github.com/stillthatlars/mind-peace)。
+作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822)。源码在 [GitHub](https://github.com/Chenlaoshiii/mind-peace)。
 
 <p>
 <img src="docs/screenshots/about.jpg" alt="关于页：作者与版本" width="220">
@@ -199,7 +199,7 @@ If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / O
 
 ### About
 
-Author [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822). Source: [GitHub](https://github.com/stillthatlars/mind-peace).
+Author [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822). Source: [GitHub](https://github.com/Chenlaoshiii/mind-peace).
 
 <p>
 <img src="docs/screenshots/about.jpg" alt="About screen with author and version" width="220">
@@ -225,4 +225,4 @@ Kotlin + Jetpack Compose + Material 3. AccessibilityService overlay, foreground 
 
 ## License
 
-Personal project by [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822). Source: [github.com/stillthatlars/mind-peace](https://github.com/stillthatlars/mind-peace).
+Personal project by [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822). Source: [github.com/Chenlaoshiii/mind-peace](https://github.com/Chenlaoshiii/mind-peace).
