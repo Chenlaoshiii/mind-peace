@@ -261,4 +261,15 @@ Mind Peace · Chenlaoshi
         <item>Видите? Уйти от тех приложений — и небо не падает.</item>
         <item>Эта тишина заработана вами. Держите. Не спешите отдавать.</item>
     </string-array>
+
+    <string name="quota_raise_title">Точно изменить?</string>
+    <string name="quota_raise_body">Сегодняшний лимит для «%1$s» уже израсходован. Поднять его снова — не противоречит ли это вашему намерению меньше сидеть в телефоне?</string>
+    <string name="quota_raise_confirm">Подтвердить изменение</string>
+    <string name="quota_raise_back">Назад</string>
+    <string name="quota_raise_type_title">Введите целиком</string>
+    <string name="quota_raise_type_body">Перепишите фразу ниже слово в слово, чтобы подтвердить: это срочная необходимость, а не ради удовольствия.</string>
+    <string name="quota_raise_phrase">Подтверждаю, что снова повышаю лимит из срочной необходимости, а не ради удовольствия.</string>
+    <string name="quota_raise_type_ok">Подтвердить</string>
+    <string name="quota_raise_mismatch">Введите фразу выше целиком</string>
+    <string name="quota_raise_global_label">общее время за сегодня</string>
 </resources>

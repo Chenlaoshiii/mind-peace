@@ -261,4 +261,15 @@ Mind Peace · Chenlaoshi
         <item>ほら、あのアプリを離れても空は落ちない。</item>
         <item>この静けさはあなたが得たもの。しまっておいて。急いで返さなくていい。</item>
     </string-array>
+
+    <string name="quota_raise_title">本当に変更しますか？</string>
+    <string name="quota_raise_body">今日の「%1$s」の枠はすでに使い切りました。上限をまた上げることは、スマホの使用を抑えたいという当初の気持ちに反しませんか？</string>
+    <string name="quota_raise_confirm">変更する</string>
+    <string name="quota_raise_back">戻る</string>
+    <string name="quota_raise_type_title">全文を入力してください</string>
+    <string name="quota_raise_type_body">緊急で必要な理由であり、楽しみのためではないことを確認するため、次の文を一字一句そのまま書いてください。</string>
+    <string name="quota_raise_phrase">上限を再び上げるのは緊急かつ必要な理由であり、楽しみのためではないと確認します。</string>
+    <string name="quota_raise_type_ok">確認</string>
+    <string name="quota_raise_mismatch">上の文をそのまま入力してください</string>
+    <string name="quota_raise_global_label">今日の合計時間</string>
 </resources>

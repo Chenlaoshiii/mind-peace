@@ -261,4 +261,15 @@ Mind Peace · Chenlaoshi
         <item>試觀之：去彼數應用，天未傾。</item>
         <item>此靜乃汝所掙，善藏之，勿急還。</item>
     </string-array>
+
+    <string name="quota_raise_title">決欲改之乎？</string>
+    <string name="quota_raise_body">今日「%1$s」之額已盡。再增其限，豈不違汝欲節用手機之初衷乎？</string>
+    <string name="quota_raise_confirm">確認調整</string>
+    <string name="quota_raise_back">返</string>
+    <string name="quota_raise_type_title">請全錄其文</string>
+    <string name="quota_raise_type_body">請一字不差書下方之句，以證此乃急切必要之事，非為逸樂。</string>
+    <string name="quota_raise_phrase">吾確認再增使用限額乃出於緊急必要，非為逸樂。</string>
+    <string name="quota_raise_type_ok">確認</string>
+    <string name="quota_raise_mismatch">請全錄上方之句</string>
+    <string name="quota_raise_global_label">今日總時</string>
 </resources>

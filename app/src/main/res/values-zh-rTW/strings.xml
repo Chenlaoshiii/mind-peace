@@ -261,4 +261,15 @@ Mind Peace · Chenlaoshi
         <item>你看，離開那幾個應用，天也沒有塌。</item>
         <item>這份安靜是你掙來的，收好，別急著還回去。</item>
     </string-array>
+
+    <string name="quota_raise_title">確定要調整嗎？</string>
+    <string name="quota_raise_body">今天「%1$s」的額度已經用完。再次調高限額，是否與你想控制手機使用的初心相違背？</string>
+    <string name="quota_raise_confirm">確認調整</string>
+    <string name="quota_raise_back">返回</string>
+    <string name="quota_raise_type_title">請完整輸入</string>
+    <string name="quota_raise_type_body">請一字不差地寫下下面這句話，以確認這是緊急必要的需求，而不是為了享樂。</string>
+    <string name="quota_raise_phrase">我確定再次提高使用限額是出於緊急必要的需求，而不是為了享樂。</string>
+    <string name="quota_raise_type_ok">確認</string>
+    <string name="quota_raise_mismatch">請完整輸入上面那句話</string>
+    <string name="quota_raise_global_label">今日總時長</string>
 </resources>

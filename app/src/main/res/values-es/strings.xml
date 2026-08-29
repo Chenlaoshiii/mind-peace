@@ -261,4 +261,15 @@ Autor 陈老实Chenlaoshi</string>
         <item>Mira: deja esas apps, y el cielo no se cae.</item>
         <item>Esta calma la ganaste tú. Guárdala. No la devuelvas de prisa.</item>
     </string-array>
+
+    <string name="quota_raise_title">¿Seguro que quieres cambiarlo?</string>
+    <string name="quota_raise_body">El cupo de hoy para «%1$s» ya se agotó. Subir el límite otra vez — ¿no va contra la razón por la que querías controlar el uso del teléfono?</string>
+    <string name="quota_raise_confirm">Confirmar el cambio</string>
+    <string name="quota_raise_back">Volver</string>
+    <string name="quota_raise_type_title">Escríbelo tal cual</string>
+    <string name="quota_raise_type_body">Copia la frase de abajo palabra por palabra para confirmar que es una necesidad urgente y necesaria, no por placer.</string>
+    <string name="quota_raise_phrase">Confirmo que volver a subir este límite es una necesidad urgente y necesaria, no por placer.</string>
+    <string name="quota_raise_type_ok">Confirmar</string>
+    <string name="quota_raise_mismatch">Escribe exactamente la frase de arriba</string>
+    <string name="quota_raise_global_label">el tiempo total de hoy</string>
 </resources>

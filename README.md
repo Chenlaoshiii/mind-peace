@@ -7,7 +7,7 @@ Mind Peace 是一款温和的 Android 使用提醒应用。它**不会锁住整�
 
 Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock the whole phone. When you launch an app you chose to watch, it covers it with a confirmation: do you really want to open it? After you confirm, you pick how long. When time is up, you go home.
 
-[下载 Debug 安装包 1.3.4](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.4/MindPeace-1.3.4-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.4)
+[下载 Debug 安装包 1.3.5](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.5/MindPeace-1.3.5-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.5)
 
 作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · [GitHub](https://github.com/stillthatlars/mind-peace) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
 
@@ -26,7 +26,8 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 **会做**
 
 - 打开已守护应用时立刻盖住确认层（应用还在下面，但不能操作）
-- 自己选本次时长；倒计时只在该应用在前台时走。中途离开（回桌面、切到别的应用、打开 Mind Peace）会结束本次，已经用掉的计入今日用量，没用完的时间作废；下次打开会再次询问
+- 自己选本次时长；倒计时只在该应用在前台时走。中途离开（回桌面、切到别的应用、打开 Mind Peace）会结束本次，已经用掉的计入今日用量，没用完的时间作废；下次打开会再次询问。离开本身不会再弹出拦截
+- 某个应用今日额度用完后再调高限额，需先确认，并手打一句确认语
 - 时间到回到桌面，并提醒「时间到了」
 - 首页「总时长」可设所有被守护应用加在一起的每日上限，再把分钟分给各个应用（不能超过总数；0 表示这个应用不额外限额，仍受总时长剩余约束）
 - 一段时间没打开被守护应用，会发鼓励通知
@@ -49,7 +50,7 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 怎么用
 
-1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.4/MindPeace-1.3.4-debug.apk)（需允许未知来源）。覆盖安装即可。
+1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.5/MindPeace-1.3.5-debug.apk)（需允许未知来源）。覆盖安装即可。
 2. 第一次打开会走引导（7 步）：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知、授权读取已安装应用 → 按机型锁定后台 → **郑重说明**（权限只为更准地拦截；绝不收集隐私；好心提醒：花钱买到此软件说明你被骗了，Mind Peace 完全免费）。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
 3. 底栏四个入口：**总时长**、**添加应用**、**今日小结**、**设置**。左右滑动即可切换，点底栏也会跟着滑过去。
 4. 之后打开这些应用，会先问「真的确定要打开××吗？」并显示你的那句话。选「确定」再选 1 / 3 / 5 分钟或自定义；「退出」回桌面。
@@ -60,7 +61,7 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 主题
 
-1.3.4 起个性主题只保留 **Material You**（Android 12+ 跟随壁纸动态取色）。可在设置里选浅色、深色或跟随系统。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
+1.3.5：退出被守护应用不再误拦截。额度用完后再调高限额，需确认并手打一句确认语。个性主题只保留 **Material You**（Android 12+ 跟随壁纸动态取色）。可在设置里选浅色、深色或跟随系统。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
 
 ### 隐私
 
@@ -79,7 +80,8 @@ Feeds and short video are easy to open on autopilot. Mind Peace pulls “open”
 **Does**
 
 - Overlay a confirmation the moment a watched app comes to the foreground
-- Let you pick a session length; the timer runs only while that app is in front. Leaving (home, another app, or Mind Peace) **ends** the session: time already used is counted, leftover minutes are discarded, and the next open always asks again
+- Let you pick a session length; the timer runs only while that app is in front. Leaving (home, another app, or Mind Peace) **ends** the session: time already used is counted, leftover minutes are discarded, and the next open always asks again. Leaving itself does not show the intercept
+- If an app’s daily allowance is already used up, raising that limit needs a confirmation and typing a sentence
 - Send you home when time is up, with a reminder
 - A global daily cap for all watched apps, then per-app allocations from that pool (allocations cannot exceed the total; 0 means no extra per-app cap beyond remaining global time)
 - Celebration notifications after 4 hours / 1 day / 3 days without opening watched apps (quiet hours 22:00–08:00)
@@ -94,7 +96,7 @@ Feeds and short video are easy to open on autopilot. Mind Peace pulls “open”
 
 ### How to use
 
-1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.4/MindPeace-1.3.4-debug.apk) (unknown sources). You can install over a previous debug build.
+1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.5/MindPeace-1.3.5-debug.apk) (unknown sources). You can install over a previous debug build.
 2. First launch is gated onboarding (7 steps): welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications + permission to list installed apps, lock in Recents, then a solemn privacy step (permissions exist only to intercept accurately; nothing is collected; a kind reminder: if you paid for this app, you were scammed — it is free). “I’m done” enables only when accessibility is actually on and the recents checkbox is checked.
 3. Bottom bar: **Daily cap**, **Add apps**, **Today’s recap**, **Settings**. Swipe left/right between tabs, or tap the bar.
 4. Opening a watched app asks if you really want to open it, with your quote. Confirm then pick duration, or Exit to the launcher.
@@ -105,7 +107,7 @@ If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / O
 
 ### Appearance
 
-1.3.4 keeps **Material You** only (dynamic color on Android 12+). Light / dark / follow system. UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
+1.3.5: leaving a watched app no longer false-triggers the intercept. Raising a spent quota needs confirmation and a typed sentence. **Material You** only (dynamic color on Android 12+). Light / dark / follow system. UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
 
 ### Privacy
 

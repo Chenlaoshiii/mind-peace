@@ -261,4 +261,15 @@ Auteur 陈老实Chenlaoshi</string>
         <item>Tu vois : quitte ces applis, et le ciel ne tombe pas.</item>
         <item>Ce calme, tu l’as gagné. Garde-le. Ne le rends pas trop vite.</item>
     </string-array>
+
+    <string name="quota_raise_title">Tu veux vraiment modifier ?</string>
+    <string name="quota_raise_body">Le quota d’aujourd’hui pour « %1$s » est déjà épuisé. Relever encore la limite — n’est-ce pas contraire à l’intention de mieux maîtriser le téléphone ?</string>
+    <string name="quota_raise_confirm">Confirmer la modification</string>
+    <string name="quota_raise_back">Retour</string>
+    <string name="quota_raise_type_title">Saisis la phrase entière</string>
+    <string name="quota_raise_type_body">Recopie la phrase ci-dessous mot pour mot, pour confirmer qu’il s’agit d’un besoin urgent et nécessaire, et non d’un plaisir.</string>
+    <string name="quota_raise_phrase">Je confirme que relever encore cette limite répond à un besoin urgent et nécessaire, et non au plaisir.</string>
+    <string name="quota_raise_type_ok">Confirmer</string>
+    <string name="quota_raise_mismatch">Saisis exactement la phrase ci-dessus</string>
+    <string name="quota_raise_global_label">le temps total d’aujourd’hui</string>
 </resources>

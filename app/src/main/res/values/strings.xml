@@ -288,4 +288,15 @@
     <string name="weekday_fri">周五</string>
     <string name="weekday_sat">周六</string>
     <string name="weekday_sun">周日</string>
+
+    <string name="quota_raise_title">确定要调整吗？</string>
+    <string name="quota_raise_body">今天「%1$s」的额度已经用完。再次调高限额，是否与你想控制手机使用的初心相违背？</string>
+    <string name="quota_raise_confirm">确认调整</string>
+    <string name="quota_raise_back">返回</string>
+    <string name="quota_raise_type_title">请完整输入</string>
+    <string name="quota_raise_type_body">请一字不差地写下下面这句话，以确认这是紧急必要的需求，而不是为了享乐。</string>
+    <string name="quota_raise_phrase">我确定再次提高使用限额是出于紧急必要的需求，而不是为了享乐。</string>
+    <string name="quota_raise_type_ok">确认</string>
+    <string name="quota_raise_mismatch">请完整输入上面那句话</string>
+    <string name="quota_raise_global_label">今日总时长</string>
 </resources>

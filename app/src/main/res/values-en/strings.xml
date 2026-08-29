@@ -261,4 +261,15 @@ Author 陈老实Chenlaoshi</string>
         <item>See? Leave those apps, and the sky doesn\'t fall.</item>
         <item>This quiet is yours. Keep it. Don\'t rush to give it back.</item>
     </string-array>
+
+    <string name="quota_raise_title">Are you sure you want to change this?</string>
+    <string name="quota_raise_body">Today\'s allowance for “%1$s” is already used up. Raising the limit again — does that go against why you wanted to control phone use?</string>
+    <string name="quota_raise_confirm">Confirm change</string>
+    <string name="quota_raise_back">Back</string>
+    <string name="quota_raise_type_title">Type this exactly</string>
+    <string name="quota_raise_type_body">Type the sentence below word for word, to confirm this is an urgent and necessary need, not for pleasure.</string>
+    <string name="quota_raise_phrase">I confirm that raising this limit again is an urgent and necessary need, not for pleasure.</string>
+    <string name="quota_raise_type_ok">Confirm</string>
+    <string name="quota_raise_mismatch">Please type the sentence above exactly</string>
+    <string name="quota_raise_global_label">today\'s total time</string>
 </resources>

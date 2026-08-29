@@ -46,9 +46,9 @@ class MindPeaceAccessibilityService : AccessibilityService() {
         ) {
             return
         }
-        val pkg = event.packageName?.toString()
-            ?: currentApplicationPackage()
-            ?: return
+        // Prefer the focused application over raw event.packageName when they disagree.
+        // If nothing is focused, skip rather than using a stale leftover package.
+        val pkg = currentApplicationPackage() ?: return
         if (pkg == lastEventPkg && type == AccessibilityEvent.TYPE_WINDOWS_CHANGED) {
             return
         }
@@ -69,18 +69,33 @@ class MindPeaceAccessibilityService : AccessibilityService() {
         return getSystemService(WINDOW_SERVICE) as WindowManager
     }
 
+    /**
+     * Foreground app from focused/active TYPE_APPLICATION windows only.
+     * Returns null when nothing is focused so the coordinator is skipped,
+     * instead of reporting a stale unfocused leftover (e.g. Douyin after Home).
+     */
     private fun currentApplicationPackage(): String? {
-        val wins = windows
-        if (wins != null) {
-            val appWindows = wins.filter { w ->
-                w.type == AccessibilityWindowInfo.TYPE_APPLICATION
-            }
-            val focused = appWindows.firstOrNull { it.isFocused || it.isActive }
-            val fromFocused = focused?.root?.packageName?.toString()
-            if (!fromFocused.isNullOrBlank()) return fromFocused
-            val any = appWindows.firstNotNullOfOrNull { it.root?.packageName?.toString() }
-            if (!any.isNullOrBlank()) return any
+        val wins = try {
+            windows
+        } catch (_: Exception) {
+            null
+        } ?: return null
+        val appWindows = wins.filter { w ->
+            w.type == AccessibilityWindowInfo.TYPE_APPLICATION
         }
-        return rootInActiveWindow?.packageName?.toString()
+        val focused = appWindows.firstOrNull { it.isFocused }
+            ?: appWindows.firstOrNull { it.isActive }
+        val fromFocused = packageOf(focused)
+        if (!fromFocused.isNullOrBlank()) return fromFocused
+        return null
+    }
+
+    private fun packageOf(window: AccessibilityWindowInfo?): String? {
+        if (window == null) return null
+        return try {
+            window.root?.packageName?.toString()?.takeIf { it.isNotBlank() }
+        } catch (_: Exception) {
+            null
+        }
     }
 }

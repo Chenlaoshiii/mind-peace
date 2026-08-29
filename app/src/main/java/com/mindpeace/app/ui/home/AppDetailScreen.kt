@@ -28,7 +28,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
@@ -63,12 +65,33 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
     val used = app.container.settings.usedMillisToday(packageName)
     val scope = rememberCoroutineScope()
     var customText by remember { mutableStateOf("") }
+    var previewLimit by remember(packageName) { mutableIntStateOf(current.dailyLimitMinutes) }
+    var dragging by remember { mutableStateOf(false) }
+    var challenge by remember { mutableStateOf<QuotaRaisePending?>(null) }
+
+    LaunchedEffect(current.dailyLimitMinutes) {
+        if (!dragging && challenge == null) previewLimit = current.dailyLimitMinutes
+    }
 
     fun save(next: WatchedApp) {
         scope.launch {
             app.container.settings.upsertWatched(next)
             app.container.settings.setAppAllocation(packageName, next.dailyLimitMinutes)
         }
+    }
+
+    fun requestLimit(minutes: Int) {
+        val snapped = minutes.coerceIn(0, 24 * 60)
+        previewLimit = snapped
+        requestQuotaLimitChange(
+            oldMinutes = current.dailyLimitMinutes,
+            newMinutes = snapped,
+            usedTodayMillis = used,
+            appLabel = label,
+            apply = { save(current.copy(dailyLimitMinutes = snapped)) },
+            revert = { previewLimit = current.dailyLimitMinutes },
+            startChallenge = { challenge = it },
+        )
     }
 
     Scaffold(
@@ -123,16 +146,20 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
                 modifier = Modifier.padding(top = 4.dp, bottom = 12.dp),
             )
             Text(
-                if (current.dailyLimitMinutes <= 0) stringResource(R.string.detail_limit_none)
-                else stringResource(R.string.detail_limit_minutes, current.dailyLimitMinutes),
+                if (previewLimit <= 0) stringResource(R.string.detail_limit_none)
+                else stringResource(R.string.detail_limit_minutes, previewLimit),
                 style = MaterialTheme.typography.bodyLarge,
                 color = MaterialTheme.colorScheme.primary,
             )
             Slider(
-                value = current.dailyLimitMinutes.coerceIn(0, 180).toFloat(),
+                value = previewLimit.coerceIn(0, 180).toFloat(),
                 onValueChange = {
-                    val snapped = ((it / 5f).roundToInt() * 5).coerceIn(0, 180)
-                    save(current.copy(dailyLimitMinutes = snapped))
+                    dragging = true
+                    previewLimit = ((it / 5f).roundToInt() * 5).coerceIn(0, 180)
+                },
+                onValueChangeFinished = {
+                    dragging = false
+                    requestLimit(previewLimit)
                 },
                 valueRange = 0f..180f,
                 colors = peaceSliderColors(),
@@ -143,8 +170,8 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
             ) {
                 PRESETS.forEach { m ->
                     PeaceChip(
-                        selected = current.dailyLimitMinutes == m,
-                        onClick = { save(current.copy(dailyLimitMinutes = m)) },
+                        selected = previewLimit == m,
+                        onClick = { requestLimit(m) },
                         label = {
                             Text(
                                 if (m == 0) stringResource(R.string.detail_limit_none)
@@ -164,7 +191,7 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
                 trailingIcon = {
                     TextButton(
                         onClick = {
-                            customText.toIntOrNull()?.let { save(current.copy(dailyLimitMinutes = it.coerceIn(0, 24 * 60))) }
+                            customText.toIntOrNull()?.let { requestLimit(it.coerceIn(0, 24 * 60)) }
                         },
                         enabled = customText.toIntOrNull() != null,
                     ) { Text(stringResource(R.string.overlay_custom_ok)) }
@@ -184,4 +211,5 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
             Spacer(Modifier.height(24.dp))
         }
     }
+    QuotaRaiseChallenge(pending = challenge, onClear = { challenge = null })
 }

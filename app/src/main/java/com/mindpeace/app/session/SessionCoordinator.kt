@@ -50,6 +50,12 @@ class SessionCoordinator(
     private var lastPkgAt: Long = 0L
     private var usageSincePersist: Long = 0L
 
+    /** Watched package whose session just ended because the user left. */
+    private var justLeftPkg: String? = null
+    private var justLeftAt: Long = 0L
+    /** True once a different counting foreground (launcher, another app, this app) was focused. */
+    private var leaveConfirmed: Boolean = false
+
     init {
         restoreSessionIfAny()
         scope.launch {
@@ -79,13 +85,19 @@ class SessionCoordinator(
 
     fun onForegroundPackage(pkg: String) {
         if (pkg.isBlank()) return
+
+        val sess = _session.value
         if (pkg == app.packageName) {
             // Never intercept ourselves. Leaving the watched app ends the session.
+            if (sess != null) rememberLeave(sess.packageName)
             endSessionForLeave(pkg)
+            confirmLeaveIfOther(pkg)
             return
         }
         if (isIgnored(pkg)) {
+            if (sess != null) rememberLeave(sess.packageName)
             endSessionForLeave(pkg)
+            confirmLeaveIfOther(pkg)
             return
         }
 
@@ -97,9 +109,9 @@ class SessionCoordinator(
         }
         _foreground.value = pkg
 
-        val sess = _session.value
-        if (sess != null && sess.packageName == pkg) {
-            if (sess.remainingMillis <= 0L) {
+        val live = _session.value
+        if (live != null && live.packageName == pkg) {
+            if (live.remainingMillis <= 0L) {
                 onTimeUp()
                 return
             }
@@ -109,17 +121,22 @@ class SessionCoordinator(
             return
         }
 
-        if (sess != null && sess.packageName != pkg) {
+        if (live != null && live.packageName != pkg) {
+            rememberLeave(live.packageName)
             endSessionForLeave(pkg)
+            confirmLeaveIfOther(pkg)
+        } else {
+            confirmLeaveIfOther(pkg)
         }
+
+        if (_overlay.value is OverlayState.TimeUp) return
 
         val watched = settings.watchedApps.value.firstOrNull { it.packageName == pkg && it.enabled }
             ?: return
 
+        if (shouldSuppressIntercept(pkg, now)) return
+
         if (!pkgChanged && _overlay.value !is OverlayState.Hidden) {
-            return
-        }
-        if (!pkgChanged && now - lastPkgAt < 400L) {
             return
         }
 
@@ -264,6 +281,7 @@ class SessionCoordinator(
         persistSession(clear = true)
         SessionForegroundService.stop(app)
         val pkg = sess?.packageName ?: return
+        rememberLeave(pkg)
         val label = installedApps.labelOf(pkg)
         goHome()
         _overlay.value = OverlayState.TimeUp(packageName = pkg, appLabel = label)
@@ -308,6 +326,46 @@ class SessionCoordinator(
         usageSincePersist = 0L
         persistSession(clear = true)
         SessionForegroundService.stop(app)
+    }
+
+    private fun rememberLeave(leftPkg: String) {
+        if (leftPkg.isBlank()) return
+        if (justLeftPkg == leftPkg) return
+        justLeftPkg = leftPkg
+        justLeftAt = SystemClock.uptimeMillis()
+        leaveConfirmed = false
+    }
+
+    private fun confirmLeaveIfOther(pkg: String) {
+        val left = justLeftPkg ?: return
+        if (pkg == left) return
+        if (countsAsOtherForeground(pkg)) {
+            leaveConfirmed = true
+        }
+    }
+
+    private fun countsAsOtherForeground(pkg: String): Boolean {
+        if (pkg == app.packageName) return true
+        if (pkg.startsWith("com.android.systemui")) return false
+        if (pkg in IGNORED_PACKAGES) return false
+        return true
+    }
+
+    /**
+     * After leaving X, ignore phantom foreground reports of X until a different
+     * counting package (launcher included) has been focused, or ~1s has passed.
+     */
+    private fun shouldSuppressIntercept(pkg: String, now: Long): Boolean {
+        if (pkg != justLeftPkg) return false
+        if (leaveConfirmed) {
+            justLeftPkg = null
+            leaveConfirmed = false
+            return false
+        }
+        if (now - justLeftAt < 1_000L) return true
+        justLeftPkg = null
+        leaveConfirmed = false
+        return false
     }
 
     private fun isIgnored(pkg: String): Boolean {
