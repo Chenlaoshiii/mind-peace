@@ -272,4 +272,5 @@ Mind Peace · Chenlaoshi
     <string name="quota_raise_type_ok">確認</string>
     <string name="quota_raise_mismatch">請全錄上方之句</string>
     <string name="quota_raise_global_label">今日總時</string>
+    <string name="budget_minutes_input">分</string>
 </resources>

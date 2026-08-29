@@ -272,4 +272,5 @@ Autor 陈老实Chenlaoshi</string>
     <string name="quota_raise_type_ok">Confirmar</string>
     <string name="quota_raise_mismatch">Escribe exactamente la frase de arriba</string>
     <string name="quota_raise_global_label">el tiempo total de hoy</string>
+    <string name="budget_minutes_input">min</string>
 </resources>

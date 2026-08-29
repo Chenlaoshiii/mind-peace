@@ -272,4 +272,5 @@ Mind Peace · Chenlaoshi
     <string name="quota_raise_type_ok">確認</string>
     <string name="quota_raise_mismatch">上の文をそのまま入力してください</string>
     <string name="quota_raise_global_label">今日の合計時間</string>
+    <string name="budget_minutes_input">分</string>
 </resources>

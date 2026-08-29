@@ -48,6 +48,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.ui.components.AppIcon
+import com.mindpeace.app.ui.components.MinutesInputField
 import com.mindpeace.app.ui.components.PeacePageTitle
 import com.mindpeace.app.ui.theme.PeaceButton
 import com.mindpeace.app.ui.theme.PeaceCard
@@ -167,7 +168,7 @@ fun HomeScreen(
                         value = globalPreview.coerceIn(0, 360).toFloat(),
                         onValueChange = {
                             globalDragging = true
-                            globalPreview = ((it / 5f).roundToInt() * 5).coerceIn(0, 360)
+                            globalPreview = it.roundToInt().coerceIn(0, 360)
                         },
                         onValueChangeFinished = {
                             globalDragging = false
@@ -177,6 +178,13 @@ fun HomeScreen(
                         colors = peaceSliderColors(),
                         modifier = Modifier.fillMaxWidth(),
                     )
+                    MinutesInputField(
+                        minutes = globalPreview,
+                        maxMinutes = 360,
+                        onCommit = { requestGlobal(it) },
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    Spacer(Modifier.height(8.dp))
                     FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                         GLOBAL_PRESETS.forEach { m ->
                             PeaceChip(
@@ -309,11 +317,18 @@ private fun AppBudgetRow(
                 AppIcon(item.packageName, Modifier.size(44.dp))
             },
         )
+        Text(
+            if (preview <= 0) stringResource(R.string.budget_app_share)
+            else stringResource(R.string.budget_app_alloc, preview),
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.padding(horizontal = 16.dp),
+        )
         Slider(
             value = preview.coerceIn(0, sliderMax).toFloat(),
             onValueChange = {
                 dragging = true
-                preview = ((it / 5f).roundToInt() * 5).coerceIn(0, sliderMax)
+                preview = it.roundToInt().coerceIn(0, sliderMax)
             },
             onValueChangeFinished = {
                 dragging = false
@@ -323,6 +338,13 @@ private fun AppBudgetRow(
             colors = peaceSliderColors(),
             enabled = global <= 0 || maxAlloc > 0 || alloc > 0,
             modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+        )
+        MinutesInputField(
+            minutes = preview,
+            maxMinutes = sliderMax,
+            onCommit = { request(it) },
+            enabled = global <= 0 || maxAlloc > 0 || alloc > 0,
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 12.dp),
         )
     }
 }

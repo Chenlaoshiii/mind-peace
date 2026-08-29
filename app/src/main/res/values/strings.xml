@@ -299,4 +299,5 @@
     <string name="quota_raise_type_ok">确认</string>
     <string name="quota_raise_mismatch">请完整输入上面那句话</string>
     <string name="quota_raise_global_label">今日总时长</string>
+    <string name="budget_minutes_input">分钟</string>
 </resources>

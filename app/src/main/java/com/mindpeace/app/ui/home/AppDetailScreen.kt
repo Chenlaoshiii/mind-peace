@@ -20,12 +20,10 @@ import com.mindpeace.app.ui.theme.PeaceIconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
 import com.mindpeace.app.ui.theme.PeaceButton
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -45,6 +43,7 @@ import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.data.WatchedApp
 import com.mindpeace.app.ui.components.AppIcon
+import com.mindpeace.app.ui.components.MinutesInputField
 import com.mindpeace.app.ui.theme.peaceContainerColor
 import com.mindpeace.app.ui.theme.peaceSliderColors
 import com.mindpeace.app.util.formatDurationMillis
@@ -59,12 +58,15 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
     val context = LocalContext.current
     val app = context.applicationContext as MindPeaceApp
     val watched by app.container.settings.watchedApps.collectAsStateWithLifecycle()
+    val global by app.container.settings.globalDailyLimitMinutes.collectAsStateWithLifecycle()
     val current = watched.firstOrNull { it.packageName == packageName }
         ?: WatchedApp(packageName)
     val label = remember(packageName) { app.container.installedApps.labelOf(packageName) }
     val used = app.container.settings.usedMillisToday(packageName)
     val scope = rememberCoroutineScope()
-    var customText by remember { mutableStateOf("") }
+    val others = watched.filter { it.packageName != packageName }.sumOf { it.dailyLimitMinutes }
+    val maxAlloc = if (global <= 0) 360 else (global - others).coerceAtLeast(0)
+    val sliderMax = maxOf(1, maxAlloc, current.dailyLimitMinutes)
     var previewLimit by remember(packageName) { mutableIntStateOf(current.dailyLimitMinutes) }
     var dragging by remember { mutableStateOf(false) }
     var challenge by remember { mutableStateOf<QuotaRaisePending?>(null) }
@@ -81,7 +83,7 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
     }
 
     fun requestLimit(minutes: Int) {
-        val snapped = minutes.coerceIn(0, 24 * 60)
+        val snapped = minutes.coerceIn(0, sliderMax)
         previewLimit = snapped
         requestQuotaLimitChange(
             oldMinutes = current.dailyLimitMinutes,
@@ -152,26 +154,33 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
                 color = MaterialTheme.colorScheme.primary,
             )
             Slider(
-                value = previewLimit.coerceIn(0, 180).toFloat(),
+                value = previewLimit.coerceIn(0, sliderMax).toFloat(),
                 onValueChange = {
                     dragging = true
-                    previewLimit = ((it / 5f).roundToInt() * 5).coerceIn(0, 180)
+                    previewLimit = it.roundToInt().coerceIn(0, sliderMax)
                 },
                 onValueChangeFinished = {
                     dragging = false
                     requestLimit(previewLimit)
                 },
-                valueRange = 0f..180f,
+                valueRange = 0f..sliderMax.toFloat(),
                 colors = peaceSliderColors(),
                 modifier = Modifier.fillMaxWidth(),
             )
+            MinutesInputField(
+                minutes = previewLimit,
+                maxMinutes = sliderMax,
+                onCommit = { requestLimit(it) },
+                modifier = Modifier.fillMaxWidth(),
+            )
+            Spacer(Modifier.height(8.dp))
             FlowRow(
                 modifier = Modifier.fillMaxWidth(),
             ) {
                 PRESETS.forEach { m ->
                     PeaceChip(
                         selected = previewLimit == m,
-                        onClick = { requestLimit(m) },
+                        onClick = { requestLimit(m.coerceIn(0, sliderMax)) },
                         label = {
                             Text(
                                 if (m == 0) stringResource(R.string.detail_limit_none)
@@ -182,21 +191,6 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
                     )
                 }
             }
-            OutlinedTextField(
-                value = customText,
-                onValueChange = { customText = it.filter { ch -> ch.isDigit() }.take(4) },
-                label = { Text(stringResource(R.string.detail_custom)) },
-                singleLine = true,
-                modifier = Modifier.fillMaxWidth(),
-                trailingIcon = {
-                    TextButton(
-                        onClick = {
-                            customText.toIntOrNull()?.let { requestLimit(it.coerceIn(0, 24 * 60)) }
-                        },
-                        enabled = customText.toIntOrNull() != null,
-                    ) { Text(stringResource(R.string.overlay_custom_ok)) }
-                },
-            )
             Spacer(Modifier.height(32.dp))
             PeaceButton(
                 onClick = {

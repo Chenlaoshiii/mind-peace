@@ -272,4 +272,5 @@ Author 陈老实Chenlaoshi</string>
     <string name="quota_raise_type_ok">Confirm</string>
     <string name="quota_raise_mismatch">Please type the sentence above exactly</string>
     <string name="quota_raise_global_label">today\'s total time</string>
+    <string name="budget_minutes_input">min</string>
 </resources>
