@@ -59,7 +59,7 @@
     <string name="onboarding_privacy_body">Lire les applis installées, recevoir les notifications, activer l’accessibilité : tout cela sert à mieux garder les applis que tu as choisies. Recouvrir la confirmation avant qu’elles s’ouvrent, laisser le compte à rebours aller jusqu’au bout, et te prévenir quand il faut te prévenir. S’il en manque une, l’interception peut échouer.</string>
     <string name="onboarding_privacy_offline">Nous le réaffirmons clairement : Mind Peace ne recueille jamais de données personnelles et n’envoie aucun historique d’usage. Elle est entièrement hors ligne. Tout reste sur ce téléphone. L’accessibilité ne lit ni les discussions, ni les mots de passe, ni le texte à l’écran : elle ne s’occupe que de l’application passée au premier plan.</string>
     <string name="onboarding_privacy_warn_title">Un rappel de bonne foi</string>
-    <string name="onboarding_privacy_warn_body">On t’a trompé. Si l’on t’a dit qu’accorder à ce genre d’appli l’accessibilité, les notifications ou la liste des applis, c’est livrer discussions, photos et comptes, ce n’est pas vrai. Ces autorisations n’existent que pour que la pause arrive au bon moment. Nous ne voyons pas tes messages, et nous n’emportons pas tes données.</string>
+    <string name="onboarding_privacy_warn_body">Si tu as payé pour acheter cette appli, tu as été arnaqué. Mind Peace est entièrement gratuite. Quiconque t’a facturé n’est pas nous.</string>
     <string name="onboarding_next">Continuer</string>
     <string name="onboarding_back">Retour</string>
     <string name="onboarding_finish">C’est fait</string>
@@ -225,6 +225,7 @@ Auteur 陈老实Chenlaoshi</string>
     <string name="budget_empty_body">Ajoute d’abord une appli que tu voudrais ouvrir moins, puis reviens répartir le temps du jour.</string>
     <string name="stats_compare">Aujourd’hui face à hier</string>
     <string name="settings_language_word">Langue</string>
+    <string name="settings_language_system">Suivre le système</string>
     <string name="cd_expand">Déplier</string>
     <string name="cd_collapse">Replier</string>
     <string name="duration_hours_minutes">%1$d h %2$d min</string>

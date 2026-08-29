@@ -59,7 +59,7 @@
     <string name="onboarding_privacy_body">Чтение установленных приложений, уведомления и специальные возможности нужны, чтобы точнее охранять выбранные вами приложения: вовремя накрыть слой подтверждения, дать таймеру дойти до конца и напомнить, когда надо напомнить. Без любого из этого перехват может не сработать.</string>
     <string name="onboarding_privacy_offline">Повторяем со всей ясностью: Mind Peace никогда не собирает личные данные и не загружает записи использования. Приложение полностью офлайн. Всё остаётся на этом телефоне. Служба специальных возможностей не читает чаты, пароли и текст на экране — ей важно только, какое приложение вышло на передний план.</string>
     <string name="onboarding_privacy_warn_title">Доброе напоминание</string>
-    <string name="onboarding_privacy_warn_body">Вас обманули. Если кто-то говорил, что, открывая таким приложениям специальные возможности, уведомления или список приложений, вы отдаёте чаты, фото и аккаунты — это неправда. Эти разрешения нужны лишь затем, чтобы пауза случилась в нужный момент. Мы не видим ваши сообщения и не забираем ваши данные.</string>
+    <string name="onboarding_privacy_warn_body">Если вы заплатили за это приложение, вас обманули. Mind Peace полностью бесплатна. Тот, кто взял с вас деньги, — это не мы.</string>
     <string name="onboarding_next">Далее</string>
     <string name="onboarding_back">Назад</string>
     <string name="onboarding_finish">Готово</string>
@@ -225,6 +225,7 @@ Mind Peace · Chenlaoshi
     <string name="budget_empty_body">Сначала добавьте приложение, которое хотите открывать реже, потом распределите сегодняшнее время.</string>
     <string name="stats_compare">Сегодня и вчера</string>
     <string name="settings_language_word">Язык</string>
+    <string name="settings_language_system">Следовать системе</string>
     <string name="cd_expand">Развернуть</string>
     <string name="cd_collapse">Свернуть</string>
     <string name="duration_hours_minutes">%1$d ч %2$d мин</string>

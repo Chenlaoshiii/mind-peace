@@ -86,7 +86,7 @@ class SettingsRepository(
 
     val appLocale: StateFlow<String> = store.data
         .map { AppLocale.normalize(it[KEY_LOCALE]) }
-        .stateIn(scope, SharingStarted.Eagerly, AppLocale.DEFAULT)
+        .stateIn(scope, SharingStarted.Eagerly, AppLocale.SYSTEM)
 
     init {
         scope.launch {
@@ -96,7 +96,7 @@ class SettingsRepository(
                     prefs[KEY_VISUAL_STYLE] = VisualStyle.MATERIAL_YOU.name
                 }
                 if (prefs[KEY_LOCALE].isNullOrBlank()) {
-                    prefs[KEY_LOCALE] = AppLocale.DEFAULT
+                    prefs[KEY_LOCALE] = AppLocale.SYSTEM
                 }
             }
             store.data.first()

@@ -44,6 +44,7 @@ import com.mindpeace.app.R
 import com.mindpeace.app.data.WatchedApp
 import com.mindpeace.app.ui.components.AppIcon
 import com.mindpeace.app.ui.theme.peaceContainerColor
+import com.mindpeace.app.ui.theme.peaceSliderColors
 import com.mindpeace.app.util.formatDurationMillis
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
@@ -134,6 +135,7 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
                     save(current.copy(dailyLimitMinutes = snapped))
                 },
                 valueRange = 0f..180f,
+                colors = peaceSliderColors(),
                 modifier = Modifier.fillMaxWidth(),
             )
             FlowRow(

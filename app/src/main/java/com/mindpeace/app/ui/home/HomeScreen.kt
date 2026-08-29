@@ -50,6 +50,7 @@ import com.mindpeace.app.ui.components.PeacePageTitle
 import com.mindpeace.app.ui.theme.PeaceButton
 import com.mindpeace.app.ui.theme.PeaceCard
 import com.mindpeace.app.ui.theme.PeaceChip
+import com.mindpeace.app.ui.theme.peaceSliderColors
 import com.mindpeace.app.util.Permissions
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
@@ -115,7 +116,11 @@ fun HomeScreen(
                     shape = RoundedCornerShape(20.dp),
                 ) {
                     Column(Modifier.padding(20.dp)) {
-                        Text(stringResource(R.string.budget_global), style = MaterialTheme.typography.titleLarge)
+                        Text(
+                            stringResource(R.string.budget_global),
+                            style = MaterialTheme.typography.titleLarge,
+                            color = MaterialTheme.colorScheme.onSurface,
+                        )
                         Spacer(Modifier.height(4.dp))
                         Text(
                             stringResource(R.string.budget_global_sub),
@@ -136,6 +141,7 @@ fun HomeScreen(
                                 scope.launch { app.container.settings.setGlobalDailyLimitMinutes(snapped) }
                             },
                             valueRange = 0f..360f,
+                            colors = peaceSliderColors(),
                             modifier = Modifier.fillMaxWidth(),
                         )
                         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -222,11 +228,13 @@ fun HomeScreen(
                     Slider(
                         value = alloc.coerceIn(0, sliderMax).toFloat(),
                         onValueChange = {
+                            val snapped = ((it / 5f).roundToInt() * 5).coerceIn(0, sliderMax)
                             scope.launch {
-                                app.container.settings.setAppAllocation(item.packageName, it.roundToInt())
+                                app.container.settings.setAppAllocation(item.packageName, snapped)
                             }
                         },
                         valueRange = 0f..sliderMax.toFloat(),
+                        colors = peaceSliderColors(),
                         enabled = global <= 0 || maxAlloc > 0 || alloc > 0,
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
                     )

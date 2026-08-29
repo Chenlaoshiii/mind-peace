@@ -26,9 +26,14 @@ import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.data.OverlayState
 import com.mindpeace.app.ui.theme.MindPeaceThemed
+import com.mindpeace.app.util.AppLocale
 import java.lang.ref.WeakReference
 
 class TimeUpActivity : AppCompatActivity() {
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(AppLocale.wrap(newBase))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         instance = WeakReference(this)

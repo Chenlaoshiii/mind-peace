@@ -59,7 +59,7 @@
     <string name="onboarding_privacy_body">讀已置之應用、得通知、啟無障礙，皆為更準以守汝所擇之應用：未開之先覆確認之層，使倒計得竟，當告則告。缺其一，攔截或廢。</string>
     <string name="onboarding_privacy_offline">謹再申之：Mind Peace 絕不蒐隱私，亦不傳所用之錄。全然離線，萬事惟留於此機。無障礙不讀言談、密鑰、屏上文字，惟問何應用至於前。</string>
     <string name="onboarding_privacy_warn_title">善意相告</string>
-    <string name="onboarding_privacy_warn_body">汝受欺矣。若有人謂，予此類應用以無障礙、通知或應用之列，即是以言談、影集、帳號授人——非實也。此權惟為使攔截發於其時。吾儕不見汝之言，亦不取汝之數據。</string>
+    <string name="onboarding_privacy_warn_body">若汝以金購此軟，則汝受欺矣。Mind Peace 固免費，索酬者非我輩。</string>
     <string name="onboarding_next">續</string>
     <string name="onboarding_back">上一步</string>
     <string name="onboarding_finish">吾已竟</string>
@@ -225,6 +225,7 @@ Mind Peace · Chenlaoshi
     <string name="budget_empty_body">先增一汝欲少啟之應用，再歸以分今日之時。</string>
     <string name="stats_compare">今昨對照</string>
     <string name="settings_language_word">語</string>
+    <string name="settings_language_system">從系統</string>
     <string name="cd_expand">展</string>
     <string name="cd_collapse">收</string>
     <string name="duration_hours_minutes">%1$d時%2$d分</string>

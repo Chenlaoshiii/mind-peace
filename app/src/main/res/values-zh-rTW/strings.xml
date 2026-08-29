@@ -59,7 +59,7 @@
     <string name="onboarding_privacy_body">讀取已安裝應用、取得通知、開啟無障礙，全都是為了更準確地守護你選定的那些應用：在開啟前蓋住確認層，讓倒數計時真正走完，並在該提醒你的時候提醒你。少任何一項，攔截都可能失靈。</string>
     <string name="onboarding_privacy_offline">我們在此鄭重重申：Mind Peace 絕不收集隱私，也不會上傳任何使用紀錄。它完全離線，一切都只留在你的這支手機上。無障礙不會去讀聊天、密碼或螢幕上的文字，只關心是哪一個應用來到了前景。</string>
     <string name="onboarding_privacy_warn_title">好心提醒</string>
-    <string name="onboarding_privacy_warn_body">你被騙了。若有人說，給這類應用開無障礙、通知或應用列表，就是把聊天、相簿和帳號交出去——那不是真的。這些權限只為了讓攔截發生在正確的時刻。我們看不到你的訊息，也拿不走你的資料。</string>
+    <string name="onboarding_privacy_warn_body">如果你是花錢購買此軟體的，那說明你被騙了。Mind Peace 完全免費，任何人向你收費都不是我們。</string>
     <string name="onboarding_next">繼續</string>
     <string name="onboarding_back">上一步</string>
     <string name="onboarding_finish">我完成</string>
@@ -225,6 +225,7 @@ Mind Peace · Chenlaoshi
     <string name="budget_empty_body">先去新增一個你想少打開的應用，再回來分配今天的時間。</string>
     <string name="stats_compare">今昨對比</string>
     <string name="settings_language_word">語言</string>
+    <string name="settings_language_system">跟隨系統</string>
     <string name="cd_expand">展開</string>
     <string name="cd_collapse">收合</string>
     <string name="duration_hours_minutes">%1$d小時%2$d分</string>

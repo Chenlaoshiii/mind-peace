@@ -29,7 +29,10 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.SliderColors
+import androidx.compose.material3.SliderDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -160,6 +163,29 @@ fun Modifier.appleLiquidGlass(
 }
 
 @Composable
+fun peaceSliderColors(): SliderColors {
+    val dark = LocalDarkTheme.current
+    val scheme = MaterialTheme.colorScheme
+    val inactive = if (dark) {
+        scheme.onPrimaryContainer.copy(alpha = 0.40f)
+    } else {
+        scheme.onSurface.copy(alpha = 0.24f)
+    }
+    return SliderDefaults.colors(
+        thumbColor = scheme.primary,
+        activeTrackColor = scheme.primary,
+        inactiveTrackColor = inactive,
+        disabledThumbColor = scheme.onSurface.copy(alpha = 0.38f),
+        disabledActiveTrackColor = scheme.onSurface.copy(alpha = 0.38f),
+        disabledInactiveTrackColor = scheme.onSurface.copy(alpha = 0.12f),
+        activeTickColor = androidx.compose.ui.graphics.Color.Transparent,
+        inactiveTickColor = androidx.compose.ui.graphics.Color.Transparent,
+        disabledActiveTickColor = androidx.compose.ui.graphics.Color.Transparent,
+        disabledInactiveTickColor = androidx.compose.ui.graphics.Color.Transparent,
+    )
+}
+
+@Composable
 fun PeaceCard(
     modifier: Modifier = Modifier,
     shape: Shape = RoundedCornerShape(20.dp),
@@ -280,17 +306,28 @@ fun PeaceChip(
     val apple = LocalVisualStyle.current == VisualStyle.APPLE
     val interaction = remember { MutableInteractionSource() }
     val pressed by interaction.collectIsPressedAsState()
+    val dark = LocalDarkTheme.current
     if (!apple) {
+        val unselectedBorder = if (dark) {
+            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.55f)
+        } else {
+            MaterialTheme.colorScheme.outline
+        }
         FilterChip(
             selected = selected,
             onClick = onClick,
             label = label,
             modifier = modifier,
             interactionSource = interaction,
+            shape = AppleChipShape,
+            border = FilterChipDefaults.filterChipBorder(
+                enabled = true,
+                selected = selected,
+                borderColor = unselectedBorder,
+            ),
         )
         return
     }
-    val dark = LocalDarkTheme.current
     val primary = MaterialTheme.colorScheme.primary
     val idle = MaterialTheme.colorScheme.onSurface
     val tint = if (selected) primary else idle
@@ -389,13 +426,14 @@ fun PeaceTextField(
             placeholder = { if (placeholder.isNotEmpty()) Text(placeholder) },
             singleLine = singleLine,
             keyboardOptions = keyboardOptions,
+            shape = RoundedCornerShape(16.dp),
         )
         return
     }
     Row(
         modifier = modifier
             .defaultMinSize(minHeight = 44.dp)
-            .appleLiquidGlass(RoundedCornerShape(14.dp), dark, true, pressed = false)
+            .appleLiquidGlass(RoundedCornerShape(16.dp), dark, true, pressed = false)
             .padding(horizontal = 12.dp, vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(8.dp),

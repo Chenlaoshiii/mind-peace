@@ -59,7 +59,7 @@
     <string name="onboarding_privacy_body">Leer las apps instaladas, recibir notificaciones y activar Accesibilidad sirven todas para vigilar con más precisión las apps que elegiste: cubrir la confirmación antes de que se abran, dejar que la cuenta atrás termine de verdad y avisarte cuando toca avisarte. Si falta cualquiera, la interceptación puede fallar.</string>
     <string name="onboarding_privacy_offline">Lo reiteramos con claridad: Mind Peace jamás recoge privacidad ni sube ningún registro de uso. Es por completo sin conexión. Todo se queda en este teléfono. Accesibilidad no lee chats, contraseñas ni el texto de la pantalla: solo le importa qué aplicación ha pasado al frente.</string>
     <string name="onboarding_privacy_warn_title">Un aviso de buena fe</string>
-    <string name="onboarding_privacy_warn_body">Te han engañado. Si alguien te dijo que dar a una app así Accesibilidad, notificaciones o la lista de apps es entregar chats, fotos y cuentas, eso no es verdad. Estos permisos solo existen para que la pausa ocurra en el momento correcto. No vemos tus mensajes y no nos llevamos tus datos.</string>
+    <string name="onboarding_privacy_warn_body">Si pagaste por esta aplicación, te estafaron. Mind Peace es gratuita. Quien te cobró no somos nosotros.</string>
     <string name="onboarding_next">Continuar</string>
     <string name="onboarding_back">Atrás</string>
     <string name="onboarding_finish">Listo</string>
@@ -225,6 +225,7 @@ Autor 陈老实Chenlaoshi</string>
     <string name="budget_empty_body">Añade primero una app que quieras abrir menos, y vuelve a repartir el tiempo de hoy.</string>
     <string name="stats_compare">Hoy frente a ayer</string>
     <string name="settings_language_word">Idioma</string>
+    <string name="settings_language_system">Seguir el sistema</string>
     <string name="cd_expand">Expandir</string>
     <string name="cd_collapse">Contraer</string>
     <string name="duration_hours_minutes">%1$d h %2$d min</string>

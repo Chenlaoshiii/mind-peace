@@ -54,7 +54,7 @@ private val LightColors = lightColorScheme(
 private val DarkColors = darkColorScheme(
     primary = SageDark,
     onPrimary = Color(0xFF0E1A16),
-    primaryContainer = Color(0xFF2F4F46),
+    primaryContainer = Color(0xFF3A5C52),
     onPrimaryContainer = Color(0xFFD5E8E0),
     secondary = SageDark,
     onSecondary = Color(0xFF0E1A16),
@@ -64,7 +64,8 @@ private val DarkColors = darkColorScheme(
     onSurface = Color(0xFFE6EEEA),
     surfaceVariant = Color(0xFF2A3330),
     onSurfaceVariant = Color(0xFFC2CDC8),
-    outline = Color(0xFF6B7873),
+    outline = Color(0xFFA8B8B2),
+    outlineVariant = Color(0xFF8A9A94),
     surfaceContainerLow = Color(0xFF1A2220),
 )
 

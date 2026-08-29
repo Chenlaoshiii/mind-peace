@@ -59,7 +59,7 @@
     <string name="onboarding_privacy_body">Reading installed apps, receiving notifications, and turning on Accessibility all exist so we can watch the apps you chose more accurately: cover the confirmation layer before they open, let the countdown actually finish, and remind you when it is time. Miss any one of these, and intercepts may fail.</string>
     <string name="onboarding_privacy_offline">We restate this clearly: Mind Peace never collects privacy data, and never uploads any usage records. It is fully offline. Everything stays on this phone. Accessibility does not read chats, passwords, or on-screen text. It only cares which app has come to the foreground.</string>
     <string name="onboarding_privacy_warn_title">A kind reminder</string>
-    <string name="onboarding_privacy_warn_body">You were misled. If anyone told you that granting Accessibility, notifications, or the installed-app list to an app like this means handing over chats, photos, or accounts, that is not true. These permissions exist only so the pause happens at the right moment. We cannot see your messages, and we do not take your data.</string>
+    <string name="onboarding_privacy_warn_body">If you paid for this app, you were scammed. Mind Peace is free. Anyone who charged you is not us.</string>
     <string name="onboarding_next">Continue</string>
     <string name="onboarding_back">Back</string>
     <string name="onboarding_finish">I\'m done</string>
@@ -225,6 +225,7 @@ Author 陈老实Chenlaoshi</string>
     <string name="budget_empty_body">Add an app you\'d like to open less, then come back to share today\'s time.</string>
     <string name="stats_compare">Today vs yesterday</string>
     <string name="settings_language_word">Language</string>
+    <string name="settings_language_system">Follow system</string>
     <string name="cd_expand">Expand</string>
     <string name="cd_collapse">Collapse</string>
     <string name="duration_hours_minutes">%1$d h %2$d min</string>

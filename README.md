@@ -7,7 +7,7 @@ Mind Peace 是一款温和的 Android 使用提醒应用。它**不会锁住整�
 
 Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock the whole phone. When you launch an app you chose to watch, it covers it with a confirmation: do you really want to open it? After you confirm, you pick how long. When time is up, you go home.
 
-[下载 Debug 安装包 1.3.3](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.3/MindPeace-1.3.3-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.3)
+[下载 Debug 安装包 1.3.4](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.4/MindPeace-1.3.4-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.4)
 
 作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · [GitHub](https://github.com/stillthatlars/mind-peace) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
 
@@ -49,18 +49,18 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 怎么用
 
-1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.3/MindPeace-1.3.3-debug.apk)（需允许未知来源）。覆盖安装即可。
-2. 第一次打开会走引导（7 步）：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知、授权读取已安装应用 → 按机型锁定后台 → **郑重说明**（权限只为更准地拦截；绝不收集隐私；好心提醒：你被骗了）。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
+1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.4/MindPeace-1.3.4-debug.apk)（需允许未知来源）。覆盖安装即可。
+2. 第一次打开会走引导（7 步）：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知、授权读取已安装应用 → 按机型锁定后台 → **郑重说明**（权限只为更准地拦截；绝不收集隐私；好心提醒：花钱买到此软件说明你被骗了，Mind Peace 完全免费）。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
 3. 底栏四个入口：**总时长**、**添加应用**、**今日小结**、**设置**。左右滑动即可切换，点底栏也会跟着滑过去。
 4. 之后打开这些应用，会先问「真的确定要打开××吗？」并显示你的那句话。选「确定」再选 1 / 3 / 5 分钟或自定义；「退出」回桌面。
 5. 通知栏会显示剩余时间。到点回桌面。中途离开则本次结束。
-6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、**语言/Language**（简体中文、繁體中文、English、日本語、Русский、文言文、Español、Français；默认简体中文）、改那句写给自己的话、重新看引导、关于。关于与设置里可以去 B 站或 [去作者的 GitHub 看看](https://github.com/stillthatlars/mind-peace)。关于页大标题连点 5 下可预览全部通知文案。
+6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、**语言/Language**（跟随系统、简体中文、繁體中文、English、日本語、Русский、文言文、Español、Français；未选过则跟随手机语言）、改那句写给自己的话、重新看引导、关于。关于与设置里可以去 B 站或 [去作者的 GitHub 看看](https://github.com/stillthatlars/mind-peace)。关于页大标题连点 5 下可预览全部通知文案。
 
 若拦截突然没了，打开应用看是否提示无障碍已关闭。小米 / 华为 / OPPO / vivo 请在最近任务里锁定 Mind Peace，并允许自启动与后台运行。
 
 ### 主题
 
-1.3.3 起个性主题只保留 **Material You**（Android 12+ 跟随壁纸动态取色）。可在设置里选浅色、深色或跟随系统。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语），默认简体中文。四个主页可以左右滑动切换。
+1.3.4 起个性主题只保留 **Material You**（Android 12+ 跟随壁纸动态取色）。可在设置里选浅色、深色或跟随系统。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
 
 ### 隐私
 
@@ -94,18 +94,18 @@ Feeds and short video are easy to open on autopilot. Mind Peace pulls “open”
 
 ### How to use
 
-1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.3/MindPeace-1.3.3-debug.apk) (unknown sources). You can install over a previous debug build.
-2. First launch is gated onboarding (7 steps): welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications + permission to list installed apps, lock in Recents, then a solemn privacy step (permissions exist only to intercept accurately; nothing is collected; a kind reminder that scare stories are false). “I’m done” enables only when accessibility is actually on and the recents checkbox is checked.
+1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.4/MindPeace-1.3.4-debug.apk) (unknown sources). You can install over a previous debug build.
+2. First launch is gated onboarding (7 steps): welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications + permission to list installed apps, lock in Recents, then a solemn privacy step (permissions exist only to intercept accurately; nothing is collected; a kind reminder: if you paid for this app, you were scammed — it is free). “I’m done” enables only when accessibility is actually on and the recents checkbox is checked.
 3. Bottom bar: **Daily cap**, **Add apps**, **Today’s recap**, **Settings**. Swipe left/right between tabs, or tap the bar.
 4. Opening a watched app asks if you really want to open it, with your quote. Confirm then pick duration, or Exit to the launcher.
 5. A notification shows remaining time. Leave the app and the leftover session is void.
-6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), **Language/Language** (Simplified Chinese, Traditional Chinese, English, Japanese, Russian, Literary Chinese, Spanish, French; default Simplified Chinese), edit your quote, replay setup, About. About and Settings include Bilibili and [the author's GitHub](https://github.com/stillthatlars/mind-peace). Tap the big About title five times to preview every notification template.
+6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), **Language/Language** (Follow system, Simplified Chinese, Traditional Chinese, English, Japanese, Russian, Literary Chinese, Spanish, French; follows the phone language until you pick one), edit your quote, replay setup, About. About and Settings include Bilibili and [the author's GitHub](https://github.com/stillthatlars/mind-peace). Tap the big About title five times to preview every notification template.
 
 If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / OPPO / vivo, lock Mind Peace in Recents and allow autostart / background.
 
 ### Appearance
 
-1.3.3 keeps **Material You** only (dynamic color on Android 12+). Light / dark / follow system. UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); default is Simplified Chinese. The four main tabs swipe sideways.
+1.3.4 keeps **Material You** only (dynamic color on Android 12+). Light / dark / follow system. UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
 
 ### Privacy
 

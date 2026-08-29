@@ -59,7 +59,7 @@
     <string name="onboarding_privacy_body">インストール済みアプリの読み取り、通知、ユーザー補助。いずれも、あなたが選んだアプリをより正確に守るためです。開く前に確認レイヤーを被せ、カウントダウンを最後まで走らせ、知らせるべきときに知らせます。どれか一つでも欠けると、割り込みが効かなくなることがあります。</string>
     <string name="onboarding_privacy_offline">ここに重ねて申します。Mind Peace はプライバシーを一切集めず、利用記録もアップロードしません。完全にオフラインで、すべてはこの端末の中に留まります。ユーザー補助はチャット、パスワード、画面上の文字を読まず、どのアプリが前面に来たかだけを見ます。</string>
     <string name="onboarding_privacy_warn_title">善意のリマインド</string>
-    <string name="onboarding_privacy_warn_body">だまされています。この種のアプリにユーザー補助、通知、アプリ一覧を許すと、チャットや写真、アカウントを渡すことになる、と言われたなら、それは真実ではありません。これらの権限は、立ち止まりが正しい瞬間に起こるためだけにあります。メッセージは見えません。データを持ち去ることもありません。</string>
+    <string name="onboarding_privacy_warn_body">このソフトにお金を払って買ったなら、だまされています。Mind Peace は完全に無料です。料金を請求してきた人は私たちではありません。</string>
     <string name="onboarding_next">続ける</string>
     <string name="onboarding_back">戻る</string>
     <string name="onboarding_finish">完了</string>
@@ -225,6 +225,7 @@ Mind Peace · Chenlaoshi
     <string name="budget_empty_body">開く回数を減らしたいアプリを追加してから、今日の時間を分けてください。</string>
     <string name="stats_compare">今日と昨日</string>
     <string name="settings_language_word">言語</string>
+    <string name="settings_language_system">システムに合わせる</string>
     <string name="cd_expand">展開</string>
     <string name="cd_collapse">折りたたむ</string>
     <string name="duration_hours_minutes">%1$d時間%2$d分</string>

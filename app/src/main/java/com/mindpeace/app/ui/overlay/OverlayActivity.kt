@@ -12,10 +12,15 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.data.OverlayState
 import com.mindpeace.app.ui.theme.MindPeaceThemed
+import com.mindpeace.app.util.AppLocale
 import com.mindpeace.app.util.BlurSupport
 import java.lang.ref.WeakReference
 
 class OverlayActivity : AppCompatActivity() {
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(AppLocale.wrap(newBase))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         instance = WeakReference(this)

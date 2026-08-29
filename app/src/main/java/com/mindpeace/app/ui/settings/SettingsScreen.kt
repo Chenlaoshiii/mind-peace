@@ -152,9 +152,7 @@ fun SettingsScreen(
                 )
                 PeaceListRow(
                     title = "${stringResource(R.string.settings_language_word)}/Language",
-                    subtitle = stringResource(
-                        AppLocale.options.first { it.tag == AppLocale.normalize(appLocale) }.labelRes,
-                    ),
+                    subtitle = languageSubtitle(appLocale),
                     onClick = { showLanguage = true },
                 )
                 PeaceListRow(
@@ -298,5 +296,19 @@ fun SettingsScreen(
                 SelfMessageEditor(value = draft, onChange = { draft = it }, minLines = 2)
             },
         )
+    }
+}
+
+@Composable
+private fun languageSubtitle(appLocale: String): String {
+    val stored = AppLocale.normalize(appLocale)
+    val label = stringResource(AppLocale.labelRes(stored))
+    if (!AppLocale.isSystem(stored)) return label
+    val resolved = AppLocale.resolve(stored, AppLocale.systemLocaleList())
+    val resolvedLabel = stringResource(AppLocale.labelRes(resolved))
+    return if (resolvedLabel.isNotBlank() && resolvedLabel != label) {
+        "$label · $resolvedLabel"
+    } else {
+        label
     }
 }
