@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Mind Peace</string>
-    <string name="accessibility_service_description">Mind Peace 用无障碍服务感知当前打开的应用，在你打开之前先盖住一层确认。不会读取聊天内容、密码或屏幕上的文字细节，只关心是哪一个应用来到了前台。</string>
+    <string name="accessibility_service_description">Mind Peace 用无障碍服务感知当前打开的应用，在你打开之前先盖住一层确认。不会读取聊天内容、密码或屏幕上的文字细节，只关心是哪一个应用来到了前台。完全在你的手机上运行，不收集、不上传任何使用记录。</string>
 
     <string name="channel_session_name">使用倒计时</string>
     <string name="channel_session_desc">正在进行的限时使用，显示剩余时间。</string>
@@ -16,7 +16,7 @@
     <string name="onboarding_welcome_body">Mind Peace 不会锁住整部手机。当你打开容易沉迷的视频流应用时，它会立刻盖住一层确认，问你是不是真的要打开。</string>
     <string name="onboarding_welcome_p1">打开前拦截，避免一滑就停不下来</string>
     <string name="onboarding_welcome_p2">自己选择这一次用多久</string>
-    <string name="onboarding_welcome_p3">可以为每个应用设置每日总额度</string>
+    <string name="onboarding_welcome_p3">可以先设每天总时长，再分给各个应用</string>
 
     <string name="onboarding_self_title">写给自己的话</string>
     <string name="onboarding_self_body">每次被拦截时，你会先看见这句话。写一句目标，或一句轻轻的提醒，给当下的自己。</string>
@@ -30,7 +30,7 @@
     <string name="onboarding_how_1">打开被守护的应用时，立刻出现确认层，暂时用不了。</string>
     <string name="onboarding_how_2">选「确定」继续，或「退出」回到桌面。</string>
     <string name="onboarding_how_3">挑选时长（1 / 3 / 5 / 10 / 15 / 30 分钟，或自定义）。</string>
-    <string name="onboarding_how_4">倒计时只在这个应用在前台时走；时间到会回到桌面并提醒你。</string>
+    <string name="onboarding_how_4">倒计时只在这个应用在前台时走。中途离开（回桌面、切到别的应用）会结束本次，没用完的时间作废；下次打开会再次询问。时间到会回到桌面并提醒你。</string>
 
     <string name="onboarding_a11y_title">开启无障碍服务</string>
     <string name="onboarding_a11y_body">系统不会告诉我们“你打开了哪个应用”，除非你把无障碍服务交给 Mind Peace。它只用来感知前台应用并及时盖住确认层，不会拿来读你的消息。</string>
@@ -57,6 +57,8 @@
     <string name="onboarding_lock_vivo">vivo / iQOO：最近任务锁定；后台高耗电允许。</string>
     <string name="onboarding_lock_pixel">Pixel / 原生安卓：一般只需关闭电池优化，无需额外锁定。</string>
     <string name="onboarding_lock_check">我已按说明锁定后台（或确认不需要）</string>
+    <string name="onboarding_privacy_title">完全在你的手机上</string>
+    <string name="onboarding_privacy_body">Mind Peace 完全在你的手机上运行，不会上传任何使用记录。我们不收集数据。</string>
 
     <string name="onboarding_next">继续</string>
     <string name="onboarding_back">上一步</string>
@@ -70,6 +72,7 @@
     <string name="home_add">添加应用</string>
     <string name="home_used_limit">今日 %1$s / %2$s</string>
     <string name="home_used_unlimited">今日已用 %1$s · 不限额度</string>
+    <string name="home_used_shared">今日已用 %1$s · 共用总时长</string>
     <string name="home_remaining">剩余 %1$s</string>
     <string name="home_remaining_none">今日已用完</string>
     <string name="home_off">未拦截</string>
@@ -83,15 +86,16 @@
     <string name="picker_search">搜索应用名或包名</string>
     <string name="picker_empty">没有匹配的应用</string>
     <string name="picker_intercept">拦截</string>
-    <string name="picker_chip_all">全部</string>
+    <string name="picker_chip_apps">应用</string>
     <string name="picker_chip_system">系统工具</string>
+    <string name="picker_filter_hint">打开「应用」或「系统工具」来筛选</string>
     <string name="picker_loading">正在读取已安装应用…</string>
 
     <string name="detail_title">应用设置</string>
     <string name="detail_enable">开启拦截</string>
     <string name="detail_enable_sub">打开此应用时先确认</string>
-    <string name="detail_limit">每日总额度</string>
-    <string name="detail_limit_sub">0 表示不限制每日总量，仍会在每次打开时询问。</string>
+    <string name="detail_limit">从总时长里分出</string>
+    <string name="detail_limit_sub">0 表示不额外限制这个应用，仍受今日总时长约束。分配的分钟不能超过还未分出去的总时长。</string>
     <string name="detail_limit_none">不限制</string>
     <string name="detail_limit_minutes">%1$d 分钟</string>
     <string name="detail_today">今日已用 %1$s</string>
@@ -112,7 +116,7 @@
     <string name="settings_self_message_sub">拦截确认时会显示给自己看。</string>
     <string name="settings_self_save">保存</string>
     <string name="settings_about">关于</string>
-    <string name="settings_about_body">Mind Peace %1$s\n在打开之前，先停一停。\n不会锁住整部手机，只在你选定的应用上询问。\n\nMind Peace · Chenlaoshi\n作者 陈老实Chenlaoshi</string>
+    <string name="settings_about_body">Mind Peace %1$s\n在打开之前，先停一停。\n不会锁住整部手机，只在你选定的应用上询问。完全在你的手机上运行，不收集数据。\n\nMind Peace · Chenlaoshi\n作者 陈老实Chenlaoshi</string>
     <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
     <string name="settings_credit_line">作者 陈老实Chenlaoshi · 去 B 站看看</string>
     <string name="settings_credit_name">陈老实Chenlaoshi</string>
@@ -143,12 +147,12 @@
     <string name="overlay_timeup_title">时间到了</string>
     <string name="overlay_timeup_body">%1$s 的这次使用已经结束。先离开一下吧。</string>
     <string name="overlay_timeup_ok">好的</string>
-    <string name="overlay_pause">已切换离开，倒计时暂停</string>
+    <string name="overlay_pause">已离开，本次剩余时间已作废</string>
     <string name="overlay_self_label">写给自己</string>
 
     <string name="session_notif_title">正在使用 %1$s</string>
     <string name="session_notif_text">剩余 %1$s</string>
-    <string name="session_notif_paused">已暂停 · 剩余 %1$s</string>
+    <string name="session_notif_paused">已结束本次</string>
     <string name="timeup_notif_title">时间到了</string>
     <string name="timeup_notif_text">%1$s 的这次使用结束了</string>
 
@@ -191,10 +195,10 @@
     <string name="settings_style_material">谷歌 Material You</string>
     <string name="settings_style_material_sub">动态取色，简洁的 Material 3</string>
     <string name="settings_style_orange">橙色风格</string>
-    <string name="settings_style_orange_sub">暖纸底与橙色强调</string>
+    <string name="settings_style_orange_sub">暖纸底 #FAF9F5，橙色 #D97757，全文衬线</string>
     <string name="settings_style_apple">苹果风格</string>
-    <string name="settings_style_apple_sub">系统蓝与液态玻璃</string>
-    <string name="about_blurb">在打开之前，先停一停。不会锁住整部手机，只在你选定的应用上询问。</string>
+    <string name="settings_style_apple_sub">系统绿与液态玻璃</string>
+    <string name="about_blurb">在打开之前，先停一停。不会锁住整部手机，只在你选定的应用上询问。完全在你的手机上运行，不收集数据。</string>
     <string name="about_version">版本 %1$s</string>
     <string name="lab_title">通知预览</string>
     <string name="lab_group_celebration">很长时间没有用被管控应用的鼓励通知</string>
@@ -232,4 +236,21 @@
         <item>你看，离开那几个应用，天也没有塌。</item>
         <item>这份安静是你挣来的，收好，别急着还回去。</item>
     </string-array>
+
+    <string name="tab_budget">总时长</string>
+    <string name="tab_add">添加应用</string>
+    <string name="tab_stats">今日小结</string>
+    <string name="tab_settings">设置</string>
+    <string name="budget_title">总时长</string>
+    <string name="budget_global">每天一共用多久</string>
+    <string name="budget_global_sub">所有被守护应用加在一起的上限。先定总数，再把分钟分给各个应用。</string>
+    <string name="budget_none">不限制总时长</string>
+    <string name="budget_minutes">每天 %1$d 分钟</string>
+    <string name="budget_allocated">已分配 %1$d / %2$d 分钟</string>
+    <string name="budget_unallocated">还剩 %1$d 分钟没分</string>
+    <string name="budget_unallocated_none">分钟已经分完了</string>
+    <string name="budget_app_alloc">分给它 %1$d 分钟</string>
+    <string name="budget_app_share">不单独限额，和大家共用剩余时间</string>
+    <string name="budget_empty_title">还没有守护任何应用</string>
+    <string name="budget_empty_body">先去添加一个你想少打开的应用，再回来分配今天的时间。</string>
 </resources>

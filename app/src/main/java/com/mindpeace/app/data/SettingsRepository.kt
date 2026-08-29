@@ -77,6 +77,10 @@ class SettingsRepository(
         }
         .stateIn(scope, SharingStarted.Eagerly, Appearance())
 
+    val globalDailyLimitMinutes: StateFlow<Int> = store.data
+        .map { it[KEY_GLOBAL_DAILY] ?: 0 }
+        .stateIn(scope, SharingStarted.Eagerly, 0)
+
     init {
         scope.launch {
             store.data.first()
@@ -109,6 +113,44 @@ class SettingsRepository(
         store.edit { it[KEY_VISUAL_STYLE] = style.name }
     }
 
+    suspend fun setGlobalDailyLimitMinutes(minutes: Int) {
+        val next = minutes.coerceIn(0, 24 * 60)
+        store.edit { prefs ->
+            prefs[KEY_GLOBAL_DAILY] = next
+            if (next > 0) {
+                val apps = decodeList(prefs[KEY_WATCHED]).toMutableList()
+                val sum = apps.sumOf { it.dailyLimitMinutes }
+                if (sum > next) {
+                    var left = next
+                    val scaled = apps.mapIndexed { i, app ->
+                        if (i == apps.lastIndex) {
+                            app.copy(dailyLimitMinutes = left.coerceAtLeast(0))
+                        } else {
+                            val v = if (sum <= 0) 0 else (app.dailyLimitMinutes * next) / sum
+                            left -= v
+                            app.copy(dailyLimitMinutes = v)
+                        }
+                    }
+                    prefs[KEY_WATCHED] = json.encodeToString(scaled)
+                }
+            }
+        }
+    }
+
+    suspend fun setAppAllocation(packageName: String, minutes: Int) {
+        store.edit { prefs ->
+            val apps = decodeList(prefs[KEY_WATCHED]).toMutableList()
+            val global = prefs[KEY_GLOBAL_DAILY] ?: 0
+            val idx = apps.indexOfFirst { it.packageName == packageName }
+            if (idx < 0) return@edit
+            val others = apps.filterIndexed { i, _ -> i != idx }.sumOf { it.dailyLimitMinutes }
+            val max = if (global <= 0) 24 * 60 else (global - others).coerceAtLeast(0)
+            val clamped = minutes.coerceIn(0, max)
+            apps[idx] = apps[idx].copy(dailyLimitMinutes = clamped)
+            prefs[KEY_WATCHED] = json.encodeToString(apps)
+        }
+    }
+
     fun peekAppearance(): Appearance = appearance.value
 
     suspend fun setWatchedApps(apps: List<WatchedApp>) {
@@ -135,10 +177,23 @@ class SettingsRepository(
         return usageHistory.value.days[date]?.get(packageName) ?: 0L
     }
 
-    fun remainingDailyMillis(packageName: String, dailyLimitMinutes: Int): Long {
-        if (dailyLimitMinutes <= 0) return UNLIMITED_BUDGET
-        val limit = dailyLimitMinutes * 60_000L
-        return (limit - usedMillisToday(packageName)).coerceAtLeast(0L)
+    fun usedMillisTodayTotal(): Long {
+        return currentUsage().usedMillis.values.sum()
+    }
+
+    fun remainingGlobalMillis(): Long {
+        val global = globalDailyLimitMinutes.value
+        if (global <= 0) return UNLIMITED_BUDGET
+        return (global * 60_000L - usedMillisTodayTotal()).coerceAtLeast(0L)
+    }
+
+    fun remainingDailyMillis(packageName: String, dailyLimitMinutes: Int = -1): Long {
+        val perApp = if (dailyLimitMinutes >= 0) dailyLimitMinutes
+        else watchedApps.value.firstOrNull { it.packageName == packageName }?.dailyLimitMinutes ?: 0
+        val perAppRemaining = if (perApp <= 0) UNLIMITED_BUDGET
+        else (perApp * 60_000L - usedMillisToday(packageName)).coerceAtLeast(0L)
+        val globalRemaining = remainingGlobalMillis()
+        return minOf(perAppRemaining, globalRemaining)
     }
 
     suspend fun addUsedMillis(packageName: String, delta: Long) {
@@ -310,5 +365,6 @@ class SettingsRepository(
         private val KEY_LAST_SUMMARY_DATE = stringPreferencesKey("last_summary_date")
         private val KEY_COLOR_MODE = stringPreferencesKey("color_mode")
         private val KEY_VISUAL_STYLE = stringPreferencesKey("visual_style")
+        private val KEY_GLOBAL_DAILY = intPreferencesKey("global_daily_limit_minutes")
     }
 }

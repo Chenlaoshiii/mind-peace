@@ -1,12 +1,12 @@
 package com.mindpeace.app.ui.theme
 
-import android.graphics.RenderEffect
-import android.graphics.Shader
-import android.os.Build
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -16,27 +16,37 @@ import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,31 +54,49 @@ import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.asComposeRenderEffect
-import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.kyant.backdrop.drawBackdrop
+import com.kyant.backdrop.effects.blur
+import com.kyant.backdrop.effects.lens
+import com.kyant.backdrop.effects.vibrancy
+import com.kyant.backdrop.highlight.Highlight
+import com.kyant.backdrop.highlight.HighlightStyle
 import com.mindpeace.app.data.VisualStyle
 
 val AppleCapsule = RoundedCornerShape(16.dp)
 val AppleGroupShape = RoundedCornerShape(12.dp)
-val AppleChipShape = RoundedCornerShape(18.dp)
+val AppleChipShape = RoundedCornerShape(16.dp)
 
-/**
- * Apple-style glass. Kyant `io.github.kyant0:backdrop` 2.0.1 needs Kotlin 2.4 / CMP 1.12,
- * and 1.0.x needs Kotlin 2.2 / Compose 1.9 — both newer than this project's Kotlin 2.0.21
- * and Compose BOM 2024.12.01. Fallback: RenderEffect blur on a subtle blue wash, plus
- * translucent fill and a thin specular rim (API < 31: translucent + border only).
- */
-fun Modifier.peaceGlass(
-    shape: Shape = RoundedCornerShape(28.dp),
+data class PeaceTab(
+    val key: String,
+    val label: String,
+    val icon: ImageVector,
+)
+
+@Composable
+fun Modifier.peaceGlass(shape: Shape = RoundedCornerShape(28.dp)): Modifier {
+    val apple = LocalVisualStyle.current == VisualStyle.APPLE
+    val dark = LocalDarkTheme.current
+    return appleLiquidGlass(shape = shape, dark = dark, enabled = apple, pressed = false)
+}
+
+@Composable
+fun Modifier.peaceGlass(shape: Shape, dark: Boolean, enabled: Boolean): Modifier {
+    return appleLiquidGlass(shape = shape, dark = dark, enabled = enabled, pressed = false)
+}
+
+fun Modifier.frostedFallback(
+    shape: Shape,
     dark: Boolean,
     enabled: Boolean,
 ): Modifier {
     if (!enabled) return this
-    val fill = if (dark) Color.White.copy(alpha = 0.14f) else Color.White.copy(alpha = 0.58f)
-    val rim = if (dark) Color.White.copy(alpha = 0.36f) else Color.White.copy(alpha = 0.78f)
-    val highlight = if (dark) Color.White.copy(alpha = 0.22f) else Color.White.copy(alpha = 0.48f)
+    val fill = if (dark) Color.White.copy(alpha = 0.10f) else Color.White.copy(alpha = 0.28f)
+    val rim = if (dark) Color.White.copy(alpha = 0.28f) else Color.White.copy(alpha = 0.55f)
+    val highlight = if (dark) Color.White.copy(alpha = 0.18f) else Color.White.copy(alpha = 0.40f)
     return this
         .clip(shape)
         .background(fill, shape)
@@ -86,10 +114,51 @@ fun Modifier.peaceGlass(
 }
 
 @Composable
-fun Modifier.peaceGlass(shape: Shape = RoundedCornerShape(28.dp)): Modifier {
-    val apple = LocalVisualStyle.current == VisualStyle.APPLE
-    val dark = LocalDarkTheme.current
-    return peaceGlass(shape, dark, apple)
+fun Modifier.appleLiquidGlass(
+    shape: Shape,
+    dark: Boolean,
+    enabled: Boolean,
+    pressed: Boolean,
+): Modifier {
+    if (!enabled) return this
+    val backdrop = LocalPeaceBackdrop.current
+    if (backdrop == null) {
+        return frostedFallback(shape, dark, true)
+    }
+    val surface = if (dark) {
+        Color.White.copy(alpha = if (pressed) 0.20f else 0.08f)
+    } else {
+        Color.White.copy(alpha = if (pressed) 0.36f else 0.16f)
+    }
+    val highlightAlpha = if (pressed) 1f else 0.72f
+    val intensity = if (pressed) 0.88f else 0.52f
+    val scale = if (pressed) 1.045f else 1f
+    return this.drawBackdrop(
+        backdrop = backdrop,
+        shape = { shape },
+        effects = {
+            val lensBoost = if (pressed) 1.25f else 1f
+            vibrancy()
+            blur(3.5f.dp.toPx())
+            lens(
+                12f.dp.toPx() * lensBoost,
+                26f.dp.toPx() * lensBoost,
+                depthEffect = true,
+                chromaticAberration = true,
+            )
+        },
+        highlight = {
+            Highlight(
+                alpha = highlightAlpha,
+                style = HighlightStyle.Default(intensity = intensity, angle = 48f, falloff = 1.1f),
+            )
+        },
+        layerBlock = {
+            scaleX = scale
+            scaleY = scale
+        },
+        onDrawSurface = { drawRect(surface) },
+    )
 }
 
 @Composable
@@ -106,7 +175,7 @@ fun PeaceCard(
     val clickMod = if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier
     Card(
         modifier = modifier
-            .peaceGlass(shape, dark, apple)
+            .appleLiquidGlass(shape, dark, apple, pressed = false)
             .then(clickMod),
         colors = CardDefaults.cardColors(
             containerColor = if (apple) Color.Transparent else containerColor,
@@ -120,19 +189,11 @@ fun PeaceCard(
 
 @Composable
 fun AppleAtmosphere(modifier: Modifier = Modifier, dark: Boolean) {
-    val blurMod = if (Build.VERSION.SDK_INT >= 31) {
-        Modifier.graphicsLayer {
-            renderEffect = RenderEffect
-                .createBlurEffect(20f, 20f, Shader.TileMode.CLAMP)
-                .asComposeRenderEffect()
-        }
-    } else {
-        Modifier
-    }
     val base = if (dark) AppleGroupedDark else AppleGrouped
-    val wash = if (dark) AppleBlueDark.copy(alpha = 0.10f) else AppleBlue.copy(alpha = 0.07f)
+    val wash = if (dark) AppleGreenDark.copy(alpha = 0.16f) else AppleGreen.copy(alpha = 0.10f)
+    val soft = if (dark) Color.White.copy(alpha = 0.05f) else Color.White.copy(alpha = 0.55f)
     Box(modifier.fillMaxSize().background(base)) {
-        Canvas(Modifier.fillMaxSize().then(blurMod)) {
+        Canvas(Modifier.fillMaxSize()) {
             val w = size.width
             val h = size.height
             if (w <= 0f || h <= 0f || !w.isFinite() || !h.isFinite()) return@Canvas
@@ -140,7 +201,14 @@ fun AppleAtmosphere(modifier: Modifier = Modifier, dark: Boolean) {
                 brush = Brush.verticalGradient(
                     colors = listOf(wash, Color.Transparent),
                     startY = 0f,
-                    endY = h * 0.38f,
+                    endY = h * 0.42f,
+                ),
+            )
+            drawRect(
+                brush = Brush.radialGradient(
+                    colors = listOf(soft, Color.Transparent),
+                    center = androidx.compose.ui.geometry.Offset(w * 0.82f, h * 0.18f),
+                    radius = w.coerceAtLeast(h) * 0.55f,
                 ),
             )
         }
@@ -156,17 +224,20 @@ fun PeaceButton(
     content: @Composable RowScope.() -> Unit,
 ) {
     val apple = LocalVisualStyle.current == VisualStyle.APPLE
-    val shape = AppleCapsule
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
     if (apple) {
         val dark = LocalDarkTheme.current
+        val corner by animateDpAsState(if (pressed) 12.dp else 16.dp, label = "btn-corner")
+        val shape = RoundedCornerShape(corner)
         val tint = MaterialTheme.colorScheme.primary.copy(alpha = if (enabled) 1f else 0.38f)
         Box(
             modifier = modifier
-                .defaultMinSize(minHeight = 50.dp)
-                .peaceGlass(shape, dark, true)
+                .defaultMinSize(minHeight = 44.dp)
+                .appleLiquidGlass(shape, dark, true, pressed = pressed)
                 .clip(shape)
-                .clickable(enabled = enabled, onClick = onClick)
-                .padding(horizontal = 18.dp, vertical = 12.dp),
+                .clickable(enabled = enabled, interactionSource = interaction, indication = null, onClick = onClick)
+                .padding(horizontal = 14.dp, vertical = 8.dp),
             contentAlignment = Alignment.Center,
         ) {
             CompositionLocalProvider(LocalContentColor provides tint) {
@@ -184,7 +255,8 @@ fun PeaceButton(
             onClick = onClick,
             modifier = modifier,
             enabled = enabled,
-            shape = shape,
+            shape = AppleCapsule,
+            interactionSource = interaction,
             content = content,
         )
     } else {
@@ -192,7 +264,8 @@ fun PeaceButton(
             onClick = onClick,
             modifier = modifier,
             enabled = enabled,
-            shape = shape,
+            shape = AppleCapsule,
+            interactionSource = interaction,
             content = content,
         )
     }
@@ -207,12 +280,15 @@ fun PeaceChip(
     label: @Composable () -> Unit,
 ) {
     val apple = LocalVisualStyle.current == VisualStyle.APPLE
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
     if (!apple) {
         FilterChip(
             selected = selected,
             onClick = onClick,
             label = label,
             modifier = modifier,
+            interactionSource = interaction,
         )
         return
     }
@@ -221,17 +297,17 @@ fun PeaceChip(
     val idle = MaterialTheme.colorScheme.onSurface
     val tint = if (selected) primary else idle
     val extraBorder = if (selected) {
-        Modifier.border(1.5.dp, primary.copy(alpha = 0.75f), AppleChipShape)
+        Modifier.border(1.dp, primary.copy(alpha = 0.7f), AppleChipShape)
     } else {
         Modifier
     }
     Box(
         modifier = modifier
-            .peaceGlass(AppleChipShape, dark, true)
+            .appleLiquidGlass(AppleChipShape, dark, true, pressed = pressed)
             .then(extraBorder)
             .clip(AppleChipShape)
-            .clickable(onClick = onClick)
-            .padding(horizontal = 14.dp, vertical = 8.dp),
+            .clickable(interactionSource = interaction, indication = null, onClick = onClick)
+            .padding(horizontal = 12.dp, vertical = 6.dp),
         contentAlignment = Alignment.Center,
     ) {
         CompositionLocalProvider(LocalContentColor provides tint) {
@@ -250,9 +326,18 @@ fun PeaceIconButton(
 ) {
     val apple = LocalVisualStyle.current == VisualStyle.APPLE
     val dark = LocalDarkTheme.current
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
     IconButton(
         onClick = onClick,
-        modifier = if (apple) modifier.peaceGlass(CircleShape, dark, true) else modifier,
+        interactionSource = interaction,
+        modifier = if (apple) {
+            modifier
+                .size(40.dp)
+                .appleLiquidGlass(CircleShape, dark, true, pressed = pressed)
+        } else {
+            modifier
+        },
         content = content,
     )
 }
@@ -264,21 +349,133 @@ fun PeaceFab(
     content: @Composable () -> Unit,
 ) {
     val apple = LocalVisualStyle.current == VisualStyle.APPLE
+    val interaction = remember { MutableInteractionSource() }
+    val pressed by interaction.collectIsPressedAsState()
     if (!apple) {
-        FloatingActionButton(onClick = onClick, modifier = modifier, content = { content() })
+        FloatingActionButton(onClick = onClick, modifier = modifier, interactionSource = interaction, content = { content() })
         return
     }
     val dark = LocalDarkTheme.current
     val tint = MaterialTheme.colorScheme.primary
     Box(
         modifier = modifier
-            .size(56.dp)
-            .peaceGlass(CircleShape, dark, true)
+            .size(48.dp)
+            .appleLiquidGlass(CircleShape, dark, true, pressed = pressed)
             .clip(CircleShape)
-            .clickable(onClick = onClick),
+            .clickable(interactionSource = interaction, indication = null, onClick = onClick),
         contentAlignment = Alignment.Center,
     ) {
         CompositionLocalProvider(LocalContentColor provides tint) { content() }
+    }
+}
+
+@Composable
+fun PeaceTextField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
+    placeholder: String = "",
+    leadingIcon: (@Composable () -> Unit)? = null,
+    singleLine: Boolean = true,
+    keyboardOptions: KeyboardOptions = KeyboardOptions.Default,
+) {
+    val apple = LocalVisualStyle.current == VisualStyle.APPLE
+    val dark = LocalDarkTheme.current
+    val style = MaterialTheme.typography.bodyLarge
+    if (!apple) {
+        androidx.compose.material3.OutlinedTextField(
+            value = value,
+            onValueChange = onValueChange,
+            modifier = modifier,
+            leadingIcon = leadingIcon,
+            placeholder = { if (placeholder.isNotEmpty()) Text(placeholder) },
+            singleLine = singleLine,
+            keyboardOptions = keyboardOptions,
+        )
+        return
+    }
+    Row(
+        modifier = modifier
+            .defaultMinSize(minHeight = 44.dp)
+            .appleLiquidGlass(RoundedCornerShape(14.dp), dark, true, pressed = false)
+            .padding(horizontal = 12.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        if (leadingIcon != null) leadingIcon()
+        Box(Modifier.weight(1f)) {
+            if (value.isEmpty() && placeholder.isNotEmpty()) {
+                Text(placeholder, style = style, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+            BasicTextField(
+                value = value,
+                onValueChange = onValueChange,
+                singleLine = singleLine,
+                textStyle = style.copy(color = MaterialTheme.colorScheme.onSurface),
+                cursorBrush = SolidColor(MaterialTheme.colorScheme.primary),
+                keyboardOptions = keyboardOptions,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+    }
+}
+
+@Composable
+fun PeaceBottomBar(
+    tabs: List<PeaceTab>,
+    selectedKey: String,
+    onSelect: (String) -> Unit,
+) {
+    val apple = LocalVisualStyle.current == VisualStyle.APPLE
+    if (!apple) {
+        NavigationBar(containerColor = MaterialTheme.colorScheme.surface) {
+            tabs.forEach { tab ->
+                NavigationBarItem(
+                    selected = tab.key == selectedKey,
+                    onClick = { onSelect(tab.key) },
+                    icon = { Icon(tab.icon, contentDescription = tab.label) },
+                    label = { Text(tab.label) },
+                    colors = NavigationBarItemDefaults.colors(
+                        selectedIconColor = MaterialTheme.colorScheme.primary,
+                        selectedTextColor = MaterialTheme.colorScheme.primary,
+                    ),
+                )
+            }
+        }
+        return
+    }
+    val dark = LocalDarkTheme.current
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .navigationBarsPadding()
+            .padding(horizontal = 12.dp, vertical = 6.dp)
+            .height(52.dp)
+            .appleLiquidGlass(RoundedCornerShape(26.dp), dark, true, pressed = false)
+            .padding(horizontal = 4.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        tabs.forEach { tab ->
+            val selected = tab.key == selectedKey
+            val tint = if (selected) MaterialTheme.colorScheme.primary
+            else MaterialTheme.colorScheme.onSurfaceVariant
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clip(RoundedCornerShape(18.dp))
+                    .clickable { onSelect(tab.key) }
+                    .padding(vertical = 4.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+            ) {
+                Icon(tab.icon, contentDescription = tab.label, tint = tint, modifier = Modifier.size(22.dp))
+                Text(
+                    text = tab.label,
+                    style = MaterialTheme.typography.labelSmall,
+                    color = tint,
+                )
+            }
+        }
     }
 }
 
@@ -289,20 +486,22 @@ fun PeaceListGroup(
 ) {
     val apple = LocalVisualStyle.current == VisualStyle.APPLE
     val orange = LocalVisualStyle.current == VisualStyle.ORANGE
+    val dark = LocalDarkTheme.current
     val shape = if (apple) AppleGroupShape else RoundedCornerShape(16.dp)
     val bg = when {
-        apple -> if (LocalDarkTheme.current) AppleTableDark else AppleTable
+        apple -> Color.Transparent
         orange -> MaterialTheme.colorScheme.surface
         else -> MaterialTheme.colorScheme.surfaceContainerLow
     }
     val border = if (apple) {
-        Modifier.border(0.5.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.45f), shape)
+        Modifier
     } else {
         Modifier
     }
     Column(
         modifier = modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
+            .then(if (apple) Modifier.appleLiquidGlass(shape, dark, true, pressed = false) else Modifier)
             .clip(shape)
             .background(bg, shape)
             .then(border)

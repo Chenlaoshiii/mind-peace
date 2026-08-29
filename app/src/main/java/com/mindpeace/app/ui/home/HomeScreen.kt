@@ -9,8 +9,9 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,18 +22,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Add
-import androidx.compose.material.icons.outlined.Insights
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.ExperimentalMaterial3Api
-import com.mindpeace.app.ui.theme.PeaceFab
-import androidx.compose.material3.Icon
-import com.mindpeace.app.ui.theme.PeaceIconButton
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
-import com.mindpeace.app.ui.theme.PeaceButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -42,6 +36,7 @@ import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -52,24 +47,32 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.ui.components.AppIcon
+import com.mindpeace.app.ui.theme.PeaceButton
 import com.mindpeace.app.ui.theme.PeaceCard
+import com.mindpeace.app.ui.theme.PeaceChip
 import com.mindpeace.app.ui.theme.peaceContainerColor
 import com.mindpeace.app.ui.theme.peaceSurfaceColor
 import com.mindpeace.app.util.Permissions
+import kotlinx.coroutines.launch
+import kotlin.math.roundToInt
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+private val GLOBAL_PRESETS = listOf(0, 30, 60, 90, 120, 180, 240)
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class, ExperimentalLayoutApi::class)
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel,
     onAdd: () -> Unit,
-    onSettings: () -> Unit,
     onApp: (String) -> Unit,
-    onStats: () -> Unit,
 ) {
     val items by viewModel.items.collectAsStateWithLifecycle()
+    val global by viewModel.globalDailyLimitMinutes.collectAsStateWithLifecycle()
     val context = LocalContext.current
+    val app = context.applicationContext as MindPeaceApp
+    val scope = rememberCoroutineScope()
     var notif by remember { mutableStateOf(Permissions.areNotificationsEnabled(context)) }
     val notifLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission(),
@@ -85,57 +88,118 @@ fun HomeScreen(
         onDispose { lifecycleOwner.lifecycle.removeObserver(observer) }
     }
 
+    val watched = app.container.settings.watchedApps.collectAsStateWithLifecycle().value
+    val allocatedSum = watched.sumOf { it.dailyLimitMinutes }
+    val unallocated = if (global <= 0) 0 else (global - allocatedSum).coerceAtLeast(0)
+
     Scaffold(
         containerColor = peaceContainerColor(),
         topBar = {
             TopAppBar(
-                title = { Text(stringResource(R.string.home_title)) },
-                actions = {
-                    PeaceIconButton(onClick = onStats) {
-                        Icon(Icons.Outlined.Insights, contentDescription = stringResource(R.string.cd_stats))
-                    }
-                    PeaceIconButton(onClick = onSettings) {
-                        Icon(Icons.Outlined.Settings, contentDescription = stringResource(R.string.cd_settings))
-                    }
-                },
+                title = { Text(stringResource(R.string.budget_title)) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = peaceSurfaceColor(),
                 ),
             )
         },
-        floatingActionButton = {
-            PeaceFab(onClick = onAdd) {
-                Icon(Icons.Outlined.Add, contentDescription = stringResource(R.string.cd_add))
-            }
-        },
     ) { padding ->
-        if (items.isEmpty()) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(padding)
-                    .padding(horizontal = 24.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                NotifBanner(notif) {
-                    if (Build.VERSION.SDK_INT >= 33) notifLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                    else Permissions.openNotificationSettings(context)
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding),
+            contentPadding = PaddingValues(bottom = 24.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            if (!notif) {
+                item(key = "notif") {
+                    NotifBanner(false) {
+                        if (Build.VERSION.SDK_INT >= 33) {
+                            notifLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
+                        } else {
+                            Permissions.openNotificationSettings(context)
+                        }
+                    }
                 }
-                StatsCard(onStats)
-                Box(
+            }
+            item(key = "global") {
+                PeaceCard(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(32.dp),
-                    contentAlignment = Alignment.Center,
+                        .padding(horizontal = 16.dp, vertical = 4.dp)
+                        .fillMaxWidth(),
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    shape = RoundedCornerShape(20.dp),
                 ) {
-                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(Modifier.padding(20.dp)) {
+                        Text(stringResource(R.string.budget_global), style = MaterialTheme.typography.titleLarge)
+                        Spacer(Modifier.height(4.dp))
                         Text(
-                            text = stringResource(R.string.home_empty_title),
+                            stringResource(R.string.budget_global_sub),
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
+                        )
+                        Spacer(Modifier.height(12.dp))
+                        Text(
+                            if (global <= 0) stringResource(R.string.budget_none)
+                            else stringResource(R.string.budget_minutes, global),
+                            style = MaterialTheme.typography.bodyLarge,
+                            color = MaterialTheme.colorScheme.primary,
+                        )
+                        Slider(
+                            value = global.coerceIn(0, 360).toFloat(),
+                            onValueChange = {
+                                scope.launch { app.container.settings.setGlobalDailyLimitMinutes(it.roundToInt()) }
+                            },
+                            valueRange = 0f..360f,
+                            steps = 71,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                        FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            GLOBAL_PRESETS.forEach { m ->
+                                PeaceChip(
+                                    selected = global == m,
+                                    onClick = {
+                                        scope.launch { app.container.settings.setGlobalDailyLimitMinutes(m) }
+                                    },
+                                    label = {
+                                        Text(
+                                            if (m == 0) stringResource(R.string.budget_none)
+                                            else stringResource(R.string.detail_limit_minutes, m),
+                                        )
+                                    },
+                                )
+                            }
+                        }
+                        if (global > 0) {
+                            Spacer(Modifier.height(8.dp))
+                            Text(
+                                stringResource(R.string.budget_allocated, allocatedSum, global),
+                                style = MaterialTheme.typography.bodyMedium,
+                            )
+                            Text(
+                                if (unallocated > 0) stringResource(R.string.budget_unallocated, unallocated)
+                                else stringResource(R.string.budget_unallocated_none),
+                                style = MaterialTheme.typography.bodyMedium,
+                                color = MaterialTheme.colorScheme.primary,
+                            )
+                        }
+                    }
+                }
+            }
+            if (items.isEmpty()) {
+                item(key = "empty") {
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(32.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Text(
+                            text = stringResource(R.string.budget_empty_title),
                             style = MaterialTheme.typography.titleLarge,
                         )
                         Spacer(Modifier.height(8.dp))
                         Text(
-                            text = stringResource(R.string.home_empty_body),
+                            text = stringResource(R.string.budget_empty_body),
                             style = MaterialTheme.typography.bodyLarge,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
@@ -146,78 +210,57 @@ fun HomeScreen(
                     }
                 }
             }
-        } else {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(padding),
-                contentPadding = PaddingValues(bottom = 96.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                if (!notif) {
-                    item(key = "notif") {
-                        NotifBanner(false) {
-                            if (Build.VERSION.SDK_INT >= 33) {
-                                notifLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
-                            } else {
-                                Permissions.openNotificationSettings(context)
-                            }
-                        }
-                    }
-                }
-                item(key = "stats") { StatsCard(onStats) }
-                items(items, key = { it.packageName }) { item ->
-                    PeaceCard(
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp)
-                            .fillMaxWidth()
-                            .animateItem(),
-                        containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
-                        shape = RoundedCornerShape(20.dp),
-                        onClick = { onApp(item.packageName) },
-                    ) {
-                        ListItem(
-                            headlineContent = { Text(item.label) },
-                            supportingContent = {
-                                Column {
-                                    Text(item.usedLine)
-                                    if (item.remainingLine.isNotBlank()) {
-                                        Text(
-                                            item.remainingLine,
-                                            color = MaterialTheme.colorScheme.primary,
-                                        )
-                                    }
+            items(items, key = { it.packageName }) { item ->
+                val current = watched.firstOrNull { it.packageName == item.packageName }
+                val alloc = current?.dailyLimitMinutes ?: 0
+                val others = allocatedSum - alloc
+                val maxAlloc = if (global <= 0) 360 else (global - others).coerceAtLeast(0)
+                PeaceCard(
+                    modifier = Modifier
+                        .padding(horizontal = 16.dp)
+                        .fillMaxWidth()
+                        .animateItem(),
+                    containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+                    shape = RoundedCornerShape(20.dp),
+                    onClick = { onApp(item.packageName) },
+                ) {
+                    ListItem(
+                        headlineContent = { Text(item.label) },
+                        supportingContent = {
+                            Column {
+                                Text(item.usedLine)
+                                if (item.remainingLine.isNotBlank()) {
+                                    Text(
+                                        item.remainingLine,
+                                        color = MaterialTheme.colorScheme.primary,
+                                    )
                                 }
-                            },
-                            leadingContent = {
-                                AppIcon(item.packageName, Modifier.size(44.dp))
-                            },
-                        )
-                    }
+                                Text(
+                                    if (alloc <= 0) stringResource(R.string.budget_app_share)
+                                    else stringResource(R.string.budget_app_alloc, alloc),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            }
+                        },
+                        leadingContent = {
+                            AppIcon(item.packageName, Modifier.size(44.dp))
+                        },
+                    )
+                    val sliderMax = maxOf(1, maxAlloc, alloc)
+                    Slider(
+                        value = alloc.coerceIn(0, sliderMax).toFloat(),
+                        onValueChange = {
+                            scope.launch {
+                                app.container.settings.setAppAllocation(item.packageName, it.roundToInt())
+                            }
+                        },
+                        valueRange = 0f..sliderMax.toFloat(),
+                        enabled = global <= 0 || maxAlloc > 0 || alloc > 0,
+                        modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                    )
                 }
             }
-        }
-    }
-}
-
-@Composable
-private fun StatsCard(onStats: () -> Unit) {
-    PeaceCard(
-        modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 8.dp)
-            .fillMaxWidth(),
-        containerColor = MaterialTheme.colorScheme.primaryContainer,
-        shape = RoundedCornerShape(20.dp),
-        onClick = onStats,
-    ) {
-        Column(Modifier.padding(20.dp)) {
-            Text(stringResource(R.string.home_stats_card), style = MaterialTheme.typography.titleLarge)
-            Spacer(Modifier.height(4.dp))
-            Text(
-                stringResource(R.string.home_stats_card_sub),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onPrimaryContainer,
-            )
         }
     }
 }

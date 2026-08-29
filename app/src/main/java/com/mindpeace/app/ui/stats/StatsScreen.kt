@@ -70,7 +70,7 @@ data class DayPoint(
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun StatsScreen(onBack: () -> Unit) {
+fun StatsScreen(onBack: (() -> Unit)? = null) {
     val context = LocalContext.current
     val app = context.applicationContext as MindPeaceApp
     val watched = app.container.settings.watchedApps.collectAsStateWithLifecycle().value
@@ -134,11 +134,13 @@ fun StatsScreen(onBack: () -> Unit) {
             TopAppBar(
                 title = { Text(stringResource(R.string.stats_title)) },
                 navigationIcon = {
-                    PeaceIconButton(onClick = onBack) {
-                        Icon(
-                            Icons.AutoMirrored.Outlined.ArrowBack,
-                            contentDescription = stringResource(R.string.cd_back),
-                        )
+                    if (onBack != null) {
+                        PeaceIconButton(onClick = onBack) {
+                            Icon(
+                                Icons.AutoMirrored.Outlined.ArrowBack,
+                                contentDescription = stringResource(R.string.cd_back),
+                            )
+                        }
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = peaceSurfaceColor()),

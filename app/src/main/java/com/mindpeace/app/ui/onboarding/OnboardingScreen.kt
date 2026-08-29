@@ -365,6 +365,14 @@ private fun LockStep(checked: Boolean, onChecked: (Boolean) -> Unit) {
             modifier = Modifier.padding(start = 8.dp),
         )
     }
+    Spacer(Modifier.height(28.dp))
+    Text(stringResource(R.string.onboarding_privacy_title), style = MaterialTheme.typography.headlineMedium)
+    Spacer(Modifier.height(12.dp))
+    Text(
+        stringResource(R.string.onboarding_privacy_body),
+        style = MaterialTheme.typography.bodyLarge,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
 }
 
 @Composable

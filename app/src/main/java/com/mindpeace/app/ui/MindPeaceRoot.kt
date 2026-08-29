@@ -6,6 +6,13 @@ import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Apps
+import androidx.compose.material.icons.outlined.HourglassEmpty
+import androidx.compose.material.icons.outlined.Insights
+import androidx.compose.material.icons.outlined.Settings
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -13,9 +20,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -27,6 +36,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.mindpeace.app.MindPeaceApp
+import com.mindpeace.app.R
+import com.mindpeace.app.ui.theme.PeaceBottomBar
+import com.mindpeace.app.ui.theme.PeaceTab
 import com.mindpeace.app.ui.theme.peaceContainerColor
 import com.mindpeace.app.ui.home.AppDetailScreen
 import com.mindpeace.app.ui.home.HomeScreen
@@ -41,6 +53,11 @@ import com.mindpeace.app.ui.settings.ThemeSettingsScreen
 import com.mindpeace.app.ui.stats.StatsScreen
 import com.mindpeace.app.util.Permissions
 import kotlinx.coroutines.delay
+
+private const val TAB_BUDGET = "budget"
+private const val TAB_PICKER = "picker"
+private const val TAB_STATS = "stats"
+private const val TAB_SETTINGS = "settings"
 
 @Composable
 fun MindPeaceRoot(
@@ -113,31 +130,62 @@ private fun AppNav(
 ) {
     val nav = rememberNavController()
     val homeVm: HomeViewModel = viewModel()
+    var tab by rememberSaveable { mutableStateOf(TAB_BUDGET) }
     LaunchedEffect(pendingDestination) {
         if (pendingDestination == "stats") {
-            nav.navigate("stats")
+            tab = TAB_STATS
+            nav.popBackStack("main", inclusive = false)
             onPendingConsumed()
         }
     }
+    val tabs = listOf(
+        PeaceTab(TAB_BUDGET, stringResource(R.string.tab_budget), Icons.Outlined.HourglassEmpty),
+        PeaceTab(TAB_PICKER, stringResource(R.string.tab_add), Icons.Outlined.Apps),
+        PeaceTab(TAB_STATS, stringResource(R.string.tab_stats), Icons.Outlined.Insights),
+        PeaceTab(TAB_SETTINGS, stringResource(R.string.tab_settings), Icons.Outlined.Settings),
+    )
     NavHost(
         navController = nav,
-        startDestination = "home",
+        startDestination = "main",
         enterTransition = { Motion.navEnter() },
         exitTransition = { Motion.navExit() },
         popEnterTransition = { Motion.navPopEnter() },
         popExitTransition = { Motion.navPopExit() },
     ) {
-        composable("home") {
-            HomeScreen(
-                viewModel = homeVm,
-                onAdd = { nav.navigate("picker") },
-                onSettings = { nav.navigate("settings") },
-                onApp = { pkg -> nav.navigate("detail/$pkg") },
-                onStats = { nav.navigate("stats") },
-            )
-        }
-        composable("picker") {
-            AppPickerScreen(onBack = { nav.popBackStack() })
+        composable("main") {
+            Scaffold(
+                containerColor = peaceContainerColor(),
+                bottomBar = {
+                    PeaceBottomBar(
+                        tabs = tabs,
+                        selectedKey = tab,
+                        onSelect = { tab = it },
+                    )
+                },
+            ) { padding ->
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(padding),
+                    color = peaceContainerColor(),
+                ) {
+                    when (tab) {
+                        TAB_PICKER -> AppPickerScreen(onBack = null)
+                        TAB_STATS -> StatsScreen(onBack = null)
+                        TAB_SETTINGS -> SettingsScreen(
+                            onBack = null,
+                            onReopenSetup = onReopenSetup,
+                            onAbout = { nav.navigate("about") },
+                            onTheme = { nav.navigate("theme") },
+                        )
+                        else -> HomeScreen(
+                            viewModel = homeVm,
+                            onAdd = { tab = TAB_PICKER },
+                            onApp = { pkg -> nav.navigate("detail/$pkg") },
+                        )
+                    }
+                }
+            }
         }
         composable(
             route = "detail/{pkg}",
@@ -147,14 +195,6 @@ private fun AppNav(
             AppDetailScreen(
                 packageName = pkg,
                 onBack = { nav.popBackStack() },
-            )
-        }
-        composable("settings") {
-            SettingsScreen(
-                onBack = { nav.popBackStack() },
-                onReopenSetup = onReopenSetup,
-                onAbout = { nav.navigate("about") },
-                onTheme = { nav.navigate("theme") },
             )
         }
         composable("theme") {
@@ -168,9 +208,6 @@ private fun AppNav(
         }
         composable("lab") {
             NotificationLabScreen(onBack = { nav.popBackStack() })
-        }
-        composable("stats") {
-            StatsScreen(onBack = { nav.popBackStack() })
         }
     }
 }

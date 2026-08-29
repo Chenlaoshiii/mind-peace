@@ -13,8 +13,8 @@ android {
         applicationId = "com.mindpeace.app"
         minSdk = 26
         targetSdk = 35
-        versionCode = 4
-        versionName = "1.2.1"
+        versionCode = 5
+        versionName = "1.3.0"
     }
 
     buildTypes {
@@ -74,5 +74,6 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.kyant.backdrop)
     debugImplementation(libs.androidx.compose.ui.tooling)
 }

@@ -7,7 +7,7 @@ Mind Peace 是一款温和的 Android 使用提醒应用。它**不会锁住整�
 
 Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock the whole phone. When you launch an app you chose to watch, it covers it with a confirmation: do you really want to open it? After you confirm, you pick how long. When time is up, you go home.
 
-[下载 Debug 安装包 1.2.1](https://github.com/stillthatlars/mind-peace/releases/download/v1.2.1/MindPeace-1.2.1-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.2.1)
+[下载 Debug 安装包 1.3.0](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.0/MindPeace-1.3.0-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.0)
 
 作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
 
@@ -26,17 +26,18 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 **会做**
 
 - 打开已守护应用时立刻盖住确认层（应用还在下面，但不能操作）
-- 自己选本次时长；倒计时只在该应用在前台时走，切走会暂停
+- 自己选本次时长；倒计时只在该应用在前台时走。中途离开（回桌面、切到别的应用、打开 Mind Peace）会结束本次，已经用掉的计入今日用量，没用完的时间作废；下次打开会再次询问
 - 时间到回到桌面，并提醒「时间到了」
-- 每个应用可设每日总额度；选超了会按剩余时间截断
+- 首页「总时长」可设所有被守护应用加在一起的每日上限，再把分钟分给各个应用（不能超过总数；0 表示这个应用不额外限额，仍受总时长剩余约束）
 - 一段时间没打开被守护应用，会发鼓励通知
-- 大约晚上 9 点推送今日小结；点进统计页看每天、每个应用、最多 7 天的趋势
+- 大约晚上 9 点推送今日小结；「今日小结」页看每天、每个应用、最多 7 天的趋势
 
 **不会做**
 
 - 不会锁整机、不会当家长控制工具去禁止别人
 - 无障碍服务不读聊天、密码或屏幕文字，只关心是哪一个应用到了前台
 - 不会拦截 Mind Peace 自己
+- 不会上传任何使用记录，也没有任何数据收集。应用完全在你的手机上运行
 
 <p>
 <img src="docs/screenshots/onboarding.png" alt="引导" width="220">
@@ -48,11 +49,11 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 怎么用
 
-1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.2.1/MindPeace-1.2.1-debug.apk)（需允许未知来源）。覆盖安装即可。
-2. 第一次打开会走引导：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知 → 按机型锁定后台。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
-3. 首页点「添加应用」，把想少打开的应用打开拦截开关，需要的话再设每日分钟数。
+1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.0/MindPeace-1.3.0-debug.apk)（需允许未知来源）。覆盖安装即可。
+2. 第一次打开会走引导：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知 → 按机型锁定后台，并看到「完全在你的手机上运行，不会上传任何使用记录」。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
+3. 底栏四个入口：**总时长**（设每天总上限并分配给各个应用）、**添加应用**（独立开关「应用 / 系统工具」）、**今日小结**、**设置**。
 4. 之后打开这些应用，会先问「真的确定要打开××吗？」并显示你的那句话。选「确定」再选 1 / 3 / 5 / 10 / 15 / 30 分钟或自定义；「退出」回桌面。
-5. 通知栏会显示剩余时间。到点回桌面。想看今天和昨天、以及最近最多 7 天的折线，打开首页「今日小结」。
+5. 通知栏会显示剩余时间。到点回桌面。中途离开则本次结束。
 6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（点进去：浅色 / 深色 / 跟随系统；谷歌 Material You、橙色风格、苹果风格）、改那句写给自己的话、重新看引导、关于。关于页大标题连点 5 下可预览全部通知文案。
 
 若拦截突然没了，打开应用看是否提示无障碍已关闭。小米 / 华为 / OPPO / vivo 请在最近任务里锁定 Mind Peace，并允许自启动与后台运行。
@@ -60,14 +61,14 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 ### 主题
 
 - **谷歌 Material You**：Android 12+ 跟随壁纸动态取色
-- **橙色风格**：暖纸底与橙色强调，标题用衬线字体
-- **苹果风格**：系统蓝 + 分组灰底，按钮与卡片为液态玻璃观感（当前为系统模糊回退，不是第三方玻璃库）
+- **橙色风格**：暖纸底 `#FAF9F5`、正文深色 `#141413`、强调色 `#D97757`（加重 `#C15F3C`），浅灰 `#E8E6DC`、中灰 `#B0AEA5`；深色为炭黑 `#141413` 配同一橙色。标题、正文、按钮、列表都用同一套衬线字体（Newsreader）
+- **苹果风格**：系统绿 `#34C759` / 深色 `#30D158`，iOS 分组灰底，按钮、搜索框、底栏、卡片为液态玻璃（Kyant Backdrop：透明折射、色散边缘、按压缩放与高光）
 
 深浅色可跟随系统，或在个性主题里固定。
 
 ### 隐私
 
-无障碍说明写在系统设置里：不读取聊天、密码或屏幕文字细节。用量存在本机 DataStore，不上传账号。仓库与安装包公开，便于你自己下载。
+Mind Peace 完全在你的手机上运行，不会上传任何使用记录。我们不收集数据。无障碍说明写在系统设置里：不读取聊天、密码或屏幕文字细节。用量存在本机 DataStore。仓库与安装包公开，便于你自己下载。
 
 ---
 
@@ -82,36 +83,37 @@ Feeds and short video are easy to open on autopilot. Mind Peace pulls “open”
 **Does**
 
 - Overlay a confirmation the moment a watched app comes to the foreground
-- Let you pick a session length; the timer runs only while that app is in front, and pauses if you leave
+- Let you pick a session length; the timer runs only while that app is in front. Leaving (home, another app, or Mind Peace) **ends** the session: time already used is counted, leftover minutes are discarded, and the next open always asks again
 - Send you home when time is up, with a reminder
-- Optional per-app daily budget; a session that would overflow is capped to what is left
+- A global daily cap for all watched apps, then per-app allocations from that pool (allocations cannot exceed the total; 0 means no extra per-app cap beyond remaining global time)
 - Celebration notifications after 4 hours / 1 day / 3 days without opening watched apps (quiet hours 22:00–08:00)
-- A nightly summary around 21:00; tap through to per-app totals and a sliding 7-day chart
+- A nightly summary around 21:00; the Recap tab shows per-app totals and a sliding 7-day chart
 
 **Does not**
 
 - Lock the whole phone or act as parental control for someone else
 - Read chat, passwords, or on-screen text; accessibility only sees which package is in front
 - Intercept Mind Peace itself
+- Collect or upload usage. Everything stays on the device.
 
 ### How to use
 
-1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.2.1/MindPeace-1.2.1-debug.apk) (unknown sources). You can install over a previous debug build.
-2. First launch is gated onboarding: welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications, lock in Recents. “I’m done” enables only when accessibility is actually on.
-3. Home → Add apps → enable intercept, optionally set a daily minute cap.
+1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.0/MindPeace-1.3.0-debug.apk) (unknown sources). You can install over a previous debug build.
+2. First launch is gated onboarding: welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications, lock in Recents, and a clear note that the app is fully offline. “I’m done” enables only when accessibility is actually on and the recents checkbox is checked.
+3. Bottom bar: **Daily cap** (global minutes + per-app allocations), **Add apps** (independent “Apps” / “System tools” toggles), **Today’s recap**, **Settings**.
 4. Opening a watched app asks if you really want to open it, with your quote. Confirm then pick duration, or Exit to the launcher.
-5. A notification shows remaining time. Home → Today’s recap for today vs yesterday and up to seven calendar days of trends.
-6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (a separate screen: light / dark / system; Material You, warm orange, Apple-like blue glass), edit your quote, replay setup, About. Tap the big About title five times to preview every notification template.
+5. A notification shows remaining time. Leave the app and the leftover session is void.
+6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system; Material You, warm orange, Apple-like green glass), edit your quote, replay setup, About. Tap the big About title five times to preview every notification template.
 
 If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / OPPO / vivo, lock Mind Peace in Recents and allow autostart / background.
 
 ### Appearance
 
-Material You (dynamic color on Android 12+), a warm orange paper style with serif headings, or an Apple-like blue + grouped gray look with glass buttons (RenderEffect fallback, not a third-party liquid-glass library). Light / dark / follow system.
+Material You (dynamic color on Android 12+); a warm orange paper style (`#FAF9F5` / `#D97757` / `#C15F3C`) with one serif for headlines, body, buttons, and lists; or an Apple-like system green (`#34C759` / `#30D158`) grouped-gray look with liquid glass controls (Kyant Backdrop). Light / dark / follow system.
 
 ### Privacy
 
-Usage stays on-device in DataStore. Accessibility does not scrape message contents. This repository is public so you can download the build yourself.
+Fully offline. No collection, no upload. Usage stays on-device in DataStore. Accessibility does not scrape message contents. This repository is public so you can download the build yourself.
 
 ---
 
@@ -125,7 +127,7 @@ Android Studio (JDK 17), File → Open this repo, sync, install SDK 35 if asked.
 
 Output: `app/build/outputs/apk/debug/app-debug.apk`.
 
-Kotlin + Jetpack Compose + Material 3. AccessibilityService overlay, foreground session timer, WorkManager for celebrations and the evening summary.
+Kotlin + Jetpack Compose + Material 3. AccessibilityService overlay, foreground session timer, WorkManager for celebrations and the evening summary. Apple style uses `io.github.kyant0:backdrop` 1.0.2.
 
 ## License
 

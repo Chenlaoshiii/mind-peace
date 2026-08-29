@@ -80,12 +80,12 @@ class SessionCoordinator(
     fun onForegroundPackage(pkg: String) {
         if (pkg.isBlank()) return
         if (pkg == app.packageName) {
-            // Never intercept ourselves. If a session is running, treat this as a pause.
-            maybePauseForLeave(pkg)
+            // Never intercept ourselves. Leaving the watched app ends the session.
+            endSessionForLeave(pkg)
             return
         }
         if (isIgnored(pkg)) {
-            maybePauseForLeave(pkg)
+            endSessionForLeave(pkg)
             return
         }
 
@@ -103,21 +103,14 @@ class SessionCoordinator(
                 onTimeUp()
                 return
             }
-            if (sess.paused) {
-                _session.value = sess.copy(paused = false)
-                persistSession()
-                SessionForegroundService.refresh(app)
-            }
             if (_overlay.value !is OverlayState.Hidden && _overlay.value !is OverlayState.TimeUp) {
                 hideOverlay()
             }
             return
         }
 
-        if (sess != null && sess.packageName != pkg && !sess.paused) {
-            _session.value = sess.copy(paused = true)
-            persistSession()
-            SessionForegroundService.refresh(app)
+        if (sess != null && sess.packageName != pkg) {
+            endSessionForLeave(pkg)
         }
 
         val watched = settings.watchedApps.value.firstOrNull { it.packageName == pkg && it.enabled }
@@ -308,14 +301,13 @@ class SessionCoordinator(
         }
     }
 
-    private fun maybePauseForLeave(newPkg: String) {
+    private fun endSessionForLeave(newPkg: String) {
         val sess = _session.value ?: return
         if (newPkg == sess.packageName) return
-        if (!sess.paused) {
-            _session.value = sess.copy(paused = true)
-            persistSession()
-            SessionForegroundService.refresh(app)
-        }
+        _session.value = null
+        usageSincePersist = 0L
+        persistSession(clear = true)
+        SessionForegroundService.stop(app)
     }
 
     private fun isIgnored(pkg: String): Boolean {
@@ -350,12 +342,14 @@ class SessionCoordinator(
     private fun restoreSessionIfAny() {
         scope.launch {
             val p = settings.loadPersistedSession() ?: return@launch
-            if (p.remainingMillis <= 0L) {
+            // Never restore leftover minutes from a leave/pause. Only a mid-tick
+            // crash while still in the watched app (not paused) may continue.
+            if (p.paused || p.remainingMillis <= 0L) {
                 settings.saveSession(null)
                 return@launch
             }
             var remaining = p.remainingMillis
-            if (!p.paused && p.lastElapsedRealtime > 0L) {
+            if (p.lastElapsedRealtime > 0L) {
                 val elapsed = SystemClock.elapsedRealtime() - p.lastElapsedRealtime
                 if (elapsed > 0L) remaining -= elapsed
             }
@@ -366,7 +360,7 @@ class SessionCoordinator(
             _session.value = ActiveSession(
                 packageName = p.packageName,
                 remainingMillis = remaining,
-                paused = true,
+                paused = false,
             )
             SessionForegroundService.start(app)
         }

@@ -21,7 +21,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -230,10 +229,10 @@ private fun CustomPane(state: OverlayState.CustomDuration, coordinator: SessionC
         title = stringResource(R.string.overlay_custom_title),
         subtitle = budgetLine(state.remainingDailyMillis),
         extra = {
-            OutlinedTextField(
+            com.mindpeace.app.ui.theme.PeaceTextField(
                 value = text,
                 onValueChange = { v -> text = v.filter { it.isDigit() }.take(4) },
-                label = { Text(stringResource(R.string.overlay_custom_hint)) },
+                placeholder = stringResource(R.string.overlay_custom_hint),
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                 modifier = Modifier.fillMaxWidth(),
@@ -246,9 +245,10 @@ private fun CustomPane(state: OverlayState.CustomDuration, coordinator: SessionC
                     enabled = minutes > 0,
                     modifier = Modifier.fillMaxWidth(),
                 ) { Text(stringResource(R.string.overlay_custom_ok)) }
-                TextButton(
+                PeaceButton(
                     onClick = { coordinator.onCancelCustom() },
                     modifier = Modifier.fillMaxWidth(),
+                    outlined = true,
                 ) { Text(stringResource(R.string.overlay_cap_cancel)) }
             }
         },

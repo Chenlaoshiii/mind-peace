@@ -2,6 +2,7 @@ package com.mindpeace.app.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +22,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.kyant.backdrop.Backdrop
+import com.kyant.backdrop.backdrops.layerBackdrop
+import com.kyant.backdrop.backdrops.rememberLayerBackdrop
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.data.Appearance
 import com.mindpeace.app.data.ColorMode
@@ -28,6 +32,7 @@ import com.mindpeace.app.data.VisualStyle
 
 val LocalVisualStyle = staticCompositionLocalOf { VisualStyle.MATERIAL_YOU }
 val LocalDarkTheme = staticCompositionLocalOf { false }
+val LocalPeaceBackdrop = staticCompositionLocalOf<Backdrop?> { null }
 
 private val LightColors = lightColorScheme(
     primary = Sage,
@@ -64,22 +69,22 @@ private val DarkColors = darkColorScheme(
 )
 
 private val OrangeLight = lightColorScheme(
-    primary = OrangeAccentDeep,
+    primary = OrangeAccent,
     onPrimary = Color.White,
     primaryContainer = Color(0xFFF3E0D6),
-    onPrimaryContainer = Color(0xFF3D1F14),
-    secondary = OrangeAccent,
+    onPrimaryContainer = OrangeInk,
+    secondary = OrangeAccentDeep,
     onSecondary = Color.White,
     background = OrangePaper,
     onBackground = OrangeInk,
     surface = OrangePaperHi,
     onSurface = OrangeInk,
-    surfaceVariant = Color(0xFFEDE6DC),
-    onSurfaceVariant = OrangeMuted,
-    outline = OrangeHairline,
+    surfaceVariant = OrangeHairline,
+    onSurfaceVariant = Color(0xFF5C5A53),
+    outline = OrangeMuted,
     surfaceContainerLow = OrangePaperHi,
     secondaryContainer = Color(0xFFF3E6DC),
-    onSecondaryContainer = Color(0xFF3D1F14),
+    onSecondaryContainer = OrangeInk,
 )
 
 private val OrangeDark = darkColorScheme(
@@ -87,26 +92,26 @@ private val OrangeDark = darkColorScheme(
     onPrimary = OrangeCharcoal,
     primaryContainer = Color(0xFF5C2E1E),
     onPrimaryContainer = Color(0xFFF3E0D6),
-    secondary = OrangeAccent,
+    secondary = OrangeAccentDeep,
     onSecondary = OrangeCharcoal,
     background = OrangeCharcoal,
-    onBackground = Color(0xFFF3EDE6),
+    onBackground = Color(0xFFFAF9F5),
     surface = OrangeCharcoalHi,
-    onSurface = Color(0xFFF3EDE6),
-    surfaceVariant = Color(0xFF2C2622),
-    onSurfaceVariant = Color(0xFFC4B8AE),
-    outline = Color(0xFF3D3530),
+    onSurface = Color(0xFFFAF9F5),
+    surfaceVariant = Color(0xFF2C2A26),
+    onSurfaceVariant = OrangeMuted,
+    outline = Color(0xFF3D3B36),
     surfaceContainerLow = OrangeCharcoalHi,
     secondaryContainer = Color(0xFF3D2A22),
     onSecondaryContainer = Color(0xFFF3E0D6),
 )
 
 private val AppleLight = lightColorScheme(
-    primary = AppleBlue,
+    primary = AppleGreen,
     onPrimary = Color.White,
-    primaryContainer = Color(0xFFE5F0FF),
-    onPrimaryContainer = Color(0xFF003A8C),
-    secondary = AppleBlue,
+    primaryContainer = Color(0xFFD8F5E1),
+    onPrimaryContainer = Color(0xFF0B3B1C),
+    secondary = AppleGreen,
     onSecondary = Color.White,
     background = AppleGrouped,
     onBackground = Color(0xFF000000),
@@ -121,12 +126,12 @@ private val AppleLight = lightColorScheme(
 )
 
 private val AppleDark = darkColorScheme(
-    primary = AppleBlueDark,
-    onPrimary = Color.White,
-    primaryContainer = Color(0xFF0A3D7A),
-    onPrimaryContainer = Color(0xFFD6E8FF),
-    secondary = AppleBlueDark,
-    onSecondary = Color.White,
+    primary = AppleGreenDark,
+    onPrimary = Color.Black,
+    primaryContainer = Color(0xFF0D3B1E),
+    onPrimaryContainer = Color(0xFFCFF6D9),
+    secondary = AppleGreenDark,
+    onSecondary = Color.Black,
     background = AppleGroupedDark,
     onBackground = Color(0xFFF2F2F7),
     surface = AppleTableDark,
@@ -188,13 +193,28 @@ fun MindPeaceTheme(
         }
     }
 
+    val backdrop = rememberLayerBackdrop()
+
     CompositionLocalProvider(
         LocalVisualStyle provides style,
         LocalDarkTheme provides resolvedDark,
+        LocalPeaceBackdrop provides backdrop,
     ) {
         Box(Modifier.fillMaxSize()) {
-            if (style == VisualStyle.APPLE && showAtmosphere) {
-                AppleAtmosphere(Modifier.fillMaxSize(), dark = resolvedDark)
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .layerBackdrop(backdrop)
+                    .background(
+                        when {
+                            style == VisualStyle.APPLE -> if (resolvedDark) AppleGroupedDark else AppleGrouped
+                            else -> colorScheme.background
+                        },
+                    ),
+            ) {
+                if (style == VisualStyle.APPLE && showAtmosphere) {
+                    AppleAtmosphere(Modifier.fillMaxSize(), dark = resolvedDark)
+                }
             }
             MaterialTheme(
                 colorScheme = colorScheme,

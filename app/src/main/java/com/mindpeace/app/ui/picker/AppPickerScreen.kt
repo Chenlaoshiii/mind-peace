@@ -23,7 +23,6 @@ import com.mindpeace.app.ui.theme.PeaceChip
 import androidx.compose.material3.Icon
 import com.mindpeace.app.ui.theme.PeaceIconButton
 import androidx.compose.material3.ListItem
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -53,7 +52,7 @@ import kotlinx.coroutines.withContext
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun AppPickerScreen(onBack: () -> Unit) {
+fun AppPickerScreen(onBack: (() -> Unit)? = null) {
     val context = LocalContext.current
     val app = context.applicationContext as MindPeaceApp
     val watched by app.container.settings.watchedApps.collectAsStateWithLifecycle()
@@ -61,7 +60,8 @@ fun AppPickerScreen(onBack: () -> Unit) {
     var query by remember { mutableStateOf("") }
     var apps by remember { mutableStateOf<List<AppEntry>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
-    var systemOnly by remember { mutableStateOf(false) }
+    var showApps by remember { mutableStateOf(true) }
+    var showSystem by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
 
     LaunchedEffect(Unit) {
@@ -71,10 +71,20 @@ fun AppPickerScreen(onBack: () -> Unit) {
         loading = false
     }
 
-    val filtered = remember(apps, query, systemOnly) {
+    val bothOff = !showApps && !showSystem
+    val includeApps = showApps || bothOff
+    val includeSystem = showSystem || bothOff
+    val filtered = remember(apps, query, includeApps, includeSystem) {
         val q = query.trim()
         apps.asSequence()
-            .filter { !systemOnly || it.isSystem }
+            .filter { entry ->
+                when {
+                    includeApps && includeSystem -> true
+                    includeApps -> !entry.isSystem
+                    includeSystem -> entry.isSystem
+                    else -> true
+                }
+            }
             .filter {
                 q.isEmpty() ||
                     it.label.contains(q, true) ||
@@ -100,11 +110,13 @@ fun AppPickerScreen(onBack: () -> Unit) {
                     }
                 },
                 navigationIcon = {
-                    PeaceIconButton(onClick = onBack) {
-                        Icon(
-                            Icons.AutoMirrored.Outlined.ArrowBack,
-                            contentDescription = stringResource(R.string.cd_back),
-                        )
+                    if (onBack != null) {
+                        PeaceIconButton(onClick = onBack) {
+                            Icon(
+                                Icons.AutoMirrored.Outlined.ArrowBack,
+                                contentDescription = stringResource(R.string.cd_back),
+                            )
+                        }
                     }
                 },
             )
@@ -133,14 +145,14 @@ fun AppPickerScreen(onBack: () -> Unit) {
             contentPadding = PaddingValues(bottom = 24.dp),
         ) {
             item {
-                OutlinedTextField(
+                com.mindpeace.app.ui.theme.PeaceTextField(
                     value = query,
                     onValueChange = { query = it },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp, vertical = 8.dp),
                     leadingIcon = { Icon(Icons.Outlined.Search, contentDescription = null) },
-                    placeholder = { Text(stringResource(R.string.picker_search)) },
+                    placeholder = stringResource(R.string.picker_search),
                     singleLine = true,
                 )
             }
@@ -150,13 +162,13 @@ fun AppPickerScreen(onBack: () -> Unit) {
                     horizontalArrangement = Arrangement.spacedBy(8.dp),
                 ) {
                     PeaceChip(
-                        selected = !systemOnly,
-                        onClick = { systemOnly = false },
-                        label = { Text(stringResource(R.string.picker_chip_all)) },
+                        selected = showApps,
+                        onClick = { showApps = !showApps },
+                        label = { Text(stringResource(R.string.picker_chip_apps)) },
                     )
                     PeaceChip(
-                        selected = systemOnly,
-                        onClick = { systemOnly = true },
+                        selected = showSystem,
+                        onClick = { showSystem = !showSystem },
                         label = { Text(stringResource(R.string.picker_chip_system)) },
                     )
                 }

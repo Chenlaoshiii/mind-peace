@@ -25,32 +25,38 @@ data class HomeItem(
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
     private val container = (application as MindPeaceApp).container
 
+    val globalDailyLimitMinutes: StateFlow<Int> = container.settings.globalDailyLimitMinutes
+
     val items: StateFlow<List<HomeItem>> = combine(
         container.settings.watchedApps,
         container.settings.dailyUsage,
-    ) { watched, _ ->
+        container.settings.globalDailyLimitMinutes,
+    ) { watched, _, _ ->
         watched.map { app -> toItem(app) }
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     private fun toItem(app: WatchedApp): HomeItem {
         val label = container.installedApps.labelOf(app.packageName)
         val used = container.settings.usedMillisToday(app.packageName)
-        val remaining = container.settings.remainingDailyMillis(app.packageName, app.dailyLimitMinutes)
-        val usedLine = if (app.dailyLimitMinutes <= 0) {
-            getApplication<Application>().getString(
-                com.mindpeace.app.R.string.home_used_unlimited,
-                formatDurationMillis(used),
-            )
-        } else {
-            getApplication<Application>().getString(
+        val remaining = container.settings.remainingDailyMillis(app.packageName)
+        val global = container.settings.globalDailyLimitMinutes.value
+        val usedLine = when {
+            app.dailyLimitMinutes > 0 -> getApplication<Application>().getString(
                 com.mindpeace.app.R.string.home_used_limit,
                 formatDurationMillis(used),
                 formatMinutesShort(app.dailyLimitMinutes),
             )
+            global > 0 -> getApplication<Application>().getString(
+                com.mindpeace.app.R.string.home_used_shared,
+                formatDurationMillis(used),
+            )
+            else -> getApplication<Application>().getString(
+                com.mindpeace.app.R.string.home_used_unlimited,
+                formatDurationMillis(used),
+            )
         }
         val remainingLine = when {
             !app.enabled -> getApplication<Application>().getString(com.mindpeace.app.R.string.home_off)
-            app.dailyLimitMinutes <= 0 -> ""
             remaining <= 0L -> getApplication<Application>().getString(com.mindpeace.app.R.string.home_remaining_none)
             remaining >= UNLIMITED_BUDGET / 2 -> ""
             else -> getApplication<Application>().getString(

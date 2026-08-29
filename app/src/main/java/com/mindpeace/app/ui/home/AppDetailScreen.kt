@@ -64,7 +64,10 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
     var customText by remember { mutableStateOf("") }
 
     fun save(next: WatchedApp) {
-        scope.launch { app.container.settings.upsertWatched(next) }
+        scope.launch {
+            app.container.settings.upsertWatched(next)
+            app.container.settings.setAppAllocation(packageName, next.dailyLimitMinutes)
+        }
     }
 
     Scaffold(
