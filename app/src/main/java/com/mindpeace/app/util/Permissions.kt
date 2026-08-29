@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -110,5 +111,77 @@ object Permissions {
 
     fun notificationManager(context: Context): NotificationManager {
         return context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+    }
+
+    const val GET_INSTALLED_APPS = "android.permission.GET_INSTALLED_APPS"
+    const val GET_INSTALLED_APPS_OEM = "com.android.permission.GET_INSTALLED_APPS"
+
+    fun canListInstalledApps(context: Context): Boolean {
+        val pm = context.packageManager
+        val launcher = Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_LAUNCHER)
+        val launchCount = try {
+            if (Build.VERSION.SDK_INT >= 33) {
+                pm.queryIntentActivities(
+                    launcher,
+                    PackageManager.ResolveInfoFlags.of(PackageManager.MATCH_ALL.toLong()),
+                ).size
+            } else {
+                @Suppress("DEPRECATION")
+                pm.queryIntentActivities(launcher, PackageManager.MATCH_ALL).size
+            }
+        } catch (_: Exception) {
+            0
+        }
+        val installedCount = try {
+            if (Build.VERSION.SDK_INT >= 33) {
+                pm.getInstalledApplications(PackageManager.ApplicationInfoFlags.of(0)).size
+            } else {
+                @Suppress("DEPRECATION")
+                pm.getInstalledApplications(0).size
+            }
+        } catch (_: Exception) {
+            0
+        }
+        return maxOf(launchCount, installedCount) > 8
+    }
+
+    fun pendingGetInstalledAppsPermission(context: Context): String? {
+        for (perm in listOf(GET_INSTALLED_APPS, GET_INSTALLED_APPS_OEM)) {
+            if (!isPermissionDeclared(context, perm)) continue
+            if (!isPermissionKnown(context, perm)) continue
+            if (context.checkSelfPermission(perm) != PackageManager.PERMISSION_GRANTED) {
+                return perm
+            }
+        }
+        return null
+    }
+
+    fun openAppDetailsSettings(context: Context) {
+        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
+            data = Uri.fromParts("package", context.packageName, null)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+        context.startActivity(intent)
+    }
+
+    private fun isPermissionDeclared(context: Context, perm: String): Boolean {
+        return try {
+            val info = context.packageManager.getPackageInfo(
+                context.packageName,
+                PackageManager.GET_PERMISSIONS,
+            )
+            info.requestedPermissions?.contains(perm) == true
+        } catch (_: Exception) {
+            false
+        }
+    }
+
+    private fun isPermissionKnown(context: Context, perm: String): Boolean {
+        return try {
+            context.packageManager.getPermissionInfo(perm, 0)
+            true
+        } catch (_: Exception) {
+            false
+        }
     }
 }

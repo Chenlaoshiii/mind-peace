@@ -79,6 +79,7 @@ fun OnboardingScreen(
     var a11y by remember { mutableStateOf(Permissions.isAccessibilityEnabled(context)) }
     var battery by remember { mutableStateOf(Permissions.isIgnoringBatteryOptimizations(context)) }
     var notif by remember { mutableStateOf(Permissions.areNotificationsEnabled(context)) }
+    var canListApps by remember { mutableStateOf(Permissions.canListInstalledApps(context)) }
     var selfText by remember { mutableStateOf(savedQuote) }
     val scope = rememberCoroutineScope()
 
@@ -90,6 +91,10 @@ fun OnboardingScreen(
         ActivityResultContracts.RequestPermission(),
     ) { granted -> notif = granted || Permissions.areNotificationsEnabled(context) }
 
+    val appsLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission(),
+    ) { canListApps = Permissions.canListInstalledApps(context) }
+
     val lifecycleOwner = LocalLifecycleOwner.current
     DisposableEffect(lifecycleOwner) {
         val observer = LifecycleEventObserver { _, event ->
@@ -97,6 +102,7 @@ fun OnboardingScreen(
                 a11y = Permissions.isAccessibilityEnabled(context)
                 battery = Permissions.isIgnoringBatteryOptimizations(context)
                 notif = Permissions.areNotificationsEnabled(context)
+                canListApps = Permissions.canListInstalledApps(context)
             }
         }
         lifecycleOwner.lifecycle.addObserver(observer)
@@ -108,6 +114,7 @@ fun OnboardingScreen(
             a11y = Permissions.isAccessibilityEnabled(context)
             battery = Permissions.isIgnoringBatteryOptimizations(context)
             notif = Permissions.areNotificationsEnabled(context)
+            canListApps = Permissions.canListInstalledApps(context)
             delay(800)
         }
     }
@@ -154,7 +161,7 @@ fun OnboardingScreen(
                     1 -> SelfMessageStep(selfText) { selfText = it }
                     2 -> HowStep()
                     3 -> A11yStep(a11y)
-                    4 -> BatteryNotifStep(battery, notif, notifLauncher)
+                    4 -> BatteryNotifStep(battery, notif, canListApps, notifLauncher, appsLauncher)
                     5 -> LockStep(recents) { checked ->
                         scope.launch { settings.setRecentsLockedConfirmed(checked) }
                     }
@@ -287,7 +294,9 @@ private fun A11yStep(enabled: Boolean) {
 private fun BatteryNotifStep(
     battery: Boolean,
     notif: Boolean,
+    canListApps: Boolean,
     notifLauncher: androidx.activity.result.ActivityResultLauncher<String>,
+    appsLauncher: androidx.activity.result.ActivityResultLauncher<String>,
 ) {
     val context = LocalContext.current
     Text(stringResource(R.string.onboarding_battery_title), style = MaterialTheme.typography.headlineMedium)
@@ -334,6 +343,29 @@ private fun BatteryNotifStep(
             modifier = Modifier.fillMaxWidth(),
         ) { Text(stringResource(R.string.onboarding_notif_action)) }
     }
+    Spacer(Modifier.height(28.dp))
+    Text(stringResource(R.string.onboarding_apps_title), style = MaterialTheme.typography.headlineMedium)
+    Spacer(Modifier.height(12.dp))
+    Text(
+        stringResource(R.string.onboarding_apps_body),
+        style = MaterialTheme.typography.bodyLarge,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+    Spacer(Modifier.height(12.dp))
+    StatusLine(canListApps, stringResource(R.string.onboarding_apps_on), stringResource(R.string.onboarding_apps_off))
+    Spacer(Modifier.height(12.dp))
+    PeaceButton(
+        onClick = {
+            val pending = Permissions.pendingGetInstalledAppsPermission(context)
+            if (pending != null) {
+                appsLauncher.launch(pending)
+            } else {
+                Permissions.openAppDetailsSettings(context)
+            }
+        },
+        modifier = Modifier.fillMaxWidth(),
+        outlined = canListApps,
+    ) { Text(stringResource(R.string.onboarding_apps_action)) }
 }
 
 @Composable
@@ -374,6 +406,20 @@ private fun PrivacyStep() {
     Spacer(Modifier.height(12.dp))
     Text(
         stringResource(R.string.onboarding_privacy_body),
+        style = MaterialTheme.typography.bodyLarge,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+    Spacer(Modifier.height(16.dp))
+    Text(
+        stringResource(R.string.onboarding_privacy_offline),
+        style = MaterialTheme.typography.bodyLarge,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+    )
+    Spacer(Modifier.height(28.dp))
+    Text(stringResource(R.string.onboarding_privacy_warn_title), style = MaterialTheme.typography.headlineMedium)
+    Spacer(Modifier.height(12.dp))
+    Text(
+        stringResource(R.string.onboarding_privacy_warn_body),
         style = MaterialTheme.typography.bodyLarge,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
     )

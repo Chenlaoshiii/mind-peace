@@ -132,10 +132,10 @@ fun HomeScreen(
                         Slider(
                             value = global.coerceIn(0, 360).toFloat(),
                             onValueChange = {
-                                scope.launch { app.container.settings.setGlobalDailyLimitMinutes(it.roundToInt()) }
+                                val snapped = ((it / 5f).roundToInt() * 5).coerceIn(0, 360)
+                                scope.launch { app.container.settings.setGlobalDailyLimitMinutes(snapped) }
                             },
                             valueRange = 0f..360f,
-                            steps = 71,
                             modifier = Modifier.fillMaxWidth(),
                         )
                         FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {

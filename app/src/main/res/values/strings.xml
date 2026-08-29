@@ -29,7 +29,7 @@
     <string name="onboarding_how_title">一次使用是怎样的</string>
     <string name="onboarding_how_1">打开被守护的应用时，立刻出现确认层，暂时用不了。</string>
     <string name="onboarding_how_2">选「确定」继续，或「退出」回到桌面。</string>
-    <string name="onboarding_how_3">挑选时长（1 / 3 / 5 / 10 / 15 / 30 分钟，或自定义）。</string>
+    <string name="onboarding_how_3">挑选时长（1 / 3 / 5 分钟，或自定义）。</string>
     <string name="onboarding_how_4">倒计时只在这个应用在前台时走。中途离开（回桌面、切到别的应用）会结束本次，没用完的时间作废；下次打开会再次询问。时间到会回到桌面并提醒你。</string>
 
     <string name="onboarding_a11y_title">开启无障碍服务</string>
@@ -48,6 +48,11 @@
     <string name="onboarding_notif_action">允许通知</string>
     <string name="onboarding_notif_on">通知已允许</string>
     <string name="onboarding_notif_off">通知未允许</string>
+    <string name="onboarding_apps_title">读取手机上的应用</string>
+    <string name="onboarding_apps_body">需要看到已安装应用的名单，你才能挑选哪些应用要被守护。只读取应用名称和图标，用来生成名单，不会打开应用内的内容。</string>
+    <string name="onboarding_apps_on">可以读取已安装应用</string>
+    <string name="onboarding_apps_off">尚未获得应用列表</string>
+    <string name="onboarding_apps_action">去授权读取应用</string>
 
     <string name="onboarding_lock_title">锁定后台任务</string>
     <string name="onboarding_lock_body">部分手机厂商会在后台清掉应用，导致拦截失效。请按你的手机操作一次，然后勾选确认。</string>
@@ -57,8 +62,11 @@
     <string name="onboarding_lock_vivo">vivo / iQOO：最近任务锁定；后台高耗电允许。</string>
     <string name="onboarding_lock_pixel">Pixel / 原生安卓：一般只需关闭电池优化，无需额外锁定。</string>
     <string name="onboarding_lock_check">我已按说明锁定后台（或确认不需要）</string>
-    <string name="onboarding_privacy_title">完全在你的手机上</string>
-    <string name="onboarding_privacy_body">完全在你的手机上运行，不会收集任何数据，完全离线。开启无障碍权限只是为了及时盖住确认层，不会读取聊天或屏幕内容。</string>
+    <string name="onboarding_privacy_title">郑重说明</string>
+    <string name="onboarding_privacy_body">读取已安装应用、获得通知、开启无障碍，全都是为了更准确地守护你选定的那些应用：在打开前盖住确认层，让倒计时真正走完，并在该提醒你的时候提醒你。少任何一项，拦截都可能失灵。</string>
+    <string name="onboarding_privacy_offline">我们在此郑重重申：Mind Peace 绝不收集隐私，也不会上传任何使用记录。它完全离线，一切都只留在你的这台手机上。无障碍不会去读聊天、密码或屏幕上的文字，只关心是哪一个应用来到了前台。</string>
+    <string name="onboarding_privacy_warn_title">好心提醒</string>
+    <string name="onboarding_privacy_warn_body">你被骗了。若有人说，给这类应用开无障碍、通知或应用列表，就是把聊天、相册和账号交出去——那不是真的。这些权限只为了让拦截发生在正确的时刻。我们看不到你的消息，也拿不走你的数据。</string>
 
     <string name="onboarding_next">继续</string>
     <string name="onboarding_back">上一步</string>
@@ -263,6 +271,9 @@
     <string name="settings_language_en" translatable="false">English</string>
     <string name="settings_language_ja" translatable="false">日本語</string>
     <string name="settings_language_ru" translatable="false">Русский</string>
+    <string name="settings_language_lzh" translatable="false">文言文</string>
+    <string name="settings_language_es" translatable="false">Español</string>
+    <string name="settings_language_fr" translatable="false">Français</string>
     <string name="cd_expand">展开</string>
     <string name="cd_collapse">收起</string>
     <string name="duration_hours_minutes">%1$d小时%2$d分</string>

@@ -129,9 +129,11 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
             )
             Slider(
                 value = current.dailyLimitMinutes.coerceIn(0, 180).toFloat(),
-                onValueChange = { save(current.copy(dailyLimitMinutes = it.roundToInt())) },
+                onValueChange = {
+                    val snapped = ((it / 5f).roundToInt() * 5).coerceIn(0, 180)
+                    save(current.copy(dailyLimitMinutes = snapped))
+                },
                 valueRange = 0f..180f,
-                steps = 35,
                 modifier = Modifier.fillMaxWidth(),
             )
             FlowRow(

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mind Peace</string>
+    <string name="accessibility_service_description">Mind Peace se sert de l’accessibilité pour percevoir l’application ouverte et la recouvrir d’une confirmation avant que tu l’utilises. Elle ne lit ni les discussions, ni les mots de passe, ni le texte à l’écran : elle ne s’occupe que de l’application passée au premier plan. Tout se passe sur ton téléphone : aucun recueil, aucun envoi d’historique d’usage.</string>
+    <string name="channel_session_name">Compte à rebours d’usage</string>
+    <string name="channel_session_desc">Une session limitée en cours, avec le temps restant.</string>
+    <string name="channel_reminder_name">C’est l’heure</string>
+    <string name="channel_reminder_desc">Rappel lorsque cette session se termine.</string>
+    <string name="channel_celebration_name">Encouragement à tenir</string>
+    <string name="channel_celebration_desc">Un encouragement quand tu n’as pas ouvert les applications gardées depuis un moment.</string>
+    <string name="channel_summary_name">Bilan du jour</string>
+    <string name="channel_summary_desc">Le soir, un regard sur le temps d’aujourd’hui face à celui d’hier.</string>
+    <string name="onboarding_welcome_title">D’abord t’arrêter. Ensuite ouvrir.</string>
+    <string name="onboarding_welcome_body">Mind Peace ne verrouille pas tout le téléphone. Quand tu ouvres une appli de flux ou de vidéos courtes où tu as tendance à t’égarer, elle la recouvre aussitôt d’une confirmation et te demande si tu veux vraiment l’ouvrir.</string>
+    <string name="onboarding_welcome_p1">Intercepter avant d’ouvrir, pour qu’un glissement ne t’emporte pas</string>
+    <string name="onboarding_welcome_p2">C’est toi qui choisis la durée, cette fois</string>
+    <string name="onboarding_welcome_p3">Tu peux d’abord fixer un total quotidien, puis le répartir entre les applis</string>
+    <string name="onboarding_self_title">Une phrase pour toi</string>
+    <string name="onboarding_self_body">À chaque interception, tu verras d’abord cette phrase. Écris un but, ou un rappel tout doux, pour toi à cet instant.</string>
+    <string name="onboarding_self_hint">Avant d’ouvrir, demande-toi : en ai-je vraiment besoin maintenant ?</string>
+    <string name="onboarding_self_preset_1">Avant d’ouvrir, demande-toi : en ai-je vraiment besoin maintenant ?</string>
+    <string name="onboarding_self_preset_2">Arrête-toi dix secondes, puis décide d’ouvrir ou non.</string>
+    <string name="onboarding_self_preset_3">Ce n’est pas du repos. Ne prends pas le défilement pour de la détente.</string>
+    <string name="onboarding_self_need">Écris quelques mots, ou choisis une phrase déjà prête.</string>
+    <string name="onboarding_how_title">Comment se passe une session</string>
+    <string name="onboarding_how_1">À l’ouverture d’une appli gardée, la couche de confirmation apparaît aussitôt : tu ne peux pas encore t’en servir.</string>
+    <string name="onboarding_how_2">Choisis Confirmer pour continuer, ou Quitter pour revenir à l’accueil.</string>
+    <string name="onboarding_how_3">Choisis la durée (1 / 3 / 5 minutes, ou personnalisée).</string>
+    <string name="onboarding_how_4">Le compte à rebours ne tourne que pendant que cette appli est au premier plan. Partir (accueil, autre appli) termine la session ; le temps non utilisé est perdu, et la prochaine ouverture redemandera. Quand le temps est écoulé, tu reviens à l’accueil avec un rappel.</string>
+    <string name="onboarding_a11y_title">Activer l’accessibilité</string>
+    <string name="onboarding_a11y_body">Le système ne nous dit pas quelle appli tu as ouverte, sauf si tu confies l’accessibilité à Mind Peace. Elle sert seulement à percevoir l’appli au premier plan et à la recouvrir à temps. Elle ne lira pas tes messages.</string>
+    <string name="onboarding_a11y_action">Ouvrir l’accessibilité</string>
+    <string name="onboarding_a11y_on">Accessibilité activée</string>
+    <string name="onboarding_a11y_off">Pas encore activée</string>
+    <string name="onboarding_battery_title">Moins de risques d’être tuée par le système</string>
+    <string name="onboarding_battery_body">Le compte à rebours doit continuer tranquillement en arrière-plan. Autorise Mind Peace à ignorer l’optimisation de la batterie et, quand le système le demande, autorise les notifications (pour afficher le temps restant).</string>
+    <string name="onboarding_battery_action">Ignorer l’optimisation de la batterie</string>
+    <string name="onboarding_battery_on">Optimisation de la batterie ignorée</string>
+    <string name="onboarding_battery_off">Encore limitée par l’optimisation de la batterie</string>
+    <string name="onboarding_notif_title">Activer les notifications</string>
+    <string name="onboarding_notif_body">Le bilan du soir et l’encouragement « tu as tenu » passent par les notifications. Le compte à rebours de cette session s’y affiche aussi. Si tu ne les autorises pas maintenant, tu peux quand même finir le guide ; on te le rappellera plus tard sur l’accueil.</string>
+    <string name="onboarding_notif_action">Autoriser les notifications</string>
+    <string name="onboarding_notif_on">Notifications autorisées</string>
+    <string name="onboarding_notif_off">Notifications non autorisées</string>
+    <string name="onboarding_apps_title">Lire les applis du téléphone</string>
+    <string name="onboarding_apps_body">Il faut voir la liste des applis installées pour que tu choisisses lesquelles garder. Seuls le nom et l’icône sont lus, pour constituer cette liste. On n’ouvre pas le contenu des applis.</string>
+    <string name="onboarding_apps_on">Les applis installées peuvent être lues</string>
+    <string name="onboarding_apps_off">Liste des applis pas encore disponible</string>
+    <string name="onboarding_apps_action">Autoriser la lecture des applis</string>
+    <string name="onboarding_lock_title">Verrouiller dans les récents</string>
+    <string name="onboarding_lock_body">Certains constructeurs tuent les applis en arrière-plan, et l’interception cesse alors de marcher. Suis les étapes pour ton téléphone, puis coche la case.</string>
+    <string name="onboarding_lock_xiaomi">Xiaomi / Redmi : dans Récents, tire la carte Mind Peace vers le bas et appuie sur Verrouiller.</string>
+    <string name="onboarding_lock_huawei">Huawei / Honor : verrouille la carte dans Récents ; dans la batterie, autorise l’exécution en arrière-plan.</string>
+    <string name="onboarding_lock_oppo">OPPO / OnePlus : verrouille depuis le coin supérieur des Récents ; autorise Mind Peace dans le démarrage automatique.</string>
+    <string name="onboarding_lock_vivo">vivo / iQOO : verrouille dans Récents ; autorise une forte consommation en arrière-plan.</string>
+    <string name="onboarding_lock_pixel">Pixel / Android d’origine : ignorer l’optimisation de la batterie suffit en général. Pas de verrouillage extra.</string>
+    <string name="onboarding_lock_check">Je l’ai verrouillée dans Récents (ou confirmé que ce n’est pas nécessaire)</string>
+    <string name="onboarding_privacy_title">Une note solennelle</string>
+    <string name="onboarding_privacy_body">Lire les applis installées, recevoir les notifications, activer l’accessibilité : tout cela sert à mieux garder les applis que tu as choisies. Recouvrir la confirmation avant qu’elles s’ouvrent, laisser le compte à rebours aller jusqu’au bout, et te prévenir quand il faut te prévenir. S’il en manque une, l’interception peut échouer.</string>
+    <string name="onboarding_privacy_offline">Nous le réaffirmons clairement : Mind Peace ne recueille jamais de données personnelles et n’envoie aucun historique d’usage. Elle est entièrement hors ligne. Tout reste sur ce téléphone. L’accessibilité ne lit ni les discussions, ni les mots de passe, ni le texte à l’écran : elle ne s’occupe que de l’application passée au premier plan.</string>
+    <string name="onboarding_privacy_warn_title">Un rappel de bonne foi</string>
+    <string name="onboarding_privacy_warn_body">On t’a trompé. Si l’on t’a dit qu’accorder à ce genre d’appli l’accessibilité, les notifications ou la liste des applis, c’est livrer discussions, photos et comptes, ce n’est pas vrai. Ces autorisations n’existent que pour que la pause arrive au bon moment. Nous ne voyons pas tes messages, et nous n’emportons pas tes données.</string>
+    <string name="onboarding_next">Continuer</string>
+    <string name="onboarding_back">Retour</string>
+    <string name="onboarding_finish">C’est fait</string>
+    <string name="onboarding_finish_hint">Active d’abord l’accessibilité et confirme le verrouillage dans Récents.</string>
+    <string name="onboarding_step">Étape %1$d sur %2$d</string>
+    <string name="home_title">Garde d’aujourd’hui</string>
+    <string name="home_empty_title">Aucune appli gardée pour l’instant</string>
+    <string name="home_empty_body">Ajoute une appli que tu voudrais ouvrir moins. La prochaine fois, on te demandera d’abord.</string>
+    <string name="home_add">Ajouter des applis</string>
+    <string name="home_used_limit">Aujourd’hui %1$s / %2$s</string>
+    <string name="home_used_unlimited">Aujourd’hui %1$s · sans plafond</string>
+    <string name="home_used_shared">Aujourd’hui %1$s · partagé avec le total</string>
+    <string name="home_remaining">Reste %1$s</string>
+    <string name="home_remaining_none">Le quota du jour est épuisé</string>
+    <string name="home_off">Pas d’interception</string>
+    <string name="home_stats_card">Bilan du jour</string>
+    <string name="home_stats_card_sub">Voir comment aujourd’hui se compare à hier</string>
+    <string name="home_notif_banner">Le bilan du soir et les encouragements ont besoin des notifications. Touche pour autoriser.</string>
+    <string name="cd_stats">Bilan du jour</string>
+    <string name="picker_title">Ajouter des applis</string>
+    <string name="picker_subtitle">%1$d applis</string>
+    <string name="picker_search">Rechercher un nom ou un paquet</string>
+    <string name="picker_empty">Aucune appli ne correspond</string>
+    <string name="picker_intercept">Garder</string>
+    <string name="picker_chip_apps">Applis</string>
+    <string name="picker_chip_system">Outils système</string>
+    <string name="picker_filter_hint">Ouvre Applis ou Outils système pour filtrer</string>
+    <string name="picker_loading">Lecture des applis installées…</string>
+    <string name="detail_title">Réglages de l’appli</string>
+    <string name="detail_enable">Intercepter</string>
+    <string name="detail_enable_sub">Demander avant d’ouvrir cette appli</string>
+    <string name="detail_limit">Prendre sur le total quotidien</string>
+    <string name="detail_limit_sub">0 signifie pas de plafond extra pour cette appli ; elle partage encore le reste du total du jour. Les minutes attribuées ne peuvent pas dépasser le total restant.</string>
+    <string name="detail_limit_none">Sans plafond extra</string>
+    <string name="detail_limit_minutes">%1$d min</string>
+    <string name="detail_today">Aujourd’hui %1$s</string>
+    <string name="detail_remove">Retirer de la liste gardée</string>
+    <string name="detail_custom">Minutes personnalisées</string>
+    <string name="settings_title">Réglages</string>
+    <string name="settings_permissions">Autorisations et survie</string>
+    <string name="settings_a11y">Accessibilité</string>
+    <string name="settings_battery">Optimisation de la batterie</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_notifications_sub">Le bilan du soir et les encouragements ont besoin de l’autorisation de notification.</string>
+    <string name="settings_overlay">Afficher par-dessus d’autres applis (secours)</string>
+    <string name="settings_overlay_sub">La couche d’accessibilité est la voie principale. Si l’interception est instable, tu peux aussi autoriser le superposé.</string>
+    <string name="settings_lock">Comment verrouiller dans Récents</string>
+    <string name="settings_setup">Revoir le guide</string>
+    <string name="settings_self_message">Une phrase pour toi</string>
+    <string name="settings_self_message_sub">Affichée lors de la confirmation d’interception.</string>
+    <string name="settings_self_save">Enregistrer</string>
+    <string name="settings_about">À propos</string>
+    <string name="settings_about_body">Mind Peace %1$s
+D’abord t’arrêter. Ensuite ouvrir.
+Elle ne verrouille pas tout le téléphone : elle ne demande que sur les applis que tu as choisies. Tout se passe sur ton téléphone, sans recueil de données.
+
+Mind Peace · Chenlaoshi
+Auteur 陈老实Chenlaoshi</string>
+    <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
+    <string name="settings_credit_line">Auteur 陈老实Chenlaoshi · voir sur Bilibili</string>
+    <string name="settings_credit_name">陈老实Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">Voir le GitHub de l’auteur</string>
+    <string name="settings_status_on">Activé</string>
+    <string name="settings_status_off">Désactivé</string>
+    <string name="settings_go">Ouvrir les réglages</string>
+    <string name="a11y_required_title">L’accessibilité est coupée</string>
+    <string name="a11y_required_body">Sans accessibilité, Mind Peace ne peut pas savoir quelle appli tu as ouverte, et l’interception ne fonctionne pas. Réactive-la.</string>
+    <string name="a11y_required_action">Activer</string>
+    <string name="overlay_question">Tu veux vraiment ouvrir %1$s ?</string>
+    <string name="overlay_confirm">Confirmer</string>
+    <string name="overlay_exit">Quitter</string>
+    <string name="overlay_pick_title">Combien de temps, cette fois ?</string>
+    <string name="overlay_minutes">%1$d min</string>
+    <string name="overlay_custom">Personnalisé</string>
+    <string name="overlay_budget_left">Il reste %1$s aujourd’hui</string>
+    <string name="overlay_budget_none">Le quota du jour est épuisé</string>
+    <string name="overlay_budget_unlimited">Pas de plafond aujourd’hui</string>
+    <string name="overlay_cap_title">Plus long que le temps restant aujourd’hui</string>
+    <string name="overlay_cap_body">Aujourd’hui, « %1$s » n’a plus que %2$s. Cette session commencera avec le temps restant, pas %3$d minutes.</string>
+    <string name="overlay_cap_accept">Utiliser le temps restant</string>
+    <string name="overlay_cap_cancel">Retour</string>
+    <string name="overlay_custom_title">Durée personnalisée</string>
+    <string name="overlay_custom_hint">Minutes</string>
+    <string name="overlay_custom_ok">Commencer</string>
+    <string name="overlay_timeup_title">C’est l’heure</string>
+    <string name="overlay_timeup_body">Cette session avec %1$s est terminée. Éloigne-toi un moment.</string>
+    <string name="overlay_timeup_ok">D’accord</string>
+    <string name="overlay_pause">Tu es parti. Le temps restant de cette session est annulé</string>
+    <string name="overlay_self_label">Pour toi</string>
+    <string name="session_notif_title">Utilisation de %1$s</string>
+    <string name="session_notif_text">Reste %1$s</string>
+    <string name="session_notif_paused">Cette session est terminée</string>
+    <string name="timeup_notif_title">C’est l’heure</string>
+    <string name="timeup_notif_text">Cette session avec %1$s est terminée</string>
+    <string name="celebration_notif_title">Un peu d’applaudissements, pour toi</string>
+    <string name="summary_notif_title">Bilan du jour</string>
+    <string name="summary_less">Aujourd’hui, %1$d minutes, soit %2$d de moins qu’hier. Solide.</string>
+    <string name="summary_more">Aujourd’hui, %1$d minutes, soit %2$d de plus qu’hier. On pourra resserrer demain.</string>
+    <string name="summary_same">Aujourd’hui, %1$d minutes, à peu près comme hier.</string>
+    <string name="summary_no_yesterday">Aujourd’hui, %1$d minutes. La comparaison commence demain.</string>
+    <string name="summary_standout_less">%1$s : %2$d minutes de moins</string>
+    <string name="summary_standout_more">%1$s : %2$d minutes de plus</string>
+    <string name="summary_none">Tu n’as ouvert aucune appli gardée aujourd’hui. Ce vide-là est bon aussi.</string>
+    <string name="stats_title">Bilan du jour</string>
+    <string name="stats_today_total">Aujourd’hui %1$d min</string>
+    <string name="stats_delta_less">%1$d minutes de moins qu’hier</string>
+    <string name="stats_delta_more">%1$d minutes de plus qu’hier</string>
+    <string name="stats_delta_same">À peu près comme hier</string>
+    <string name="stats_no_yesterday">La comparaison commence demain</string>
+    <string name="stats_empty">Pas encore d’applis gardées. Ajoutes-en pour voir la comparaison.</string>
+    <string name="stats_app_today">Aujourd’hui %1$d min</string>
+    <string name="stats_app_yesterday">Hier %1$d min</string>
+    <string name="stats_legend_today">Aujourd’hui</string>
+    <string name="stats_legend_yesterday">Hier</string>
+    <string name="stats_warm_less">Ces minutes non utilisées, tu te les es gardées.</string>
+    <string name="stats_warm_more">Le surplus, on pourra le reprendre demain, tout doucement.</string>
+    <string name="stats_warm_same">Un rythme stable, c’est déjà très bien.</string>
+    <string name="stats_warm_first">Finis d’abord aujourd’hui. Demain, tu verras le changement.</string>
+    <string name="onboarding_self_custom">Personnalisé</string>
+    <string name="onboarding_self_custom_hint">Écris une phrase pour toi, en cet instant</string>
+    <string name="settings_appearance">Apparence</string>
+    <string name="settings_color_mode">Mode de couleur</string>
+    <string name="settings_color_light">Clair</string>
+    <string name="settings_color_dark">Sombre</string>
+    <string name="settings_color_system">Selon le système</string>
+    <string name="settings_style">Style</string>
+    <string name="settings_style_material">Material You de Google</string>
+    <string name="settings_style_material_sub">Couleur dynamique, Material 3 épuré</string>
+    <string name="settings_style_orange">Style orange</string>
+    <string name="settings_style_orange_sub">Papier chaud #FAF9F5, orange #D97757, serif</string>
+    <string name="settings_style_apple">Style Apple</string>
+    <string name="settings_style_apple_sub">Vert système et verre liquide</string>
+    <string name="about_blurb">D’abord t’arrêter. Ensuite ouvrir. Elle ne verrouille pas tout le téléphone : elle ne demande que sur les applis que tu as choisies. Tout se passe sur ton téléphone, sans recueil de données.</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="lab_title">Aperçu des notifications</string>
+    <string name="lab_group_celebration">Encouragement après longtemps sans applis gardées</string>
+    <string name="lab_group_summary">Notifications du bilan du soir</string>
+    <string name="lab_preview">Aperçu</string>
+    <string name="lab_raw">Texte source</string>
+    <string name="lab_sample_app">TikTok</string>
+    <string name="stats_trend">Tendance sur 7 jours</string>
+    <string name="stats_trend_total">Minutes au total</string>
+    <string name="stats_y_minutes">min</string>
+    <string name="cd_settings">Réglages</string>
+    <string name="cd_add">Ajouter des applis</string>
+    <string name="cd_back">Retour</string>
+    <string name="tab_budget">Temps total</string>
+    <string name="tab_add">Ajouter des applis</string>
+    <string name="tab_settings">Réglages</string>
+    <string name="tab_stats">Bilan du jour</string>
+    <string name="budget_title">Temps total</string>
+    <string name="budget_global">Combien en tout chaque jour</string>
+    <string name="budget_global_sub">Plafond de toutes les applis gardées ensemble. D’abord le total, puis répartis les minutes.</string>
+    <string name="budget_none">Pas de plafond quotidien total</string>
+    <string name="budget_minutes">%1$d min par jour</string>
+    <string name="budget_allocated">Attribuées %1$d / %2$d min</string>
+    <string name="budget_unallocated">Encore %1$d min non attribuées</string>
+    <string name="budget_unallocated_none">Toutes les minutes ont été attribuées</string>
+    <string name="budget_app_alloc">%1$d min pour cette appli</string>
+    <string name="budget_app_share">Pas de plafond propre ; partage le temps restant</string>
+    <string name="budget_empty_title">Aucune appli gardée pour l’instant</string>
+    <string name="budget_empty_body">Ajoute d’abord une appli que tu voudrais ouvrir moins, puis reviens répartir le temps du jour.</string>
+    <string name="stats_compare">Aujourd’hui face à hier</string>
+    <string name="settings_language_word">Langue</string>
+    <string name="cd_expand">Déplier</string>
+    <string name="cd_collapse">Replier</string>
+    <string name="duration_hours_minutes">%1$d h %2$d min</string>
+    <string name="duration_minutes_seconds">%1$d min %2$d s</string>
+    <string name="duration_minutes">%1$d min</string>
+    <string name="duration_seconds">%1$d s</string>
+    <string name="weekday_mon">Lun</string>
+    <string name="weekday_tue">Mar</string>
+    <string name="weekday_wed">Mer</string>
+    <string name="weekday_thu">Jeu</string>
+    <string name="weekday_fri">Ven</string>
+    <string name="weekday_sat">Sam</string>
+    <string name="weekday_sun">Dim</string>
+    <string-array name="celebration_templates">
+        <item>Les applis de la liste attendent. Toi, tu t’en sors très bien sans elles.</item>
+        <item>La seconde où le doigt s’est arrêté, tu avais déjà gagné une manche.</item>
+        <item>Ces applis t’attendent encore. Toi, tu étais déjà à vivre ta journée.</item>
+        <item>Ce creux n’est pas de l’ennui : c’est une fenêtre que tu t’es laissée.</item>
+        <item>Ne pas les ouvrir, ça va. Le monde tourne, et toi tu y vois plus clair.</item>
+        <item>Cette retenue d’aujourd’hui, le toi de demain t’en remerciera tout bas.</item>
+        <item>L’envie de faire défiler est venue, puis partie. Tu es encore là. C’est bien.</item>
+        <item>La liste gardée est de faction. Toi, tu as mis le temps ailleurs, plus vivant.</item>
+        <item>Ouvrir une fois de moins, c’est récupérer un bout de ton propre rythme.</item>
+        <item>L’écran peut rester allumé. Il ne t’a pas emporté.</item>
+        <item>Ce temps sans ces applis mérite déjà un peu d’applaudissements.</item>
+        <item>Aujourd’hui l’attention s’est mise de ton côté. Rare, et pile à l’heure.</item>
+        <item>Les envies de glisser sont passées. Tu as repris ta journée.</item>
+        <item>Un blanc de temps, vécu comme un vrai loisir.</item>
+        <item>Les applis sont restées là. Toi, tu as déjà fait quelques pas.</item>
+        <item>Tenir n’est pas perdre : c’est reprendre le volant.</item>
+        <item>Le temps de ce soir, tu l’as ramassé dans l’habitude.</item>
+        <item>Tu n’as pas glissé jusqu’au bout. Même le souffle passe mieux.</item>
+        <item>Tu vois : quitte ces applis, et le ciel ne tombe pas.</item>
+        <item>Ce calme, tu l’as gagné. Garde-le. Ne le rends pas trop vite.</item>
+    </string-array>
+</resources>

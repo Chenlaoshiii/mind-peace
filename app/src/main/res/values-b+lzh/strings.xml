@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mind Peace</string>
+    <string name="accessibility_service_description">Mind Peace 藉無障礙之職，察當前所開之應用，於汝未用之先覆以確認之層。不讀言談、密鑰、屏上文字之細，惟問何應用至於前。盡行於汝之機，不蒐、不傳所用之錄。</string>
+    <string name="channel_session_name">用之倒計</string>
+    <string name="channel_session_desc">限時之用正在進行，示其所餘。</string>
+    <string name="channel_reminder_name">時至</string>
+    <string name="channel_reminder_desc">是次既終，以告汝。</string>
+    <string name="channel_celebration_name">能持之勉</string>
+    <string name="channel_celebration_desc">久不啟所守之應用，則勉之。</string>
+    <string name="channel_summary_name">日終之省</string>
+    <string name="channel_summary_desc">每夕顧今日與昨日所用之時。</string>
+    <string name="onboarding_welcome_title">先止，而後開</string>
+    <string name="onboarding_welcome_body">Mind Peace 不錮全機。汝啟易溺之流應用，即覆以確認之層，問汝果欲開之否。</string>
+    <string name="onboarding_welcome_p1">未開而先攔截，以免一滑而不可止</string>
+    <string name="onboarding_welcome_p2">是次之久，汝自擇之</string>
+    <string name="onboarding_welcome_p3">可先定每日之總限，再分於諸應用</string>
+    <string name="onboarding_self_title">書以自況</string>
+    <string name="onboarding_self_body">每為攔截，汝先見此言。書一志，或一輕語，以遺當下之己。</string>
+    <string name="onboarding_self_hint">未開之先，且自問：今果需之乎？</string>
+    <string name="onboarding_self_preset_1">未開之先，且自問：今果需之乎？</string>
+    <string name="onboarding_self_preset_2">先止十息，再決開與否。</string>
+    <string name="onboarding_self_preset_3">此非休憩，勿以滑動為放鬆。</string>
+    <string name="onboarding_self_need">書數言，或擇現成之句。</string>
+    <string name="onboarding_how_title">一次之用如何</string>
+    <string name="onboarding_how_1">啟所守之應用，確認之層即現，暫不可用。</string>
+    <string name="onboarding_how_2">擇「確定」以續，或「退出」以歸桌面。</string>
+    <string name="onboarding_how_3">擇其久（一、三、五分，或自定）。</string>
+    <string name="onboarding_how_4">倒計惟此應用在前則行。中道而去（歸桌面、改啟他應用），是次即終，未盡之時廢；再啟則復問。時至則歸桌面，且告汝。</string>
+    <string name="onboarding_a11y_title">啟無障礙之職</string>
+    <string name="onboarding_a11y_body">非汝以無障礙之職授 Mind Peace，系統不以「汝開何應用」告我。其用惟察前臺之應用、及時覆以確認之層，不以讀汝之言。</string>
+    <string name="onboarding_a11y_action">往啟無障礙</string>
+    <string name="onboarding_a11y_on">無障礙已啟</string>
+    <string name="onboarding_a11y_off">尚未啟</string>
+    <string name="onboarding_battery_title">減為系統所殺</string>
+    <string name="onboarding_battery_body">倒計須於後臺默行。請許 Mind Peace 不為電池所限，系統若問，亦許通知（以示所餘之時）。</string>
+    <string name="onboarding_battery_action">罷電池之限</string>
+    <string name="onboarding_battery_on">已不為電池所限</string>
+    <string name="onboarding_battery_off">猶為電池之限所拘</string>
+    <string name="onboarding_notif_title">啟通知</string>
+    <string name="onboarding_notif_body">夕省與「能持」之勉，皆由通知。是次倒計亦見於通知。今若不許，引導仍可竟；其後將於首頁再告汝。</string>
+    <string name="onboarding_notif_action">許通知</string>
+    <string name="onboarding_notif_on">通知已許</string>
+    <string name="onboarding_notif_off">通知未許</string>
+    <string name="onboarding_apps_title">讀機中之應用</string>
+    <string name="onboarding_apps_body">須見已置之應用名單，汝始能擇其所守。惟讀其名與其徽，以成名單，不開應用之內。</string>
+    <string name="onboarding_apps_on">已可讀已置之應用</string>
+    <string name="onboarding_apps_off">尚未得應用之列</string>
+    <string name="onboarding_apps_action">往授讀應用之權</string>
+    <string name="onboarding_lock_title">鎖後臺之任</string>
+    <string name="onboarding_lock_body">或有廠家於後臺盡清應用，攔截遂廢。請依汝之機一行之，再勾以確認。</string>
+    <string name="onboarding_lock_xiaomi">小米 / 紅米：近用中下拉 Mind Peace 之片，點鎖定。</string>
+    <string name="onboarding_lock_huawei">華為 / 榮耀：近用中下拉其片以鎖；電池之設許後臺運行。</string>
+    <string name="onboarding_lock_oppo">OPPO / 一加：近用右上鎖定；自啟之管許 Mind Peace。</string>
+    <string name="onboarding_lock_vivo">vivo / iQOO：近用鎖定；後臺高耗電許之。</string>
+    <string name="onboarding_lock_pixel">Pixel / 原安卓：多罷電池之限即可，不必另鎖。</string>
+    <string name="onboarding_lock_check">吾已依說明鎖後臺（或確認不必）</string>
+    <string name="onboarding_privacy_title">鄭重陳辭</string>
+    <string name="onboarding_privacy_body">讀已置之應用、得通知、啟無障礙，皆為更準以守汝所擇之應用：未開之先覆確認之層，使倒計得竟，當告則告。缺其一，攔截或廢。</string>
+    <string name="onboarding_privacy_offline">謹再申之：Mind Peace 絕不蒐隱私，亦不傳所用之錄。全然離線，萬事惟留於此機。無障礙不讀言談、密鑰、屏上文字，惟問何應用至於前。</string>
+    <string name="onboarding_privacy_warn_title">善意相告</string>
+    <string name="onboarding_privacy_warn_body">汝受欺矣。若有人謂，予此類應用以無障礙、通知或應用之列，即是以言談、影集、帳號授人——非實也。此權惟為使攔截發於其時。吾儕不見汝之言，亦不取汝之數據。</string>
+    <string name="onboarding_next">續</string>
+    <string name="onboarding_back">上一步</string>
+    <string name="onboarding_finish">吾已竟</string>
+    <string name="onboarding_finish_hint">請先啟無障礙之職，並確認已鎖後臺。</string>
+    <string name="onboarding_step">第 %1$d 步，凡 %2$d 步</string>
+    <string name="home_title">今日所守</string>
+    <string name="home_empty_title">尚未守任何應用</string>
+    <string name="home_empty_body">增一汝欲少啟之應用。再啟時，將先問汝。</string>
+    <string name="home_add">增應用</string>
+    <string name="home_used_limit">今日 %1$s / %2$s</string>
+    <string name="home_used_unlimited">今日已用 %1$s · 不限</string>
+    <string name="home_used_shared">今日已用 %1$s · 共總時</string>
+    <string name="home_remaining">餘 %1$s</string>
+    <string name="home_remaining_none">今日已盡</string>
+    <string name="home_off">未攔截</string>
+    <string name="home_stats_card">今日之省</string>
+    <string name="home_stats_card_sub">觀今日與昨日孰若</string>
+    <string name="home_notif_banner">夕省與能持之勉需通知。點此以許。</string>
+    <string name="cd_stats">今日之省</string>
+    <string name="picker_title">增應用</string>
+    <string name="picker_subtitle">凡 %1$d 應用</string>
+    <string name="picker_search">求應用之名或包名</string>
+    <string name="picker_empty">無相合之應用</string>
+    <string name="picker_intercept">攔截</string>
+    <string name="picker_chip_apps">應用</string>
+    <string name="picker_chip_system">系統之器</string>
+    <string name="picker_filter_hint">開「應用」或「系統之器」以篩</string>
+    <string name="picker_loading">方讀已置之應用…</string>
+    <string name="detail_title">應用之設</string>
+    <string name="detail_enable">啟攔截</string>
+    <string name="detail_enable_sub">開此應用則先確認</string>
+    <string name="detail_limit">自總時分出</string>
+    <string name="detail_limit_sub">零則不另限此應用，猶受今日總時之約。所分之分，不得逾尚未分出之總時。</string>
+    <string name="detail_limit_none">不限</string>
+    <string name="detail_limit_minutes">%1$d 分</string>
+    <string name="detail_today">今日已用 %1$s</string>
+    <string name="detail_remove">移出所守之名</string>
+    <string name="detail_custom">自定其分</string>
+    <string name="settings_title">設置</string>
+    <string name="settings_permissions">權與保活</string>
+    <string name="settings_a11y">無障礙之職</string>
+    <string name="settings_battery">電池之限</string>
+    <string name="settings_notifications">通知</string>
+    <string name="settings_notifications_sub">夕省與能持之勉需通知之權。</string>
+    <string name="settings_overlay">浮窗（備）</string>
+    <string name="settings_overlay_sub">無障礙之罩為主。攔截若不穩，可另許浮窗。</string>
+    <string name="settings_lock">後臺鎖定之說明</string>
+    <string name="settings_setup">復覽引導</string>
+    <string name="settings_self_message">書以自況</string>
+    <string name="settings_self_message_sub">攔截確認時示汝自見。</string>
+    <string name="settings_self_save">存</string>
+    <string name="settings_about">關於</string>
+    <string name="settings_about_body">Mind Peace %1$s
+未開之先，且止一息。
+不錮全機，惟於汝所擇之應用問之。盡行於汝之機，不蒐數據。
+
+Mind Peace · Chenlaoshi
+作者 陳老實Chenlaoshi</string>
+    <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
+    <string name="settings_credit_line">作者 陳老實Chenlaoshi · 往 B 站一觀</string>
+    <string name="settings_credit_name">陳老實Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">往作者之 GitHub 一觀</string>
+    <string name="settings_status_on">已啟</string>
+    <string name="settings_status_off">未啟</string>
+    <string name="settings_go">往設置</string>
+    <string name="a11y_required_title">無障礙已罷</string>
+    <string name="a11y_required_body">無無障礙之職，Mind Peace 不知汝開何應用，攔截不行。請復啟之。</string>
+    <string name="a11y_required_action">往啟</string>
+    <string name="overlay_question">果欲開%1$s乎？</string>
+    <string name="overlay_confirm">確定</string>
+    <string name="overlay_exit">退出</string>
+    <string name="overlay_pick_title">是次欲用幾久？</string>
+    <string name="overlay_minutes">%1$d 分</string>
+    <string name="overlay_custom">自定</string>
+    <string name="overlay_budget_left">今日猶餘 %1$s</string>
+    <string name="overlay_budget_none">今日之額已盡</string>
+    <string name="overlay_budget_unlimited">今日不限其額</string>
+    <string name="overlay_cap_title">逾今日所餘</string>
+    <string name="overlay_cap_body">今日「%1$s」猶餘 %2$s。是次將以所餘始，而非 %3$d 分。</string>
+    <string name="overlay_cap_accept">以所餘用之</string>
+    <string name="overlay_cap_cancel">返</string>
+    <string name="overlay_custom_title">自定其久</string>
+    <string name="overlay_custom_hint">分</string>
+    <string name="overlay_custom_ok">始</string>
+    <string name="overlay_timeup_title">時至</string>
+    <string name="overlay_timeup_body">%1$s 是次之用已終。且暫去。</string>
+    <string name="overlay_timeup_ok">諾</string>
+    <string name="overlay_pause">已去，是次所餘之時廢矣</string>
+    <string name="overlay_self_label">書以自況</string>
+    <string name="session_notif_title">方用 %1$s</string>
+    <string name="session_notif_text">餘 %1$s</string>
+    <string name="session_notif_paused">是次已終</string>
+    <string name="timeup_notif_title">時至</string>
+    <string name="timeup_notif_text">%1$s 是次之用已終</string>
+    <string name="celebration_notif_title">為汝一鼓掌</string>
+    <string name="summary_notif_title">今日之省</string>
+    <string name="summary_less">今日共用 %1$d 分，較昨少 %2$d 分。此局穩。</string>
+    <string name="summary_more">今日共用 %1$d 分，較昨多 %2$d 分。明日再稍收之。</string>
+    <string name="summary_same">今日共用 %1$d 分，與昨略同。</string>
+    <string name="summary_no_yesterday">今日共用 %1$d 分。自明日起乃有對照。</string>
+    <string name="summary_standout_less">%1$s少用 %2$d 分</string>
+    <string name="summary_standout_more">%1$s多用 %2$d 分</string>
+    <string name="summary_none">今日尚未啟所守之應用。此空白亦善。</string>
+    <string name="stats_title">今日之省</string>
+    <string name="stats_today_total">今日 %1$d 分</string>
+    <string name="stats_delta_less">較昨少 %1$d 分</string>
+    <string name="stats_delta_more">較昨多 %1$d 分</string>
+    <string name="stats_delta_same">與昨略同</string>
+    <string name="stats_no_yesterday">自明日起乃有對照</string>
+    <string name="stats_empty">尚未守應用，增之而後有對照。</string>
+    <string name="stats_app_today">今日 %1$d 分</string>
+    <string name="stats_app_yesterday">昨日 %1$d 分</string>
+    <string name="stats_legend_today">今日</string>
+    <string name="stats_legend_yesterday">昨日</string>
+    <string name="stats_warm_less">少用之諸分，乃汝所留以自予。</string>
+    <string name="stats_warm_more">多出者，明日可輕輕收回。</string>
+    <string name="stats_warm_same">節奏平穩，已善。</string>
+    <string name="stats_warm_first">先竟今日，明日乃見其變。</string>
+    <string name="onboarding_self_custom">自定</string>
+    <string name="onboarding_self_custom_hint">自書一句，以遺當下之己</string>
+    <string name="settings_appearance">儀容</string>
+    <string name="settings_color_mode">色之式</string>
+    <string name="settings_color_light">淺色</string>
+    <string name="settings_color_dark">深色</string>
+    <string name="settings_color_system">從系統</string>
+    <string name="settings_style">風格</string>
+    <string name="settings_style_material">穀歌 Material You</string>
+    <string name="settings_style_material_sub">動態取色，簡潔 Material 3</string>
+    <string name="settings_style_orange">橙色之風</string>
+    <string name="settings_style_orange_sub">暖紙底 #FAF9F5，橙色 #D97757，全文襯線</string>
+    <string name="settings_style_apple">蘋果之風</string>
+    <string name="settings_style_apple_sub">系統綠與液態玻璃</string>
+    <string name="about_blurb">未開之先，且止一息。不錮全機，惟於汝所擇之應用問之。盡行於汝之機，不蒐數據。</string>
+    <string name="about_version">版本 %1$s</string>
+    <string name="lab_title">通知預覽</string>
+    <string name="lab_group_celebration">久不用所管應用之勉通知</string>
+    <string name="lab_group_summary">每夕之省通知</string>
+    <string name="lab_preview">預覽</string>
+    <string name="lab_raw">原文</string>
+    <string name="lab_sample_app">抖音</string>
+    <string name="stats_trend">七日之勢</string>
+    <string name="stats_trend_total">合計其分</string>
+    <string name="stats_y_minutes">分</string>
+    <string name="cd_settings">設置</string>
+    <string name="cd_add">增應用</string>
+    <string name="cd_back">返</string>
+    <string name="tab_budget">總時</string>
+    <string name="tab_add">增應用</string>
+    <string name="tab_stats">今日之省</string>
+    <string name="tab_settings">設置</string>
+    <string name="budget_title">總時</string>
+    <string name="budget_global">每日共用幾久</string>
+    <string name="budget_global_sub">凡所守應用合計之上限。先定其總，再分其分於諸應用。</string>
+    <string name="budget_none">不限總時</string>
+    <string name="budget_minutes">每日 %1$d 分</string>
+    <string name="budget_allocated">已分 %1$d / %2$d 分</string>
+    <string name="budget_unallocated">猶餘 %1$d 分未分</string>
+    <string name="budget_unallocated_none">分已盡分</string>
+    <string name="budget_app_alloc">分予之 %1$d 分</string>
+    <string name="budget_app_share">不另限，與眾共所餘之時</string>
+    <string name="budget_empty_title">尚未守任何應用</string>
+    <string name="budget_empty_body">先增一汝欲少啟之應用，再歸以分今日之時。</string>
+    <string name="stats_compare">今昨對照</string>
+    <string name="settings_language_word">語</string>
+    <string name="cd_expand">展</string>
+    <string name="cd_collapse">收</string>
+    <string name="duration_hours_minutes">%1$d時%2$d分</string>
+    <string name="duration_minutes_seconds">%1$d分%2$d秒</string>
+    <string name="duration_minutes">%1$d分</string>
+    <string name="duration_seconds">%1$d秒</string>
+    <string name="weekday_mon">週一</string>
+    <string name="weekday_tue">週二</string>
+    <string name="weekday_wed">週三</string>
+    <string name="weekday_thu">週四</string>
+    <string name="weekday_fri">週五</string>
+    <string name="weekday_sat">週六</string>
+    <string name="weekday_sun">週日</string>
+    <string-array name="celebration_templates">
+        <item>噫，名單上之應用皆待命，汝乃自適其日。</item>
+        <item>指既止於一瞬，是局已勝。</item>
+        <item>彼應用猶候汝啟，汝已自過其日矣。</item>
+        <item>此空隙非無聊，乃汝為己所留之窗。</item>
+        <item>不啟亦可。世自轉，汝更清明。</item>
+        <item>今日能持，明日之汝將默謝之。</item>
+        <item>欲滑之念來而又去，汝猶在，善哉。</item>
+        <item>所守之名當值，汝乃以時用於更有味之處。</item>
+        <item>少啟一次，多得一段屬汝之節奏。</item>
+        <item>屏雖明亦不妨，汝未為其所牽。</item>
+        <item>此際未啟諸應用，已足為己鼓掌。</item>
+        <item>今日神志與汝同在，罕且恰。</item>
+        <item>欲刷之瞬既過，汝已復得其日。</item>
+        <item>一段空白，汝過成真閒。</item>
+        <item>應用仍在故處，汝已前行數步。</item>
+        <item>能持非虧，乃汝收回主動。</item>
+        <item>今夕之時，乃汝自慣性中拾回。</item>
+        <item>未一路滑去，呼吸遂順。</item>
+        <item>試觀之：去彼數應用，天未傾。</item>
+        <item>此靜乃汝所掙，善藏之，勿急還。</item>
+    </string-array>
+</resources>

@@ -25,7 +25,7 @@
     <string name="onboarding_how_title">1回の利用の流れ</string>
     <string name="onboarding_how_1">見守り中のアプリを開くと、すぐに確認レイヤーが出て、しばらく使えません。</string>
     <string name="onboarding_how_2">「確定」で続けるか、「終了」でホームに戻ります。</string>
-    <string name="onboarding_how_3">時間を選ぶ（1 / 3 / 5 / 10 / 15 / 30 分、またはカスタム）。</string>
+    <string name="onboarding_how_3">時間を選ぶ（1 / 3 / 5 分、またはカスタム）。</string>
     <string name="onboarding_how_4">タイマーはこのアプリが前面にあるときだけ進みます。途中で離れる（ホーム、別のアプリ）とその回は終了し、余った時間は無効。次に開くときもまた尋ねます。時間になるとホームに戻り、知らせます。</string>
     <string name="onboarding_a11y_title">ユーザー補助をオン</string>
     <string name="onboarding_a11y_body">どのアプリを開いたかは、ユーザー補助を Mind Peace に渡さないとシステムは教えてくれません。前面アプリを知り、確認レイヤーをすぐ被せるためだけに使います。メッセージは読みません。</string>
@@ -42,6 +42,11 @@
     <string name="onboarding_notif_action">通知を許可</string>
     <string name="onboarding_notif_on">通知は許可済み</string>
     <string name="onboarding_notif_off">通知は未許可</string>
+    <string name="onboarding_apps_title">端末のアプリを読み取る</string>
+    <string name="onboarding_apps_body">守護するアプリを選べるよう、インストール済みアプリの一覧が必要です。名前とアイコンだけを読み、一覧をつくります。アプリの中身は開きません。</string>
+    <string name="onboarding_apps_on">インストール済みアプリを読み取れます</string>
+    <string name="onboarding_apps_off">アプリ一覧はまだありません</string>
+    <string name="onboarding_apps_action">アプリの読み取りを許可</string>
     <string name="onboarding_lock_title">最近のタスクで固定</string>
     <string name="onboarding_lock_body">メーカーによってはバックグラウンドでアプリを消し、遮りが効かなくなります。端末の手順を一度行い、チェックしてください。</string>
     <string name="onboarding_lock_xiaomi">Xiaomi / Redmi：最近のタスクで Mind Peace のカードを下に引いてロック。</string>
@@ -50,8 +55,11 @@
     <string name="onboarding_lock_vivo">vivo / iQOO：最近のタスクでロック。バックグラウンドの高消費電力を許可。</string>
     <string name="onboarding_lock_pixel">Pixel / 標準 Android：電池最適化をオフにすれば十分なことが多いです。追加のロックは不要です。</string>
     <string name="onboarding_lock_check">説明どおり固定した（または不要だと確認した）</string>
-    <string name="onboarding_privacy_title">すべてあなたの携帯電話の中で</string>
-    <string name="onboarding_privacy_body">すべてあなたの携帯電話の中で動き、データを集めず、完全にオフラインです。ユーザー補助をオンにするのは確認レイヤーをすぐ被せるためだけで、チャットや画面の内容は読みません。</string>
+    <string name="onboarding_privacy_title">鄭重な説明</string>
+    <string name="onboarding_privacy_body">インストール済みアプリの読み取り、通知、ユーザー補助。いずれも、あなたが選んだアプリをより正確に守るためです。開く前に確認レイヤーを被せ、カウントダウンを最後まで走らせ、知らせるべきときに知らせます。どれか一つでも欠けると、割り込みが効かなくなることがあります。</string>
+    <string name="onboarding_privacy_offline">ここに重ねて申します。Mind Peace はプライバシーを一切集めず、利用記録もアップロードしません。完全にオフラインで、すべてはこの端末の中に留まります。ユーザー補助はチャット、パスワード、画面上の文字を読まず、どのアプリが前面に来たかだけを見ます。</string>
+    <string name="onboarding_privacy_warn_title">善意のリマインド</string>
+    <string name="onboarding_privacy_warn_body">だまされています。この種のアプリにユーザー補助、通知、アプリ一覧を許すと、チャットや写真、アカウントを渡すことになる、と言われたなら、それは真実ではありません。これらの権限は、立ち止まりが正しい瞬間に起こるためだけにあります。メッセージは見えません。データを持ち去ることもありません。</string>
     <string name="onboarding_next">続ける</string>
     <string name="onboarding_back">戻る</string>
     <string name="onboarding_finish">完了</string>

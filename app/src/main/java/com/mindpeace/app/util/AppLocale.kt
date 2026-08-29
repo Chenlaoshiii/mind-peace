@@ -21,6 +21,9 @@ object AppLocale {
         Option("en", R.string.settings_language_en),
         Option("ja", R.string.settings_language_ja),
         Option("ru", R.string.settings_language_ru),
+        Option("lzh", R.string.settings_language_lzh),
+        Option("es", R.string.settings_language_es),
+        Option("fr", R.string.settings_language_fr),
     )
 
     fun normalize(tag: String?): String {
@@ -29,6 +32,8 @@ object AppLocale {
         val first = t.split(",", limit = 2)[0].trim()
         options.firstOrNull { it.tag.equals(first, ignoreCase = true) }?.let { return it.tag }
         return when {
+            first.equals("lzh", ignoreCase = true) ||
+                first.startsWith("lzh", ignoreCase = true) -> "lzh"
             first.startsWith("zh-Hant", ignoreCase = true) ||
                 first.startsWith("zh-TW", ignoreCase = true) ||
                 first.startsWith("zh-HK", ignoreCase = true) ||
@@ -37,6 +42,8 @@ object AppLocale {
             first.startsWith("en", ignoreCase = true) -> "en"
             first.startsWith("ja", ignoreCase = true) -> "ja"
             first.startsWith("ru", ignoreCase = true) -> "ru"
+            first.startsWith("es", ignoreCase = true) -> "es"
+            first.startsWith("fr", ignoreCase = true) -> "fr"
             else -> DEFAULT
         }
     }
@@ -47,6 +54,9 @@ object AppLocale {
             "en" -> Locale.ENGLISH
             "ja" -> Locale.JAPANESE
             "ru" -> Locale.Builder().setLanguage("ru").build()
+            "lzh" -> Locale.Builder().setLanguage("lzh").build()
+            "es" -> Locale.Builder().setLanguage("es").build()
+            "fr" -> Locale.FRENCH
             else -> Locale.Builder().setLanguage("zh").setRegion("CN").build()
         }
     }

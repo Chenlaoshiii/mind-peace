@@ -136,7 +136,7 @@ fun StatsScreen(onBack: (() -> Unit)? = null) {
         }
     }
 
-    var compareExpanded by rememberSaveable { mutableStateOf(false) }
+    var compareExpanded by rememberSaveable { mutableStateOf(true) }
     var trendExpanded by rememberSaveable { mutableStateOf(false) }
 
     val body: @Composable (Modifier, Boolean) -> Unit = { modifier, showPageTitle ->

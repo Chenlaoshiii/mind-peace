@@ -33,8 +33,6 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.ListItem
-import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -521,27 +519,34 @@ fun PeaceListRow(
 ) {
     val apple = LocalVisualStyle.current == VisualStyle.APPLE
     Column(Modifier.fillMaxWidth()) {
-        ListItem(
-            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
-            headlineContent = { Text(title) },
-            supportingContent = if (subtitle != null) {
-                { Text(subtitle) }
-            } else {
-                null
-            },
-            trailingContent = if (trailing != null) {
-                {
+        Row(
+            Modifier
+                .fillMaxWidth()
+                .defaultMinSize(minHeight = if (subtitle != null) 72.dp else 56.dp)
+                .clickable(onClick = onClick)
+                .padding(horizontal = 16.dp, vertical = 12.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(Modifier.weight(1f)) {
+                Text(title, style = MaterialTheme.typography.bodyLarge)
+                if (subtitle != null) {
                     Text(
-                        text = trailing,
-                        color = if (trailingHighlight) MaterialTheme.colorScheme.primary
-                        else MaterialTheme.colorScheme.onSurfaceVariant,
+                        subtitle,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
-            } else {
-                null
-            },
-            modifier = Modifier.clickable(onClick = onClick),
-        )
+            }
+            if (trailing != null) {
+                Text(
+                    trailing,
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = if (trailingHighlight) MaterialTheme.colorScheme.primary
+                    else MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(start = 12.dp),
+                )
+            }
+        }
         if (showDivider) {
             HorizontalDivider(
                 modifier = Modifier.padding(start = if (apple) 16.dp else 0.dp),
