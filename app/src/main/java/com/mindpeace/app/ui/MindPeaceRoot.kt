@@ -7,6 +7,8 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Apps
 import androidx.compose.material.icons.outlined.HourglassEmpty
@@ -20,6 +22,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -53,11 +56,14 @@ import com.mindpeace.app.ui.settings.ThemeSettingsScreen
 import com.mindpeace.app.ui.stats.StatsScreen
 import com.mindpeace.app.util.Permissions
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 private const val TAB_BUDGET = "budget"
 private const val TAB_PICKER = "picker"
 private const val TAB_STATS = "stats"
 private const val TAB_SETTINGS = "settings"
+
+private val TAB_KEYS = listOf(TAB_BUDGET, TAB_PICKER, TAB_STATS, TAB_SETTINGS)
 
 @Composable
 fun MindPeaceRoot(
@@ -131,9 +137,19 @@ private fun AppNav(
     val nav = rememberNavController()
     val homeVm: HomeViewModel = viewModel()
     var tab by rememberSaveable { mutableStateOf(TAB_BUDGET) }
+    val pagerState = rememberPagerState(
+        initialPage = TAB_KEYS.indexOf(tab).coerceAtLeast(0),
+        pageCount = { TAB_KEYS.size },
+    )
+    val scope = rememberCoroutineScope()
+    LaunchedEffect(pagerState.currentPage) {
+        val key = TAB_KEYS.getOrNull(pagerState.currentPage) ?: return@LaunchedEffect
+        if (tab != key) tab = key
+    }
     LaunchedEffect(pendingDestination) {
         if (pendingDestination == "stats") {
             tab = TAB_STATS
+            pagerState.scrollToPage(TAB_KEYS.indexOf(TAB_STATS).coerceAtLeast(0))
             nav.popBackStack("main", inclusive = false)
             onPendingConsumed()
         }
@@ -158,21 +174,28 @@ private fun AppNav(
                 bottomBar = {
                     PeaceBottomBar(
                         tabs = tabs,
-                        selectedKey = tab,
-                        onSelect = { tab = it },
+                        selectedKey = TAB_KEYS.getOrElse(pagerState.currentPage) { tab },
+                        onSelect = { key ->
+                            val index = TAB_KEYS.indexOf(key)
+                            if (index >= 0) {
+                                tab = key
+                                scope.launch { pagerState.animateScrollToPage(index) }
+                            }
+                        },
                     )
                 },
             ) { padding ->
-                Surface(
+                HorizontalPager(
+                    state = pagerState,
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(padding),
-                    color = peaceContainerColor(),
-                ) {
-                    when (tab) {
-                        TAB_PICKER -> AppPickerScreen(onBack = null)
-                        TAB_STATS -> StatsScreen(onBack = null)
-                        TAB_SETTINGS -> SettingsScreen(
+                    beyondViewportPageCount = TAB_KEYS.size - 1,
+                ) { page ->
+                    when (page) {
+                        1 -> AppPickerScreen(onBack = null)
+                        2 -> StatsScreen(onBack = null)
+                        3 -> SettingsScreen(
                             onBack = null,
                             onReopenSetup = onReopenSetup,
                             onAbout = { nav.navigate("about") },
@@ -180,7 +203,10 @@ private fun AppNav(
                         )
                         else -> HomeScreen(
                             viewModel = homeVm,
-                            onAdd = { tab = TAB_PICKER },
+                            onAdd = {
+                                tab = TAB_PICKER
+                                scope.launch { pagerState.animateScrollToPage(TAB_KEYS.indexOf(TAB_PICKER)) }
+                            },
                             onApp = { pkg -> nav.navigate("detail/$pkg") },
                         )
                     }

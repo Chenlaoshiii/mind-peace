@@ -33,6 +33,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,6 +46,7 @@ import com.mindpeace.app.R
 import com.mindpeace.app.data.AppEntry
 import com.mindpeace.app.data.WatchedApp
 import com.mindpeace.app.ui.components.AppIcon
+import com.mindpeace.app.ui.components.PeacePageTitle
 import com.mindpeace.app.ui.theme.peaceContainerColor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -57,12 +59,13 @@ fun AppPickerScreen(onBack: (() -> Unit)? = null) {
     val app = context.applicationContext as MindPeaceApp
     val watched by app.container.settings.watchedApps.collectAsStateWithLifecycle()
     val watchedMap = remember(watched) { watched.associateBy { it.packageName } }
-    var query by remember { mutableStateOf("") }
+    var query by rememberSaveable { mutableStateOf("") }
     var apps by remember { mutableStateOf<List<AppEntry>>(emptyList()) }
     var loading by remember { mutableStateOf(true) }
-    var showApps by remember { mutableStateOf(true) }
-    var showSystem by remember { mutableStateOf(false) }
+    var showApps by rememberSaveable { mutableStateOf(true) }
+    var showSystem by rememberSaveable { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
+    val isTab = onBack == null
 
     LaunchedEffect(Unit) {
         apps = withContext(Dispatchers.IO) {
@@ -93,122 +96,190 @@ fun AppPickerScreen(onBack: (() -> Unit)? = null) {
             .toList()
     }
 
-    Scaffold(
-        containerColor = peaceContainerColor(),
-        topBar = {
-            TopAppBar(
-                title = {
-                    Column {
-                        Text(stringResource(R.string.picker_title))
-                        if (!loading) {
-                            Text(
-                                text = stringResource(R.string.picker_subtitle, filtered.size),
-                                style = androidx.compose.material3.MaterialTheme.typography.bodyMedium,
-                                color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
+    val subtitle = if (loading) null else stringResource(R.string.picker_subtitle, filtered.size)
+
+    if (isTab) {
+        AppPickerBody(
+            loading = loading,
+            filtered = filtered,
+            query = query,
+            onQuery = { query = it },
+            showApps = showApps,
+            showSystem = showSystem,
+            onToggleApps = { showApps = !showApps },
+            onToggleSystem = { showSystem = !showSystem },
+            watchedMap = watchedMap,
+            showPageTitle = true,
+            titleSubtitle = subtitle,
+            onToggle = { entry, existing, checked ->
+                scope.launch {
+                    if (checked) {
+                        app.container.settings.upsertWatched(
+                            (existing ?: WatchedApp(entry.packageName)).copy(enabled = true),
+                        )
+                    } else if (existing != null) {
+                        app.container.settings.removeWatched(entry.packageName)
                     }
-                },
-                navigationIcon = {
-                    if (onBack != null) {
-                        PeaceIconButton(onClick = onBack) {
+                }
+            },
+            modifier = Modifier.fillMaxSize(),
+        )
+    } else {
+        Scaffold(
+            containerColor = peaceContainerColor(),
+            topBar = {
+                TopAppBar(
+                    title = {
+                        Column {
+                            Text(stringResource(R.string.picker_title))
+                            if (subtitle != null) {
+                                Text(
+                                    text = subtitle,
+                                    style = androidx.compose.material3.MaterialTheme.typography.bodyMedium,
+                                    color = androidx.compose.material3.MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            }
+                        }
+                    },
+                    navigationIcon = {
+                        PeaceIconButton(onClick = onBack!!) {
                             Icon(
                                 Icons.AutoMirrored.Outlined.ArrowBack,
                                 contentDescription = stringResource(R.string.cd_back),
                             )
                         }
+                    },
+                )
+            },
+        ) { padding ->
+            AppPickerBody(
+                loading = loading,
+                filtered = filtered,
+                query = query,
+                onQuery = { query = it },
+                showApps = showApps,
+                showSystem = showSystem,
+                onToggleApps = { showApps = !showApps },
+                onToggleSystem = { showSystem = !showSystem },
+                watchedMap = watchedMap,
+                showPageTitle = false,
+                titleSubtitle = subtitle,
+                onToggle = { entry, existing, checked ->
+                    scope.launch {
+                        if (checked) {
+                            app.container.settings.upsertWatched(
+                                (existing ?: WatchedApp(entry.packageName)).copy(enabled = true),
+                            )
+                        } else if (existing != null) {
+                            app.container.settings.removeWatched(entry.packageName)
+                        }
                     }
                 },
-            )
-        },
-    ) { padding ->
-        if (loading) {
-            Column(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(padding),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                CircularProgressIndicator()
-                Text(
-                    text = stringResource(R.string.picker_loading),
-                    modifier = Modifier.padding(top = 16.dp),
-                )
-            }
-            return@Scaffold
+            )
         }
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding),
-            contentPadding = PaddingValues(bottom = 24.dp),
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun AppPickerBody(
+    loading: Boolean,
+    filtered: List<AppEntry>,
+    query: String,
+    onQuery: (String) -> Unit,
+    showApps: Boolean,
+    showSystem: Boolean,
+    onToggleApps: () -> Unit,
+    onToggleSystem: () -> Unit,
+    watchedMap: Map<String, WatchedApp>,
+    showPageTitle: Boolean,
+    titleSubtitle: String?,
+    onToggle: (AppEntry, WatchedApp?, Boolean) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    if (loading) {
+        Column(
+            modifier = modifier,
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            item {
-                com.mindpeace.app.ui.theme.PeaceTextField(
-                    value = query,
-                    onValueChange = { query = it },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 8.dp),
-                    leadingIcon = { Icon(Icons.Outlined.Search, contentDescription = null) },
-                    placeholder = stringResource(R.string.picker_search),
-                    singleLine = true,
+            CircularProgressIndicator()
+            Text(
+                text = stringResource(R.string.picker_loading),
+                modifier = Modifier.padding(top = 16.dp),
+            )
+        }
+        return
+    }
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(bottom = 24.dp),
+    ) {
+        if (showPageTitle) {
+            item(key = "title") {
+                PeacePageTitle(
+                    text = stringResource(R.string.picker_title),
+                    subtitle = titleSubtitle,
                 )
             }
+        }
+        item {
+            com.mindpeace.app.ui.theme.PeaceTextField(
+                value = query,
+                onValueChange = onQuery,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                leadingIcon = { Icon(Icons.Outlined.Search, contentDescription = null) },
+                placeholder = stringResource(R.string.picker_search),
+                singleLine = true,
+            )
+        }
+        item {
+            Row(
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                PeaceChip(
+                    selected = showApps,
+                    onClick = onToggleApps,
+                    label = { Text(stringResource(R.string.picker_chip_apps)) },
+                )
+                PeaceChip(
+                    selected = showSystem,
+                    onClick = onToggleSystem,
+                    label = { Text(stringResource(R.string.picker_chip_system)) },
+                )
+            }
+        }
+        if (filtered.isEmpty()) {
             item {
-                Row(
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    PeaceChip(
-                        selected = showApps,
-                        onClick = { showApps = !showApps },
-                        label = { Text(stringResource(R.string.picker_chip_apps)) },
-                    )
-                    PeaceChip(
-                        selected = showSystem,
-                        onClick = { showSystem = !showSystem },
-                        label = { Text(stringResource(R.string.picker_chip_system)) },
+                AnimatedVisibility(visible = true, enter = fadeIn(), exit = fadeOut()) {
+                    Text(
+                        text = stringResource(R.string.picker_empty),
+                        modifier = Modifier.padding(24.dp),
                     )
                 }
             }
-            if (filtered.isEmpty()) {
-                item {
-                    AnimatedVisibility(visible = true, enter = fadeIn(), exit = fadeOut()) {
-                        Text(
-                            text = stringResource(R.string.picker_empty),
-                            modifier = Modifier.padding(24.dp),
-                        )
-                    }
-                }
-            }
-            items(filtered, key = { it.packageName }) { entry ->
-                val existing = watchedMap[entry.packageName]
-                val on = existing?.enabled == true
-                ListItem(
-                    headlineContent = { Text(entry.label) },
-                    supportingContent = { Text(entry.packageName) },
-                    leadingContent = { AppIcon(entry.packageName, Modifier.size(40.dp)) },
-                    trailingContent = {
-                        Switch(
-                            checked = on,
-                            onCheckedChange = { checked ->
-                                scope.launch {
-                                    if (checked) {
-                                        app.container.settings.upsertWatched(
-                                            (existing ?: WatchedApp(entry.packageName)).copy(enabled = true),
-                                        )
-                                    } else if (existing != null) {
-                                        app.container.settings.removeWatched(entry.packageName)
-                                    }
-                                }
-                            },
-                        )
-                    },
-                    modifier = Modifier.animateItem(),
-                )
-            }
+        }
+        items(filtered, key = { it.packageName }) { entry ->
+            val existing = watchedMap[entry.packageName]
+            val on = existing?.enabled == true
+            ListItem(
+                headlineContent = { Text(entry.label) },
+                supportingContent = { Text(entry.packageName) },
+                leadingContent = { AppIcon(entry.packageName, Modifier.size(40.dp)) },
+                trailingContent = {
+                    Switch(
+                        checked = on,
+                        onCheckedChange = { checked -> onToggle(entry, existing, checked) },
+                    )
+                },
+                modifier = Modifier.animateItem(),
+            )
         }
     }
 }

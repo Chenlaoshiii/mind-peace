@@ -81,7 +81,7 @@
     <string name="home_notif_banner">晚间小结和坚持提醒需要通知。点这里允许。</string>
     <string name="cd_stats">今日小结</string>
 
-    <string name="picker_title">选择应用</string>
+    <string name="picker_title">添加应用</string>
     <string name="picker_subtitle">共 %1$d 个应用</string>
     <string name="picker_search">搜索应用名或包名</string>
     <string name="picker_empty">没有匹配的应用</string>
@@ -120,6 +120,8 @@
     <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
     <string name="settings_credit_line">作者 陈老实Chenlaoshi · 去 B 站看看</string>
     <string name="settings_credit_name">陈老实Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">去 GitHub 看看</string>
     <string name="settings_status_on">已开启</string>
     <string name="settings_status_off">未开启</string>
     <string name="settings_go">去设置</string>
@@ -167,7 +169,7 @@
     <string name="summary_standout_more">%1$s多用了 %2$d 分钟</string>
     <string name="summary_none">今天还没打开被守护的应用。这份空白也很好。</string>
 
-    <string name="stats_title">使用统计</string>
+    <string name="stats_title">今日小结</string>
     <string name="stats_today_total">今天 %1$d 分钟</string>
     <string name="stats_delta_less">比昨天少了 %1$d 分钟</string>
     <string name="stats_delta_more">比昨天多了 %1$d 分钟</string>

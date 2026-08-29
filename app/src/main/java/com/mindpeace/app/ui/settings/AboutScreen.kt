@@ -36,6 +36,7 @@ import androidx.core.net.toUri
 import com.mindpeace.app.BuildConfig
 import com.mindpeace.app.R
 import com.mindpeace.app.data.BILIBILI_AUTHOR_URL
+import com.mindpeace.app.data.GITHUB_REPO_URL
 import com.mindpeace.app.ui.theme.PeaceCard
 import com.mindpeace.app.ui.theme.peaceContainerColor
 import com.mindpeace.app.ui.theme.peaceSurfaceColor
@@ -110,7 +111,7 @@ fun AboutScreen(
                     .clickable { openBilibili(context) }
                     .padding(vertical = 4.dp),
             )
-            Spacer(Modifier.height(20.dp))
+            Spacer(Modifier.height(8.dp))
             Text(
                 text = stringResource(R.string.about_version, BuildConfig.VERSION_NAME),
                 style = MaterialTheme.typography.bodyLarge,
@@ -128,16 +129,60 @@ fun AboutScreen(
                     modifier = Modifier.padding(20.dp),
                 )
             }
+            Spacer(Modifier.height(16.dp))
+            CreditLinkCard(
+                title = stringResource(R.string.settings_credit_title),
+                line = stringResource(R.string.settings_credit_line),
+                onClick = { openBilibili(context) },
+            )
+            Spacer(Modifier.height(12.dp))
+            CreditLinkCard(
+                title = stringResource(R.string.settings_github_title),
+                line = stringResource(R.string.settings_github_line),
+                onClick = { openUrl(context, GITHUB_REPO_URL) },
+            )
             Spacer(Modifier.height(24.dp))
         }
     }
 }
 
-internal fun openBilibili(context: android.content.Context) {
+@Composable
+internal fun CreditLinkCard(
+    title: String,
+    line: String,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    PeaceCard(
+        modifier = modifier.fillMaxWidth(),
+        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        shape = RoundedCornerShape(20.dp),
+        onClick = onClick,
+    ) {
+        Column(Modifier.padding(20.dp)) {
+            Text(
+                text = title,
+                style = MaterialTheme.typography.titleLarge,
+            )
+            Spacer(Modifier.height(6.dp))
+            Text(
+                text = line,
+                style = MaterialTheme.typography.bodyLarge,
+                color = MaterialTheme.colorScheme.primary,
+            )
+        }
+    }
+}
+
+internal fun openUrl(context: android.content.Context, url: String) {
     try {
         context.startActivity(
-            Intent(Intent.ACTION_VIEW, BILIBILI_AUTHOR_URL.toUri()).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
+            Intent(Intent.ACTION_VIEW, url.toUri()).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK),
         )
     } catch (_: Exception) {
     }
+}
+
+internal fun openBilibili(context: android.content.Context) {
+    openUrl(context, BILIBILI_AUTHOR_URL)
 }

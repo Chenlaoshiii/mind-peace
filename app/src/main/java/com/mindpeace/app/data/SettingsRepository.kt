@@ -83,6 +83,12 @@ class SettingsRepository(
 
     init {
         scope.launch {
+            store.edit { prefs ->
+                val raw = prefs[KEY_VISUAL_STYLE]
+                if (raw == "ORANGE" || raw == "APPLE" || raw == "WHITE") {
+                    prefs[KEY_VISUAL_STYLE] = VisualStyle.MATERIAL_YOU.name
+                }
+            }
             store.data.first()
             snapshotToday()
         }

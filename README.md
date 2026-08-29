@@ -7,9 +7,9 @@ Mind Peace 是一款温和的 Android 使用提醒应用。它**不会锁住整�
 
 Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock the whole phone. When you launch an app you chose to watch, it covers it with a confirmation: do you really want to open it? After you confirm, you pick how long. When time is up, you go home.
 
-[下载 Debug 安装包 1.3.0](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.0/MindPeace-1.3.0-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.0)
+[下载 Debug 安装包 1.3.1](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.1/MindPeace-1.3.1-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.1)
 
-作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
+作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · [GitHub](https://github.com/stillthatlars/mind-peace) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
 
 ---
 
@@ -49,22 +49,18 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 怎么用
 
-1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.0/MindPeace-1.3.0-debug.apk)（需允许未知来源）。覆盖安装即可。
+1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.1/MindPeace-1.3.1-debug.apk)（需允许未知来源）。覆盖安装即可。
 2. 第一次打开会走引导：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知 → 按机型锁定后台，并看到「完全在你的手机上运行，不会上传任何使用记录」。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
-3. 底栏四个入口：**总时长**（设每天总上限并分配给各个应用）、**添加应用**（独立开关「应用 / 系统工具」）、**今日小结**、**设置**。
+3. 底栏四个入口：**总时长**、**添加应用**、**今日小结**、**设置**。左右滑动即可切换，点底栏也会跟着滑过去。
 4. 之后打开这些应用，会先问「真的确定要打开××吗？」并显示你的那句话。选「确定」再选 1 / 3 / 5 / 10 / 15 / 30 分钟或自定义；「退出」回桌面。
 5. 通知栏会显示剩余时间。到点回桌面。中途离开则本次结束。
-6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（点进去：浅色 / 深色 / 跟随系统；谷歌 Material You、橙色风格、苹果风格）、改那句写给自己的话、重新看引导、关于。关于页大标题连点 5 下可预览全部通知文案。
+6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、改那句写给自己的话、重新看引导、关于。关于与设置里可以去 B 站或 [GitHub](https://github.com/stillthatlars/mind-peace) 看看。关于页大标题连点 5 下可预览全部通知文案。
 
 若拦截突然没了，打开应用看是否提示无障碍已关闭。小米 / 华为 / OPPO / vivo 请在最近任务里锁定 Mind Peace，并允许自启动与后台运行。
 
 ### 主题
 
-- **谷歌 Material You**：Android 12+ 跟随壁纸动态取色
-- **橙色风格**：暖纸底 `#FAF9F5`、正文深色 `#141413`、强调色 `#D97757`（加重 `#C15F3C`），浅灰 `#E8E6DC`、中灰 `#B0AEA5`；深色为炭黑 `#141413` 配同一橙色。标题、正文、按钮、列表都用同一套衬线字体（Newsreader）
-- **苹果风格**：系统绿 `#34C759` / 深色 `#30D158`，iOS 分组灰底，按钮、搜索框、底栏、卡片为液态玻璃（Kyant Backdrop：透明折射、色散边缘、按压缩放与高光）
-
-深浅色可跟随系统，或在个性主题里固定。
+1.3.1 起个性主题只保留 **Material You**（Android 12+ 跟随壁纸动态取色）。可在设置里选浅色、深色或跟随系统。四个主页可以左右滑动切换。
 
 ### 隐私
 
@@ -98,18 +94,18 @@ Feeds and short video are easy to open on autopilot. Mind Peace pulls “open”
 
 ### How to use
 
-1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.0/MindPeace-1.3.0-debug.apk) (unknown sources). You can install over a previous debug build.
+1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.1/MindPeace-1.3.1-debug.apk) (unknown sources). You can install over a previous debug build.
 2. First launch is gated onboarding: welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications, lock in Recents, and a clear note that the app is fully offline. “I’m done” enables only when accessibility is actually on and the recents checkbox is checked.
-3. Bottom bar: **Daily cap** (global minutes + per-app allocations), **Add apps** (independent “Apps” / “System tools” toggles), **Today’s recap**, **Settings**.
+3. Bottom bar: **Daily cap**, **Add apps**, **Today’s recap**, **Settings**. Swipe left/right between tabs, or tap the bar.
 4. Opening a watched app asks if you really want to open it, with your quote. Confirm then pick duration, or Exit to the launcher.
 5. A notification shows remaining time. Leave the app and the leftover session is void.
-6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system; Material You, warm orange, Apple-like green glass), edit your quote, replay setup, About. Tap the big About title five times to preview every notification template.
+6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), edit your quote, replay setup, About. About and Settings include Bilibili and [GitHub](https://github.com/stillthatlars/mind-peace) links. Tap the big About title five times to preview every notification template.
 
 If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / OPPO / vivo, lock Mind Peace in Recents and allow autostart / background.
 
 ### Appearance
 
-Material You (dynamic color on Android 12+); a warm orange paper style (`#FAF9F5` / `#D97757` / `#C15F3C`) with one serif for headlines, body, buttons, and lists; or an Apple-like system green (`#34C759` / `#30D158`) grouped-gray look with liquid glass controls (Kyant Backdrop). Light / dark / follow system.
+1.3.1 keeps **Material You** only (dynamic color on Android 12+). Light / dark / follow system. The four main tabs swipe sideways.
 
 ### Privacy
 
@@ -127,8 +123,8 @@ Android Studio (JDK 17), File → Open this repo, sync, install SDK 35 if asked.
 
 Output: `app/build/outputs/apk/debug/app-debug.apk`.
 
-Kotlin + Jetpack Compose + Material 3. AccessibilityService overlay, foreground session timer, WorkManager for celebrations and the evening summary. Apple style uses `io.github.kyant0:backdrop` 1.0.2.
+Kotlin + Jetpack Compose + Material 3. AccessibilityService overlay, foreground session timer, WorkManager for celebrations and the evening summary.
 
 ## License
 
-Personal project by [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822). See the repository for source.
+Personal project by [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822). Source: [github.com/stillthatlars/mind-peace](https://github.com/stillthatlars/mind-peace).

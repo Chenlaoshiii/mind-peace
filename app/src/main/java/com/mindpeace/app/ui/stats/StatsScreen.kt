@@ -46,6 +46,7 @@ import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.data.UsageHistory
 import com.mindpeace.app.ui.components.AppIcon
+import com.mindpeace.app.ui.components.PeacePageTitle
 import com.mindpeace.app.ui.theme.PeaceCard
 import com.mindpeace.app.ui.theme.PeaceIconButton
 import com.mindpeace.app.ui.theme.peaceContainerColor
@@ -128,31 +129,16 @@ fun StatsScreen(onBack: (() -> Unit)? = null) {
         }
     }
 
-    Scaffold(
-        containerColor = peaceContainerColor(),
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.stats_title)) },
-                navigationIcon = {
-                    if (onBack != null) {
-                        PeaceIconButton(onClick = onBack) {
-                            Icon(
-                                Icons.AutoMirrored.Outlined.ArrowBack,
-                                contentDescription = stringResource(R.string.cd_back),
-                            )
-                        }
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = peaceSurfaceColor()),
-            )
-        },
-    ) { padding ->
+    val body: @Composable (Modifier, Boolean) -> Unit = { modifier, showPageTitle ->
         LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding),
+            modifier = modifier,
             contentPadding = PaddingValues(bottom = 32.dp),
         ) {
+            if (showPageTitle) {
+                item(key = "title") {
+                    PeacePageTitle(stringResource(R.string.stats_title))
+                }
+            }
             item {
                 PeaceCard(
                     modifier = Modifier
@@ -264,6 +250,30 @@ fun StatsScreen(onBack: (() -> Unit)? = null) {
                     }
                 }
             }
+        }
+    }
+
+    if (onBack == null) {
+        body(Modifier.fillMaxSize(), true)
+    } else {
+        Scaffold(
+            containerColor = peaceContainerColor(),
+            topBar = {
+                TopAppBar(
+                    title = { Text(stringResource(R.string.stats_title)) },
+                    navigationIcon = {
+                        PeaceIconButton(onClick = onBack) {
+                            Icon(
+                                Icons.AutoMirrored.Outlined.ArrowBack,
+                                contentDescription = stringResource(R.string.cd_back),
+                            )
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = peaceSurfaceColor()),
+                )
+            },
+        ) { padding ->
+            body(Modifier.fillMaxSize().padding(padding), false)
         }
     }
 }

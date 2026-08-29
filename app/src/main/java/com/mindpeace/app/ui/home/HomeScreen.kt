@@ -22,15 +22,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.getValue
@@ -50,18 +46,17 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.ui.components.AppIcon
+import com.mindpeace.app.ui.components.PeacePageTitle
 import com.mindpeace.app.ui.theme.PeaceButton
 import com.mindpeace.app.ui.theme.PeaceCard
 import com.mindpeace.app.ui.theme.PeaceChip
-import com.mindpeace.app.ui.theme.peaceContainerColor
-import com.mindpeace.app.ui.theme.peaceSurfaceColor
 import com.mindpeace.app.util.Permissions
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt
 
 private val GLOBAL_PRESETS = listOf(0, 30, 60, 90, 120, 180, 240)
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class, ExperimentalLayoutApi::class)
+@OptIn(ExperimentalFoundationApi::class, ExperimentalLayoutApi::class)
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel,
@@ -92,25 +87,15 @@ fun HomeScreen(
     val allocatedSum = watched.sumOf { it.dailyLimitMinutes }
     val unallocated = if (global <= 0) 0 else (global - allocatedSum).coerceAtLeast(0)
 
-    Scaffold(
-        containerColor = peaceContainerColor(),
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.budget_title)) },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = peaceSurfaceColor(),
-                ),
-            )
-        },
-    ) { padding ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding),
-            contentPadding = PaddingValues(bottom = 24.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            if (!notif) {
+    LazyColumn(
+        modifier = Modifier.fillMaxSize(),
+        contentPadding = PaddingValues(bottom = 24.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+    ) {
+        item(key = "title") {
+            PeacePageTitle(stringResource(R.string.budget_title))
+        }
+        if (!notif) {
                 item(key = "notif") {
                     NotifBanner(false) {
                         if (Build.VERSION.SDK_INT >= 33) {
@@ -261,7 +246,6 @@ fun HomeScreen(
                     )
                 }
             }
-        }
     }
 }
 

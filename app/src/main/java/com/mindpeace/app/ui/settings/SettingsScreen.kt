@@ -7,18 +7,15 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -41,9 +38,10 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
-import com.mindpeace.app.data.VisualStyle
+import com.mindpeace.app.data.ColorMode
+import com.mindpeace.app.data.GITHUB_REPO_URL
+import com.mindpeace.app.ui.components.PeacePageTitle
 import com.mindpeace.app.ui.components.SelfMessageEditor
-import com.mindpeace.app.ui.theme.PeaceCard
 import com.mindpeace.app.ui.theme.PeaceIconButton
 import com.mindpeace.app.ui.theme.PeaceListGroup
 import com.mindpeace.app.ui.theme.PeaceListRow
@@ -92,37 +90,19 @@ fun SettingsScreen(
 
     val onLabel = stringResource(R.string.settings_status_on)
     val offLabel = stringResource(R.string.settings_status_off)
-    val themeSub = when (appearance.style) {
-        VisualStyle.MATERIAL_YOU -> stringResource(R.string.settings_style_material)
-        VisualStyle.ORANGE -> stringResource(R.string.settings_style_orange)
-        VisualStyle.APPLE -> stringResource(R.string.settings_style_apple)
+    val themeSub = when (appearance.colorMode) {
+        ColorMode.LIGHT -> stringResource(R.string.settings_color_light)
+        ColorMode.DARK -> stringResource(R.string.settings_color_dark)
+        ColorMode.SYSTEM -> stringResource(R.string.settings_color_system)
     }
 
-    Scaffold(
-        containerColor = peaceContainerColor(),
-        topBar = {
-            TopAppBar(
-                title = { Text(stringResource(R.string.settings_title)) },
-                navigationIcon = {
-                    if (onBack != null) {
-                        PeaceIconButton(onClick = onBack) {
-                            Icon(
-                                Icons.AutoMirrored.Outlined.ArrowBack,
-                                contentDescription = stringResource(R.string.cd_back),
-                            )
-                        }
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = peaceSurfaceColor()),
-            )
-        },
-    ) { padding ->
+    val body: @Composable (Modifier, Boolean) -> Unit = { modifier, showPageTitle ->
         Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .verticalScroll(rememberScrollState()),
+            modifier = modifier.verticalScroll(rememberScrollState()),
         ) {
+            if (showPageTitle) {
+                PeacePageTitle(stringResource(R.string.settings_title))
+            }
             PeaceListGroup {
                 PeaceListRow(
                     title = stringResource(R.string.settings_a11y),
@@ -180,29 +160,45 @@ fun SettingsScreen(
                     onClick = onAbout,
                 )
             }
-            Spacer(Modifier.height(16.dp))
-            PeaceCard(
-                modifier = Modifier
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth(),
-                containerColor = MaterialTheme.colorScheme.surfaceVariant,
-                shape = RoundedCornerShape(20.dp),
+            Spacer(Modifier.height(12.dp))
+            CreditLinkCard(
+                title = stringResource(R.string.settings_credit_title),
+                line = stringResource(R.string.settings_credit_line),
                 onClick = { openBilibili(context) },
-            ) {
-                Column(Modifier.padding(20.dp)) {
-                    Text(
-                        text = stringResource(R.string.settings_credit_title),
-                        style = MaterialTheme.typography.titleLarge,
-                    )
-                    Spacer(Modifier.height(6.dp))
-                    Text(
-                        text = stringResource(R.string.settings_credit_line),
-                        style = MaterialTheme.typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.primary,
-                    )
-                }
-            }
-            Spacer(Modifier.height(32.dp))
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
+            Spacer(Modifier.height(12.dp))
+            CreditLinkCard(
+                title = stringResource(R.string.settings_github_title),
+                line = stringResource(R.string.settings_github_line),
+                onClick = { openUrl(context, GITHUB_REPO_URL) },
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
+            Spacer(Modifier.height(24.dp))
+        }
+    }
+
+    if (onBack == null) {
+        body(Modifier.fillMaxSize(), true)
+    } else {
+        Scaffold(
+            containerColor = peaceContainerColor(),
+            topBar = {
+                TopAppBar(
+                    title = { Text(stringResource(R.string.settings_title)) },
+                    navigationIcon = {
+                        PeaceIconButton(onClick = onBack) {
+                            Icon(
+                                Icons.AutoMirrored.Outlined.ArrowBack,
+                                contentDescription = stringResource(R.string.cd_back),
+                            )
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = peaceSurfaceColor()),
+                )
+            },
+        ) { padding ->
+            body(Modifier.fillMaxSize().padding(padding), false)
         }
     }
 
