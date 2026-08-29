@@ -121,8 +121,6 @@ Author 陈老实Chenlaoshi</string>
     <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
     <string name="settings_credit_line">Author 陈老实Chenlaoshi · visit Bilibili</string>
     <string name="settings_credit_name">陈老实Chenlaoshi</string>
-    <string name="settings_github_title">GitHub</string>
-    <string name="settings_github_line">Check out the author\'s GitHub</string>
     <string name="settings_status_on">On</string>
     <string name="settings_status_off">Off</string>
     <string name="settings_go">Open settings</string>
@@ -193,8 +191,6 @@ Author 陈老实Chenlaoshi</string>
     <string name="settings_style_orange_sub">Warm paper #FAF9F5, orange #D97757, serif</string>
     <string name="settings_style_apple">Apple-like</string>
     <string name="settings_style_apple_sub">System green and liquid glass</string>
-    <string name="settings_style_white">White</string>
-    <string name="settings_style_white_sub">Clean white, a green accent, plenty of space</string>
     <string name="about_blurb">Pause first. Then open. It doesn\'t lock the whole phone — it only asks on apps you chose. It runs entirely on your phone and collects no data.</string>
     <string name="about_version">Version %1$s</string>
     <string name="lab_title">Notification preview</string>

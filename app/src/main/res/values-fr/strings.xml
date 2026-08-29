@@ -121,8 +121,6 @@ Auteur 陈老实Chenlaoshi</string>
     <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
     <string name="settings_credit_line">Auteur 陈老实Chenlaoshi · voir sur Bilibili</string>
     <string name="settings_credit_name">陈老实Chenlaoshi</string>
-    <string name="settings_github_title">GitHub</string>
-    <string name="settings_github_line">Voir le GitHub de l’auteur</string>
     <string name="settings_status_on">Activé</string>
     <string name="settings_status_off">Désactivé</string>
     <string name="settings_go">Ouvrir les réglages</string>
@@ -193,8 +191,6 @@ Auteur 陈老实Chenlaoshi</string>
     <string name="settings_style_orange_sub">Papier chaud #FAF9F5, orange #D97757, serif</string>
     <string name="settings_style_apple">Style Apple</string>
     <string name="settings_style_apple_sub">Vert système et verre liquide</string>
-    <string name="settings_style_white">Blanc</string>
-    <string name="settings_style_white_sub">Blanc épuré, un accent vert, beaucoup d\'espace</string>
     <string name="about_blurb">D’abord t’arrêter. Ensuite ouvrir. Elle ne verrouille pas tout le téléphone : elle ne demande que sur les applis que tu as choisies. Tout se passe sur ton téléphone, sans recueil de données.</string>
     <string name="about_version">Version %1$s</string>
     <string name="lab_title">Aperçu des notifications</string>

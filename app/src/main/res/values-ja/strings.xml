@@ -121,8 +121,6 @@ Mind Peace · Chenlaoshi
     <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
     <string name="settings_credit_line">作者 陈老实Chenlaoshi · Bilibili を見る</string>
     <string name="settings_credit_name">陈老实Chenlaoshi</string>
-    <string name="settings_github_title">GitHub</string>
-    <string name="settings_github_line">作者の GitHub を見る</string>
     <string name="settings_status_on">オン</string>
     <string name="settings_status_off">オフ</string>
     <string name="settings_go">設定を開く</string>
@@ -193,8 +191,6 @@ Mind Peace · Chenlaoshi
     <string name="settings_style_orange_sub">暖色の紙 #FAF9F5、オレンジ #D97757、セリフ体</string>
     <string name="settings_style_apple">Apple 風</string>
     <string name="settings_style_apple_sub">システムグリーンとリキッドガラス</string>
-    <string name="settings_style_white">ホワイト</string>
-    <string name="settings_style_white_sub">清潔な白地、緑のアクセント、余白多め</string>
     <string name="about_blurb">開く前に、まず止まって。携帯電話全体はロックせず、選んだアプリにだけ尋ねます。すべてあなたの携帯電話の中で動き、データは集めません。</string>
     <string name="about_version">バージョン %1$s</string>
     <string name="lab_title">通知プレビュー</string>

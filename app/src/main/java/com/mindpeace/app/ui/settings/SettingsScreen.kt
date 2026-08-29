@@ -45,8 +45,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.data.ColorMode
-import com.mindpeace.app.data.VisualStyle
-import com.mindpeace.app.data.GITHUB_REPO_URL
 import com.mindpeace.app.ui.components.PeacePageTitle
 import com.mindpeace.app.ui.components.SelfMessageEditor
 import com.mindpeace.app.ui.theme.PeaceIconButton
@@ -100,16 +98,11 @@ fun SettingsScreen(
 
     val onLabel = stringResource(R.string.settings_status_on)
     val offLabel = stringResource(R.string.settings_status_off)
-    val styleLabel = when (appearance.style) {
-        VisualStyle.WHITE -> stringResource(R.string.settings_style_white)
-        else -> stringResource(R.string.settings_style_material)
-    }
-    val colorLabel = when (appearance.colorMode) {
+    val themeSub = when (appearance.colorMode) {
         ColorMode.LIGHT -> stringResource(R.string.settings_color_light)
         ColorMode.DARK -> stringResource(R.string.settings_color_dark)
         ColorMode.SYSTEM -> stringResource(R.string.settings_color_system)
     }
-    val themeSub = "$styleLabel · $colorLabel"
 
     val body: @Composable (Modifier, Boolean) -> Unit = { modifier, showPageTitle ->
         Column(
@@ -185,13 +178,6 @@ fun SettingsScreen(
                 title = stringResource(R.string.settings_credit_title),
                 line = stringResource(R.string.settings_credit_line),
                 onClick = { openBilibili(context) },
-                modifier = Modifier.padding(horizontal = 16.dp),
-            )
-            Spacer(Modifier.height(12.dp))
-            CreditLinkCard(
-                title = stringResource(R.string.settings_github_title),
-                line = stringResource(R.string.settings_github_line),
-                onClick = { openUrl(context, GITHUB_REPO_URL) },
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
             Spacer(Modifier.height(24.dp))

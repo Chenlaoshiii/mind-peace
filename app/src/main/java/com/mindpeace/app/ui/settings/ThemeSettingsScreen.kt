@@ -25,7 +25,6 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.data.ColorMode
-import com.mindpeace.app.data.VisualStyle
 import com.mindpeace.app.ui.theme.PeaceIconButton
 import com.mindpeace.app.ui.theme.PeaceListGroup
 import com.mindpeace.app.ui.theme.PeaceListRow
@@ -65,29 +64,6 @@ fun ThemeSettingsScreen(onBack: () -> Unit) {
                 .padding(padding)
                 .verticalScroll(rememberScrollState()),
         ) {
-            Text(
-                text = stringResource(R.string.settings_style),
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp),
-            )
-            PeaceListGroup {
-                PeaceListRow(
-                    title = stringResource(R.string.settings_style_material),
-                    subtitle = stringResource(R.string.settings_style_material_sub),
-                    trailing = if (appearance.style == VisualStyle.MATERIAL_YOU) onLabel else null,
-                    trailingHighlight = appearance.style == VisualStyle.MATERIAL_YOU,
-                    onClick = { scope.launch { app.container.settings.setVisualStyle(VisualStyle.MATERIAL_YOU) } },
-                )
-                PeaceListRow(
-                    title = stringResource(R.string.settings_style_white),
-                    subtitle = stringResource(R.string.settings_style_white_sub),
-                    trailing = if (appearance.style == VisualStyle.WHITE) onLabel else null,
-                    trailingHighlight = appearance.style == VisualStyle.WHITE,
-                    showDivider = false,
-                    onClick = { scope.launch { app.container.settings.setVisualStyle(VisualStyle.WHITE) } },
-                )
-            }
             Text(
                 text = stringResource(R.string.settings_color_mode),
                 style = MaterialTheme.typography.bodyMedium,

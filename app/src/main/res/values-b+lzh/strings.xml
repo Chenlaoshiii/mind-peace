@@ -121,8 +121,6 @@ Mind Peace · Chenlaoshi
     <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
     <string name="settings_credit_line">作者 陳老實Chenlaoshi · 往 B 站一觀</string>
     <string name="settings_credit_name">陳老實Chenlaoshi</string>
-    <string name="settings_github_title">GitHub</string>
-    <string name="settings_github_line">往作者之 GitHub 一觀</string>
     <string name="settings_status_on">已啟</string>
     <string name="settings_status_off">未啟</string>
     <string name="settings_go">往設置</string>
@@ -193,8 +191,6 @@ Mind Peace · Chenlaoshi
     <string name="settings_style_orange_sub">暖紙底 #FAF9F5，橙色 #D97757，全文襯線</string>
     <string name="settings_style_apple">蘋果之風</string>
     <string name="settings_style_apple_sub">系統綠與液態玻璃</string>
-    <string name="settings_style_white">白色</string>
-    <string name="settings_style_white_sub">素白爲底，翠綠點綴，留白爲尚</string>
     <string name="about_blurb">未開之先，且止一息。不錮全機，惟於汝所擇之應用問之。盡行於汝之機，不蒐數據。</string>
     <string name="about_version">版本 %1$s</string>
     <string name="lab_title">通知預覽</string>

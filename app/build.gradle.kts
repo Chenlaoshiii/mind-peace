@@ -13,8 +13,8 @@ android {
         applicationId = "com.mindpeace.app"
         minSdk = 26
         targetSdk = 35
-        versionCode = 12
-        versionName = "1.3.7"
+        versionCode = 13
+        versionName = "1.3.8"
     }
 
     buildTypes {

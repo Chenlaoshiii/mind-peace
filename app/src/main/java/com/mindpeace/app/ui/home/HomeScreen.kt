@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ListItem
+import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Text
@@ -37,6 +38,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -46,10 +48,8 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
-import com.mindpeace.app.data.VisualStyle
 import com.mindpeace.app.ui.components.AppIcon
 import com.mindpeace.app.ui.components.PeacePageTitle
-import com.mindpeace.app.ui.theme.LocalVisualStyle
 import com.mindpeace.app.ui.theme.PeaceButton
 import com.mindpeace.app.ui.theme.peaceCardShape
 import com.mindpeace.app.ui.theme.PeaceCard
@@ -93,7 +93,6 @@ fun HomeScreen(
     val unallocated = if (global <= 0) 0 else (global - allocatedSum).coerceAtLeast(0)
     val globalUsed = app.container.settings.usedMillisTodayTotal()
     val globalLabel = stringResource(R.string.quota_raise_global_label)
-    val white = LocalVisualStyle.current == VisualStyle.WHITE
 
     var challenge by remember { mutableStateOf<QuotaRaisePending?>(null) }
     var globalPreview by remember { mutableIntStateOf(global) }
@@ -123,7 +122,7 @@ fun HomeScreen(
     LazyColumn(
         modifier = Modifier.fillMaxSize(),
         contentPadding = PaddingValues(bottom = 24.dp),
-        verticalArrangement = Arrangement.spacedBy(if (white) 12.dp else 8.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         item(key = "title") {
             PeacePageTitle(stringResource(R.string.budget_title))
@@ -144,8 +143,7 @@ fun HomeScreen(
                 modifier = Modifier
                     .padding(horizontal = 16.dp, vertical = 4.dp)
                     .fillMaxWidth(),
-                containerColor = if (white) MaterialTheme.colorScheme.surfaceContainerLow
-                else MaterialTheme.colorScheme.primaryContainer,
+                containerColor = MaterialTheme.colorScheme.primaryContainer,
                 shape = peaceCardShape(),
             ) {
                 Column(Modifier.padding(20.dp)) {
@@ -158,8 +156,7 @@ fun HomeScreen(
                     Text(
                         stringResource(R.string.budget_global_sub),
                         style = MaterialTheme.typography.bodyMedium,
-                        color = if (white) MaterialTheme.colorScheme.onSurfaceVariant
-                        else MaterialTheme.colorScheme.onPrimaryContainer,
+                        color = MaterialTheme.colorScheme.onPrimaryContainer,
                     )
                     Spacer(Modifier.height(12.dp))
                     Text(
@@ -298,12 +295,13 @@ private fun AppBudgetRow(
         )
     }
 
+    val shape = peaceCardShape()
     PeaceCard(
         modifier = modifier
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 16.dp, vertical = 4.dp)
             .fillMaxWidth(),
         containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
-        shape = peaceCardShape(),
+        shape = shape,
         onClick = { onApp(item.packageName) },
     ) {
         ListItem(
@@ -314,6 +312,7 @@ private fun AppBudgetRow(
             leadingContent = {
                 AppIcon(item.packageName, Modifier.size(44.dp))
             },
+            colors = ListItemDefaults.colors(containerColor = Color.Transparent),
         )
         Text(
             if (preview <= 0) stringResource(R.string.budget_app_share)

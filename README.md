@@ -7,8 +7,6 @@ Mind Peace 是一款温和的 Android 使用提醒应用。它**不会锁住整�
 
 Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock the whole phone. When you launch an app you chose to watch, it covers it with a confirmation: do you really want to open it? After you confirm, you pick how long. When time is up, you go home.
 
-[下载 Debug 安装包 1.3.7](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.7/MindPeace-1.3.7-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.7)
-
 作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · [GitHub](https://github.com/stillthatlars/mind-peace) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
 
 ---
@@ -48,7 +46,7 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 总时长
 
-先定今天所有被守护应用加在一起能用多久，再把分钟分给各个应用。总卡片上是滑条加快捷芯片；每个应用一行只有滑条。都按整分钟无级滑动。
+先定今天所有被守护应用加在一起能用多久，再把分钟分给各个应用。总卡片上是滑条加快捷芯片；每个应用一张完整圆角卡片，图标、名称和滑条都在同一张卡里。都按整分钟无级滑动。
 
 <p>
 <img src="docs/screenshots/budget.jpg" alt="总时长与分给各应用的分钟" width="220">
@@ -72,12 +70,12 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 怎么用
 
-1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.7/MindPeace-1.3.7-debug.apk)（需允许未知来源）。覆盖安装即可。
+1. 用下面 Build 说明自行编译 Debug 安装包（需允许未知来源）。覆盖安装即可。
 2. 第一次打开会走引导（7 步）：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知、授权读取已安装应用 → 按机型锁定后台 → **郑重说明**（权限只为更准地拦截；绝不收集隐私；好心提醒：花钱买到此软件说明你被骗了，Mind Peace 完全免费）。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
 3. 底栏四个入口：**总时长**、**添加应用**、**今日小结**、**设置**。左右滑动即可切换，点底栏也会跟着滑过去。
 4. 之后打开这些应用，会先问「真的确定要打开××吗？」并显示你的那句话。选「确定」再选 1 / 3 / 5 分钟或自定义；「退出」回桌面。
 5. 通知栏会显示剩余时间。到点回桌面。中途离开则本次结束。
-6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（谷歌 Material You / 白色；浅色 / 深色 / 跟随系统）、**语言/Language**（跟随系统、简体中文、繁體中文、English、日本語、Русский、文言文、Español、Français；未选过则跟随手机语言）、改那句写给自己的话、重新看引导、关于。关于与设置里可以去 B 站或 [去作者的 GitHub 看看](https://github.com/stillthatlars/mind-peace)。关于页大标题连点 5 下可预览全部通知文案。
+6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、**语言/Language**（跟随系统、简体中文、繁體中文、English、日本語、Русский、文言文、Español、Français；未选过则跟随手机语言）、改那句写给自己的话、重新看引导、关于。关于与设置里可以去 B 站。关于页大标题连点 5 下可预览全部通知文案。
 
 若拦截突然没了，打开应用看是否提示无障碍已关闭。小米 / 华为 / OPPO / vivo 请在最近任务里锁定 Mind Peace，并允许自启动与后台运行。
 
@@ -94,11 +92,11 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 - 今昨对比默认打开，7 天趋势默认收起
 - 语言含跟随系统、文言文、西班牙语、法语
 - 引导 7 步，郑重说明里写明完全免费；全程离线，不收集数据
-- 主题：Material You（Android 12+ 跟随壁纸）和白色（干净白底，翠绿点缀，留白多）；浅色 / 深色 / 跟随系统
+- 主题：Material You（Android 12+ 跟随壁纸）；浅色 / 深色 / 跟随系统
 
 ### 主题
 
-1.3.7：去掉分钟输入框，滑条保持按分钟无级。个性主题新增**白色**（干净白底，翠绿点缀，留白多），也可继续用 **Material You**。浅色、深色或跟随系统。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
+1.3.8：去掉白色风格。个性主题只保留浅色 / 深色 / 跟随系统（Android 12+ 仍用 Material You 动态取色）。设置与关于不再引导去 GitHub。总时长里每个应用是一张完整圆角卡片（图标、名称、用量和滑条都在同一张卡里）。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
 
 ### 关于
 
@@ -110,7 +108,7 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 隐私
 
-Mind Peace 完全在你的手机上运行，不会上传任何使用记录。我们不收集数据。无障碍说明写在系统设置里：不读取聊天、密码或屏幕文字细节。用量存在本机 DataStore。仓库与安装包公开，便于你自己下载。
+Mind Peace 完全在你的手机上运行，不会上传任何使用记录。我们不收集数据。无障碍说明写在系统设置里：不读取聊天、密码或屏幕文字细节。用量存在本机 DataStore。源码公开，便于你自己编译。
 
 ---
 
@@ -147,7 +145,7 @@ Feeds and short video are easy to open on autopilot. Mind Peace pulls “open”
 
 ### Daily cap
 
-Set one daily total for every watched app, then share those minutes out. The global card has a slider plus chips; each app row is a slider only. Both move in whole minutes with no snapping.
+Set one daily total for every watched app, then share those minutes out. The global card has a slider plus chips; each app is one full rounded card with icon, name, and slider. Both move in whole minutes with no snapping.
 
 <p>
 <img src="docs/screenshots/budget.jpg" alt="Daily cap and per-app minutes" width="220">
@@ -171,12 +169,12 @@ Today vs yesterday starts expanded; the 7-day trend starts collapsed. A recap no
 
 ### How to use
 
-1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.7/MindPeace-1.3.7-debug.apk) (unknown sources). You can install over a previous debug build.
+1. Build the debug APK with the instructions below (unknown sources). You can install over a previous debug build.
 2. First launch is gated onboarding (7 steps): welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications + permission to list installed apps, lock in Recents, then a solemn privacy step (permissions exist only to intercept accurately; nothing is collected; a kind reminder: if you paid for this app, you were scammed — it is free). “I’m done” enables only when accessibility is actually on and the recents checkbox is checked.
 3. Bottom bar: **Daily cap**, **Add apps**, **Today’s recap**, **Settings**. Swipe left/right between tabs, or tap the bar.
 4. Opening a watched app asks if you really want to open it, with your quote. Confirm then pick duration, or Exit to the launcher.
 5. A notification shows remaining time. Leave the app and the leftover session is void.
-6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (Material You / White; light / dark / system), **Language/Language** (Follow system, Simplified Chinese, Traditional Chinese, English, Japanese, Russian, Literary Chinese, Spanish, French; follows the phone language until you pick one), edit your quote, replay setup, About. About and Settings include Bilibili and [the author's GitHub](https://github.com/stillthatlars/mind-peace). Tap the big About title five times to preview every notification template.
+6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), **Language/Language** (Follow system, Simplified Chinese, Traditional Chinese, English, Japanese, Russian, Literary Chinese, Spanish, French; follows the phone language until you pick one), edit your quote, replay setup, About. About and Settings include Bilibili. Tap the big About title five times to preview every notification template.
 
 If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / OPPO / vivo, lock Mind Peace in Recents and allow autostart / background.
 
@@ -193,11 +191,11 @@ If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / O
 - Recap: today vs yesterday open by default, 7-day trend collapsed
 - Languages include Follow system, Literary Chinese, Spanish, and French
 - Onboarding is 7 steps, with a free-app warning; fully offline, no collection
-- Themes: Material You (dynamic color on Android 12+) and White (clean white, a green accent, plenty of space); light / dark / system
+- Themes: Material You (dynamic color on Android 12+); light / dark / system
 
 ### Appearance
 
-1.3.7: minute text fields are gone; sliders stay stepless per minute. Appearance adds **White** (clean white, a green accent, plenty of space) next to **Material You**. Light / dark / follow system. UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
+1.3.8: the White visual style is gone. Appearance is light / dark / follow system (Material You dynamic color on Android 12+). Settings and About no longer send you to GitHub. Each watched app on Daily cap sits on one full rounded card (icon, name, usage, and slider together). UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
 
 ### About
 
@@ -209,7 +207,7 @@ Author [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822). Sourc
 
 ### Privacy
 
-Fully offline. No collection, no upload. Usage stays on-device in DataStore. Accessibility does not scrape message contents. This repository is public so you can download the build yourself.
+Fully offline. No collection, no upload. Usage stays on-device in DataStore. Accessibility does not scrape message contents. This repository is public so you can build it yourself.
 
 ---
 

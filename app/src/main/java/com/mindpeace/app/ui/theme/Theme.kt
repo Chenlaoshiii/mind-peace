@@ -146,64 +146,6 @@ private val AppleDark = darkColorScheme(
 )
 
 
-private val WhiteLight = lightColorScheme(
-    primary = WhiteGreen,
-    onPrimary = Color.White,
-    primaryContainer = WhitePrimaryContainer,
-    onPrimaryContainer = WhiteOnPrimaryContainer,
-    secondary = WhiteGreen,
-    onSecondary = Color.White,
-    secondaryContainer = WhitePanel,
-    onSecondaryContainer = WhiteInk,
-    tertiary = WhiteGreen,
-    onTertiary = Color.White,
-    background = WhiteBg,
-    onBackground = WhiteInk,
-    surface = WhiteBg,
-    onSurface = WhiteInk,
-    surfaceVariant = WhiteHover,
-    onSurfaceVariant = WhiteMuted,
-    outline = WhiteOutline,
-    outlineVariant = WhiteOutline,
-    surfaceContainerLowest = WhiteBg,
-    surfaceContainerLow = WhitePanel,
-    surfaceContainer = WhitePanel,
-    surfaceContainerHigh = WhiteHover,
-    surfaceContainerHighest = WhiteHover,
-    inverseSurface = WhiteInk,
-    inverseOnSurface = WhitePanel,
-    inversePrimary = WhiteGreen,
-)
-
-private val WhiteDark = darkColorScheme(
-    primary = WhiteGreen,
-    onPrimary = Color.White,
-    primaryContainer = WhiteDarkPrimaryContainer,
-    onPrimaryContainer = Color(0xFFE6F7F4),
-    secondary = WhiteGreen,
-    onSecondary = Color.White,
-    secondaryContainer = WhiteDarkSurface,
-    onSecondaryContainer = WhiteDarkOn,
-    tertiary = WhiteGreen,
-    onTertiary = Color.White,
-    background = WhiteDarkBg,
-    onBackground = WhiteDarkOn,
-    surface = WhiteDarkSurface,
-    onSurface = WhiteDarkOn,
-    surfaceVariant = WhiteDarkHover,
-    onSurfaceVariant = WhiteDarkMuted,
-    outline = Color.White.copy(alpha = 0.10f),
-    outlineVariant = Color.White.copy(alpha = 0.10f),
-    surfaceContainerLowest = WhiteDarkBg,
-    surfaceContainerLow = WhiteDarkSurface,
-    surfaceContainer = WhiteDarkSurface,
-    surfaceContainerHigh = WhiteDarkHover,
-    surfaceContainerHighest = WhiteDarkHover,
-    inverseSurface = WhiteDarkOn,
-    inverseOnSurface = WhiteDarkBg,
-    inversePrimary = WhiteGreen,
-)
-
 @Composable
 fun MindPeaceThemed(
     showAtmosphere: Boolean = true,
@@ -238,7 +180,6 @@ fun MindPeaceTheme(
             resolvedDark -> DarkColors
             else -> LightColors
         }
-        VisualStyle.WHITE -> if (resolvedDark) WhiteDark else WhiteLight
         VisualStyle.ORANGE -> if (resolvedDark) OrangeDark else OrangeLight
         VisualStyle.APPLE -> if (resolvedDark) AppleDark else AppleLight
     }

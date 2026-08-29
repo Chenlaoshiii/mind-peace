@@ -81,7 +81,6 @@ const val CELEBRATION_KIND_4H = "h4"
 const val CELEBRATION_KIND_1D = "d1"
 const val CELEBRATION_KIND_3D = "d3"
 const val BILIBILI_AUTHOR_URL = "https://space.bilibili.com/3546678682454822"
-const val GITHUB_REPO_URL = "https://github.com/stillthatlars/mind-peace"
 
 enum class ColorMode {
     LIGHT, DARK, SYSTEM;
@@ -92,10 +91,10 @@ enum class ColorMode {
 }
 
 enum class VisualStyle {
-    MATERIAL_YOU, WHITE, ORANGE, APPLE;
+    MATERIAL_YOU, ORANGE, APPLE;
     companion object {
         fun from(raw: String?): VisualStyle = when (raw) {
-            "WHITE" -> WHITE
+            "WHITE", "ORANGE", "APPLE" -> MATERIAL_YOU
             "MATERIAL_YOU" -> MATERIAL_YOU
             else -> MATERIAL_YOU
         }
