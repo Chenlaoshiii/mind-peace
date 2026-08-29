@@ -36,6 +36,7 @@ import androidx.core.net.toUri
 import com.mindpeace.app.BuildConfig
 import com.mindpeace.app.R
 import com.mindpeace.app.data.BILIBILI_AUTHOR_URL
+import com.mindpeace.app.data.GITHUB_REPO_URL
 import com.mindpeace.app.ui.theme.PeaceCard
 import com.mindpeace.app.ui.theme.peaceContainerColor
 import com.mindpeace.app.ui.theme.peaceSurfaceColor
@@ -133,6 +134,12 @@ fun AboutScreen(
                 title = stringResource(R.string.settings_credit_title),
                 line = stringResource(R.string.settings_credit_line),
                 onClick = { openBilibili(context) },
+            )
+            Spacer(Modifier.height(12.dp))
+            CreditLinkCard(
+                title = stringResource(R.string.settings_github_title),
+                line = stringResource(R.string.settings_github_line),
+                onClick = { openUrl(context, GITHUB_REPO_URL) },
             )
             Spacer(Modifier.height(24.dp))
         }

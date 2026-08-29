@@ -121,6 +121,8 @@ Mind Peace · Chenlaoshi
     <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
     <string name="settings_credit_line">作者 陳老實Chenlaoshi · 去 B 站看看</string>
     <string name="settings_credit_name">陳老實Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">去 GitHub 看看</string>
     <string name="settings_status_on">已開啟</string>
     <string name="settings_status_off">未開啟</string>
     <string name="settings_go">去設定</string>

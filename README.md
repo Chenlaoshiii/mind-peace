@@ -7,6 +7,8 @@ Mind Peace 是一款温和的 Android 使用提醒应用。它**不会锁住整�
 
 Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock the whole phone. When you launch an app you chose to watch, it covers it with a confirmation: do you really want to open it? After you confirm, you pick how long. When time is up, you go home.
 
+[下载 Debug 安装包 1.3.9](https://github.com/Chenlaoshiii/mind-peace/releases/download/v1.3.9/MindPeace-1.3.9-debug.apk) · [Releases](https://github.com/Chenlaoshiii/mind-peace/releases/tag/v1.3.9)
+
 作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · [GitHub](https://github.com/Chenlaoshiii/mind-peace) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
 
 ---
@@ -73,15 +75,28 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 1. 用下面 Build 说明自行编译 Debug 安装包（需允许未知来源）。覆盖安装即可。
 2. 第一次打开会走引导（7 步）：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知、授权读取已安装应用 → 按机型锁定后台 → **郑重说明**（权限只为更准地拦截；绝不收集隐私；好心提醒：花钱买到此软件说明你被骗了，Mind Peace 完全免费）。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
 3. 底栏四个入口：**总时长**、**添加应用**、**今日小结**、**设置**。左右滑动即可切换，点底栏也会跟着滑过去。
+
+**总时长（第一页）**
+
+这里设的是：今天所有被守护应用加在一起，一共能用多久。先定当天的总分钟数（顶部那张卡，滑条按分钟无级）。
+
+下面每一个应用一张圆角卡片。你可以给这个应用**单独分一段时间**（滑条约定它今天最多用多少分钟，不能超过还没分出去的总时长）。也可以把滑条拉到 0：**不单独限额**，这个应用和大家**共用还没分完的剩余时间**。分出去的分钟合计不能超过总时长。
+
+**添加应用**
+
+勾选要先确认再打开的应用。只拦你选中的。
+
+**今日小结**
+
+- **今昨对比**默认展开：看今天和昨天每个应用用了多久。
+- **7 天趋势**默认收起。用满大约 7 天之后，这里会画出这一周的曲线，和前面几天的用量叠在一起看，而不是只有今昨两天。从第一天起就会记；趋势会随着天数变完整。
+- 晚上大约 9 点还会推一条小结通知。
+
 4. 之后打开这些应用，会先问「真的确定要打开××吗？」并显示你的那句话。选「确定」再选 1 / 3 / 5 分钟或自定义；「退出」回桌面。
-5. 通知栏会显示剩余时间。到点回桌面。中途离开则本次结束。
-6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、**语言/Language**（跟随系统、简体中文、繁體中文、English、日本語、Русский、文言文、Español、Français；未选过则跟随手机语言）、改那句写给自己的话、重新看引导、关于。关于与设置里可以去 B 站。关于页大标题连点 5 下可预览全部通知文案。
+5. 通知栏会显示剩余时间。到点回桌面。中途离开则本次结束：已经用掉的计入今日用量，没用完的时间作废；下次打开会再次询问。
+6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、**语言/Language**（跟随系统、简体中文、繁體中文、English、日本語、Русский、文言文、Español、Français；未选过则跟随手机语言）、改那句写给自己的话、重新看引导、关于。关于与设置里可以「去 GitHub 看看」，也可以去 B 站。关于页大标题连点 5 下可预览全部通知文案。
 
 若拦截突然没了，打开应用看是否提示无障碍已关闭。小米 / 华为 / OPPO / vivo 请在最近任务里锁定 Mind Peace，并允许自启动与后台运行。
-
-<p>
-<img src="docs/screenshots/accessibility.jpg" alt="无障碍已关闭（真机）" width="220">
-</p>
 
 ### 小巧思
 
@@ -96,7 +111,7 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 主题
 
-1.3.8：去掉白色风格。个性主题只保留浅色 / 深色 / 跟随系统（Android 12+ 仍用 Material You 动态取色）。设置与关于不再引导去 GitHub。总时长里每个应用是一张完整圆角卡片（图标、名称、用量和滑条都在同一张卡里）。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
+1.3.9：设置与关于再次提供 GitHub 入口，指向 [Chenlaoshiii/mind-peace](https://github.com/Chenlaoshiii/mind-peace)（同时保留 B 站）。1.3.8 起去掉白色风格，个性主题只保留浅色 / 深色 / 跟随系统（Android 12+ 仍用 Material You 动态取色）。总时长里每个应用是一张完整圆角卡片（图标、名称、用量和滑条都在同一张卡里）。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
 
 ### 关于
 
@@ -172,15 +187,28 @@ Today vs yesterday starts expanded; the 7-day trend starts collapsed. A recap no
 1. Build the debug APK with the instructions below (unknown sources). You can install over a previous debug build.
 2. First launch is gated onboarding (7 steps): welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications + permission to list installed apps, lock in Recents, then a solemn privacy step (permissions exist only to intercept accurately; nothing is collected; a kind reminder: if you paid for this app, you were scammed — it is free). “I’m done” enables only when accessibility is actually on and the recents checkbox is checked.
 3. Bottom bar: **Daily cap**, **Add apps**, **Today’s recap**, **Settings**. Swipe left/right between tabs, or tap the bar.
-4. Opening a watched app asks if you really want to open it, with your quote. Confirm then pick duration, or Exit to the launcher.
-5. A notification shows remaining time. Leave the app and the leftover session is void.
-6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), **Language/Language** (Follow system, Simplified Chinese, Traditional Chinese, English, Japanese, Russian, Literary Chinese, Spanish, French; follows the phone language until you pick one), edit your quote, replay setup, About. About and Settings include Bilibili. Tap the big About title five times to preview every notification template.
+
+**Daily cap (first tab)**
+
+This is how long every watched app together may run today. Set the day’s total minutes first (the top card; the slider is stepless, whole minutes).
+
+Each app below sits on its own rounded card. You can **give that app its own slice** (the slider is its max minutes today, and it cannot exceed minutes that are still unallocated). You can also drag the slider to 0: **no per-app cap** — that app **shares the remaining unallocated time** with everyone else. Allocated minutes cannot add up to more than the daily total.
+
+**Add apps**
+
+Check the apps that should ask before they open. Only the ones you pick are watched.
+
+**Today’s recap**
+
+- **Today vs yesterday** starts expanded: see how long each app ran today versus yesterday.
+- **7-day trend** starts collapsed. After about a week of use, this draws the week’s curve so you can stack the last few days together, not just today and yesterday. Recording starts on day one; the trend fills in as days accumulate.
+- A recap notification also goes out around 21:00.
+
+4. Opening a watched app asks if you really want to open it, with your quote. Confirm, then pick 1 / 3 / 5 minutes or custom; Exit returns to the launcher.
+5. A notification shows remaining time. When time is up you go home. Leave the app and the session ends: time already used is counted, leftover minutes are discarded, and the next open always asks again.
+6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), **Language/Language** (Follow system, Simplified Chinese, Traditional Chinese, English, Japanese, Russian, Literary Chinese, Spanish, French; follows the phone language until you pick one), edit your quote, replay setup, About. About and Settings include “Check GitHub” and Bilibili. Tap the big About title five times to preview every notification template.
 
 If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / OPPO / vivo, lock Mind Peace in Recents and allow autostart / background.
-
-<p>
-<img src="docs/screenshots/accessibility.jpg" alt="Accessibility is off (real device)" width="220">
-</p>
 
 ### Small details
 
@@ -195,7 +223,7 @@ If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / O
 
 ### Appearance
 
-1.3.8: the White visual style is gone. Appearance is light / dark / follow system (Material You dynamic color on Android 12+). Settings and About no longer send you to GitHub. Each watched app on Daily cap sits on one full rounded card (icon, name, usage, and slider together). UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
+1.3.9: Settings and About again include a GitHub card, pointing at [Chenlaoshiii/mind-peace](https://github.com/Chenlaoshiii/mind-peace) (Bilibili stays). Since 1.3.8 the White visual style is gone. Appearance is light / dark / follow system (Material You dynamic color on Android 12+). Each watched app on Daily cap sits on one full rounded card (icon, name, usage, and slider together). UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
 
 ### About
 

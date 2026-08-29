@@ -128,6 +128,8 @@
     <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
     <string name="settings_credit_line">作者 陈老实Chenlaoshi · 去 B 站看看</string>
     <string name="settings_credit_name">陈老实Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">去 GitHub 看看</string>
     <string name="settings_status_on">已开启</string>
     <string name="settings_status_off">未开启</string>
     <string name="settings_go">去设置</string>

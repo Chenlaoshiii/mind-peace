@@ -121,6 +121,8 @@ Autor 陈老实Chenlaoshi</string>
     <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
     <string name="settings_credit_line">Autor 陈老实Chenlaoshi · ver en Bilibili</string>
     <string name="settings_credit_name">陈老实Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">Ver GitHub</string>
     <string name="settings_status_on">Activado</string>
     <string name="settings_status_off">Desactivado</string>
     <string name="settings_go">Ir a ajustes</string>

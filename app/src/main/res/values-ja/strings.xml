@@ -121,6 +121,8 @@ Mind Peace · Chenlaoshi
     <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
     <string name="settings_credit_line">作者 陈老实Chenlaoshi · Bilibili を見る</string>
     <string name="settings_credit_name">陈老实Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">GitHub を見る</string>
     <string name="settings_status_on">オン</string>
     <string name="settings_status_off">オフ</string>
     <string name="settings_go">設定を開く</string>
