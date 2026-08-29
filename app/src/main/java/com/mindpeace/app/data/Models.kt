@@ -92,9 +92,13 @@ enum class ColorMode {
 }
 
 enum class VisualStyle {
-    MATERIAL_YOU, ORANGE, APPLE;
+    MATERIAL_YOU, WHITE, ORANGE, APPLE;
     companion object {
-        fun from(raw: String?): VisualStyle = MATERIAL_YOU
+        fun from(raw: String?): VisualStyle = when (raw) {
+            "WHITE" -> WHITE
+            "MATERIAL_YOU" -> MATERIAL_YOU
+            else -> MATERIAL_YOU
+        }
     }
 }
 

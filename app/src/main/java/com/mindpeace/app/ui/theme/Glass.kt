@@ -1,6 +1,7 @@
 package com.mindpeace.app.ui.theme
 
 import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -25,6 +26,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -76,6 +78,15 @@ data class PeaceTab(
     val label: String,
     val icon: ImageVector,
 )
+
+@Composable
+fun peaceCardShape(): RoundedCornerShape {
+    val radius = if (LocalVisualStyle.current == VisualStyle.WHITE) 14.dp else 20.dp
+    return RoundedCornerShape(radius)
+}
+
+@Composable
+fun isWhiteStyle(): Boolean = LocalVisualStyle.current == VisualStyle.WHITE
 
 @Composable
 fun Modifier.peaceGlass(shape: Shape = RoundedCornerShape(28.dp)): Modifier {
@@ -188,7 +199,7 @@ fun peaceSliderColors(): SliderColors {
 @Composable
 fun PeaceCard(
     modifier: Modifier = Modifier,
-    shape: Shape = RoundedCornerShape(20.dp),
+    shape: Shape = peaceCardShape(),
     containerColor: Color = MaterialTheme.colorScheme.surfaceContainerLow,
     elevation: Dp = 0.dp,
     onClick: (() -> Unit)? = null,
@@ -274,24 +285,41 @@ fun PeaceButton(
                 }
             }
         }
-    } else if (outlined) {
-        OutlinedButton(
-            onClick = onClick,
-            modifier = modifier,
-            enabled = enabled,
-            shape = AppleCapsule,
-            interactionSource = interaction,
-            content = content,
-        )
     } else {
-        Button(
-            onClick = onClick,
-            modifier = modifier,
-            enabled = enabled,
-            shape = AppleCapsule,
-            interactionSource = interaction,
-            content = content,
-        )
+        val white = LocalVisualStyle.current == VisualStyle.WHITE
+        val shape = if (white) RoundedCornerShape(14.dp) else AppleCapsule
+        if (outlined) {
+            OutlinedButton(
+                onClick = onClick,
+                modifier = modifier,
+                enabled = enabled,
+                shape = shape,
+                interactionSource = interaction,
+                border = BorderStroke(
+                    1.dp,
+                    if (white) MaterialTheme.colorScheme.outline
+                    else MaterialTheme.colorScheme.outline,
+                ),
+                colors = ButtonDefaults.outlinedButtonColors(
+                    contentColor = if (white) MaterialTheme.colorScheme.onSurface
+                    else MaterialTheme.colorScheme.primary,
+                ),
+                content = content,
+            )
+        } else {
+            Button(
+                onClick = onClick,
+                modifier = modifier,
+                enabled = enabled,
+                shape = shape,
+                interactionSource = interaction,
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    contentColor = MaterialTheme.colorScheme.onPrimary,
+                ),
+                content = content,
+            )
+        }
     }
 }
 
@@ -308,10 +336,12 @@ fun PeaceChip(
     val pressed by interaction.collectIsPressedAsState()
     val dark = LocalDarkTheme.current
     if (!apple) {
+        val white = LocalVisualStyle.current == VisualStyle.WHITE
+        val scheme = MaterialTheme.colorScheme
         val unselectedBorder = if (dark) {
-            MaterialTheme.colorScheme.onSurface.copy(alpha = 0.55f)
+            scheme.onSurface.copy(alpha = 0.55f)
         } else {
-            MaterialTheme.colorScheme.outline
+            scheme.outline
         }
         FilterChip(
             selected = selected,
@@ -319,11 +349,23 @@ fun PeaceChip(
             label = label,
             modifier = modifier,
             interactionSource = interaction,
-            shape = AppleChipShape,
+            shape = if (white) RoundedCornerShape(12.dp) else AppleChipShape,
+            colors = if (white) {
+                FilterChipDefaults.filterChipColors(
+                    containerColor = scheme.surfaceVariant,
+                    labelColor = scheme.onSurface,
+                    selectedContainerColor = scheme.primaryContainer,
+                    selectedLabelColor = scheme.primary,
+                    selectedLeadingIconColor = scheme.primary,
+                )
+            } else {
+                FilterChipDefaults.filterChipColors()
+            },
             border = FilterChipDefaults.filterChipBorder(
                 enabled = true,
                 selected = selected,
-                borderColor = unselectedBorder,
+                borderColor = if (white) Color.Transparent else unselectedBorder,
+                selectedBorderColor = if (white) Color.Transparent else scheme.outline,
             ),
         )
         return
@@ -474,6 +516,9 @@ fun PeaceBottomBar(
                     colors = NavigationBarItemDefaults.colors(
                         selectedIconColor = MaterialTheme.colorScheme.primary,
                         selectedTextColor = MaterialTheme.colorScheme.primary,
+                        indicatorColor = MaterialTheme.colorScheme.primaryContainer,
+                        unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                        unselectedTextColor = MaterialTheme.colorScheme.onSurfaceVariant,
                     ),
                 )
             }
@@ -522,8 +567,13 @@ fun PeaceListGroup(
 ) {
     val apple = LocalVisualStyle.current == VisualStyle.APPLE
     val orange = LocalVisualStyle.current == VisualStyle.ORANGE
+    val white = LocalVisualStyle.current == VisualStyle.WHITE
     val dark = LocalDarkTheme.current
-    val shape = if (apple) AppleGroupShape else RoundedCornerShape(16.dp)
+    val shape = when {
+        apple -> AppleGroupShape
+        white -> RoundedCornerShape(14.dp)
+        else -> RoundedCornerShape(16.dp)
+    }
     val bg = when {
         apple -> Color.Transparent
         orange -> MaterialTheme.colorScheme.surface

@@ -108,14 +108,20 @@ private fun ConfirmPane(
         subtitle = budgetLine(state.remainingDailyMillis),
         extra = if (quote.isNotBlank()) {
             {
-                val appleQuote = LocalVisualStyle.current == VisualStyle.APPLE
+                val style = LocalVisualStyle.current
+                val appleQuote = style == VisualStyle.APPLE
+                val whiteQuote = style == VisualStyle.WHITE
                 val darkQuote = LocalDarkTheme.current
+                val quoteShape = RoundedCornerShape(if (whiteQuote) 12.dp else 18.dp)
                 Surface(
-                    modifier = if (appleQuote) Modifier.peaceGlass(RoundedCornerShape(18.dp), darkQuote, true) else Modifier,
-                    color = if (appleQuote) Color.Transparent
-                    else MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.92f),
-                    shape = RoundedCornerShape(18.dp),
-                    tonalElevation = if (appleQuote) 0.dp else 1.dp,
+                    modifier = if (appleQuote) Modifier.peaceGlass(quoteShape, darkQuote, true) else Modifier,
+                    color = when {
+                        appleQuote -> Color.Transparent
+                        whiteQuote -> MaterialTheme.colorScheme.surfaceContainerLow
+                        else -> MaterialTheme.colorScheme.secondaryContainer.copy(alpha = 0.92f)
+                    },
+                    shape = quoteShape,
+                    tonalElevation = if (appleQuote || whiteQuote) 0.dp else 1.dp,
                 ) {
                     Column(Modifier.padding(16.dp)) {
                         Text(
@@ -277,17 +283,23 @@ private fun OverlayCard(
     extra: (@Composable () -> Unit)? = null,
     bottom: @Composable () -> Unit,
 ) {
-    val apple = LocalVisualStyle.current == VisualStyle.APPLE
+    val style = LocalVisualStyle.current
+    val apple = style == VisualStyle.APPLE
+    val white = style == VisualStyle.WHITE
     val dark = LocalDarkTheme.current
+    val cardShape = if (white) RoundedCornerShape(16.dp) else CardShape
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .peaceGlass(CardShape, dark, apple),
-        shape = CardShape,
-        tonalElevation = if (apple) 0.dp else 6.dp,
-        shadowElevation = if (apple) 0.dp else 2.dp,
-        color = if (apple) Color.Transparent
-        else MaterialTheme.colorScheme.surface.copy(alpha = 0.94f),
+            .peaceGlass(cardShape, dark, apple),
+        shape = cardShape,
+        tonalElevation = if (apple || white) 0.dp else 6.dp,
+        shadowElevation = if (apple || white) 0.dp else 2.dp,
+        color = when {
+            apple -> Color.Transparent
+            white -> MaterialTheme.colorScheme.surface
+            else -> MaterialTheme.colorScheme.surface.copy(alpha = 0.94f)
+        },
     ) {
         Column(
             modifier = Modifier

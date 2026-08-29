@@ -193,6 +193,8 @@ Mind Peace · Chenlaoshi
     <string name="settings_style_orange_sub">Тёплая бумага #FAF9F5, оранжевый #D97757, антиква</string>
     <string name="settings_style_apple">В духе Apple</string>
     <string name="settings_style_apple_sub">Системный зелёный и жидкое стекло</string>
+    <string name="settings_style_white">Белый</string>
+    <string name="settings_style_white_sub">Чистый белый фон, зелёный акцент, много воздуха</string>
     <string name="about_blurb">Сначала пауза. Потом открыть. Не блокирует весь телефон — спрашивает только в выбранных приложениях. Работает только на вашем телефоне, данные не собирает.</string>
     <string name="about_version">Версия %1$s</string>
     <string name="lab_title">Превью уведомлений</string>

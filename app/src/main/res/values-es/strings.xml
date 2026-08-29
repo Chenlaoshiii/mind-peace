@@ -193,6 +193,8 @@ Autor 陈老实Chenlaoshi</string>
     <string name="settings_style_orange_sub">Papel cálido #FAF9F5, naranja #D97757, serif</string>
     <string name="settings_style_apple">Estilo Apple</string>
     <string name="settings_style_apple_sub">Verde del sistema y vidrio líquido</string>
+    <string name="settings_style_white">Blanco</string>
+    <string name="settings_style_white_sub">Blanco limpio, un acento verde, mucho espacio</string>
     <string name="about_blurb">Párate un momento. Luego abre. No bloquea el teléfono entero: solo pregunta en las apps que elegiste. Funciona por completo en tu teléfono y no recoge datos.</string>
     <string name="about_version">Versión %1$s</string>
     <string name="lab_title">Vista previa de notificaciones</string>

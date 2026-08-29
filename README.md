@@ -7,7 +7,7 @@ Mind Peace 是一款温和的 Android 使用提醒应用。它**不会锁住整�
 
 Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock the whole phone. When you launch an app you chose to watch, it covers it with a confirmation: do you really want to open it? After you confirm, you pick how long. When time is up, you go home.
 
-[下载 Debug 安装包 1.3.6](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.6/MindPeace-1.3.6-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.6)
+[下载 Debug 安装包 1.3.7](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.7/MindPeace-1.3.7-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.7)
 
 作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · [GitHub](https://github.com/stillthatlars/mind-peace) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
 
@@ -21,15 +21,21 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 它站在你这边，不羞辱、不说教。拦截时会先看见你写给自己的那句话。少用了会鼓励你；晚上会轻轻告诉你今天和昨天差了多少。
 
+<p>
+<img src="docs/screenshots/intercept.jpg" alt="打开应用前的确认" width="220">
+<img src="docs/screenshots/duration.jpg" alt="这次用多久" width="220">
+</p>
+
 ### 它做什么，不做什么
 
 **会做**
 
 - 打开已守护应用时立刻盖住确认层（应用还在下面，但不能操作）
-- 自己选本次时长；倒计时只在该应用在前台时走。中途离开（回桌面、切到别的应用、打开 Mind Peace）会结束本次，已经用掉的计入今日用量，没用完的时间作废；下次打开会再次询问。离开本身不会再弹出拦截
+- 自己选本次时长：1 / 3 / 5 分钟，或自定义。倒计时只在该应用在前台时走
+- 中途离开（回桌面、切到别的应用、打开 Mind Peace）会结束本次：已经用掉的计入今日用量，没用完的时间作废；下次打开会再次询问。离开本身不会再弹出拦截
 - 某个应用今日额度用完后再调高限额，需先确认，并手打一句确认语
 - 时间到回到桌面，并提醒「时间到了」
-- 首页「总时长」可设所有被守护应用加在一起的每日上限，再把分钟分给各个应用（不能超过总数；0 表示这个应用不额外限额，仍受总时长剩余约束）
+- 首页「总时长」可设所有被守护应用加在一起的每日上限，再把分钟分给各个应用（不能超过总数；0 表示这个应用不额外限额，仍受总时长剩余约束）。滑条按分钟无级调节，没有刻度点
 - 一段时间没打开被守护应用，会发鼓励通知
 - 大约晚上 9 点推送今日小结；「今日小结」页 **今昨对比** 默认展开，**7天趋势** 默认收起
 
@@ -40,28 +46,67 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 - 不会拦截 Mind Peace 自己
 - 不会上传任何使用记录，也没有任何数据收集。应用完全在你的手机上运行
 
+### 总时长
+
+先定今天所有被守护应用加在一起能用多久，再把分钟分给各个应用。总卡片上是滑条加快捷芯片；每个应用一行只有滑条。都按整分钟无级滑动。
+
 <p>
-<img src="docs/screenshots/onboarding.png" alt="引导" width="220">
-<img src="docs/screenshots/home.png" alt="首页" width="220">
-<img src="docs/screenshots/intercept.png" alt="拦截确认" width="220">
-<img src="docs/screenshots/stats.png" alt="今日小结" width="220">
-<img src="docs/screenshots/accessibility.jpg" alt="无障碍已关闭（真机）" width="220">
+<img src="docs/screenshots/budget.jpg" alt="总时长与分给各应用的分钟" width="220">
+</p>
+
+### 添加应用
+
+底栏「添加应用」里搜索并勾选你想先停一停再打开的应用。只守护你选中的那些。
+
+<p>
+<img src="docs/screenshots/picker.jpg" alt="添加要守护的应用" width="220">
+</p>
+
+### 今日小结
+
+今昨对比默认展开，7 天趋势默认收起。晚上大约 9 点还会推一条小结。
+
+<p>
+<img src="docs/screenshots/stats.jpg" alt="今日小结：今昨对比" width="220">
 </p>
 
 ### 怎么用
 
-1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.6/MindPeace-1.3.6-debug.apk)（需允许未知来源）。覆盖安装即可。
+1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.7/MindPeace-1.3.7-debug.apk)（需允许未知来源）。覆盖安装即可。
 2. 第一次打开会走引导（7 步）：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知、授权读取已安装应用 → 按机型锁定后台 → **郑重说明**（权限只为更准地拦截；绝不收集隐私；好心提醒：花钱买到此软件说明你被骗了，Mind Peace 完全免费）。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
 3. 底栏四个入口：**总时长**、**添加应用**、**今日小结**、**设置**。左右滑动即可切换，点底栏也会跟着滑过去。
 4. 之后打开这些应用，会先问「真的确定要打开××吗？」并显示你的那句话。选「确定」再选 1 / 3 / 5 分钟或自定义；「退出」回桌面。
 5. 通知栏会显示剩余时间。到点回桌面。中途离开则本次结束。
-6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、**语言/Language**（跟随系统、简体中文、繁體中文、English、日本語、Русский、文言文、Español、Français；未选过则跟随手机语言）、改那句写给自己的话、重新看引导、关于。关于与设置里可以去 B 站或 [去作者的 GitHub 看看](https://github.com/stillthatlars/mind-peace)。关于页大标题连点 5 下可预览全部通知文案。
+6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（谷歌 Material You / 白色；浅色 / 深色 / 跟随系统）、**语言/Language**（跟随系统、简体中文、繁體中文、English、日本語、Русский、文言文、Español、Français；未选过则跟随手机语言）、改那句写给自己的话、重新看引导、关于。关于与设置里可以去 B 站或 [去作者的 GitHub 看看](https://github.com/stillthatlars/mind-peace)。关于页大标题连点 5 下可预览全部通知文案。
 
 若拦截突然没了，打开应用看是否提示无障碍已关闭。小米 / 华为 / OPPO / vivo 请在最近任务里锁定 Mind Peace，并允许自启动与后台运行。
 
+<p>
+<img src="docs/screenshots/accessibility.jpg" alt="无障碍已关闭（真机）" width="220">
+</p>
+
+### 小巧思
+
+- 不是整机锁，只拦你选的应用
+- 打开前先看见写给自己的那句话；选 1 / 3 / 5 分钟或自定义；离开则剩余作废，且不会误拦一次
+- 总时长 + 各应用滑条按分钟无级，没有 5 分钟一格、也没有手动输入框
+- 额度已经用完再往上调，要两步确认并手打一句
+- 今昨对比默认打开，7 天趋势默认收起
+- 语言含跟随系统、文言文、西班牙语、法语
+- 引导 7 步，郑重说明里写明完全免费；全程离线，不收集数据
+- 主题：Material You（Android 12+ 跟随壁纸）和白色（干净白底，翠绿点缀，留白多）；浅色 / 深色 / 跟随系统
+
 ### 主题
 
-1.3.6：总时长滑条改为按分钟无级调节；每个应用可手动输入分钟。退出被守护应用不再误拦截。额度用完后再调高限额，需确认并手打一句确认语。个性主题只保留 **Material You**（Android 12+ 跟随壁纸动态取色）。可在设置里选浅色、深色或跟随系统。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
+1.3.7：去掉分钟输入框，滑条保持按分钟无级。个性主题新增**白色**（干净白底，翠绿点缀，留白多），也可继续用 **Material You**。浅色、深色或跟随系统。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
+
+### 关于
+
+作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822)。源码在 [GitHub](https://github.com/stillthatlars/mind-peace)。
+
+<p>
+<img src="docs/screenshots/about.jpg" alt="关于页：作者与版本" width="220">
+</p>
 
 ### 隐私
 
@@ -75,15 +120,21 @@ Mind Peace 完全在你的手机上运行，不会上传任何使用记录。我
 
 Feeds and short video are easy to open on autopilot. Mind Peace pulls “open” out of habit and turns it into a choice. It is on your side: no shaming. The intercept screen shows a sentence you wrote to yourself. Quiet streaks get a celebration. Evening brings a calm recap versus yesterday.
 
+<p>
+<img src="docs/screenshots/intercept.jpg" alt="Confirm before opening an app" width="220">
+<img src="docs/screenshots/duration.jpg" alt="How long this time" width="220">
+</p>
+
 ### What it does and does not do
 
 **Does**
 
 - Overlay a confirmation the moment a watched app comes to the foreground
-- Let you pick a session length; the timer runs only while that app is in front. Leaving (home, another app, or Mind Peace) **ends** the session: time already used is counted, leftover minutes are discarded, and the next open always asks again. Leaving itself does not show the intercept
+- Let you pick a session length: 1 / 3 / 5 minutes, or custom. The timer runs only while that app is in front
+- Leaving (home, another app, or Mind Peace) **ends** the session: time already used is counted, leftover minutes are discarded, and the next open always asks again. Leaving itself does not show the intercept
 - If an app’s daily allowance is already used up, raising that limit needs a confirmation and typing a sentence
 - Send you home when time is up, with a reminder
-- A global daily cap for all watched apps, then per-app allocations from that pool (allocations cannot exceed the total; 0 means no extra per-app cap beyond remaining global time)
+- A global daily cap for all watched apps, then per-app allocations from that pool (allocations cannot exceed the total; 0 means no extra per-app cap beyond remaining global time). Sliders are stepless whole minutes, with no tick marks
 - Celebration notifications after 4 hours / 1 day / 3 days without opening watched apps (quiet hours 22:00–08:00)
 - A nightly summary around 21:00; Recap: **Today vs yesterday** is expanded by default, **7-day trend** is collapsed
 
@@ -94,20 +145,67 @@ Feeds and short video are easy to open on autopilot. Mind Peace pulls “open”
 - Intercept Mind Peace itself
 - Collect or upload usage. Everything stays on the device.
 
+### Daily cap
+
+Set one daily total for every watched app, then share those minutes out. The global card has a slider plus chips; each app row is a slider only. Both move in whole minutes with no snapping.
+
+<p>
+<img src="docs/screenshots/budget.jpg" alt="Daily cap and per-app minutes" width="220">
+</p>
+
+### Add apps
+
+Search and check the apps you want to pause on. Only the ones you pick are watched.
+
+<p>
+<img src="docs/screenshots/picker.jpg" alt="Add apps to watch" width="220">
+</p>
+
+### Today’s recap
+
+Today vs yesterday starts expanded; the 7-day trend starts collapsed. A recap notification goes out around 21:00.
+
+<p>
+<img src="docs/screenshots/stats.jpg" alt="Today’s recap versus yesterday" width="220">
+</p>
+
 ### How to use
 
-1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.6/MindPeace-1.3.6-debug.apk) (unknown sources). You can install over a previous debug build.
+1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.7/MindPeace-1.3.7-debug.apk) (unknown sources). You can install over a previous debug build.
 2. First launch is gated onboarding (7 steps): welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications + permission to list installed apps, lock in Recents, then a solemn privacy step (permissions exist only to intercept accurately; nothing is collected; a kind reminder: if you paid for this app, you were scammed — it is free). “I’m done” enables only when accessibility is actually on and the recents checkbox is checked.
 3. Bottom bar: **Daily cap**, **Add apps**, **Today’s recap**, **Settings**. Swipe left/right between tabs, or tap the bar.
 4. Opening a watched app asks if you really want to open it, with your quote. Confirm then pick duration, or Exit to the launcher.
 5. A notification shows remaining time. Leave the app and the leftover session is void.
-6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), **Language/Language** (Follow system, Simplified Chinese, Traditional Chinese, English, Japanese, Russian, Literary Chinese, Spanish, French; follows the phone language until you pick one), edit your quote, replay setup, About. About and Settings include Bilibili and [the author's GitHub](https://github.com/stillthatlars/mind-peace). Tap the big About title five times to preview every notification template.
+6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (Material You / White; light / dark / system), **Language/Language** (Follow system, Simplified Chinese, Traditional Chinese, English, Japanese, Russian, Literary Chinese, Spanish, French; follows the phone language until you pick one), edit your quote, replay setup, About. About and Settings include Bilibili and [the author's GitHub](https://github.com/stillthatlars/mind-peace). Tap the big About title five times to preview every notification template.
 
 If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / OPPO / vivo, lock Mind Peace in Recents and allow autostart / background.
 
+<p>
+<img src="docs/screenshots/accessibility.jpg" alt="Accessibility is off (real device)" width="220">
+</p>
+
+### Small details
+
+- Not a whole-phone lock; only the apps you select
+- A quote to yourself on intercept; duration 1 / 3 / 5 or custom; leftover time is voided when you leave; leaving does not false-intercept
+- Global daily cap plus per-app stepless whole-minute sliders (no 5-minute snap, no minute text field)
+- Raising a spent quota is a two-step confirm-and-type challenge
+- Recap: today vs yesterday open by default, 7-day trend collapsed
+- Languages include Follow system, Literary Chinese, Spanish, and French
+- Onboarding is 7 steps, with a free-app warning; fully offline, no collection
+- Themes: Material You (dynamic color on Android 12+) and White (clean white, a green accent, plenty of space); light / dark / system
+
 ### Appearance
 
-1.3.6: daily-cap sliders are stepless per minute, and each app has a manual minute field. Leaving a watched app no longer false-triggers the intercept. Raising a spent quota needs confirmation and a typed sentence. **Material You** only (dynamic color on Android 12+). Light / dark / follow system. UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
+1.3.7: minute text fields are gone; sliders stay stepless per minute. Appearance adds **White** (clean white, a green accent, plenty of space) next to **Material You**. Light / dark / follow system. UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
+
+### About
+
+Author [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822). Source: [GitHub](https://github.com/stillthatlars/mind-peace).
+
+<p>
+<img src="docs/screenshots/about.jpg" alt="About screen with author and version" width="220">
+</p>
 
 ### Privacy
 

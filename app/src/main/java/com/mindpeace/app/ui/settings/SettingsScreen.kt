@@ -45,6 +45,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.data.ColorMode
+import com.mindpeace.app.data.VisualStyle
 import com.mindpeace.app.data.GITHUB_REPO_URL
 import com.mindpeace.app.ui.components.PeacePageTitle
 import com.mindpeace.app.ui.components.SelfMessageEditor
@@ -99,11 +100,16 @@ fun SettingsScreen(
 
     val onLabel = stringResource(R.string.settings_status_on)
     val offLabel = stringResource(R.string.settings_status_off)
-    val themeSub = when (appearance.colorMode) {
+    val styleLabel = when (appearance.style) {
+        VisualStyle.WHITE -> stringResource(R.string.settings_style_white)
+        else -> stringResource(R.string.settings_style_material)
+    }
+    val colorLabel = when (appearance.colorMode) {
         ColorMode.LIGHT -> stringResource(R.string.settings_color_light)
         ColorMode.DARK -> stringResource(R.string.settings_color_dark)
         ColorMode.SYSTEM -> stringResource(R.string.settings_color_system)
     }
+    val themeSub = "$styleLabel · $colorLabel"
 
     val body: @Composable (Modifier, Boolean) -> Unit = { modifier, showPageTitle ->
         Column(

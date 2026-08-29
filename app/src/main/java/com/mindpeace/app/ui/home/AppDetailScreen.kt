@@ -43,7 +43,6 @@ import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.data.WatchedApp
 import com.mindpeace.app.ui.components.AppIcon
-import com.mindpeace.app.ui.components.MinutesInputField
 import com.mindpeace.app.ui.theme.peaceContainerColor
 import com.mindpeace.app.ui.theme.peaceSliderColors
 import com.mindpeace.app.util.formatDurationMillis
@@ -165,12 +164,6 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
                 },
                 valueRange = 0f..sliderMax.toFloat(),
                 colors = peaceSliderColors(),
-                modifier = Modifier.fillMaxWidth(),
-            )
-            MinutesInputField(
-                minutes = previewLimit,
-                maxMinutes = sliderMax,
-                onCommit = { requestLimit(it) },
                 modifier = Modifier.fillMaxWidth(),
             )
             Spacer(Modifier.height(8.dp))

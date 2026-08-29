@@ -9,17 +9,18 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
@@ -40,12 +41,6 @@ fun ThemeSettingsScreen(onBack: () -> Unit) {
     val appearance by app.container.settings.appearance.collectAsStateWithLifecycle()
     val scope = rememberCoroutineScope()
     val onLabel = stringResource(R.string.settings_status_on)
-
-    LaunchedEffect(appearance.style) {
-        if (appearance.style != VisualStyle.MATERIAL_YOU) {
-            app.container.settings.setVisualStyle(VisualStyle.MATERIAL_YOU)
-        }
-    }
 
     Scaffold(
         containerColor = peaceContainerColor(),
@@ -70,6 +65,35 @@ fun ThemeSettingsScreen(onBack: () -> Unit) {
                 .padding(padding)
                 .verticalScroll(rememberScrollState()),
         ) {
+            Text(
+                text = stringResource(R.string.settings_style),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp),
+            )
+            PeaceListGroup {
+                PeaceListRow(
+                    title = stringResource(R.string.settings_style_material),
+                    subtitle = stringResource(R.string.settings_style_material_sub),
+                    trailing = if (appearance.style == VisualStyle.MATERIAL_YOU) onLabel else null,
+                    trailingHighlight = appearance.style == VisualStyle.MATERIAL_YOU,
+                    onClick = { scope.launch { app.container.settings.setVisualStyle(VisualStyle.MATERIAL_YOU) } },
+                )
+                PeaceListRow(
+                    title = stringResource(R.string.settings_style_white),
+                    subtitle = stringResource(R.string.settings_style_white_sub),
+                    trailing = if (appearance.style == VisualStyle.WHITE) onLabel else null,
+                    trailingHighlight = appearance.style == VisualStyle.WHITE,
+                    showDivider = false,
+                    onClick = { scope.launch { app.container.settings.setVisualStyle(VisualStyle.WHITE) } },
+                )
+            }
+            Text(
+                text = stringResource(R.string.settings_color_mode),
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp),
+            )
             PeaceListGroup {
                 PeaceListRow(
                     title = stringResource(R.string.settings_color_light),

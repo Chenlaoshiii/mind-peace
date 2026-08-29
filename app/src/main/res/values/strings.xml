@@ -208,6 +208,8 @@
     <string name="settings_style_orange_sub">暖纸底 #FAF9F5，橙色 #D97757，全文衬线</string>
     <string name="settings_style_apple">苹果风格</string>
     <string name="settings_style_apple_sub">系统绿与液态玻璃</string>
+    <string name="settings_style_white">白色</string>
+    <string name="settings_style_white_sub">干净白底，翠绿点缀，留白多</string>
     <string name="about_blurb">在打开之前，先停一停。不会锁住整部手机，只在你选定的应用上询问。完全在你的手机上运行，不收集数据。</string>
     <string name="about_version">版本 %1$s</string>
     <string name="lab_title">通知预览</string>
