@@ -4,7 +4,10 @@ import android.Manifest
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -13,8 +16,10 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -28,6 +33,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.compose.LocalLifecycleOwner
@@ -47,6 +53,7 @@ import com.mindpeace.app.ui.theme.PeaceListGroup
 import com.mindpeace.app.ui.theme.PeaceListRow
 import com.mindpeace.app.ui.theme.peaceContainerColor
 import com.mindpeace.app.ui.theme.peaceSurfaceColor
+import com.mindpeace.app.util.AppLocale
 import com.mindpeace.app.util.Permissions
 import kotlinx.coroutines.launch
 
@@ -62,12 +69,14 @@ fun SettingsScreen(
     val app = context.applicationContext as MindPeaceApp
     val quote by app.container.settings.selfMessage.collectAsStateWithLifecycle()
     val appearance by app.container.settings.appearance.collectAsStateWithLifecycle()
+    val appLocale by app.container.settings.appLocale.collectAsStateWithLifecycle()
     var a11y by remember { mutableStateOf(Permissions.isAccessibilityEnabled(context)) }
     var battery by remember { mutableStateOf(Permissions.isIgnoringBatteryOptimizations(context)) }
     var notif by remember { mutableStateOf(Permissions.areNotificationsEnabled(context)) }
     var overlay by remember { mutableStateOf(Permissions.canDrawOverlays(context)) }
     var showLock by remember { mutableStateOf(false) }
     var showSelf by remember { mutableStateOf(false) }
+    var showLanguage by remember { mutableStateOf(false) }
     val scope = rememberCoroutineScope()
 
     val notifLauncher = rememberLauncherForActivityResult(
@@ -142,6 +151,13 @@ fun SettingsScreen(
                     onClick = onTheme,
                 )
                 PeaceListRow(
+                    title = "${stringResource(R.string.settings_language_word)}/Language",
+                    subtitle = stringResource(
+                        AppLocale.options.first { it.tag == AppLocale.normalize(appLocale) }.labelRes,
+                    ),
+                    onClick = { showLanguage = true },
+                )
+                PeaceListRow(
                     title = stringResource(R.string.settings_self_message),
                     subtitle = quote.ifBlank { stringResource(R.string.settings_self_message_sub) },
                     onClick = { showSelf = true },
@@ -202,6 +218,47 @@ fun SettingsScreen(
         }
     }
 
+    if (showLanguage) {
+        AlertDialog(
+            onDismissRequest = { showLanguage = false },
+            confirmButton = {
+                TextButton(onClick = { showLanguage = false }) {
+                    Text(stringResource(R.string.overlay_timeup_ok))
+                }
+            },
+            title = { Text("${stringResource(R.string.settings_language_word)}/Language") },
+            text = {
+                Column {
+                    AppLocale.options.forEach { opt ->
+                        val selected = AppLocale.normalize(appLocale) == opt.tag
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clickable {
+                                    scope.launch { app.container.settings.setAppLocale(opt.tag) }
+                                    showLanguage = false
+                                }
+                                .padding(vertical = 12.dp),
+                            verticalAlignment = Alignment.CenterVertically,
+                        ) {
+                            Text(
+                                text = stringResource(opt.labelRes),
+                                style = MaterialTheme.typography.bodyLarge,
+                                modifier = Modifier.weight(1f),
+                            )
+                            if (selected) {
+                                Icon(
+                                    Icons.Outlined.Check,
+                                    contentDescription = stringResource(R.string.settings_status_on),
+                                    tint = MaterialTheme.colorScheme.primary,
+                                )
+                            }
+                        }
+                    }
+                }
+            },
+        )
+    }
     if (showLock) {
         AlertDialog(
             onDismissRequest = { showLock = false },

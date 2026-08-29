@@ -58,7 +58,7 @@
     <string name="onboarding_lock_pixel">Pixel / 原生安卓：一般只需关闭电池优化，无需额外锁定。</string>
     <string name="onboarding_lock_check">我已按说明锁定后台（或确认不需要）</string>
     <string name="onboarding_privacy_title">完全在你的手机上</string>
-    <string name="onboarding_privacy_body">Mind Peace 完全在你的手机上运行，不会上传任何使用记录。我们不收集数据。</string>
+    <string name="onboarding_privacy_body">完全在你的手机上运行，不会收集任何数据，完全离线。开启无障碍权限只是为了及时盖住确认层，不会读取聊天或屏幕内容。</string>
 
     <string name="onboarding_next">继续</string>
     <string name="onboarding_back">上一步</string>
@@ -121,7 +121,7 @@
     <string name="settings_credit_line">作者 陈老实Chenlaoshi · 去 B 站看看</string>
     <string name="settings_credit_name">陈老实Chenlaoshi</string>
     <string name="settings_github_title">GitHub</string>
-    <string name="settings_github_line">去 GitHub 看看</string>
+    <string name="settings_github_line">去作者的 GitHub 看看</string>
     <string name="settings_status_on">已开启</string>
     <string name="settings_status_off">未开启</string>
     <string name="settings_go">去设置</string>
@@ -255,4 +255,25 @@
     <string name="budget_app_share">不单独限额，和大家共用剩余时间</string>
     <string name="budget_empty_title">还没有守护任何应用</string>
     <string name="budget_empty_body">先去添加一个你想少打开的应用，再回来分配今天的时间。</string>
+
+    <string name="stats_compare">今昨对比</string>
+    <string name="settings_language_word">语言</string>
+    <string name="settings_language_zh_cn" translatable="false">简体中文</string>
+    <string name="settings_language_zh_tw" translatable="false">繁體中文</string>
+    <string name="settings_language_en" translatable="false">English</string>
+    <string name="settings_language_ja" translatable="false">日本語</string>
+    <string name="settings_language_ru" translatable="false">Русский</string>
+    <string name="cd_expand">展开</string>
+    <string name="cd_collapse">收起</string>
+    <string name="duration_hours_minutes">%1$d小时%2$d分</string>
+    <string name="duration_minutes_seconds">%1$d分%2$d秒</string>
+    <string name="duration_minutes">%1$d分钟</string>
+    <string name="duration_seconds">%1$d秒</string>
+    <string name="weekday_mon">周一</string>
+    <string name="weekday_tue">周二</string>
+    <string name="weekday_wed">周三</string>
+    <string name="weekday_thu">周四</string>
+    <string name="weekday_fri">周五</string>
+    <string name="weekday_sat">周六</string>
+    <string name="weekday_sun">周日</string>
 </resources>

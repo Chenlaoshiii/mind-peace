@@ -1,5 +1,6 @@
 package com.mindpeace.app.data
 
+import android.app.Application
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.MutablePreferences
@@ -10,6 +11,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.mindpeace.app.util.AppLocale
 import com.mindpeace.app.util.dateKeyOffset
 import com.mindpeace.app.util.todayDateKey
 import kotlinx.coroutines.CoroutineScope
@@ -30,7 +32,8 @@ class SettingsRepository(
     context: Context,
     private val scope: CoroutineScope,
 ) {
-    private val store = context.applicationContext.mindPeaceStore
+    private val appContext = context.applicationContext
+    private val store = appContext.mindPeaceStore
     private val json = Json {
         ignoreUnknownKeys = true
         encodeDefaults = true
@@ -81,12 +84,19 @@ class SettingsRepository(
         .map { it[KEY_GLOBAL_DAILY] ?: 0 }
         .stateIn(scope, SharingStarted.Eagerly, 0)
 
+    val appLocale: StateFlow<String> = store.data
+        .map { AppLocale.normalize(it[KEY_LOCALE]) }
+        .stateIn(scope, SharingStarted.Eagerly, AppLocale.DEFAULT)
+
     init {
         scope.launch {
             store.edit { prefs ->
                 val raw = prefs[KEY_VISUAL_STYLE]
                 if (raw == "ORANGE" || raw == "APPLE" || raw == "WHITE") {
                     prefs[KEY_VISUAL_STYLE] = VisualStyle.MATERIAL_YOU.name
+                }
+                if (prefs[KEY_LOCALE].isNullOrBlank()) {
+                    prefs[KEY_LOCALE] = AppLocale.DEFAULT
                 }
             }
             store.data.first()
@@ -117,6 +127,16 @@ class SettingsRepository(
 
     suspend fun setVisualStyle(style: VisualStyle) {
         store.edit { it[KEY_VISUAL_STYLE] = style.name }
+    }
+
+    suspend fun setAppLocale(tag: String) {
+        val normalized = AppLocale.normalize(tag)
+        store.edit { it[KEY_LOCALE] = normalized }
+        (appContext as? Application)?.let { AppLocale.apply(it, normalized) }
+    }
+
+    fun peekAppLocaleBlocking(): String = runBlocking {
+        AppLocale.normalize(store.data.first()[KEY_LOCALE])
     }
 
     suspend fun setGlobalDailyLimitMinutes(minutes: Int) {
@@ -372,5 +392,6 @@ class SettingsRepository(
         private val KEY_COLOR_MODE = stringPreferencesKey("color_mode")
         private val KEY_VISUAL_STYLE = stringPreferencesKey("visual_style")
         private val KEY_GLOBAL_DAILY = intPreferencesKey("global_daily_limit_minutes")
+        private val KEY_LOCALE = stringPreferencesKey("app_locale")
     }
 }

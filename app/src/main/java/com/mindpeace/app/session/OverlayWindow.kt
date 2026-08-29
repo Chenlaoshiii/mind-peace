@@ -2,6 +2,7 @@ package com.mindpeace.app.session
 
 import android.graphics.PixelFormat
 import android.os.Build
+import android.view.ContextThemeWrapper
 import android.view.WindowManager
 import android.view.WindowManager.LayoutParams.FLAG_BLUR_BEHIND
 import android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND
@@ -20,9 +21,11 @@ import androidx.savedstate.SavedStateRegistry
 import androidx.savedstate.SavedStateRegistryController
 import androidx.savedstate.SavedStateRegistryOwner
 import androidx.savedstate.setViewTreeSavedStateRegistryOwner
+import com.mindpeace.app.R
 import com.mindpeace.app.service.MindPeaceAccessibilityService
 import com.mindpeace.app.ui.overlay.InterceptHost
 import com.mindpeace.app.ui.theme.MindPeaceThemed
+import com.mindpeace.app.util.AppLocale
 import com.mindpeace.app.util.BlurSupport
 
 class OverlayWindow(
@@ -41,7 +44,9 @@ class OverlayWindow(
             it.onCreate()
             it.onStart()
         }
-        val compose = ComposeView(service).apply {
+        val compose = ComposeView(
+            ContextThemeWrapper(AppLocale.wrap(service), R.style.Theme_MindPeace),
+        ).apply {
             setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnDetachedFromWindow)
             setViewTreeLifecycleOwner(owner)
             setViewTreeViewModelStoreOwner(owner)

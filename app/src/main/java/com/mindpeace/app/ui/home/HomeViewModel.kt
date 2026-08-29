@@ -43,16 +43,16 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val usedLine = when {
             app.dailyLimitMinutes > 0 -> getApplication<Application>().getString(
                 com.mindpeace.app.R.string.home_used_limit,
-                formatDurationMillis(used),
-                formatMinutesShort(app.dailyLimitMinutes),
+                formatDurationMillis(getApplication(), used),
+                formatMinutesShort(getApplication(), app.dailyLimitMinutes),
             )
             global > 0 -> getApplication<Application>().getString(
                 com.mindpeace.app.R.string.home_used_shared,
-                formatDurationMillis(used),
+                formatDurationMillis(getApplication(), used),
             )
             else -> getApplication<Application>().getString(
                 com.mindpeace.app.R.string.home_used_unlimited,
-                formatDurationMillis(used),
+                formatDurationMillis(getApplication(), used),
             )
         }
         val remainingLine = when {
@@ -61,7 +61,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
             remaining >= UNLIMITED_BUDGET / 2 -> ""
             else -> getApplication<Application>().getString(
                 com.mindpeace.app.R.string.home_remaining,
-                formatDurationMillis(remaining),
+                formatDurationMillis(getApplication(), remaining),
             )
         }
         return HomeItem(

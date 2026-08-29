@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mind Peace</string>
+    <string name="accessibility_service_description">Mind Peace через спецвозможности видит, какое приложение сейчас впереди, и до использования накрывает его подтверждением. Чаты, пароли и текст на экране не читаются — только то, какое приложение вышло на передний план. Всё работает на вашем телефоне: записи использования не собираются и не отправляются.</string>
+    <string name="channel_session_name">Таймер сессии</string>
+    <string name="channel_session_desc">Идёт ограниченная сессия, показывается оставшееся время.</string>
+    <string name="channel_reminder_name">Время вышло</string>
+    <string name="channel_reminder_desc">Напоминание, когда эта сессия заканчивается.</string>
+    <string name="channel_celebration_name">Поддержка паузы</string>
+    <string name="channel_celebration_desc">Ободрение, если вы какое-то время не открывали отслеживаемые приложения.</string>
+    <string name="channel_summary_name">Итог дня</string>
+    <string name="channel_summary_desc">Вечером — сколько сегодня по сравнению со вчера.</string>
+    <string name="onboarding_welcome_title">Сначала пауза. Потом открыть.</string>
+    <string name="onboarding_welcome_body">Mind Peace не блокирует весь телефон. Когда вы открываете ленту или короткое видео, в которое легко провалиться, поверх сразу появляется подтверждение: точно открывать?</string>
+    <string name="onboarding_welcome_p1">Перехват до открытия, чтобы один свайп не унёс вас</string>
+    <string name="onboarding_welcome_p2">Сами выбираете, сколько в этот раз</string>
+    <string name="onboarding_welcome_p3">Сначала общий лимит на день, затем минуты по приложениям</string>
+    <string name="onboarding_self_title">Слово себе</string>
+    <string name="onboarding_self_body">При каждом перехвате вы сначала увидите эту фразу. Напишите цель или мягкое напоминание себе в этот момент.</string>
+    <string name="onboarding_self_hint">Прежде чем открыть, спросите себя: это сейчас правда нужно?</string>
+    <string name="onboarding_self_preset_1">Прежде чем открыть, спросите себя: это сейчас правда нужно?</string>
+    <string name="onboarding_self_preset_2">Подождите десять секунд и решите, открывать ли.</string>
+    <string name="onboarding_self_preset_3">Это не отдых. Не путайте прокрутку с расслаблением.</string>
+    <string name="onboarding_self_need">Напишите несколько слов или выберите готовую фразу.</string>
+    <string name="onboarding_how_title">Как проходит сессия</string>
+    <string name="onboarding_how_1">Когда вы открываете отслеживаемое приложение, сразу появляется слой подтверждения — пока им нельзя пользоваться.</string>
+    <string name="onboarding_how_2">«Подтвердить», чтобы продолжить, или «Выйти» на домашний экран.</string>
+    <string name="onboarding_how_3">Выберите длительность (1 / 3 / 5 / 10 / 15 / 30 минут или своё значение).</string>
+    <string name="onboarding_how_4">Таймер идёт, только пока это приложение впереди. Уход (домой, в другое приложение) завершает сессию; остаток сгорает, при следующем открытии снова спросят. Когда время выйдет, вы вернётесь домой и получите напоминание.</string>
+    <string name="onboarding_a11y_title">Включите спецвозможности</string>
+    <string name="onboarding_a11y_body">Система не скажет нам, какое приложение вы открыли, пока вы не отдадите спецвозможности Mind Peace. Они нужны только чтобы видеть переднее приложение и вовремя накрыть его. Сообщения не читаются.</string>
+    <string name="onboarding_a11y_action">Открыть спецвозможности</string>
+    <string name="onboarding_a11y_on">Спецвозможности включены</string>
+    <string name="onboarding_a11y_off">Ещё не включены</string>
+    <string name="onboarding_battery_title">Чтобы система не убила приложение</string>
+    <string name="onboarding_battery_body">Обратный отсчёт должен тихо идти в фоне. Разрешите Mind Peace игнорировать оптимизацию батареи и при запросе системы — уведомления (чтобы показывать оставшееся время).</string>
+    <string name="onboarding_battery_action">Отключить оптимизацию батареи</string>
+    <string name="onboarding_battery_on">Оптимизация батареи игнорируется</string>
+    <string name="onboarding_battery_off">Всё ещё ограничено оптимизацией батареи</string>
+    <string name="onboarding_notif_title">Включить уведомления</string>
+    <string name="onboarding_notif_body">Вечерний итог и «ты удержался» приходят уведомлениями. Обратный отсчёт сессии тоже в уведомлении. Можно закончить настройку без разрешения сейчас — напомним на главном экране.</string>
+    <string name="onboarding_notif_action">Разрешить уведомления</string>
+    <string name="onboarding_notif_on">Уведомления разрешены</string>
+    <string name="onboarding_notif_off">Уведомления не разрешены</string>
+    <string name="onboarding_lock_title">Закрепить в недавних</string>
+    <string name="onboarding_lock_body">Некоторые производители выгружают приложения из фона, и перехват перестаёт работать. Сделайте шаги для вашего телефона и отметьте галочку.</string>
+    <string name="onboarding_lock_xiaomi">Xiaomi / Redmi: в недавних потяните карточку Mind Peace вниз и нажмите «Закрепить».</string>
+    <string name="onboarding_lock_huawei">Huawei / Honor: закрепите карточку в недавних; в настройках батареи разрешите работу в фоне.</string>
+    <string name="onboarding_lock_oppo">OPPO / OnePlus: закрепите справа сверху в недавних; разрешите Mind Peace в автозапуске.</string>
+    <string name="onboarding_lock_vivo">vivo / iQOO: закрепите в недавних; разрешите высокое энергопотребление в фоне.</string>
+    <string name="onboarding_lock_pixel">Pixel / чистый Android: обычно достаточно отключить оптимизацию батареи, отдельно закреплять не нужно.</string>
+    <string name="onboarding_lock_check">Я закрепил в недавних (или убедился, что это не нужно)</string>
+    <string name="onboarding_privacy_title">Полностью на вашем телефоне</string>
+    <string name="onboarding_privacy_body">Приложение работает только на вашем телефоне, не собирает данные и полностью офлайн. Служба специальных возможностей нужна лишь чтобы вовремя накрыть слой подтверждения — она не читает чаты и содержимое экрана.</string>
+    <string name="onboarding_next">Далее</string>
+    <string name="onboarding_back">Назад</string>
+    <string name="onboarding_finish">Готово</string>
+    <string name="onboarding_finish_hint">Сначала включите спецвозможности и подтвердите закрепление в недавних.</string>
+    <string name="onboarding_step">Шаг %1$d из %2$d</string>
+    <string name="home_title">Сегодня в списке</string>
+    <string name="home_empty_title">Пока нет отслеживаемых приложений</string>
+    <string name="home_empty_body">Добавьте приложение, которое хотите открывать реже. В следующий раз сначала спросят.</string>
+    <string name="home_add">Добавить приложения</string>
+    <string name="home_used_limit">Сегодня %1$s / %2$s</string>
+    <string name="home_used_unlimited">Сегодня %1$s · без лимита</string>
+    <string name="home_used_shared">Сегодня %1$s · общий лимит</string>
+    <string name="home_remaining">Осталось %1$s</string>
+    <string name="home_remaining_none">На сегодня лимит исчерпан</string>
+    <string name="home_off">Перехват выкл.</string>
+    <string name="home_stats_card">Итог дня</string>
+    <string name="home_stats_card_sub">Сравнить сегодня со вчера</string>
+    <string name="home_notif_banner">Вечерний итог и поддержка паузы нуждаются в уведомлениях. Нажмите, чтобы разрешить.</string>
+    <string name="cd_stats">Итог дня</string>
+    <string name="picker_title">Добавить приложения</string>
+    <string name="picker_subtitle">%1$d приложений</string>
+    <string name="picker_search">Поиск по имени или пакету</string>
+    <string name="picker_empty">Нет подходящих приложений</string>
+    <string name="picker_intercept">Следить</string>
+    <string name="picker_chip_apps">Приложения</string>
+    <string name="picker_chip_system">Системные</string>
+    <string name="picker_filter_hint">Откройте «Приложения» или «Системные», чтобы фильтровать</string>
+    <string name="picker_loading">Читаем установленные приложения…</string>
+    <string name="detail_title">Настройки приложения</string>
+    <string name="detail_enable">Перехватывать</string>
+    <string name="detail_enable_sub">Спрашивать перед открытием</string>
+    <string name="detail_limit">Взять из общего лимита</string>
+    <string name="detail_limit_sub">0 — без отдельного лимита на это приложение; оно всё равно делит остаток сегодняшнего общего. Выделенные минуты не могут превысить ещё не розданный итог.</string>
+    <string name="detail_limit_none">Без доп. лимита</string>
+    <string name="detail_limit_minutes">%1$d мин</string>
+    <string name="detail_today">Сегодня использовано %1$s</string>
+    <string name="detail_remove">Убрать из списка</string>
+    <string name="detail_custom">Свои минуты</string>
+    <string name="settings_title">Настройки</string>
+    <string name="settings_permissions">Разрешения и жизнь в фоне</string>
+    <string name="settings_a11y">Спецвозможности</string>
+    <string name="settings_battery">Оптимизация батареи</string>
+    <string name="settings_notifications">Уведомления</string>
+    <string name="settings_notifications_sub">Вечерний итог и поддержка паузы требуют разрешение на уведомления.</string>
+    <string name="settings_overlay">Поверх других приложений (запасной)</string>
+    <string name="settings_overlay_sub">Оверлей спецвозможностей — основной способ. Если перехват нестабилен, можно дополнительно разрешить показ поверх окон.</string>
+    <string name="settings_lock">Как закрепить в недавних</string>
+    <string name="settings_setup">Повторить настройку</string>
+    <string name="settings_self_message">Слово себе</string>
+    <string name="settings_self_message_sub">Показывается на экране подтверждения.</string>
+    <string name="settings_self_save">Сохранить</string>
+    <string name="settings_about">О приложении</string>
+    <string name="settings_about_body">Mind Peace %1$s
+Сначала пауза. Потом открыть.
+Не блокирует весь телефон — спрашивает только в выбранных приложениях. Работает только на вашем телефоне, данные не собирает.
+
+Mind Peace · Chenlaoshi
+Автор 陈老实Chenlaoshi</string>
+    <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
+    <string name="settings_credit_line">Автор 陈老实Chenlaoshi · на Bilibili</string>
+    <string name="settings_credit_name">陈老实Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">GitHub автора</string>
+    <string name="settings_status_on">Вкл.</string>
+    <string name="settings_status_off">Выкл.</string>
+    <string name="settings_go">В настройки</string>
+    <string name="a11y_required_title">Спецвозможности выключены</string>
+    <string name="a11y_required_body">Без спецвозможностей Mind Peace не знает, какое приложение вы открыли, перехват не сработает. Включите снова.</string>
+    <string name="a11y_required_action">Включить</string>
+    <string name="overlay_question">Точно открыть %1$s?</string>
+    <string name="overlay_confirm">Подтвердить</string>
+    <string name="overlay_exit">Выйти</string>
+    <string name="overlay_pick_title">Сколько в этот раз?</string>
+    <string name="overlay_minutes">%1$d мин</string>
+    <string name="overlay_custom">Своё</string>
+    <string name="overlay_budget_left">Сегодня осталось %1$s</string>
+    <string name="overlay_budget_none">Сегодняшний лимит уже исчерпан</string>
+    <string name="overlay_budget_unlimited">Сегодня без лимита</string>
+    <string name="overlay_cap_title">Больше, чем осталось сегодня</string>
+    <string name="overlay_cap_body">Сегодня у «%1$s» осталось %2$s. Сессия начнётся с оставшегося времени, а не с %3$d мин.</string>
+    <string name="overlay_cap_accept">Взять оставшееся</string>
+    <string name="overlay_cap_cancel">Назад</string>
+    <string name="overlay_custom_title">Своя длительность</string>
+    <string name="overlay_custom_hint">Минуты</string>
+    <string name="overlay_custom_ok">Начать</string>
+    <string name="overlay_timeup_title">Время вышло</string>
+    <string name="overlay_timeup_body">Сессия с %1$s закончилась. Отойдите ненадолго.</string>
+    <string name="overlay_timeup_ok">Хорошо</string>
+    <string name="overlay_pause">Вы ушли. Остаток этой сессии сгорел</string>
+    <string name="overlay_self_label">Себе</string>
+    <string name="session_notif_title">Используете %1$s</string>
+    <string name="session_notif_text">Осталось %1$s</string>
+    <string name="session_notif_paused">Эта сессия завершена</string>
+    <string name="timeup_notif_title">Время вышло</string>
+    <string name="timeup_notif_text">Сессия с %1$s закончилась</string>
+    <string name="celebration_notif_title">Поаплодируйте себе</string>
+    <string name="summary_notif_title">Итог дня</string>
+    <string name="summary_less">Сегодня всего %1$d мин, на %2$d меньше, чем вчера. Крепко.</string>
+    <string name="summary_more">Сегодня всего %1$d мин, на %2$d больше, чем вчера. Завтра чуть собрать.</string>
+    <string name="summary_same">Сегодня всего %1$d мин, примерно как вчера.</string>
+    <string name="summary_no_yesterday">Сегодня всего %1$d мин. Сравнение начнётся завтра.</string>
+    <string name="summary_standout_less">%1$s: на %2$d мин меньше</string>
+    <string name="summary_standout_more">%1$s: на %2$d мин больше</string>
+    <string name="summary_none">Сегодня не открывали отслеживаемые приложения. И эта пустота хороша.</string>
+    <string name="stats_title">Итог дня</string>
+    <string name="stats_today_total">Сегодня %1$d мин</string>
+    <string name="stats_delta_less">На %1$d мин меньше, чем вчера</string>
+    <string name="stats_delta_more">На %1$d мин больше, чем вчера</string>
+    <string name="stats_delta_same">Примерно как вчера</string>
+    <string name="stats_no_yesterday">Сравнение начнётся завтра</string>
+    <string name="stats_empty">Пока нет отслеживаемых приложений — добавьте, чтобы появилось сравнение.</string>
+    <string name="stats_app_today">Сегодня %1$d мин</string>
+    <string name="stats_app_yesterday">Вчера %1$d мин</string>
+    <string name="stats_legend_today">Сегодня</string>
+    <string name="stats_legend_yesterday">Вчера</string>
+    <string name="stats_warm_less">Неиспользованные минуты вы оставили себе.</string>
+    <string name="stats_warm_more">Лишнее завтра можно мягко забрать обратно.</string>
+    <string name="stats_warm_same">Ровный ритм — уже хорошо.</string>
+    <string name="stats_warm_first">Доживите сегодня. Завтра увидите изменение.</string>
+    <string name="onboarding_self_custom">Своё</string>
+    <string name="onboarding_self_custom_hint">Напишите фразу себе в этот момент</string>
+    <string name="settings_appearance">Оформление</string>
+    <string name="settings_color_mode">Цветовой режим</string>
+    <string name="settings_color_light">Светлая</string>
+    <string name="settings_color_dark">Тёмная</string>
+    <string name="settings_color_system">Как в системе</string>
+    <string name="settings_style">Стиль</string>
+    <string name="settings_style_material">Material You</string>
+    <string name="settings_style_material_sub">Динамический цвет, спокойный Material 3</string>
+    <string name="settings_style_orange">Оранжевый</string>
+    <string name="settings_style_orange_sub">Тёплая бумага #FAF9F5, оранжевый #D97757, антиква</string>
+    <string name="settings_style_apple">В духе Apple</string>
+    <string name="settings_style_apple_sub">Системный зелёный и жидкое стекло</string>
+    <string name="about_blurb">Сначала пауза. Потом открыть. Не блокирует весь телефон — спрашивает только в выбранных приложениях. Работает только на вашем телефоне, данные не собирает.</string>
+    <string name="about_version">Версия %1$s</string>
+    <string name="lab_title">Превью уведомлений</string>
+    <string name="lab_group_celebration">Ободрение после долгого перерыва без отслеживаемых приложений</string>
+    <string name="lab_group_summary">Вечерние итоги</string>
+    <string name="lab_preview">Превью</string>
+    <string name="lab_raw">Исходник</string>
+    <string name="lab_sample_app">TikTok</string>
+    <string name="stats_trend">Тренд за 7 дней</string>
+    <string name="stats_trend_total">Всего минут</string>
+    <string name="stats_y_minutes">мин</string>
+    <string name="cd_settings">Настройки</string>
+    <string name="cd_add">Добавить приложения</string>
+    <string name="cd_back">Назад</string>
+    <string name="tab_budget">Лимит дня</string>
+    <string name="tab_add">Добавить</string>
+    <string name="tab_stats">Итог дня</string>
+    <string name="tab_settings">Настройки</string>
+    <string name="budget_title">Лимит дня</string>
+    <string name="budget_global">Сколько всего в день</string>
+    <string name="budget_global_sub">Общий потолок для всех отслеживаемых приложений. Сначала итог, потом минуты по приложениям.</string>
+    <string name="budget_none">Без общего лимита</string>
+    <string name="budget_minutes">%1$d мин в день</string>
+    <string name="budget_allocated">Распределено %1$d / %2$d мин</string>
+    <string name="budget_unallocated">Ещё %1$d мин не роздано</string>
+    <string name="budget_unallocated_none">Минуты уже все розданы</string>
+    <string name="budget_app_alloc">Этому приложению %1$d мин</string>
+    <string name="budget_app_share">Без отдельного лимита, делит остаток</string>
+    <string name="budget_empty_title">Пока нет отслеживаемых приложений</string>
+    <string name="budget_empty_body">Сначала добавьте приложение, которое хотите открывать реже, потом распределите сегодняшнее время.</string>
+    <string name="stats_compare">Сегодня и вчера</string>
+    <string name="settings_language_word">Язык</string>
+    <string name="cd_expand">Развернуть</string>
+    <string name="cd_collapse">Свернуть</string>
+    <string name="duration_hours_minutes">%1$d ч %2$d мин</string>
+    <string name="duration_minutes_seconds">%1$d мин %2$d с</string>
+    <string name="duration_minutes">%1$d мин</string>
+    <string name="duration_seconds">%1$d с</string>
+    <string name="weekday_mon">пн</string>
+    <string name="weekday_tue">вт</string>
+    <string name="weekday_wed">ср</string>
+    <string name="weekday_thu">чт</string>
+    <string name="weekday_fri">пт</string>
+    <string name="weekday_sat">сб</string>
+    <string name="weekday_sun">вс</string>
+    <string-array name="celebration_templates">
+        <item>Приложения из списка ждут. Вам и без них хорошо.</item>
+        <item>В ту секунду, когда палец остановился, вы уже выиграли раунд.</item>
+        <item>Они всё ещё ждут, пока вы откроете. А вы прожили свой день.</item>
+        <item>Эта пауза — не скука. Это окно, которое вы оставили себе.</item>
+        <item>Не открыть — тоже нормально. Мир крутится, а вы яснее.</item>
+        <item>Сегодняшняя сдержанность — то, за что завтрашний вы тихо скажет спасибо.</item>
+        <item>Желание листать пришло и ушло. Вы всё ещё здесь. Это хорошо.</item>
+        <item>Список дежурит. Время вы потратили на что-то интереснее.</item>
+        <item>Не открыть один раз — и кусок своего ритма возвращается.</item>
+        <item>Экран может гореть. Вы не дали ему себя увести.</item>
+        <item>Эта полоса без тех приложений уже стоит аплодисментов себе.</item>
+        <item>Внимание сегодня было на вашей стороне. Редко и как раз вовремя.</item>
+        <item>Позывы полистать прошли. День вы забрали обратно.</item>
+        <item>Пустой отрезок времени вы прожили как настоящую свободу.</item>
+        <item>Приложения на месте. Вы уже на несколько шагов дальше.</item>
+        <item>Удержаться — не потеря. Это вы снова взяли руль.</item>
+        <item>Вечернее время вы вынули обратно из привычки.</item>
+        <item>Не уехали вниз до конца. Дышится чуть легче.</item>
+        <item>Видите? Уйти от тех приложений — и небо не падает.</item>
+        <item>Эта тишина заработана вами. Держите. Не спешите отдавать.</item>
+    </string-array>
+</resources>

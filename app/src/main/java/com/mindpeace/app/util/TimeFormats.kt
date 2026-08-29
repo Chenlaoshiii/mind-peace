@@ -1,5 +1,7 @@
 package com.mindpeace.app.util
 
+import android.content.Context
+import com.mindpeace.app.R
 import java.util.Calendar
 import java.util.Locale
 import java.util.concurrent.TimeUnit
@@ -44,22 +46,23 @@ fun chartDateLabel(dateKey: String): String {
     return "${parts[1].toInt()}/${parts[2].toInt()}"
 }
 
-fun weekdayShortLabel(dateKey: String): String {
+fun weekdayShortLabel(context: Context, dateKey: String): String {
     val parts = dateKey.split("-")
     if (parts.size != 3) return dateKey
     val cal = Calendar.getInstance()
     cal.set(Calendar.YEAR, parts[0].toInt())
     cal.set(Calendar.MONTH, parts[1].toInt() - 1)
     cal.set(Calendar.DAY_OF_MONTH, parts[2].toInt())
-    return when (cal.get(Calendar.DAY_OF_WEEK)) {
-        Calendar.MONDAY -> "周一"
-        Calendar.TUESDAY -> "周二"
-        Calendar.WEDNESDAY -> "周三"
-        Calendar.THURSDAY -> "周四"
-        Calendar.FRIDAY -> "周五"
-        Calendar.SATURDAY -> "周六"
-        else -> "周日"
+    val res = when (cal.get(Calendar.DAY_OF_WEEK)) {
+        Calendar.MONDAY -> R.string.weekday_mon
+        Calendar.TUESDAY -> R.string.weekday_tue
+        Calendar.WEDNESDAY -> R.string.weekday_wed
+        Calendar.THURSDAY -> R.string.weekday_thu
+        Calendar.FRIDAY -> R.string.weekday_fri
+        Calendar.SATURDAY -> R.string.weekday_sat
+        else -> R.string.weekday_sun
     }
+    return context.getString(res)
 }
 
 fun calendarDaysBetween(fromMillis: Long, toMillis: Long): Int {
@@ -95,21 +98,21 @@ fun millisUntilNextHour(hourOfDay: Int, nowMillis: Long = System.currentTimeMill
     return (target.timeInMillis - now.timeInMillis).coerceAtLeast(0L)
 }
 
-fun formatDurationMillis(millis: Long): String {
+fun formatDurationMillis(context: Context, millis: Long): String {
     val totalSec = (millis / 1000L).coerceAtLeast(0)
     val h = TimeUnit.SECONDS.toHours(totalSec)
     val m = TimeUnit.SECONDS.toMinutes(totalSec) % 60
     val s = totalSec % 60
     return when {
-        h > 0 -> String.format(Locale.CHINA, "%d小时%02d分", h, m)
-        m > 0 && s > 0 && m < 3 -> String.format(Locale.CHINA, "%d分%02d秒", m, s)
-        m > 0 -> String.format(Locale.CHINA, "%d分钟", m)
-        else -> String.format(Locale.CHINA, "%d秒", s)
+        h > 0 -> context.getString(R.string.duration_hours_minutes, h.toInt(), m.toInt())
+        m > 0 && s > 0 && m < 3 -> context.getString(R.string.duration_minutes_seconds, m.toInt(), s.toInt())
+        m > 0 -> context.getString(R.string.duration_minutes, m.toInt())
+        else -> context.getString(R.string.duration_seconds, s.toInt())
     }
 }
 
-fun formatMinutesShort(minutes: Int): String {
-    return if (minutes <= 0) "0 分钟" else "${minutes} 分钟"
+fun formatMinutesShort(context: Context, minutes: Int): String {
+    return context.getString(R.string.duration_minutes, minutes.coerceAtLeast(0))
 }
 
 fun millisToWholeMinutes(millis: Long): Int {

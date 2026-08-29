@@ -212,21 +212,7 @@ fun HomeScreen(
                     ListItem(
                         headlineContent = { Text(item.label) },
                         supportingContent = {
-                            Column {
-                                Text(item.usedLine)
-                                if (item.remainingLine.isNotBlank()) {
-                                    Text(
-                                        item.remainingLine,
-                                        color = MaterialTheme.colorScheme.primary,
-                                    )
-                                }
-                                Text(
-                                    if (alloc <= 0) stringResource(R.string.budget_app_share)
-                                    else stringResource(R.string.budget_app_alloc, alloc),
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                )
-                            }
+                            Text(item.usedLine)
                         },
                         leadingContent = {
                             AppIcon(item.packageName, Modifier.size(44.dp))

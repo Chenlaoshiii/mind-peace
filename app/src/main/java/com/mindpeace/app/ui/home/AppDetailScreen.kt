@@ -97,7 +97,7 @@ fun AppDetailScreen(packageName: String, onBack: () -> Unit) {
             AppIcon(packageName, Modifier.size(64.dp).align(Alignment.CenterHorizontally))
             Spacer(Modifier.height(8.dp))
             Text(
-                text = stringResource(R.string.detail_today, formatDurationMillis(used)),
+                text = stringResource(R.string.detail_today, formatDurationMillis(context, used)),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.align(Alignment.CenterHorizontally),

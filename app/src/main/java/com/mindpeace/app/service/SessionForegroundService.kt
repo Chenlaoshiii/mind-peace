@@ -88,7 +88,7 @@ class SessionForegroundService : Service() {
         val pkg = session?.packageName.orEmpty()
         val label = if (pkg.isBlank()) getString(com.mindpeace.app.R.string.app_name)
         else container.installedApps.labelOf(pkg)
-        val remaining = formatDurationMillis(session?.remainingMillis ?: 0L)
+        val remaining = formatDurationMillis(this, session?.remainingMillis ?: 0L)
         Notifications.sessionNotification(
             context = this,
             appLabel = label,

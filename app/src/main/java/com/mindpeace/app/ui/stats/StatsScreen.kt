@@ -1,7 +1,9 @@
 package com.mindpeace.app.ui.stats
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -17,10 +19,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.ExpandLess
+import androidx.compose.material.icons.outlined.ExpandMore
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -29,7 +32,11 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -129,6 +136,9 @@ fun StatsScreen(onBack: (() -> Unit)? = null) {
         }
     }
 
+    var compareExpanded by rememberSaveable { mutableStateOf(false) }
+    var trendExpanded by rememberSaveable { mutableStateOf(false) }
+
     val body: @Composable (Modifier, Boolean) -> Unit = { modifier, showPageTitle ->
         LazyColumn(
             modifier = modifier,
@@ -139,114 +149,103 @@ fun StatsScreen(onBack: (() -> Unit)? = null) {
                     PeacePageTitle(stringResource(R.string.stats_title))
                 }
             }
-            item {
-                PeaceCard(
-                    modifier = Modifier
-                        .padding(16.dp)
-                        .fillMaxWidth(),
-                    containerColor = MaterialTheme.colorScheme.primaryContainer,
-                    shape = RoundedCornerShape(24.dp),
+            item(key = "compare") {
+                ExpandableStatsCard(
+                    title = stringResource(R.string.stats_compare),
+                    expanded = compareExpanded,
+                    onToggle = { compareExpanded = !compareExpanded },
                 ) {
-                    Column(Modifier.padding(20.dp)) {
-                        Text(
-                            text = stringResource(R.string.stats_today_total, todayTotal),
-                            style = MaterialTheme.typography.headlineMedium,
-                        )
-                        Spacer(Modifier.height(8.dp))
-                        Text(
-                            text = when {
-                                !hasYesterday -> stringResource(R.string.stats_no_yesterday)
-                                delta < 0 -> stringResource(R.string.stats_delta_less, -delta)
-                                delta > 0 -> stringResource(R.string.stats_delta_more, delta)
-                                else -> stringResource(R.string.stats_delta_same)
-                            },
-                            style = MaterialTheme.typography.bodyLarge,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        )
-                        Spacer(Modifier.height(8.dp))
-                        Text(
-                            text = when {
-                                !hasYesterday -> stringResource(R.string.stats_warm_first)
-                                delta < 0 -> stringResource(R.string.stats_warm_less)
-                                delta > 0 -> stringResource(R.string.stats_warm_more)
-                                else -> stringResource(R.string.stats_warm_same)
-                            },
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.85f),
-                        )
-                    }
-                }
-            }
-            if (totalSeries.isNotEmpty()) {
-                item {
                     Text(
-                        text = stringResource(R.string.stats_trend),
-                        style = MaterialTheme.typography.titleLarge,
-                        modifier = Modifier.padding(horizontal = 20.dp, vertical = 8.dp),
+                        text = stringResource(R.string.stats_today_total, todayTotal),
+                        style = MaterialTheme.typography.headlineMedium,
                     )
-                }
-                item {
-                    ChartCard(
-                        title = stringResource(R.string.stats_trend_total),
-                        points = totalSeries,
-                        lineColor = MaterialTheme.colorScheme.primary,
-                    )
-                }
-                items(appSeries, key = { "chart-${it.first}" }) { (pkg, label, points) ->
-                    ChartCard(
-                        title = label,
-                        points = points,
-                        lineColor = MaterialTheme.colorScheme.tertiary,
-                        leading = { AppIcon(pkg, Modifier.size(28.dp)) },
-                    )
-                }
-            }
-            item {
-                Row(
-                    modifier = Modifier.padding(horizontal = 24.dp, vertical = 8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                ) {
-                    LegendDot(MaterialTheme.colorScheme.primary, stringResource(R.string.stats_legend_today))
-                    LegendDot(MaterialTheme.colorScheme.tertiary, stringResource(R.string.stats_legend_yesterday))
-                }
-            }
-            if (rows.isEmpty()) {
-                item {
+                    Spacer(Modifier.height(8.dp))
                     Text(
-                        text = stringResource(R.string.stats_empty),
-                        modifier = Modifier.padding(24.dp),
+                        text = when {
+                            !hasYesterday -> stringResource(R.string.stats_no_yesterday)
+                            delta < 0 -> stringResource(R.string.stats_delta_less, -delta)
+                            delta > 0 -> stringResource(R.string.stats_delta_more, delta)
+                            else -> stringResource(R.string.stats_delta_same)
+                        },
                         style = MaterialTheme.typography.bodyLarge,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
-                }
-            }
-            items(rows, key = { "row-${it.packageName}" }) { row ->
-                PeaceCard(
-                    modifier = Modifier
-                        .padding(horizontal = 16.dp, vertical = 6.dp)
-                        .fillMaxWidth()
-                        .animateItem(),
-                    containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
-                    shape = RoundedCornerShape(20.dp),
-                ) {
-                    Column(Modifier.padding(16.dp)) {
-                        Row(verticalAlignment = Alignment.CenterVertically) {
-                            AppIcon(row.packageName, Modifier.size(40.dp))
-                            Spacer(Modifier.width(12.dp))
-                            Column {
-                                Text(row.label, style = MaterialTheme.typography.titleLarge)
-                                Text(
-                                    "${stringResource(R.string.stats_app_today, row.todayMin)}  ·  ${stringResource(R.string.stats_app_yesterday, row.yesterdayMin)}",
-                                    style = MaterialTheme.typography.bodyMedium,
-                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    Spacer(Modifier.height(8.dp))
+                    Text(
+                        text = when {
+                            !hasYesterday -> stringResource(R.string.stats_warm_first)
+                            delta < 0 -> stringResource(R.string.stats_warm_less)
+                            delta > 0 -> stringResource(R.string.stats_warm_more)
+                            else -> stringResource(R.string.stats_warm_same)
+                        },
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    Spacer(Modifier.height(16.dp))
+                    Row(horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                        LegendDot(MaterialTheme.colorScheme.primary, stringResource(R.string.stats_legend_today))
+                        LegendDot(MaterialTheme.colorScheme.tertiary, stringResource(R.string.stats_legend_yesterday))
+                    }
+                    if (rows.isEmpty()) {
+                        Text(
+                            text = stringResource(R.string.stats_empty),
+                            modifier = Modifier.padding(top = 16.dp),
+                            style = MaterialTheme.typography.bodyLarge,
+                        )
+                    } else {
+                        Spacer(Modifier.height(12.dp))
+                        rows.forEach { row ->
+                            Column(Modifier.padding(vertical = 8.dp)) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    AppIcon(row.packageName, Modifier.size(40.dp))
+                                    Spacer(Modifier.width(12.dp))
+                                    Column {
+                                        Text(row.label, style = MaterialTheme.typography.titleLarge)
+                                        Text(
+                                            "${stringResource(R.string.stats_app_today, row.todayMin)}  ·  ${stringResource(R.string.stats_app_yesterday, row.yesterdayMin)}",
+                                            style = MaterialTheme.typography.bodyMedium,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        )
+                                    }
+                                }
+                                Spacer(Modifier.height(12.dp))
+                                PairBars(
+                                    today = row.todayMin.toFloat(),
+                                    yesterday = row.yesterdayMin.toFloat(),
+                                    max = maxBar.toFloat(),
                                 )
                             }
                         }
-                        Spacer(Modifier.height(12.dp))
-                        PairBars(
-                            today = row.todayMin.toFloat(),
-                            yesterday = row.yesterdayMin.toFloat(),
-                            max = maxBar.toFloat(),
+                    }
+                }
+            }
+            item(key = "trend") {
+                ExpandableStatsCard(
+                    title = stringResource(R.string.stats_trend),
+                    expanded = trendExpanded,
+                    onToggle = { trendExpanded = !trendExpanded },
+                ) {
+                    if (totalSeries.isEmpty()) {
+                        Text(
+                            text = stringResource(R.string.stats_empty),
+                            style = MaterialTheme.typography.bodyLarge,
                         )
+                    } else {
+                        ChartCard(
+                            title = stringResource(R.string.stats_trend_total),
+                            points = totalSeries,
+                            lineColor = MaterialTheme.colorScheme.primary,
+                            boxed = false,
+                        )
+                        appSeries.forEach { (pkg, label, points) ->
+                            ChartCard(
+                                title = label,
+                                points = points,
+                                lineColor = MaterialTheme.colorScheme.tertiary,
+                                leading = { AppIcon(pkg, Modifier.size(28.dp)) },
+                                boxed = false,
+                            )
+                        }
                     }
                 }
             }
@@ -286,21 +285,60 @@ private fun slidingWindow(history: UsageHistory): List<String> {
 }
 
 @Composable
+private fun ExpandableStatsCard(
+    title: String,
+    expanded: Boolean,
+    onToggle: () -> Unit,
+    content: @Composable () -> Unit,
+) {
+    PeaceCard(
+        modifier = Modifier
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .fillMaxWidth(),
+        containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+        shape = RoundedCornerShape(20.dp),
+    ) {
+        Column {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable(onClick = onToggle)
+                    .padding(horizontal = 20.dp, vertical = 18.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = title,
+                    style = MaterialTheme.typography.titleLarge,
+                    modifier = Modifier.weight(1f),
+                )
+                Icon(
+                    imageVector = if (expanded) Icons.Outlined.ExpandLess else Icons.Outlined.ExpandMore,
+                    contentDescription = stringResource(
+                        if (expanded) R.string.cd_collapse else R.string.cd_expand,
+                    ),
+                )
+            }
+            AnimatedVisibility(visible = expanded) {
+                Column(Modifier.padding(start = 20.dp, end = 20.dp, bottom = 20.dp)) {
+                    content()
+                }
+            }
+        }
+    }
+}
+
+@Composable
 private fun ChartCard(
     title: String,
     points: List<DayPoint>,
     lineColor: Color,
     leading: (@Composable () -> Unit)? = null,
+    boxed: Boolean = true,
 ) {
     val onVar = MaterialTheme.colorScheme.onSurfaceVariant
     val grid = MaterialTheme.colorScheme.outline.copy(alpha = 0.35f)
-    PeaceCard(
-        modifier = Modifier
-            .padding(horizontal = 16.dp, vertical = 6.dp)
-            .fillMaxWidth(),
-        shape = RoundedCornerShape(20.dp),
-    ) {
-        Column(Modifier.padding(16.dp)) {
+    val inner = @Composable {
+        Column(Modifier.padding(if (boxed) 16.dp else 0.dp)) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (leading != null) {
                     leading()
@@ -319,6 +357,16 @@ private fun ChartCard(
                     .height(180.dp),
             )
         }
+    }
+    if (boxed) {
+        PeaceCard(
+            modifier = Modifier
+                .padding(horizontal = 16.dp, vertical = 6.dp)
+                .fillMaxWidth(),
+            shape = RoundedCornerShape(20.dp),
+        ) { inner() }
+    } else {
+        Column(Modifier.padding(vertical = 8.dp)) { inner() }
     }
 }
 

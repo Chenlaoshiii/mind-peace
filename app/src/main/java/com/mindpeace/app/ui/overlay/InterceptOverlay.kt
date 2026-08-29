@@ -32,6 +32,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -202,7 +203,7 @@ private fun CapPane(state: OverlayState.CapWarning, coordinator: SessionCoordina
         subtitle = stringResource(
             R.string.overlay_cap_body,
             state.appLabel,
-            formatDurationMillis(state.remainingDailyMillis),
+            formatDurationMillis(LocalContext.current, state.remainingDailyMillis),
             state.requestedMinutes,
         ),
         bottom = {
@@ -317,9 +318,10 @@ private fun OverlayCard(
 
 @Composable
 private fun budgetLine(remainingDailyMillis: Long): String {
+    val context = LocalContext.current
     return when {
         remainingDailyMillis >= UNLIMITED_BUDGET / 2 -> stringResource(R.string.overlay_budget_unlimited)
         remainingDailyMillis <= 0L -> stringResource(R.string.overlay_budget_none)
-        else -> stringResource(R.string.overlay_budget_left, formatDurationMillis(remainingDailyMillis))
+        else -> stringResource(R.string.overlay_budget_left, formatDurationMillis(context, remainingDailyMillis))
     }
 }

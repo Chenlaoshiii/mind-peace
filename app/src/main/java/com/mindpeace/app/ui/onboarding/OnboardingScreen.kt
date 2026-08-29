@@ -62,7 +62,7 @@ import com.mindpeace.app.work.WorkScheduler
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-private const val LAST_STEP = 5
+private const val LAST_STEP = 6
 
 @Composable
 fun OnboardingScreen(
@@ -155,9 +155,10 @@ fun OnboardingScreen(
                     2 -> HowStep()
                     3 -> A11yStep(a11y)
                     4 -> BatteryNotifStep(battery, notif, notifLauncher)
-                    else -> LockStep(recents) { checked ->
+                    5 -> LockStep(recents) { checked ->
                         scope.launch { settings.setRecentsLockedConfirmed(checked) }
                     }
+                    else -> PrivacyStep()
                 }
             }
         }
@@ -365,7 +366,10 @@ private fun LockStep(checked: Boolean, onChecked: (Boolean) -> Unit) {
             modifier = Modifier.padding(start = 8.dp),
         )
     }
-    Spacer(Modifier.height(28.dp))
+}
+
+@Composable
+private fun PrivacyStep() {
     Text(stringResource(R.string.onboarding_privacy_title), style = MaterialTheme.typography.headlineMedium)
     Spacer(Modifier.height(12.dp))
     Text(

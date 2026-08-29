@@ -2,7 +2,7 @@ package com.mindpeace.app
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.getValue
@@ -11,7 +11,7 @@ import androidx.compose.runtime.setValue
 import com.mindpeace.app.ui.MindPeaceRoot
 import com.mindpeace.app.ui.theme.MindPeaceThemed
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     private var pendingDestination by mutableStateOf<String?>(null)
 

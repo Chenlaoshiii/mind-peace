@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.LaunchedEffect
@@ -15,7 +15,7 @@ import com.mindpeace.app.ui.theme.MindPeaceThemed
 import com.mindpeace.app.util.BlurSupport
 import java.lang.ref.WeakReference
 
-class OverlayActivity : ComponentActivity() {
+class OverlayActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         instance = WeakReference(this)

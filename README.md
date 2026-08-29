@@ -7,7 +7,7 @@ Mind Peace 是一款温和的 Android 使用提醒应用。它**不会锁住整�
 
 Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock the whole phone. When you launch an app you chose to watch, it covers it with a confirmation: do you really want to open it? After you confirm, you pick how long. When time is up, you go home.
 
-[下载 Debug 安装包 1.3.1](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.1/MindPeace-1.3.1-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.1)
+[下载 Debug 安装包 1.3.2](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.2/MindPeace-1.3.2-debug.apk) · [Releases](https://github.com/stillthatlars/mind-peace/releases/tag/v1.3.2)
 
 作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · [GitHub](https://github.com/stillthatlars/mind-peace) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
 
@@ -30,7 +30,7 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 - 时间到回到桌面，并提醒「时间到了」
 - 首页「总时长」可设所有被守护应用加在一起的每日上限，再把分钟分给各个应用（不能超过总数；0 表示这个应用不额外限额，仍受总时长剩余约束）
 - 一段时间没打开被守护应用，会发鼓励通知
-- 大约晚上 9 点推送今日小结；「今日小结」页看每天、每个应用、最多 7 天的趋势
+- 大约晚上 9 点推送今日小结；「今日小结」页默认收起，点开 **今昨对比** 或 **7天趋势** 分别展开
 
 **不会做**
 
@@ -49,18 +49,18 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 怎么用
 
-1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.1/MindPeace-1.3.1-debug.apk)（需允许未知来源）。覆盖安装即可。
-2. 第一次打开会走引导：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知 → 按机型锁定后台，并看到「完全在你的手机上运行，不会上传任何使用记录」。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
+1. 安装 [Debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.2/MindPeace-1.3.2-debug.apk)（需允许未知来源）。覆盖安装即可。
+2. 第一次打开会走引导（7 步）：欢迎 → 写给自己的话（三个预设或「自定义」）→ 一次使用是怎样的 → 开启**无障碍** → 关闭电池优化、允许通知 → 按机型锁定后台 → **完全在你的手机上**（不会收集数据、完全离线；无障碍只为盖住确认层）。无障碍真正打开、并勾选锁定确认后，「我完成」才会亮。
 3. 底栏四个入口：**总时长**、**添加应用**、**今日小结**、**设置**。左右滑动即可切换，点底栏也会跟着滑过去。
 4. 之后打开这些应用，会先问「真的确定要打开××吗？」并显示你的那句话。选「确定」再选 1 / 3 / 5 / 10 / 15 / 30 分钟或自定义；「退出」回桌面。
 5. 通知栏会显示剩余时间。到点回桌面。中途离开则本次结束。
-6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、改那句写给自己的话、重新看引导、关于。关于与设置里可以去 B 站或 [GitHub](https://github.com/stillthatlars/mind-peace) 看看。关于页大标题连点 5 下可预览全部通知文案。
+6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、**语言/Language**（简体中文、繁體中文、English、日本語、Русский；默认简体中文）、改那句写给自己的话、重新看引导、关于。关于与设置里可以去 B 站或 [去作者的 GitHub 看看](https://github.com/stillthatlars/mind-peace)。关于页大标题连点 5 下可预览全部通知文案。
 
 若拦截突然没了，打开应用看是否提示无障碍已关闭。小米 / 华为 / OPPO / vivo 请在最近任务里锁定 Mind Peace，并允许自启动与后台运行。
 
 ### 主题
 
-1.3.1 起个性主题只保留 **Material You**（Android 12+ 跟随壁纸动态取色）。可在设置里选浅色、深色或跟随系统。四个主页可以左右滑动切换。
+1.3.2 起个性主题只保留 **Material You**（Android 12+ 跟随壁纸动态取色）。可在设置里选浅色、深色或跟随系统。界面语言可在设置「语言/Language」切换，默认简体中文。四个主页可以左右滑动切换。
 
 ### 隐私
 
@@ -83,7 +83,7 @@ Feeds and short video are easy to open on autopilot. Mind Peace pulls “open”
 - Send you home when time is up, with a reminder
 - A global daily cap for all watched apps, then per-app allocations from that pool (allocations cannot exceed the total; 0 means no extra per-app cap beyond remaining global time)
 - Celebration notifications after 4 hours / 1 day / 3 days without opening watched apps (quiet hours 22:00–08:00)
-- A nightly summary around 21:00; the Recap tab shows per-app totals and a sliding 7-day chart
+- A nightly summary around 21:00; Recap has two sections collapsed by default — **Today vs yesterday** and **7-day trend** — tap a header to expand
 
 **Does not**
 
@@ -94,18 +94,18 @@ Feeds and short video are easy to open on autopilot. Mind Peace pulls “open”
 
 ### How to use
 
-1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.1/MindPeace-1.3.1-debug.apk) (unknown sources). You can install over a previous debug build.
-2. First launch is gated onboarding: welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications, lock in Recents, and a clear note that the app is fully offline. “I’m done” enables only when accessibility is actually on and the recents checkbox is checked.
+1. Install the [debug APK](https://github.com/stillthatlars/mind-peace/releases/download/v1.3.2/MindPeace-1.3.2-debug.apk) (unknown sources). You can install over a previous debug build.
+2. First launch is gated onboarding (7 steps): welcome, a line to yourself (three presets or Custom), how a session works, **Accessibility**, battery optimization + notifications, lock in Recents, then a dedicated privacy step — fully on-device, no collection, offline; accessibility only covers the confirmation layer. “I’m done” enables only when accessibility is actually on and the recents checkbox is checked.
 3. Bottom bar: **Daily cap**, **Add apps**, **Today’s recap**, **Settings**. Swipe left/right between tabs, or tap the bar.
 4. Opening a watched app asks if you really want to open it, with your quote. Confirm then pick duration, or Exit to the launcher.
 5. A notification shows remaining time. Leave the app and the leftover session is void.
-6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), edit your quote, replay setup, About. About and Settings include Bilibili and [GitHub](https://github.com/stillthatlars/mind-peace) links. Tap the big About title five times to preview every notification template.
+6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), **Language/Language** (Simplified Chinese, Traditional Chinese, English, Japanese, Russian; default Simplified Chinese), edit your quote, replay setup, About. About and Settings include Bilibili and [the author's GitHub](https://github.com/stillthatlars/mind-peace). Tap the big About title five times to preview every notification template.
 
 If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / OPPO / vivo, lock Mind Peace in Recents and allow autostart / background.
 
 ### Appearance
 
-1.3.1 keeps **Material You** only (dynamic color on Android 12+). Light / dark / follow system. The four main tabs swipe sideways.
+1.3.2 keeps **Material You** only (dynamic color on Android 12+). Light / dark / follow system. UI language is in Settings as Language/Language; default is Simplified Chinese. The four main tabs swipe sideways.
 
 ### Privacy
 

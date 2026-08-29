@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mind Peace</string>
+    <string name="accessibility_service_description">Mind Peace 用無障礙服務感知目前打開的應用，在你打開之前先蓋住一層確認。不會讀取聊天內容、密碼或螢幕上的文字細節，只關心是哪一個應用來到了前景。完全在你的手機上運行，不收集、不上傳任何使用紀錄。</string>
+    <string name="channel_session_name">使用倒數</string>
+    <string name="channel_session_desc">正在進行的限時使用，顯示剩餘時間。</string>
+    <string name="channel_reminder_name">時間到了</string>
+    <string name="channel_reminder_desc">本次使用結束時的提醒。</string>
+    <string name="channel_celebration_name">堅持提醒</string>
+    <string name="channel_celebration_desc">一段時間沒打開被守護應用時的鼓勵。</string>
+    <string name="channel_summary_name">每日小結</string>
+    <string name="channel_summary_desc">每天晚上回顧今天和昨天的使用時長。</string>
+    <string name="onboarding_welcome_title">先停一停，再打開</string>
+    <string name="onboarding_welcome_body">Mind Peace 不會鎖住整部手機。當你打開容易沉迷的影片流應用時，它會立刻蓋住一層確認，問你是不是真的要打開。</string>
+    <string name="onboarding_welcome_p1">打開前攔截，避免一滑就停不下來</string>
+    <string name="onboarding_welcome_p2">自己選擇這一次用多久</string>
+    <string name="onboarding_welcome_p3">可以先設每天總時長，再分給各個應用</string>
+    <string name="onboarding_self_title">寫給自己的話</string>
+    <string name="onboarding_self_body">每次被攔截時，你會先看見這句話。寫一句目標，或一句輕輕的提醒，給當下的自己。</string>
+    <string name="onboarding_self_hint">打開之前先問自己：現在真的需要嗎？</string>
+    <string name="onboarding_self_preset_1">打開之前先問自己：現在真的需要嗎？</string>
+    <string name="onboarding_self_preset_2">先停十秒，再決定要不要打開。</string>
+    <string name="onboarding_self_preset_3">這不是休息，別把滑動當成放鬆。</string>
+    <string name="onboarding_self_need">寫幾個字，或點選一句現成的。</string>
+    <string name="onboarding_how_title">一次使用是怎樣的</string>
+    <string name="onboarding_how_1">打開被守護的應用時，立刻出現確認層，暫時用不了。</string>
+    <string name="onboarding_how_2">選「確定」繼續，或「退出」回到桌面。</string>
+    <string name="onboarding_how_3">挑選時長（1 / 3 / 5 / 10 / 15 / 30 分鐘，或自訂）。</string>
+    <string name="onboarding_how_4">倒數只在這個應用在前景時走。中途離開（回桌面、切到別的應用）會結束本次，沒用完的時間作廢；下次打開會再次詢問。時間到會回到桌面並提醒你。</string>
+    <string name="onboarding_a11y_title">開啟無障礙服務</string>
+    <string name="onboarding_a11y_body">系統不會告訴我們「你打開了哪個應用」，除非你把無障礙服務交給 Mind Peace。它只用來感知前景應用並及時蓋住確認層，不會拿來讀你的訊息。</string>
+    <string name="onboarding_a11y_action">去開啟無障礙</string>
+    <string name="onboarding_a11y_on">無障礙已開啟</string>
+    <string name="onboarding_a11y_off">尚未開啟</string>
+    <string name="onboarding_battery_title">減少被系統殺掉</string>
+    <string name="onboarding_battery_body">倒數需要在背景安靜地走。請允許 Mind Peace 忽略電池最佳化，並在系統詢問時允許通知（用於顯示剩餘時間）。</string>
+    <string name="onboarding_battery_action">關閉電池最佳化</string>
+    <string name="onboarding_battery_on">已忽略電池最佳化</string>
+    <string name="onboarding_battery_off">仍受電池最佳化限制</string>
+    <string name="onboarding_notif_title">打開通知</string>
+    <string name="onboarding_notif_body">晚間小結和「忍住了」的鼓勵都走通知。這次使用的倒數也會顯示在通知裡。如果現在不允許，仍可以完成引導，之後會在首頁再提醒你。</string>
+    <string name="onboarding_notif_action">允許通知</string>
+    <string name="onboarding_notif_on">通知已允許</string>
+    <string name="onboarding_notif_off">通知未允許</string>
+    <string name="onboarding_lock_title">鎖定背景任務</string>
+    <string name="onboarding_lock_body">部分手機廠商會在背景清掉應用，導致攔截失效。請按你的手機操作一次，然後勾選確認。</string>
+    <string name="onboarding_lock_xiaomi">小米 / 紅米：最近任務中下拉 Mind Peace 卡片，點鎖定。</string>
+    <string name="onboarding_lock_huawei">華為 / 榮耀：最近任務中下拉卡片鎖定；電池設定裡允許背景執行。</string>
+    <string name="onboarding_lock_oppo">OPPO / 一加：最近任務右上角鎖定；自啟動管理中允許 Mind Peace。</string>
+    <string name="onboarding_lock_vivo">vivo / iQOO：最近任務鎖定；背景高耗電允許。</string>
+    <string name="onboarding_lock_pixel">Pixel / 原生 Android：一般只需關閉電池最佳化，無需額外鎖定。</string>
+    <string name="onboarding_lock_check">我已按說明鎖定背景（或確認不需要）</string>
+    <string name="onboarding_privacy_title">完全在你的手機上</string>
+    <string name="onboarding_privacy_body">完全在你的手機上運行，不會收集任何資料，完全離線。開啟無障礙權限只是為了及時蓋住確認層，不會讀取聊天或螢幕內容。</string>
+    <string name="onboarding_next">繼續</string>
+    <string name="onboarding_back">上一步</string>
+    <string name="onboarding_finish">我完成</string>
+    <string name="onboarding_finish_hint">請先開啟無障礙服務，並確認已鎖定背景。</string>
+    <string name="onboarding_step">第 %1$d 步，共 %2$d 步</string>
+    <string name="home_title">今日守護</string>
+    <string name="home_empty_title">還沒有守護任何應用</string>
+    <string name="home_empty_body">新增一個你想少打開的應用。下次打開它時，會先問你一句。</string>
+    <string name="home_add">新增應用</string>
+    <string name="home_used_limit">今日 %1$s / %2$s</string>
+    <string name="home_used_unlimited">今日已用 %1$s · 不限額度</string>
+    <string name="home_used_shared">今日已用 %1$s · 共用總時長</string>
+    <string name="home_remaining">剩餘 %1$s</string>
+    <string name="home_remaining_none">今日已用完</string>
+    <string name="home_off">未攔截</string>
+    <string name="home_stats_card">今日小結</string>
+    <string name="home_stats_card_sub">看看今天和昨天比怎樣</string>
+    <string name="home_notif_banner">晚間小結和堅持提醒需要通知。點這裡允許。</string>
+    <string name="cd_stats">今日小結</string>
+    <string name="picker_title">新增應用</string>
+    <string name="picker_subtitle">共 %1$d 個應用</string>
+    <string name="picker_search">搜尋應用名或套件名</string>
+    <string name="picker_empty">沒有符合的應用</string>
+    <string name="picker_intercept">攔截</string>
+    <string name="picker_chip_apps">應用</string>
+    <string name="picker_chip_system">系統工具</string>
+    <string name="picker_filter_hint">打開「應用」或「系統工具」來篩選</string>
+    <string name="picker_loading">正在讀取已安裝應用…</string>
+    <string name="detail_title">應用設定</string>
+    <string name="detail_enable">開啟攔截</string>
+    <string name="detail_enable_sub">打開此應用時先確認</string>
+    <string name="detail_limit">從總時長裡分出</string>
+    <string name="detail_limit_sub">0 表示不額外限制這個應用，仍受今日總時長約束。分配的分鐘不能超過還未分出去的總時長。</string>
+    <string name="detail_limit_none">不限制</string>
+    <string name="detail_limit_minutes">%1$d 分鐘</string>
+    <string name="detail_today">今日已用 %1$s</string>
+    <string name="detail_remove">移出守護名單</string>
+    <string name="detail_custom">自訂分鐘</string>
+    <string name="settings_title">設定</string>
+    <string name="settings_permissions">權限與保活</string>
+    <string name="settings_a11y">無障礙服務</string>
+    <string name="settings_battery">電池最佳化</string>
+    <string name="settings_notifications">通知</string>
+    <string name="settings_notifications_sub">晚間小結和堅持提醒需要通知權限。</string>
+    <string name="settings_overlay">懸浮窗（備用）</string>
+    <string name="settings_overlay_sub">無障礙遮罩是主要方式。如攔截不穩定，可額外允許懸浮窗。</string>
+    <string name="settings_lock">背景鎖定說明</string>
+    <string name="settings_setup">重新查看引導</string>
+    <string name="settings_self_message">寫給自己的話</string>
+    <string name="settings_self_message_sub">攔截確認時會顯示給自己看。</string>
+    <string name="settings_self_save">儲存</string>
+    <string name="settings_about">關於</string>
+    <string name="settings_about_body">Mind Peace %1$s
+在打開之前，先停一停。
+不會鎖住整部手機，只在你選定的應用上詢問。完全在你的手機上運行，不收集資料。
+
+Mind Peace · Chenlaoshi
+作者 陳老實Chenlaoshi</string>
+    <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
+    <string name="settings_credit_line">作者 陳老實Chenlaoshi · 去 B 站看看</string>
+    <string name="settings_credit_name">陳老實Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">去作者的 GitHub 看看</string>
+    <string name="settings_status_on">已開啟</string>
+    <string name="settings_status_off">未開啟</string>
+    <string name="settings_go">去設定</string>
+    <string name="a11y_required_title">無障礙已關閉</string>
+    <string name="a11y_required_body">沒有無障礙服務，Mind Peace 無法知道你打開了哪個應用，攔截不會生效。請重新開啟。</string>
+    <string name="a11y_required_action">去開啟</string>
+    <string name="overlay_question">真的確定要打開%1$s嗎？</string>
+    <string name="overlay_confirm">確定</string>
+    <string name="overlay_exit">退出</string>
+    <string name="overlay_pick_title">這次用多久？</string>
+    <string name="overlay_minutes">%1$d 分鐘</string>
+    <string name="overlay_custom">自訂</string>
+    <string name="overlay_budget_left">今日還剩 %1$s</string>
+    <string name="overlay_budget_none">今天的額度已經用完了</string>
+    <string name="overlay_budget_unlimited">今日不限額度</string>
+    <string name="overlay_cap_title">超過今日剩餘時間</string>
+    <string name="overlay_cap_body">今日「%1$s」還剩 %2$s。本次將按剩餘時間開始，而不是 %3$d 分鐘。</string>
+    <string name="overlay_cap_accept">按剩餘時間使用</string>
+    <string name="overlay_cap_cancel">返回</string>
+    <string name="overlay_custom_title">自訂時長</string>
+    <string name="overlay_custom_hint">分鐘</string>
+    <string name="overlay_custom_ok">開始</string>
+    <string name="overlay_timeup_title">時間到了</string>
+    <string name="overlay_timeup_body">%1$s 的這次使用已經結束。先離開一下吧。</string>
+    <string name="overlay_timeup_ok">好的</string>
+    <string name="overlay_pause">已離開，本次剩餘時間已作廢</string>
+    <string name="overlay_self_label">寫給自己</string>
+    <string name="session_notif_title">正在使用 %1$s</string>
+    <string name="session_notif_text">剩餘 %1$s</string>
+    <string name="session_notif_paused">已結束本次</string>
+    <string name="timeup_notif_title">時間到了</string>
+    <string name="timeup_notif_text">%1$s 的這次使用結束了</string>
+    <string name="celebration_notif_title">給你自己鼓個掌</string>
+    <string name="summary_notif_title">今日小結</string>
+    <string name="summary_less">今天一共用了 %1$d 分鐘，比昨天少了 %2$d 分鐘。這波穩。</string>
+    <string name="summary_more">今天一共用了 %1$d 分鐘，比昨天多了 %2$d 分鐘。明天再收一收。</string>
+    <string name="summary_same">今天一共用了 %1$d 分鐘，和昨天差不多。</string>
+    <string name="summary_no_yesterday">今天一共用了 %1$d 分鐘。從明天起會有對比。</string>
+    <string name="summary_standout_less">%1$s少用了 %2$d 分鐘</string>
+    <string name="summary_standout_more">%1$s多用了 %2$d 分鐘</string>
+    <string name="summary_none">今天還沒打開被守護的應用。這份空白也很好。</string>
+    <string name="stats_title">今日小結</string>
+    <string name="stats_today_total">今天 %1$d 分鐘</string>
+    <string name="stats_delta_less">比昨天少了 %1$d 分鐘</string>
+    <string name="stats_delta_more">比昨天多了 %1$d 分鐘</string>
+    <string name="stats_delta_same">和昨天差不多</string>
+    <string name="stats_no_yesterday">從明天起會有對比</string>
+    <string name="stats_empty">還沒有守護應用，新增之後才會有對比。</string>
+    <string name="stats_app_today">今天 %1$d 分</string>
+    <string name="stats_app_yesterday">昨天 %1$d 分</string>
+    <string name="stats_legend_today">今天</string>
+    <string name="stats_legend_yesterday">昨天</string>
+    <string name="stats_warm_less">少用的這些分鐘，是你留給自己的。</string>
+    <string name="stats_warm_more">多出來的那些，明天可以再輕輕收回來。</string>
+    <string name="stats_warm_same">節奏平穩，已經很好了。</string>
+    <string name="stats_warm_first">先過完今天，明天就能看見變化。</string>
+    <string name="onboarding_self_custom">自訂</string>
+    <string name="onboarding_self_custom_hint">自己寫一句給當下的自己</string>
+    <string name="settings_appearance">個性主題</string>
+    <string name="settings_color_mode">顏色模式</string>
+    <string name="settings_color_light">淺色</string>
+    <string name="settings_color_dark">深色</string>
+    <string name="settings_color_system">跟隨系統</string>
+    <string name="settings_style">風格</string>
+    <string name="settings_style_material">Google Material You</string>
+    <string name="settings_style_material_sub">動態取色，簡潔的 Material 3</string>
+    <string name="settings_style_orange">橙色風格</string>
+    <string name="settings_style_orange_sub">暖紙底 #FAF9F5，橙色 #D97757，全文襯線</string>
+    <string name="settings_style_apple">蘋果風格</string>
+    <string name="settings_style_apple_sub">系統綠與液態玻璃</string>
+    <string name="about_blurb">在打開之前，先停一停。不會鎖住整部手機，只在你選定的應用上詢問。完全在你的手機上運行，不收集資料。</string>
+    <string name="about_version">版本 %1$s</string>
+    <string name="lab_title">通知預覽</string>
+    <string name="lab_group_celebration">很長時間沒有用被管控應用的鼓勵通知</string>
+    <string name="lab_group_summary">每天晚上的小結通知</string>
+    <string name="lab_preview">預覽</string>
+    <string name="lab_raw">原文</string>
+    <string name="lab_sample_app">抖音</string>
+    <string name="stats_trend">7天趨勢</string>
+    <string name="stats_trend_total">合計分鐘</string>
+    <string name="stats_y_minutes">分鐘</string>
+    <string name="cd_settings">設定</string>
+    <string name="cd_add">新增應用</string>
+    <string name="cd_back">返回</string>
+    <string name="tab_budget">總時長</string>
+    <string name="tab_add">新增應用</string>
+    <string name="tab_stats">今日小結</string>
+    <string name="tab_settings">設定</string>
+    <string name="budget_title">總時長</string>
+    <string name="budget_global">每天一共用多久</string>
+    <string name="budget_global_sub">所有被守護應用加在一起的上限。先定總數，再把分鐘分給各個應用。</string>
+    <string name="budget_none">不限制總時長</string>
+    <string name="budget_minutes">每天 %1$d 分鐘</string>
+    <string name="budget_allocated">已分配 %1$d / %2$d 分鐘</string>
+    <string name="budget_unallocated">還剩 %1$d 分鐘沒分</string>
+    <string name="budget_unallocated_none">分鐘已經分完了</string>
+    <string name="budget_app_alloc">分給它 %1$d 分鐘</string>
+    <string name="budget_app_share">不單獨限額，和大家共用剩餘時間</string>
+    <string name="budget_empty_title">還沒有守護任何應用</string>
+    <string name="budget_empty_body">先去新增一個你想少打開的應用，再回來分配今天的時間。</string>
+    <string name="stats_compare">今昨對比</string>
+    <string name="settings_language_word">語言</string>
+    <string name="cd_expand">展開</string>
+    <string name="cd_collapse">收合</string>
+    <string name="duration_hours_minutes">%1$d小時%2$d分</string>
+    <string name="duration_minutes_seconds">%1$d分%2$d秒</string>
+    <string name="duration_minutes">%1$d分鐘</string>
+    <string name="duration_seconds">%1$d秒</string>
+    <string name="weekday_mon">週一</string>
+    <string name="weekday_tue">週二</string>
+    <string name="weekday_wed">週三</string>
+    <string name="weekday_thu">週四</string>
+    <string name="weekday_fri">週五</string>
+    <string name="weekday_sat">週六</string>
+    <string name="weekday_sun">週日</string>
+    <string-array name="celebration_templates">
+        <item>好傢伙，名單上的應用都在乾等，你卻過得挺香。</item>
+        <item>手指停住的那一秒，已經幫你贏了一局。</item>
+        <item>那些應用還在等你點開，你已經去過自己的日子了。</item>
+        <item>這空檔不是無聊，是你給自己留的窗。</item>
+        <item>沒點開也沒關係，世界照樣轉，你也更清醒。</item>
+        <item>今天這份克制，明天的你會偷偷謝謝自己。</item>
+        <item>刷的衝動來過又走了，你還在，挺好。</item>
+        <item>守護名單在值班，你卻把時間花在更有意思的地方。</item>
+        <item>少打開一次，多出一段屬於你的節奏。</item>
+        <item>螢幕亮著也沒關係，你沒有被它牽走。</item>
+        <item>這一陣沒打開那些應用，已經值得給自己鼓掌。</item>
+        <item>注意力今天站你這邊，難得又剛剛好。</item>
+        <item>那些想刷的瞬間過去了，你把日子過回去了。</item>
+        <item>空白的一段時間，被你過成了真正的空閒。</item>
+        <item>應用還在原處，你已經往前走了好幾步。</item>
+        <item>忍住不是虧，是你把主動權拿回來了。</item>
+        <item>今晚的時間，是你從慣性裡撿回來的。</item>
+        <item>沒有一路滑下去，呼吸都順了一些。</item>
+        <item>你看，離開那幾個應用，天也沒有塌。</item>
+        <item>這份安靜是你掙來的，收好，別急著還回去。</item>
+    </string-array>
+</resources>

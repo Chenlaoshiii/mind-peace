@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mind Peace</string>
+    <string name="accessibility_service_description">Mind Peace はユーザー補助で前面のアプリを知り、開く前に確認レイヤーを被せます。チャット、パスワード、画面上の文字は読みません。前面に来たアプリだけを見ます。すべてあなたの携帯電話の中で動き、利用記録は収集も送信もしません。</string>
+    <string name="channel_session_name">利用タイマー</string>
+    <string name="channel_session_desc">進行中の制限つき利用。残り時間を表示します。</string>
+    <string name="channel_reminder_name">時間です</string>
+    <string name="channel_reminder_desc">今回の利用が終わったときの知らせ。</string>
+    <string name="channel_celebration_name">続いたことへの励まし</string>
+    <string name="channel_celebration_desc">見守りアプリをしばらく開いていないときの励まし。</string>
+    <string name="channel_summary_name">毎日のまとめ</string>
+    <string name="channel_summary_desc">夜に、今日と昨日の利用時間を振り返ります。</string>
+    <string name="onboarding_welcome_title">まず止まって、それから開く</string>
+    <string name="onboarding_welcome_body">Mind Peace は携帯電話全体をロックしません。つい夢中になりやすい動画アプリを開くと、すぐに確認レイヤーを被せて、本当に開くかを尋ねます。</string>
+    <string name="onboarding_welcome_p1">開く前に遮って、スワイプだけで止まらなくならないようにする</string>
+    <string name="onboarding_welcome_p2">今回どれくらい使うかは自分で決める</string>
+    <string name="onboarding_welcome_p3">まず1日の合計を決め、分を各アプリに分ける</string>
+    <string name="onboarding_self_title">自分へのひとこと</string>
+    <string name="onboarding_self_body">遮られるたびに、まずこの文が見えます。目標でも、やさしいリマインドでも、今の自分へ書いてください。</string>
+    <string name="onboarding_self_hint">開く前に自分に聞く：今、本当に必要？</string>
+    <string name="onboarding_self_preset_1">開く前に自分に聞く：今、本当に必要？</string>
+    <string name="onboarding_self_preset_2">十秒止まってから、開くか決める。</string>
+    <string name="onboarding_self_preset_3">これは休みではない。スクロールをリラックスだと思わないで。</string>
+    <string name="onboarding_self_need">少し書くか、用意された一文を選んでください。</string>
+    <string name="onboarding_how_title">1回の利用の流れ</string>
+    <string name="onboarding_how_1">見守り中のアプリを開くと、すぐに確認レイヤーが出て、しばらく使えません。</string>
+    <string name="onboarding_how_2">「確定」で続けるか、「終了」でホームに戻ります。</string>
+    <string name="onboarding_how_3">時間を選ぶ（1 / 3 / 5 / 10 / 15 / 30 分、またはカスタム）。</string>
+    <string name="onboarding_how_4">タイマーはこのアプリが前面にあるときだけ進みます。途中で離れる（ホーム、別のアプリ）とその回は終了し、余った時間は無効。次に開くときもまた尋ねます。時間になるとホームに戻り、知らせます。</string>
+    <string name="onboarding_a11y_title">ユーザー補助をオン</string>
+    <string name="onboarding_a11y_body">どのアプリを開いたかは、ユーザー補助を Mind Peace に渡さないとシステムは教えてくれません。前面アプリを知り、確認レイヤーをすぐ被せるためだけに使います。メッセージは読みません。</string>
+    <string name="onboarding_a11y_action">ユーザー補助を開く</string>
+    <string name="onboarding_a11y_on">ユーザー補助はオンです</string>
+    <string name="onboarding_a11y_off">まだオフです</string>
+    <string name="onboarding_battery_title">システムに終了されにくくする</string>
+    <string name="onboarding_battery_body">カウントダウンはバックグラウンドで静かに進む必要があります。Mind Peace の電池最適化を無視し、システムが尋ねたら通知を許可してください（残り時間の表示に使います）。</string>
+    <string name="onboarding_battery_action">電池最適化をオフ</string>
+    <string name="onboarding_battery_on">電池最適化を無視しています</string>
+    <string name="onboarding_battery_off">まだ電池最適化の制限があります</string>
+    <string name="onboarding_notif_title">通知をオン</string>
+    <string name="onboarding_notif_body">夜のまとめと「我慢できた」励ましは通知で届きます。今回のカウントダウンも通知に出ます。今許可しなくても案内は終えられ、あとでホームで再度お知らせします。</string>
+    <string name="onboarding_notif_action">通知を許可</string>
+    <string name="onboarding_notif_on">通知は許可済み</string>
+    <string name="onboarding_notif_off">通知は未許可</string>
+    <string name="onboarding_lock_title">最近のタスクで固定</string>
+    <string name="onboarding_lock_body">メーカーによってはバックグラウンドでアプリを消し、遮りが効かなくなります。端末の手順を一度行い、チェックしてください。</string>
+    <string name="onboarding_lock_xiaomi">Xiaomi / Redmi：最近のタスクで Mind Peace のカードを下に引いてロック。</string>
+    <string name="onboarding_lock_huawei">Huawei / Honor：最近のタスクでカードをロック。電池設定でバックグラウンド実行を許可。</string>
+    <string name="onboarding_lock_oppo">OPPO / OnePlus：最近のタスク右上でロック。自動起動で Mind Peace を許可。</string>
+    <string name="onboarding_lock_vivo">vivo / iQOO：最近のタスクでロック。バックグラウンドの高消費電力を許可。</string>
+    <string name="onboarding_lock_pixel">Pixel / 標準 Android：電池最適化をオフにすれば十分なことが多いです。追加のロックは不要です。</string>
+    <string name="onboarding_lock_check">説明どおり固定した（または不要だと確認した）</string>
+    <string name="onboarding_privacy_title">すべてあなたの携帯電話の中で</string>
+    <string name="onboarding_privacy_body">すべてあなたの携帯電話の中で動き、データを集めず、完全にオフラインです。ユーザー補助をオンにするのは確認レイヤーをすぐ被せるためだけで、チャットや画面の内容は読みません。</string>
+    <string name="onboarding_next">続ける</string>
+    <string name="onboarding_back">戻る</string>
+    <string name="onboarding_finish">完了</string>
+    <string name="onboarding_finish_hint">先にユーザー補助をオンにし、最近のタスクで固定したことを確認してください。</string>
+    <string name="onboarding_step">ステップ %1$d / %2$d</string>
+    <string name="home_title">今日の見守り</string>
+    <string name="home_empty_title">まだ見守るアプリがありません</string>
+    <string name="home_empty_body">開く回数を減らしたいアプリを追加してください。次に開くとき、先にひとこと尋ねます。</string>
+    <string name="home_add">アプリを追加</string>
+    <string name="home_used_limit">今日 %1$s / %2$s</string>
+    <string name="home_used_unlimited">今日 %1$s 使用 · 上限なし</string>
+    <string name="home_used_shared">今日 %1$s 使用 · 合計時間を共有</string>
+    <string name="home_remaining">残り %1$s</string>
+    <string name="home_remaining_none">今日は使い切りました</string>
+    <string name="home_off">オフ</string>
+    <string name="home_stats_card">今日のまとめ</string>
+    <string name="home_stats_card_sub">今日と昨日を比べてみる</string>
+    <string name="home_notif_banner">夜のまとめと励ましには通知が必要です。ここをタップして許可。</string>
+    <string name="cd_stats">今日のまとめ</string>
+    <string name="picker_title">アプリを追加</string>
+    <string name="picker_subtitle">全 %1$d 個</string>
+    <string name="picker_search">アプリ名またはパッケージ名で検索</string>
+    <string name="picker_empty">一致するアプリがありません</string>
+    <string name="picker_intercept">見守る</string>
+    <string name="picker_chip_apps">アプリ</string>
+    <string name="picker_chip_system">システムツール</string>
+    <string name="picker_filter_hint">「アプリ」または「システムツール」で絞り込み</string>
+    <string name="picker_loading">インストール済みアプリを読み込み中…</string>
+    <string name="detail_title">アプリ設定</string>
+    <string name="detail_enable">遮りをオン</string>
+    <string name="detail_enable_sub">このアプリを開く前に確認する</string>
+    <string name="detail_limit">合計時間から分ける</string>
+    <string name="detail_limit_sub">0 はこのアプリに追加の上限なし。今日の合計の残りには従います。割り当て分はまだ分けていない合計を超えられません。</string>
+    <string name="detail_limit_none">追加制限なし</string>
+    <string name="detail_limit_minutes">%1$d 分</string>
+    <string name="detail_today">今日 %1$s 使用</string>
+    <string name="detail_remove">見守りリストから外す</string>
+    <string name="detail_custom">カスタム分</string>
+    <string name="settings_title">設定</string>
+    <string name="settings_permissions">権限と常駐</string>
+    <string name="settings_a11y">ユーザー補助</string>
+    <string name="settings_battery">電池最適化</string>
+    <string name="settings_notifications">通知</string>
+    <string name="settings_notifications_sub">夜のまとめと励ましには通知の許可が必要です。</string>
+    <string name="settings_overlay">他のアプリの上に表示（予備）</string>
+    <string name="settings_overlay_sub">ユーザー補助の覆いが主な方法です。不安定なら重ねて表示の許可もできます。</string>
+    <string name="settings_lock">バックグラウンド固定の説明</string>
+    <string name="settings_setup">案内をもう一度見る</string>
+    <string name="settings_self_message">自分へのひとこと</string>
+    <string name="settings_self_message_sub">確認のときに自分へ表示されます。</string>
+    <string name="settings_self_save">保存</string>
+    <string name="settings_about">このアプリについて</string>
+    <string name="settings_about_body">Mind Peace %1$s
+開く前に、まず止まって。
+携帯電話全体はロックせず、選んだアプリにだけ尋ねます。すべてあなたの携帯電話の中で動き、データは集めません。
+
+Mind Peace · Chenlaoshi
+作者 陈老实Chenlaoshi</string>
+    <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
+    <string name="settings_credit_line">作者 陈老实Chenlaoshi · Bilibili を見る</string>
+    <string name="settings_credit_name">陈老实Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">作者の GitHub を見る</string>
+    <string name="settings_status_on">オン</string>
+    <string name="settings_status_off">オフ</string>
+    <string name="settings_go">設定を開く</string>
+    <string name="a11y_required_title">ユーザー補助がオフです</string>
+    <string name="a11y_required_body">ユーザー補助がないと、Mind Peace はどのアプリを開いたか分からず、遮りは効きません。もう一度オンにしてください。</string>
+    <string name="a11y_required_action">オンにする</string>
+    <string name="overlay_question">本当に%1$sを開きますか？</string>
+    <string name="overlay_confirm">確定</string>
+    <string name="overlay_exit">終了</string>
+    <string name="overlay_pick_title">今回はどれくらい？</string>
+    <string name="overlay_minutes">%1$d 分</string>
+    <string name="overlay_custom">カスタム</string>
+    <string name="overlay_budget_left">今日はあと %1$s</string>
+    <string name="overlay_budget_none">今日の分はもう使い切りました</string>
+    <string name="overlay_budget_unlimited">今日は上限なし</string>
+    <string name="overlay_cap_title">今日の残りを超えています</string>
+    <string name="overlay_cap_body">今日の「%1$s」はあと %2$s です。今回は %3$d 分ではなく、残り時間で始まります。</string>
+    <string name="overlay_cap_accept">残り時間で使う</string>
+    <string name="overlay_cap_cancel">戻る</string>
+    <string name="overlay_custom_title">カスタム時間</string>
+    <string name="overlay_custom_hint">分</string>
+    <string name="overlay_custom_ok">開始</string>
+    <string name="overlay_timeup_title">時間です</string>
+    <string name="overlay_timeup_body">%1$s の今回の利用は終わりました。少し離れましょう。</string>
+    <string name="overlay_timeup_ok">OK</string>
+    <string name="overlay_pause">離れました。今回の残り時間は無効です</string>
+    <string name="overlay_self_label">自分へ</string>
+    <string name="session_notif_title">%1$s を利用中</string>
+    <string name="session_notif_text">残り %1$s</string>
+    <string name="session_notif_paused">今回は終了しました</string>
+    <string name="timeup_notif_title">時間です</string>
+    <string name="timeup_notif_text">%1$s の今回の利用が終わりました</string>
+    <string name="celebration_notif_title">自分に拍手を</string>
+    <string name="summary_notif_title">今日のまとめ</string>
+    <string name="summary_less">今日は合計 %1$d 分、昨日より %2$d 分少ない。いい感じ。</string>
+    <string name="summary_more">今日は合計 %1$d 分、昨日より %2$d 分多い。明日また少し戻そう。</string>
+    <string name="summary_same">今日は合計 %1$d 分、昨日とほぼ同じ。</string>
+    <string name="summary_no_yesterday">今日は合計 %1$d 分。比較は明日からです。</string>
+    <string name="summary_standout_less">%1$sが %2$d 分少なかった</string>
+    <string name="summary_standout_more">%1$sが %2$d 分多かった</string>
+    <string name="summary_none">今日は見守りアプリを開いていません。この空白も悪くない。</string>
+    <string name="stats_title">今日のまとめ</string>
+    <string name="stats_today_total">今日 %1$d 分</string>
+    <string name="stats_delta_less">昨日より %1$d 分少ない</string>
+    <string name="stats_delta_more">昨日より %1$d 分多い</string>
+    <string name="stats_delta_same">昨日とほぼ同じ</string>
+    <string name="stats_no_yesterday">比較は明日から</string>
+    <string name="stats_empty">まだ見守りアプリがありません。追加すると比較できます。</string>
+    <string name="stats_app_today">今日 %1$d 分</string>
+    <string name="stats_app_yesterday">昨日 %1$d 分</string>
+    <string name="stats_legend_today">今日</string>
+    <string name="stats_legend_yesterday">昨日</string>
+    <string name="stats_warm_less">使わなかったその分は、自分のために残したもの。</string>
+    <string name="stats_warm_more">増えた分は、明日やさしく取り戻せます。</string>
+    <string name="stats_warm_same">リズムは安定。もう十分よい。</string>
+    <string name="stats_warm_first">まず今日を終えて。明日から変化が見えます。</string>
+    <string name="onboarding_self_custom">カスタム</string>
+    <string name="onboarding_self_custom_hint">今の自分への一文を書く</string>
+    <string name="settings_appearance">テーマ</string>
+    <string name="settings_color_mode">カラーモード</string>
+    <string name="settings_color_light">ライト</string>
+    <string name="settings_color_dark">ダーク</string>
+    <string name="settings_color_system">システムに合わせる</string>
+    <string name="settings_style">スタイル</string>
+    <string name="settings_style_material">Google Material You</string>
+    <string name="settings_style_material_sub">ダイナミックカラー、すっきりした Material 3</string>
+    <string name="settings_style_orange">オレンジ</string>
+    <string name="settings_style_orange_sub">暖色の紙 #FAF9F5、オレンジ #D97757、セリフ体</string>
+    <string name="settings_style_apple">Apple 風</string>
+    <string name="settings_style_apple_sub">システムグリーンとリキッドガラス</string>
+    <string name="about_blurb">開く前に、まず止まって。携帯電話全体はロックせず、選んだアプリにだけ尋ねます。すべてあなたの携帯電話の中で動き、データは集めません。</string>
+    <string name="about_version">バージョン %1$s</string>
+    <string name="lab_title">通知プレビュー</string>
+    <string name="lab_group_celebration">見守りアプリを長く使っていないときの励まし通知</string>
+    <string name="lab_group_summary">毎晩のまとめ通知</string>
+    <string name="lab_preview">プレビュー</string>
+    <string name="lab_raw">原文</string>
+    <string name="lab_sample_app">TikTok</string>
+    <string name="stats_trend">7日の傾向</string>
+    <string name="stats_trend_total">合計分</string>
+    <string name="stats_y_minutes">分</string>
+    <string name="cd_settings">設定</string>
+    <string name="cd_add">アプリを追加</string>
+    <string name="cd_back">戻る</string>
+    <string name="tab_budget">合計時間</string>
+    <string name="tab_add">アプリを追加</string>
+    <string name="tab_stats">今日のまとめ</string>
+    <string name="tab_settings">設定</string>
+    <string name="budget_title">合計時間</string>
+    <string name="budget_global">1日に合計どれくらい</string>
+    <string name="budget_global_sub">見守りアプリ全体の上限。まず合計を決め、分を各アプリに分けます。</string>
+    <string name="budget_none">合計の上限なし</string>
+    <string name="budget_minutes">毎日 %1$d 分</string>
+    <string name="budget_allocated">割り当て済み %1$d / %2$d 分</string>
+    <string name="budget_unallocated">まだ %1$d 分が未割り当て</string>
+    <string name="budget_unallocated_none">分はすべて割り当て済み</string>
+    <string name="budget_app_alloc">このアプリに %1$d 分</string>
+    <string name="budget_app_share">個別上限なし。残り時間を共有</string>
+    <string name="budget_empty_title">まだ見守るアプリがありません</string>
+    <string name="budget_empty_body">開く回数を減らしたいアプリを追加してから、今日の時間を分けてください。</string>
+    <string name="stats_compare">今日と昨日</string>
+    <string name="settings_language_word">言語</string>
+    <string name="cd_expand">展開</string>
+    <string name="cd_collapse">折りたたむ</string>
+    <string name="duration_hours_minutes">%1$d時間%2$d分</string>
+    <string name="duration_minutes_seconds">%1$d分%2$d秒</string>
+    <string name="duration_minutes">%1$d分</string>
+    <string name="duration_seconds">%1$d秒</string>
+    <string name="weekday_mon">月</string>
+    <string name="weekday_tue">火</string>
+    <string name="weekday_wed">水</string>
+    <string name="weekday_thu">木</string>
+    <string name="weekday_fri">金</string>
+    <string name="weekday_sat">土</string>
+    <string name="weekday_sun">日</string>
+    <string-array name="celebration_templates">
+        <item>リストのアプリは待っている。あなたはそれなしでちゃんと過ごせている。</item>
+        <item>指が止まったその一秒で、もう一局勝っている。</item>
+        <item>あのアプリはまだ待っている。あなたは自分の一日を生きている。</item>
+        <item>この隙間は退屈じゃない。自分のために残した窓。</item>
+        <item>開かなくてもいい。世界は回り、あなたはよりはっきりしている。</item>
+        <item>今日のこの我慢を、明日の自分はそっと感謝する。</item>
+        <item>スクロールしたい衝動は来て、去った。あなたはまだここにいる。それでいい。</item>
+        <item>見守りリストは当番中。時間はもっと面白いところへ使った。</item>
+        <item>一度開かないだけで、自分のリズムが一段戻る。</item>
+        <item>画面が点いていてもいい。それに連れていかれなかった。</item>
+        <item>しばらくあのアプリを開いていない。もう自分に拍手していい。</item>
+        <item>今日、注意はあなたの側にいた。珍しくて、ちょうどいい。</item>
+        <item>スクロールしたかった瞬間は過ぎた。一日を取り戻した。</item>
+        <item>空白の時間を、本当の空き時間として過ごせた。</item>
+        <item>アプリは元の場所にいる。あなたはもう数歩先にいる。</item>
+        <item>我慢は損じゃない。主導権を取り戻したということ。</item>
+        <item>今夜の時間は、習慣から拾い戻したもの。</item>
+        <item>最後まで滑り落ちなかった。呼吸が少し楽。</item>
+        <item>ほら、あのアプリを離れても空は落ちない。</item>
+        <item>この静けさはあなたが得たもの。しまっておいて。急いで返さなくていい。</item>
+    </string-array>
+</resources>

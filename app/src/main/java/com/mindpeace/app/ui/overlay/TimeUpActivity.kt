@@ -3,7 +3,7 @@ package com.mindpeace.app.ui.overlay
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
@@ -28,7 +28,7 @@ import com.mindpeace.app.data.OverlayState
 import com.mindpeace.app.ui.theme.MindPeaceThemed
 import java.lang.ref.WeakReference
 
-class TimeUpActivity : ComponentActivity() {
+class TimeUpActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         instance = WeakReference(this)

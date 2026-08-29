@@ -13,8 +13,8 @@ android {
         applicationId = "com.mindpeace.app"
         minSdk = 26
         targetSdk = 35
-        versionCode = 6
-        versionName = "1.3.1"
+        versionCode = 7
+        versionName = "1.3.2"
     }
 
     buildTypes {
@@ -65,6 +65,7 @@ dependencies {
     implementation(libs.androidx.savedstate.ktx)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
     implementation(libs.androidx.work.runtime.ktx)
 

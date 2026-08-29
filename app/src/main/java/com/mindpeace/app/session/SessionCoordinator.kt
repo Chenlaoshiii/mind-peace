@@ -230,8 +230,8 @@ class SessionCoordinator(
     }
 
     fun remainingLabel(): String {
-        val sess = _session.value ?: return formatDurationMillis(0)
-        return formatDurationMillis(sess.remainingMillis)
+        val sess = _session.value ?: return formatDurationMillis(app, 0)
+        return formatDurationMillis(app, sess.remainingMillis)
     }
 
     private fun showIntercept(pkg: String, dailyLimitMinutes: Int) {

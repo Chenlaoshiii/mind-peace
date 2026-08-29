@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mind Peace</string>
+    <string name="accessibility_service_description">Mind Peace uses Accessibility to notice which app is in front and cover it with a confirmation before you use it. It does not read chats, passwords, or on-screen text — only which app came to the foreground. It runs entirely on your phone and does not collect or upload any usage records.</string>
+    <string name="channel_session_name">Session timer</string>
+    <string name="channel_session_desc">An ongoing timed session, showing time left.</string>
+    <string name="channel_reminder_name">Time\'s up</string>
+    <string name="channel_reminder_desc">A reminder when this session ends.</string>
+    <string name="channel_celebration_name">Streak encouragement</string>
+    <string name="channel_celebration_desc">Encouragement after you haven\'t opened watched apps for a while.</string>
+    <string name="channel_summary_name">Daily recap</string>
+    <string name="channel_summary_desc">An evening look at today\'s usage versus yesterday.</string>
+    <string name="onboarding_welcome_title">Pause first. Then open.</string>
+    <string name="onboarding_welcome_body">Mind Peace does not lock your whole phone. When you open a feed or short-video app you tend to get lost in, it covers it with a confirmation and asks if you really want to open it.</string>
+    <string name="onboarding_welcome_p1">Intercept before open, so one swipe doesn\'t take over</string>
+    <string name="onboarding_welcome_p2">You choose how long this time</string>
+    <string name="onboarding_welcome_p3">Set a daily total first, then share minutes across apps</string>
+    <string name="onboarding_self_title">A line to yourself</string>
+    <string name="onboarding_self_body">Each time you\'re intercepted, you\'ll see this first. Write a goal, or a gentle reminder, for yourself in that moment.</string>
+    <string name="onboarding_self_hint">Before you open it, ask: do I really need this now?</string>
+    <string name="onboarding_self_preset_1">Before you open it, ask: do I really need this now?</string>
+    <string name="onboarding_self_preset_2">Pause ten seconds, then decide whether to open it.</string>
+    <string name="onboarding_self_preset_3">This isn\'t rest. Don\'t treat scrolling as unwinding.</string>
+    <string name="onboarding_self_need">Write a few words, or pick a ready-made line.</string>
+    <string name="onboarding_how_title">How a session works</string>
+    <string name="onboarding_how_1">When you open a watched app, a confirmation layer appears right away and you can\'t use it yet.</string>
+    <string name="onboarding_how_2">Choose Confirm to continue, or Exit to go home.</string>
+    <string name="onboarding_how_3">Pick a duration (1 / 3 / 5 / 10 / 15 / 30 minutes, or custom).</string>
+    <string name="onboarding_how_4">The timer runs only while this app is in front. Leaving (home, another app) ends the session; leftover time is discarded, and the next open asks again. When time is up you go home and get a reminder.</string>
+    <string name="onboarding_a11y_title">Turn on Accessibility</string>
+    <string name="onboarding_a11y_body">The system won\'t tell us which app you opened unless you give Mind Peace Accessibility. It is only used to see the foreground app and cover it in time. It will not read your messages.</string>
+    <string name="onboarding_a11y_action">Open Accessibility</string>
+    <string name="onboarding_a11y_on">Accessibility is on</string>
+    <string name="onboarding_a11y_off">Not on yet</string>
+    <string name="onboarding_battery_title">Stay alive in the background</string>
+    <string name="onboarding_battery_body">The countdown needs to keep running quietly. Allow Mind Peace to ignore battery optimization, and allow notifications when the system asks (used to show time left).</string>
+    <string name="onboarding_battery_action">Ignore battery optimization</string>
+    <string name="onboarding_battery_on">Battery optimization ignored</string>
+    <string name="onboarding_battery_off">Still limited by battery optimization</string>
+    <string name="onboarding_notif_title">Allow notifications</string>
+    <string name="onboarding_notif_body">The evening recap and “you held off” encouragement both use notifications. The session countdown also shows in a notification. You can finish setup without allowing them now; we\'ll remind you later on the home tab.</string>
+    <string name="onboarding_notif_action">Allow notifications</string>
+    <string name="onboarding_notif_on">Notifications allowed</string>
+    <string name="onboarding_notif_off">Notifications not allowed</string>
+    <string name="onboarding_lock_title">Lock in Recents</string>
+    <string name="onboarding_lock_body">Some phone makers kill apps in the background, and intercepts stop working. Follow the steps for your phone, then check the box.</string>
+    <string name="onboarding_lock_xiaomi">Xiaomi / Redmi: in Recents, pull down the Mind Peace card and tap Lock.</string>
+    <string name="onboarding_lock_huawei">Huawei / Honor: lock the card in Recents; allow background running in battery settings.</string>
+    <string name="onboarding_lock_oppo">OPPO / OnePlus: lock from the Recents top-right; allow Mind Peace in autostart.</string>
+    <string name="onboarding_lock_vivo">vivo / iQOO: lock in Recents; allow high background power use.</string>
+    <string name="onboarding_lock_pixel">Pixel / stock Android: ignoring battery optimization is usually enough. No extra lock needed.</string>
+    <string name="onboarding_lock_check">I\'ve locked it in Recents (or confirmed it isn\'t needed)</string>
+    <string name="onboarding_privacy_title">Entirely on your phone</string>
+    <string name="onboarding_privacy_body">It runs entirely on your phone, collects no data, and is fully offline. Accessibility is only used to cover the confirmation layer in time; it does not read chats or screen contents.</string>
+    <string name="onboarding_next">Continue</string>
+    <string name="onboarding_back">Back</string>
+    <string name="onboarding_finish">I\'m done</string>
+    <string name="onboarding_finish_hint">Turn on Accessibility and confirm you\'ve locked it in Recents first.</string>
+    <string name="onboarding_step">Step %1$d of %2$d</string>
+    <string name="home_title">Today\'s watch</string>
+    <string name="home_empty_title">No apps watched yet</string>
+    <string name="home_empty_body">Add an app you\'d like to open less. Next time you open it, you\'ll be asked first.</string>
+    <string name="home_add">Add apps</string>
+    <string name="home_used_limit">Today %1$s / %2$s</string>
+    <string name="home_used_unlimited">Used %1$s today · no cap</string>
+    <string name="home_used_shared">Used %1$s today · shares the daily total</string>
+    <string name="home_remaining">%1$s left</string>
+    <string name="home_remaining_none">Used up for today</string>
+    <string name="home_off">Not intercepting</string>
+    <string name="home_stats_card">Today\'s recap</string>
+    <string name="home_stats_card_sub">See how today compares with yesterday</string>
+    <string name="home_notif_banner">The evening recap and streak notes need notifications. Tap to allow.</string>
+    <string name="cd_stats">Today\'s recap</string>
+    <string name="picker_title">Add apps</string>
+    <string name="picker_subtitle">%1$d apps</string>
+    <string name="picker_search">Search by name or package</string>
+    <string name="picker_empty">No matching apps</string>
+    <string name="picker_intercept">Watch</string>
+    <string name="picker_chip_apps">Apps</string>
+    <string name="picker_chip_system">System tools</string>
+    <string name="picker_filter_hint">Open Apps or System tools to filter</string>
+    <string name="picker_loading">Reading installed apps…</string>
+    <string name="detail_title">App settings</string>
+    <string name="detail_enable">Intercept</string>
+    <string name="detail_enable_sub">Ask before opening this app</string>
+    <string name="detail_limit">Take from the daily total</string>
+    <string name="detail_limit_sub">0 means no extra cap on this app; it still shares what\'s left of today\'s total. Allocated minutes cannot exceed the remaining total.</string>
+    <string name="detail_limit_none">No extra cap</string>
+    <string name="detail_limit_minutes">%1$d min</string>
+    <string name="detail_today">Used %1$s today</string>
+    <string name="detail_remove">Remove from watch list</string>
+    <string name="detail_custom">Custom minutes</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_permissions">Permissions &amp; staying alive</string>
+    <string name="settings_a11y">Accessibility</string>
+    <string name="settings_battery">Battery optimization</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_notifications_sub">The evening recap and streak notes need notification permission.</string>
+    <string name="settings_overlay">Display over other apps (fallback)</string>
+    <string name="settings_overlay_sub">The Accessibility overlay is the main method. If intercepts are unstable, you can also allow the overlay permission.</string>
+    <string name="settings_lock">How to lock in Recents</string>
+    <string name="settings_setup">Replay setup</string>
+    <string name="settings_self_message">A line to yourself</string>
+    <string name="settings_self_message_sub">Shown on the intercept confirmation.</string>
+    <string name="settings_self_save">Save</string>
+    <string name="settings_about">About</string>
+    <string name="settings_about_body">Mind Peace %1$s
+Pause first. Then open.
+It doesn\'t lock the whole phone — it only asks on apps you chose. It runs entirely on your phone and collects no data.
+
+Mind Peace · Chenlaoshi
+Author 陈老实Chenlaoshi</string>
+    <string name="settings_credit_title">Mind Peace · Chenlaoshi</string>
+    <string name="settings_credit_line">Author 陈老实Chenlaoshi · visit Bilibili</string>
+    <string name="settings_credit_name">陈老实Chenlaoshi</string>
+    <string name="settings_github_title">GitHub</string>
+    <string name="settings_github_line">Check out the author\'s GitHub</string>
+    <string name="settings_status_on">On</string>
+    <string name="settings_status_off">Off</string>
+    <string name="settings_go">Open settings</string>
+    <string name="a11y_required_title">Accessibility is off</string>
+    <string name="a11y_required_body">Without Accessibility, Mind Peace can\'t tell which app you opened, so intercepts won\'t work. Please turn it back on.</string>
+    <string name="a11y_required_action">Turn on</string>
+    <string name="overlay_question">Do you really want to open %1$s?</string>
+    <string name="overlay_confirm">Confirm</string>
+    <string name="overlay_exit">Exit</string>
+    <string name="overlay_pick_title">How long this time?</string>
+    <string name="overlay_minutes">%1$d min</string>
+    <string name="overlay_custom">Custom</string>
+    <string name="overlay_budget_left">%1$s left today</string>
+    <string name="overlay_budget_none">Today\'s allowance is used up</string>
+    <string name="overlay_budget_unlimited">No daily cap today</string>
+    <string name="overlay_cap_title">Longer than time left today</string>
+    <string name="overlay_cap_body">%1$s has %2$s left today. This session will start with the remaining time, not %3$d minutes.</string>
+    <string name="overlay_cap_accept">Use remaining time</string>
+    <string name="overlay_cap_cancel">Back</string>
+    <string name="overlay_custom_title">Custom duration</string>
+    <string name="overlay_custom_hint">Minutes</string>
+    <string name="overlay_custom_ok">Start</string>
+    <string name="overlay_timeup_title">Time\'s up</string>
+    <string name="overlay_timeup_body">This session with %1$s has ended. Step away for a bit.</string>
+    <string name="overlay_timeup_ok">OK</string>
+    <string name="overlay_pause">You left. Leftover time for this session is void</string>
+    <string name="overlay_self_label">To yourself</string>
+    <string name="session_notif_title">Using %1$s</string>
+    <string name="session_notif_text">%1$s left</string>
+    <string name="session_notif_paused">This session has ended</string>
+    <string name="timeup_notif_title">Time\'s up</string>
+    <string name="timeup_notif_text">This session with %1$s has ended</string>
+    <string name="celebration_notif_title">A round of applause for you</string>
+    <string name="summary_notif_title">Today\'s recap</string>
+    <string name="summary_less">You used %1$d minutes today, %2$d less than yesterday. Solid.</string>
+    <string name="summary_more">You used %1$d minutes today, %2$d more than yesterday. Ease it back tomorrow.</string>
+    <string name="summary_same">You used %1$d minutes today, about the same as yesterday.</string>
+    <string name="summary_no_yesterday">You used %1$d minutes today. Comparisons start tomorrow.</string>
+    <string name="summary_standout_less">%1$s: %2$d minutes less</string>
+    <string name="summary_standout_more">%1$s: %2$d minutes more</string>
+    <string name="summary_none">You didn\'t open any watched apps today. This blank is good too.</string>
+    <string name="stats_title">Today\'s recap</string>
+    <string name="stats_today_total">Today %1$d min</string>
+    <string name="stats_delta_less">%1$d minutes less than yesterday</string>
+    <string name="stats_delta_more">%1$d minutes more than yesterday</string>
+    <string name="stats_delta_same">About the same as yesterday</string>
+    <string name="stats_no_yesterday">Comparisons start tomorrow</string>
+    <string name="stats_empty">No watched apps yet. Add some to see a comparison.</string>
+    <string name="stats_app_today">Today %1$d min</string>
+    <string name="stats_app_yesterday">Yesterday %1$d min</string>
+    <string name="stats_legend_today">Today</string>
+    <string name="stats_legend_yesterday">Yesterday</string>
+    <string name="stats_warm_less">Those unused minutes are ones you kept for yourself.</string>
+    <string name="stats_warm_more">The extra can be gently taken back tomorrow.</string>
+    <string name="stats_warm_same">A steady pace is already good.</string>
+    <string name="stats_warm_first">Finish today first. Tomorrow you\'ll see the change.</string>
+    <string name="onboarding_self_custom">Custom</string>
+    <string name="onboarding_self_custom_hint">Write a line for yourself in this moment</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_color_mode">Color mode</string>
+    <string name="settings_color_light">Light</string>
+    <string name="settings_color_dark">Dark</string>
+    <string name="settings_color_system">System</string>
+    <string name="settings_style">Style</string>
+    <string name="settings_style_material">Material You</string>
+    <string name="settings_style_material_sub">Dynamic color, clean Material 3</string>
+    <string name="settings_style_orange">Orange</string>
+    <string name="settings_style_orange_sub">Warm paper #FAF9F5, orange #D97757, serif</string>
+    <string name="settings_style_apple">Apple-like</string>
+    <string name="settings_style_apple_sub">System green and liquid glass</string>
+    <string name="about_blurb">Pause first. Then open. It doesn\'t lock the whole phone — it only asks on apps you chose. It runs entirely on your phone and collects no data.</string>
+    <string name="about_version">Version %1$s</string>
+    <string name="lab_title">Notification preview</string>
+    <string name="lab_group_celebration">Encouragement after a long stretch without watched apps</string>
+    <string name="lab_group_summary">Evening recap notifications</string>
+    <string name="lab_preview">Preview</string>
+    <string name="lab_raw">Source</string>
+    <string name="lab_sample_app">TikTok</string>
+    <string name="stats_trend">7-day trend</string>
+    <string name="stats_trend_total">Total minutes</string>
+    <string name="stats_y_minutes">min</string>
+    <string name="cd_settings">Settings</string>
+    <string name="cd_add">Add apps</string>
+    <string name="cd_back">Back</string>
+    <string name="tab_budget">Daily cap</string>
+    <string name="tab_add">Add apps</string>
+    <string name="tab_stats">Today\'s recap</string>
+    <string name="tab_settings">Settings</string>
+    <string name="budget_title">Daily cap</string>
+    <string name="budget_global">How long in total each day</string>
+    <string name="budget_global_sub">A cap for all watched apps together. Set the total first, then share minutes across apps.</string>
+    <string name="budget_none">No daily total cap</string>
+    <string name="budget_minutes">%1$d min per day</string>
+    <string name="budget_allocated">Allocated %1$d / %2$d min</string>
+    <string name="budget_unallocated">%1$d min still unassigned</string>
+    <string name="budget_unallocated_none">All minutes have been assigned</string>
+    <string name="budget_app_alloc">%1$d min for this app</string>
+    <string name="budget_app_share">No extra cap; shares remaining time</string>
+    <string name="budget_empty_title">No apps watched yet</string>
+    <string name="budget_empty_body">Add an app you\'d like to open less, then come back to share today\'s time.</string>
+    <string name="stats_compare">Today vs yesterday</string>
+    <string name="settings_language_word">Language</string>
+    <string name="cd_expand">Expand</string>
+    <string name="cd_collapse">Collapse</string>
+    <string name="duration_hours_minutes">%1$d h %2$d min</string>
+    <string name="duration_minutes_seconds">%1$d min %2$d sec</string>
+    <string name="duration_minutes">%1$d min</string>
+    <string name="duration_seconds">%1$d sec</string>
+    <string name="weekday_mon">Mon</string>
+    <string name="weekday_tue">Tue</string>
+    <string name="weekday_wed">Wed</string>
+    <string name="weekday_thu">Thu</string>
+    <string name="weekday_fri">Fri</string>
+    <string name="weekday_sat">Sat</string>
+    <string name="weekday_sun">Sun</string>
+    <string-array name="celebration_templates">
+        <item>Those apps on the list are waiting. You\'re doing just fine without them.</item>
+        <item>The second your finger stopped, you\'d already won a round.</item>
+        <item>Those apps are still waiting. You\'ve been living your own day.</item>
+        <item>This gap isn\'t boredom. It\'s a window you left for yourself.</item>
+        <item>Not opening them is fine. The world keeps turning, and you\'re clearer.</item>
+        <item>Today\'s restraint is something tomorrow-you will quietly thank you for.</item>
+        <item>The urge to scroll came and went. You\'re still here. That\'s good.</item>
+        <item>The watch list is on duty. You spent the time on something better.</item>
+        <item>Skip one open, and you get a stretch of your own rhythm back.</item>
+        <item>The screen can stay on. You didn\'t let it pull you away.</item>
+        <item>This stretch without those apps is already worth a round of applause.</item>
+        <item>Attention stood with you today. Rare, and just right.</item>
+        <item>Those scroll-itch moments passed. You took the day back.</item>
+        <item>A blank stretch of time, lived as real spare time.</item>
+        <item>The apps are where you left them. You\'ve already walked a few steps on.</item>
+        <item>Holding back isn\'t a loss. It\'s you taking the wheel again.</item>
+        <item>Tonight\'s time is what you picked back out of habit.</item>
+        <item>You didn\'t slide all the way down. Breathing feels a bit easier.</item>
+        <item>See? Leave those apps, and the sky doesn\'t fall.</item>
+        <item>This quiet is yours. Keep it. Don\'t rush to give it back.</item>
+    </string-array>
+</resources>
