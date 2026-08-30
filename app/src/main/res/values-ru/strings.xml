@@ -123,6 +123,8 @@ Mind Peace · Chenlaoshi
     <string name="settings_credit_name">陈老实Chenlaoshi</string>
     <string name="settings_github_title">GitHub</string>
     <string name="settings_github_line">Открыть GitHub</string>
+    <string name="settings_coolapk_title">Coolapk</string>
+    <string name="settings_coolapk_line">Открыть Coolapk</string>
     <string name="settings_status_on">Вкл.</string>
     <string name="settings_status_off">Выкл.</string>
     <string name="settings_go">В настройки</string>

@@ -82,6 +82,7 @@ const val CELEBRATION_KIND_1D = "d1"
 const val CELEBRATION_KIND_3D = "d3"
 const val BILIBILI_AUTHOR_URL = "https://space.bilibili.com/3546678682454822"
 const val GITHUB_REPO_URL = "https://github.com/Chenlaoshiii/mind-peace"
+const val COOLAPK_AUTHOR_URL = "https://www.coolapk.com/u/27475586"
 
 enum class ColorMode {
     LIGHT, DARK, SYSTEM;

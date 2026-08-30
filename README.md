@@ -7,7 +7,7 @@ Mind Peace 是一款温和的 Android 使用提醒应用。它**不会锁住整�
 
 Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock the whole phone. When you launch an app you chose to watch, it covers it with a confirmation: do you really want to open it? After you confirm, you pick how long. When time is up, you go home.
 
-[下载 Debug 安装包 1.3.9](https://github.com/Chenlaoshiii/mind-peace/releases/download/v1.3.9/MindPeace-1.3.9-debug.apk) · [Releases](https://github.com/Chenlaoshiii/mind-peace/releases/tag/v1.3.9)
+[下载 Debug 安装包 1.3.10](https://github.com/Chenlaoshiii/mind-peace/releases/download/v1.3.10/MindPeace-1.3.10-debug.apk) · [Releases](https://github.com/Chenlaoshiii/mind-peace/releases/tag/v1.3.10)
 
 作者 [陈老实Chenlaoshi](https://space.bilibili.com/3546678682454822) · [GitHub](https://github.com/Chenlaoshiii/mind-peace) · `com.mindpeace.app` · minSdk 26 / targetSdk 35
 
@@ -94,7 +94,7 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 4. 之后打开这些应用，会先问「真的确定要打开××吗？」并显示你的那句话。选「确定」再选 1 / 3 / 5 分钟或自定义；「退出」回桌面。
 5. 通知栏会显示剩余时间。到点回桌面。中途离开则本次结束：已经用掉的计入今日用量，没用完的时间作废；下次打开会再次询问。
-6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、**语言/Language**（跟随系统、简体中文、繁體中文、English、日本語、Русский、文言文、Español、Français；未选过则跟随手机语言）、改那句写给自己的话、重新看引导、关于。关于与设置里可以「去 GitHub 看看」，也可以去 B 站。关于页大标题连点 5 下可预览全部通知文案。
+6. 设置里：无障碍、电池、通知、悬浮窗（备用）、**个性主题**（浅色 / 深色 / 跟随系统）、**语言/Language**（跟随系统、简体中文、繁體中文、English、日本語、Русский、文言文、Español、Français；未选过则跟随手机语言）、改那句写给自己的话、重新看引导、关于。设置与关于可去 B 站、GitHub、酷安。关于页大标题连点 5 下可预览全部通知文案。
 
 若拦截突然没了，打开应用看是否提示无障碍已关闭。小米 / 华为 / OPPO / vivo 请在最近任务里锁定 Mind Peace，并允许自启动与后台运行。
 
@@ -111,7 +111,7 @@ Mind Peace is a gentle Android pause-before-you-open app. It does **not** lock t
 
 ### 主题
 
-1.3.9：设置与关于再次提供 GitHub 入口，指向 [Chenlaoshiii/mind-peace](https://github.com/Chenlaoshiii/mind-peace)（同时保留 B 站）。1.3.8 起去掉白色风格，个性主题只保留浅色 / 深色 / 跟随系统（Android 12+ 仍用 Material You 动态取色）。总时长里每个应用是一张完整圆角卡片（图标、名称、用量和滑条都在同一张卡里）。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
+1.3.10：设置与关于可去 B 站、GitHub、酷安。1.3.9 起再次提供 GitHub 入口，指向 [Chenlaoshiii/mind-peace](https://github.com/Chenlaoshiii/mind-peace)（同时保留 B 站）。1.3.8 起去掉白色风格，个性主题只保留浅色 / 深色 / 跟随系统（Android 12+ 仍用 Material You 动态取色）。总时长里每个应用是一张完整圆角卡片（图标、名称、用量和滑条都在同一张卡里）。界面语言可在设置「语言/Language」切换（含文言文、西班牙语、法语；默认跟随手机系统语言，不支持的语言回落到简体中文）。四个主页可以左右滑动切换。
 
 ### 关于
 
@@ -206,7 +206,7 @@ Check the apps that should ask before they open. Only the ones you pick are watc
 
 4. Opening a watched app asks if you really want to open it, with your quote. Confirm, then pick 1 / 3 / 5 minutes or custom; Exit returns to the launcher.
 5. A notification shows remaining time. When time is up you go home. Leave the app and the session ends: time already used is counted, leftover minutes are discarded, and the next open always asks again.
-6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), **Language/Language** (Follow system, Simplified Chinese, Traditional Chinese, English, Japanese, Russian, Literary Chinese, Spanish, French; follows the phone language until you pick one), edit your quote, replay setup, About. About and Settings include “Check GitHub” and Bilibili. Tap the big About title five times to preview every notification template.
+6. Settings: accessibility, battery, notifications, overlay (fallback), **Appearance** (light / dark / system), **Language/Language** (Follow system, Simplified Chinese, Traditional Chinese, English, Japanese, Russian, Literary Chinese, Spanish, French; follows the phone language until you pick one), edit your quote, replay setup, About. Settings and About can go to Bilibili, GitHub, Coolapk. Tap the big About title five times to preview every notification template.
 
 If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / OPPO / vivo, lock Mind Peace in Recents and allow autostart / background.
 
@@ -223,7 +223,7 @@ If intercepts stop, open the app and check accessibility. On Xiaomi / Huawei / O
 
 ### Appearance
 
-1.3.9: Settings and About again include a GitHub card, pointing at [Chenlaoshiii/mind-peace](https://github.com/Chenlaoshiii/mind-peace) (Bilibili stays). Since 1.3.8 the White visual style is gone. Appearance is light / dark / follow system (Material You dynamic color on Android 12+). Each watched app on Daily cap sits on one full rounded card (icon, name, usage, and slider together). UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
+1.3.10: Settings and About can go to Bilibili, GitHub, Coolapk. 1.3.9 restored a GitHub card pointing at [Chenlaoshiii/mind-peace](https://github.com/Chenlaoshiii/mind-peace) (Bilibili stays). Since 1.3.8 the White visual style is gone. Appearance is light / dark / follow system (Material You dynamic color on Android 12+). Each watched app on Daily cap sits on one full rounded card (icon, name, usage, and slider together). UI language is in Settings as Language/Language (including Literary Chinese, Spanish, French); by default it follows the phone language, with Simplified Chinese as the fallback. The four main tabs swipe sideways.
 
 ### About
 

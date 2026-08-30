@@ -123,6 +123,8 @@ Mind Peace · Chenlaoshi
     <string name="settings_credit_name">陳老實Chenlaoshi</string>
     <string name="settings_github_title">GitHub</string>
     <string name="settings_github_line">往 GitHub 一觀</string>
+    <string name="settings_coolapk_title">酷安</string>
+    <string name="settings_coolapk_line">往酷安一觀</string>
     <string name="settings_status_on">已啟</string>
     <string name="settings_status_off">未啟</string>
     <string name="settings_go">往設置</string>

@@ -45,6 +45,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.mindpeace.app.MindPeaceApp
 import com.mindpeace.app.R
 import com.mindpeace.app.data.ColorMode
+import com.mindpeace.app.data.COOLAPK_AUTHOR_URL
 import com.mindpeace.app.data.GITHUB_REPO_URL
 import com.mindpeace.app.ui.components.PeacePageTitle
 import com.mindpeace.app.ui.components.SelfMessageEditor
@@ -186,6 +187,13 @@ fun SettingsScreen(
                 title = stringResource(R.string.settings_github_title),
                 line = stringResource(R.string.settings_github_line),
                 onClick = { openUrl(context, GITHUB_REPO_URL) },
+                modifier = Modifier.padding(horizontal = 16.dp),
+            )
+            Spacer(Modifier.height(12.dp))
+            CreditLinkCard(
+                title = stringResource(R.string.settings_coolapk_title),
+                line = stringResource(R.string.settings_coolapk_line),
+                onClick = { openUrl(context, COOLAPK_AUTHOR_URL) },
                 modifier = Modifier.padding(horizontal = 16.dp),
             )
             Spacer(Modifier.height(24.dp))
